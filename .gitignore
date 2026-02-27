@@ -1,0 +1,3 @@
+rag/data/*
+rag/text_from_scanned_pdfs/*
+rag/qdrant_data
