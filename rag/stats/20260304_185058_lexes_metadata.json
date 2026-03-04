@@ -9,7 +9,7 @@
                 "lex_id": "nDmgiyoe4dH2PcCzN",
                 "lex_type": "LEX",
                 "lex_number": "1.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -23,13 +23,7 @@
                 "lex_id": "nDmgiyoe4dH2PcCzN",
                 "lex_type": "LEX",
                 "lex_number": "1.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "nDmgiyoe4dH2PcCzN",
-                "lex_type": "LEX",
-                "lex_number": "1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -43,7 +37,21 @@
                 "lex_id": "nDmgiyoe4dH2PcCzN",
                 "lex_type": "LEX",
                 "lex_number": "1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
+            }
+        ]
+    },
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1993/210_210_210/20250501/en/pdf-a/fedlex-data-admin-ch-eli-cc-1993-210_210_210-20250501-en-pdf-a.pdf": {
+        "doc_id": "b8a0dfbd02300d8aec58cd0b530030e6",
+        "cat": "lex",
+        "source": "fedlex",
+        "content_format": "pdf",
+        "refs": [
+            {
+                "lex_id": "nDmgiyoe4dH2PcCzN",
+                "lex_type": "LEX",
+                "lex_number": "1.0.1",
+                "lex_lang": "en"
             }
         ]
     },
@@ -57,7 +65,7 @@
                 "lex_id": "BmgrWtFdBALTBtGsq",
                 "lex_type": "LEX",
                 "lex_number": "1.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -71,13 +79,7 @@
                 "lex_id": "BmgrWtFdBALTBtGsq",
                 "lex_type": "LEX",
                 "lex_number": "1.0.2",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "BmgrWtFdBALTBtGsq",
-                "lex_type": "LEX",
-                "lex_number": "1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -91,7 +93,7 @@
                 "lex_id": "BmgrWtFdBALTBtGsq",
                 "lex_type": "LEX",
                 "lex_number": "1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -105,7 +107,7 @@
                 "lex_id": "qx4zrMiP2oHKRxupm",
                 "lex_type": "LEX",
                 "lex_number": "1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -119,13 +121,7 @@
                 "lex_id": "qx4zrMiP2oHKRxupm",
                 "lex_type": "LEX",
                 "lex_number": "1.0.3",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "qx4zrMiP2oHKRxupm",
-                "lex_type": "LEX",
-                "lex_number": "1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -139,7 +135,7 @@
                 "lex_id": "qx4zrMiP2oHKRxupm",
                 "lex_type": "LEX",
                 "lex_number": "1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -153,7 +149,7 @@
                 "lex_id": "nYfecNfg8Y8RJazrW",
                 "lex_type": "LEX",
                 "lex_number": "1.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -167,7 +163,7 @@
                 "lex_id": "nYfecNfg8Y8RJazrW",
                 "lex_type": "LEX",
                 "lex_number": "1.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -181,7 +177,7 @@
                 "lex_id": "nYfecNfg8Y8RJazrW",
                 "lex_type": "LEX",
                 "lex_number": "1.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -195,7 +191,7 @@
                 "lex_id": "nYfecNfg8Y8RJazrW",
                 "lex_type": "LEX",
                 "lex_number": "1.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -209,7 +205,7 @@
                 "lex_id": "3mPmehq3YRFsjbgwm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -223,7 +219,7 @@
                 "lex_id": "3mPmehq3YRFsjbgwm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -237,7 +233,7 @@
                 "lex_id": "3mPmehq3YRFsjbgwm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -251,7 +247,7 @@
                 "lex_id": "3mPmehq3YRFsjbgwm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -265,7 +261,7 @@
                 "lex_id": "DHbCseL5fxnFANdgK",
                 "lex_type": "LEX",
                 "lex_number": "1.1.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -279,7 +275,7 @@
                 "lex_id": "DHbCseL5fxnFANdgK",
                 "lex_type": "LEX",
                 "lex_number": "1.1.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -293,7 +289,7 @@
                 "lex_id": "DHbCseL5fxnFANdgK",
                 "lex_type": "LEX",
                 "lex_number": "1.1.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -307,7 +303,7 @@
                 "lex_id": "DHbCseL5fxnFANdgK",
                 "lex_type": "LEX",
                 "lex_number": "1.1.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -321,7 +317,7 @@
                 "lex_id": "qgTuyBzrrFCwoQSZe",
                 "lex_type": "LEX",
                 "lex_number": "1.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -335,13 +331,13 @@
                 "lex_id": "qgTuyBzrrFCwoQSZe",
                 "lex_type": "LEX",
                 "lex_number": "1.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "qgTuyBzrrFCwoQSZe",
                 "lex_type": "LEX",
                 "lex_number": "1.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -355,7 +351,7 @@
                 "lex_id": "qgTuyBzrrFCwoQSZe",
                 "lex_type": "LEX",
                 "lex_number": "1.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -369,7 +365,7 @@
                 "lex_id": "SCGBTHJFzAazXx5x8",
                 "lex_type": "LEX",
                 "lex_number": "1.1.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -383,13 +379,13 @@
                 "lex_id": "SCGBTHJFzAazXx5x8",
                 "lex_type": "LEX",
                 "lex_number": "1.1.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "SCGBTHJFzAazXx5x8",
                 "lex_type": "LEX",
                 "lex_number": "1.1.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -403,7 +399,7 @@
                 "lex_id": "SCGBTHJFzAazXx5x8",
                 "lex_type": "LEX",
                 "lex_number": "1.1.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -417,7 +413,7 @@
                 "lex_id": "PxpCgsy3tSCQ5J3KQ",
                 "lex_type": "LEX",
                 "lex_number": "1.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -431,7 +427,7 @@
                 "lex_id": "PxpCgsy3tSCQ5J3KQ",
                 "lex_type": "LEX",
                 "lex_number": "1.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -445,7 +441,7 @@
                 "lex_id": "PxpCgsy3tSCQ5J3KQ",
                 "lex_type": "LEX",
                 "lex_number": "1.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -459,7 +455,7 @@
                 "lex_id": "PxpCgsy3tSCQ5J3KQ",
                 "lex_type": "LEX",
                 "lex_number": "1.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -473,7 +469,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -487,7 +483,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -501,7 +497,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -515,7 +511,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -529,7 +525,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -543,7 +539,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -557,7 +553,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -571,7 +567,7 @@
                 "lex_id": "u5ka99FMhukWEDrS4",
                 "lex_type": "LEX",
                 "lex_number": "1.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -585,7 +581,7 @@
                 "lex_id": "Eadjj6bejmGurYtpo",
                 "lex_type": "LEX",
                 "lex_number": "1.2.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -599,7 +595,7 @@
                 "lex_id": "Eadjj6bejmGurYtpo",
                 "lex_type": "LEX",
                 "lex_number": "1.2.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -613,7 +609,7 @@
                 "lex_id": "Eadjj6bejmGurYtpo",
                 "lex_type": "LEX",
                 "lex_number": "1.2.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -627,7 +623,7 @@
                 "lex_id": "Eadjj6bejmGurYtpo",
                 "lex_type": "LEX",
                 "lex_number": "1.2.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -641,7 +637,7 @@
                 "lex_id": "8tMCzmETABTBbFD3H",
                 "lex_type": "LEX",
                 "lex_number": "1.10.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -655,7 +651,7 @@
                 "lex_id": "8tMCzmETABTBbFD3H",
                 "lex_type": "LEX",
                 "lex_number": "1.10.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -669,25 +665,13 @@
                 "lex_id": "8tMCzmETABTBbFD3H",
                 "lex_type": "LEX",
                 "lex_number": "1.10.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "8tMCzmETABTBbFD3H",
-                "lex_type": "LEX",
-                "lex_number": "1.10.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "nGQCb7WyswP3Wvyqx",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "nGQCb7WyswP3Wvyqx",
-                "lex_type": "LEX",
-                "lex_number": "7.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -701,7 +685,7 @@
                 "lex_id": "8tMCzmETABTBbFD3H",
                 "lex_type": "LEX",
                 "lex_number": "1.10.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -715,7 +699,7 @@
                 "lex_id": "8tMCzmETABTBbFD3H",
                 "lex_type": "LEX",
                 "lex_number": "1.10.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -729,7 +713,7 @@
                 "lex_id": "Et6uCtBYe6e63oa8z",
                 "lex_type": "LEX",
                 "lex_number": "1.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -743,7 +727,7 @@
                 "lex_id": "Et6uCtBYe6e63oa8z",
                 "lex_type": "LEX",
                 "lex_number": "1.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -757,7 +741,7 @@
                 "lex_id": "Et6uCtBYe6e63oa8z",
                 "lex_type": "LEX",
                 "lex_number": "1.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -771,7 +755,7 @@
                 "lex_id": "Et6uCtBYe6e63oa8z",
                 "lex_type": "LEX",
                 "lex_number": "1.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -785,7 +769,7 @@
                 "lex_id": "oinSfj9dsWQop4SzF",
                 "lex_type": "LEX",
                 "lex_number": "1.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -799,7 +783,7 @@
                 "lex_id": "oinSfj9dsWQop4SzF",
                 "lex_type": "LEX",
                 "lex_number": "1.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -813,7 +797,7 @@
                 "lex_id": "oinSfj9dsWQop4SzF",
                 "lex_type": "LEX",
                 "lex_number": "1.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -827,7 +811,7 @@
                 "lex_id": "oinSfj9dsWQop4SzF",
                 "lex_type": "LEX",
                 "lex_number": "1.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -841,7 +825,7 @@
                 "lex_id": "2DfZ6Zu4kEK5kp3gG",
                 "lex_type": "LEX",
                 "lex_number": "1.3.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -855,7 +839,7 @@
                 "lex_id": "2DfZ6Zu4kEK5kp3gG",
                 "lex_type": "LEX",
                 "lex_number": "1.3.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -869,7 +853,7 @@
                 "lex_id": "2DfZ6Zu4kEK5kp3gG",
                 "lex_type": "LEX",
                 "lex_number": "1.3.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -883,7 +867,7 @@
                 "lex_id": "2DfZ6Zu4kEK5kp3gG",
                 "lex_type": "LEX",
                 "lex_number": "1.3.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -897,7 +881,7 @@
                 "lex_id": "ouDiRioJ3azhe4yaA",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -911,7 +895,7 @@
                 "lex_id": "ouDiRioJ3azhe4yaA",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -925,7 +909,7 @@
                 "lex_id": "PFutB7p8SBQXAg4pN",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -939,13 +923,13 @@
                 "lex_id": "PFutB7p8SBQXAg4pN",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "PFutB7p8SBQXAg4pN",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -959,7 +943,7 @@
                 "lex_id": "PFutB7p8SBQXAg4pN",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -973,7 +957,7 @@
                 "lex_id": "pjdSkZ65QybnaRxoe",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -987,13 +971,13 @@
                 "lex_id": "pjdSkZ65QybnaRxoe",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "pjdSkZ65QybnaRxoe",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1007,7 +991,7 @@
                 "lex_id": "pjdSkZ65QybnaRxoe",
                 "lex_type": "LEX",
                 "lex_number": "1.4.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1021,7 +1005,7 @@
                 "lex_id": "FtG9uqBcSemNaWHJF",
                 "lex_type": "LEX",
                 "lex_number": "1.4.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1035,7 +1019,7 @@
                 "lex_id": "FtG9uqBcSemNaWHJF",
                 "lex_type": "LEX",
                 "lex_number": "1.4.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1049,7 +1033,7 @@
                 "lex_id": "FtG9uqBcSemNaWHJF",
                 "lex_type": "LEX",
                 "lex_number": "1.4.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1063,7 +1047,7 @@
                 "lex_id": "FtG9uqBcSemNaWHJF",
                 "lex_type": "LEX",
                 "lex_number": "1.4.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1077,7 +1061,7 @@
                 "lex_id": "7F6WkHXnSWsDRWrPi",
                 "lex_type": "LEX",
                 "lex_number": "1.11.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1091,7 +1075,7 @@
                 "lex_id": "7F6WkHXnSWsDRWrPi",
                 "lex_type": "LEX",
                 "lex_number": "1.11.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1105,7 +1089,7 @@
                 "lex_id": "7F6WkHXnSWsDRWrPi",
                 "lex_type": "LEX",
                 "lex_number": "1.11.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1119,7 +1103,7 @@
                 "lex_id": "7F6WkHXnSWsDRWrPi",
                 "lex_type": "LEX",
                 "lex_number": "1.11.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1133,7 +1117,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1147,7 +1131,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1161,7 +1145,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1175,7 +1159,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1189,7 +1173,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1203,7 +1187,7 @@
                 "lex_id": "MJLBupWRgieXrKF4g",
                 "lex_type": "LEX",
                 "lex_number": "1.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1217,7 +1201,7 @@
                 "lex_id": "9z9DpvhXGKqLy96nc",
                 "lex_type": "LEX",
                 "lex_number": "1.5.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1231,7 +1215,7 @@
                 "lex_id": "9z9DpvhXGKqLy96nc",
                 "lex_type": "LEX",
                 "lex_number": "1.5.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1245,7 +1229,7 @@
                 "lex_id": "9z9DpvhXGKqLy96nc",
                 "lex_type": "LEX",
                 "lex_number": "1.5.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1259,7 +1243,7 @@
                 "lex_id": "9z9DpvhXGKqLy96nc",
                 "lex_type": "LEX",
                 "lex_number": "1.5.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1273,7 +1257,7 @@
                 "lex_id": "6n9Y7XsZmtgTEfDQe",
                 "lex_type": "LEX",
                 "lex_number": "1.5.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1287,7 +1271,7 @@
                 "lex_id": "6n9Y7XsZmtgTEfDQe",
                 "lex_type": "LEX",
                 "lex_number": "1.5.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1301,7 +1285,7 @@
                 "lex_id": "6n9Y7XsZmtgTEfDQe",
                 "lex_type": "LEX",
                 "lex_number": "1.5.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1315,7 +1299,7 @@
                 "lex_id": "6n9Y7XsZmtgTEfDQe",
                 "lex_type": "LEX",
                 "lex_number": "1.5.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1329,7 +1313,7 @@
                 "lex_id": "4NZkxG3NZnJSQThSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.5.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1343,7 +1327,7 @@
                 "lex_id": "4NZkxG3NZnJSQThSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.5.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1357,7 +1341,7 @@
                 "lex_id": "4NZkxG3NZnJSQThSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.5.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1371,7 +1355,7 @@
                 "lex_id": "4NZkxG3NZnJSQThSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.5.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1385,7 +1369,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1399,7 +1383,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1413,7 +1397,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1427,7 +1411,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1441,7 +1425,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1455,7 +1439,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1469,7 +1453,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1483,7 +1467,7 @@
                 "lex_id": "Tu5sqN6e7hRBdsChf",
                 "lex_type": "LEX",
                 "lex_number": "1.5.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1497,7 +1481,7 @@
                 "lex_id": "qz93aiKXAqBASNkwQ",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1511,13 +1495,7 @@
                 "lex_id": "qz93aiKXAqBASNkwQ",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "qz93aiKXAqBASNkwQ",
-                "lex_type": "LEX",
-                "lex_number": "1.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1531,7 +1509,7 @@
                 "lex_id": "qz93aiKXAqBASNkwQ",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1545,7 +1523,7 @@
                 "lex_id": "FggJnkHWR7Spgvtk7",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1559,13 +1537,7 @@
                 "lex_id": "FggJnkHWR7Spgvtk7",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.2",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "FggJnkHWR7Spgvtk7",
-                "lex_type": "LEX",
-                "lex_number": "1.6.0.2",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1579,7 +1551,7 @@
                 "lex_id": "FggJnkHWR7Spgvtk7",
                 "lex_type": "LEX",
                 "lex_number": "1.6.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1593,7 +1565,7 @@
                 "lex_id": "cpp7qMgRdYrvWRWWe",
                 "lex_type": "LEX",
                 "lex_number": "1.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1607,7 +1579,7 @@
                 "lex_id": "cpp7qMgRdYrvWRWWe",
                 "lex_type": "LEX",
                 "lex_number": "1.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1621,7 +1593,7 @@
                 "lex_id": "cpp7qMgRdYrvWRWWe",
                 "lex_type": "LEX",
                 "lex_number": "1.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1635,7 +1607,7 @@
                 "lex_id": "cpp7qMgRdYrvWRWWe",
                 "lex_type": "LEX",
                 "lex_number": "1.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1649,7 +1621,7 @@
                 "lex_id": "g5tYwfBgTTuMXBxcx",
                 "lex_type": "LEX",
                 "lex_number": "1.12.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1663,7 +1635,7 @@
                 "lex_id": "g5tYwfBgTTuMXBxcx",
                 "lex_type": "LEX",
                 "lex_number": "1.12.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1677,7 +1649,7 @@
                 "lex_id": "SWymKqf5iDWEYczKc",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1691,13 +1663,13 @@
                 "lex_id": "SWymKqf5iDWEYczKc",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "SWymKqf5iDWEYczKc",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1711,7 +1683,7 @@
                 "lex_id": "SWymKqf5iDWEYczKc",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1725,7 +1697,7 @@
                 "lex_id": "kghiS4Po6bkwWzFbY",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1739,13 +1711,13 @@
                 "lex_id": "kghiS4Po6bkwWzFbY",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "kghiS4Po6bkwWzFbY",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1759,7 +1731,7 @@
                 "lex_id": "kghiS4Po6bkwWzFbY",
                 "lex_type": "LEX",
                 "lex_number": "1.8.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1773,7 +1745,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1787,7 +1759,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1801,7 +1773,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1815,7 +1787,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1829,7 +1801,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1843,7 +1815,7 @@
                 "lex_id": "NGFscxCMu2X4K9p5Z",
                 "lex_type": "LEX",
                 "lex_number": "1.8.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1857,7 +1829,7 @@
                 "lex_id": "6q6SFFhxQaQh7svy5",
                 "lex_type": "LEX",
                 "lex_number": "1.9.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1871,7 +1843,7 @@
                 "lex_id": "6q6SFFhxQaQh7svy5",
                 "lex_type": "LEX",
                 "lex_number": "1.9.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1885,7 +1857,7 @@
                 "lex_id": "6q6SFFhxQaQh7svy5",
                 "lex_type": "LEX",
                 "lex_number": "1.9.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1899,7 +1871,7 @@
                 "lex_id": "6q6SFFhxQaQh7svy5",
                 "lex_type": "LEX",
                 "lex_number": "1.9.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1913,7 +1885,7 @@
                 "lex_id": "cufjN5zyMgPLiZnhJ",
                 "lex_type": "LEX",
                 "lex_number": "1.9.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1927,7 +1899,7 @@
                 "lex_id": "cufjN5zyMgPLiZnhJ",
                 "lex_type": "LEX",
                 "lex_number": "1.9.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1941,7 +1913,7 @@
                 "lex_id": "cufjN5zyMgPLiZnhJ",
                 "lex_type": "LEX",
                 "lex_number": "1.9.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1955,7 +1927,7 @@
                 "lex_id": "cufjN5zyMgPLiZnhJ",
                 "lex_type": "LEX",
                 "lex_number": "1.9.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -1969,7 +1941,7 @@
                 "lex_id": "6QoGAe75p4svdr9oQ",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -1983,13 +1955,7 @@
                 "lex_id": "6QoGAe75p4svdr9oQ",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "6QoGAe75p4svdr9oQ",
-                "lex_type": "LEX",
-                "lex_number": "2.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2003,7 +1969,7 @@
                 "lex_id": "6QoGAe75p4svdr9oQ",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2017,7 +1983,7 @@
                 "lex_id": "qbnBmjwo2vm2cRLwe",
                 "lex_type": "LEX",
                 "lex_number": "2.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2031,7 +1997,7 @@
                 "lex_id": "qbnBmjwo2vm2cRLwe",
                 "lex_type": "LEX",
                 "lex_number": "2.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2045,7 +2011,7 @@
                 "lex_id": "qbnBmjwo2vm2cRLwe",
                 "lex_type": "LEX",
                 "lex_number": "2.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2059,7 +2025,7 @@
                 "lex_id": "qbnBmjwo2vm2cRLwe",
                 "lex_type": "LEX",
                 "lex_number": "2.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2073,7 +2039,7 @@
                 "lex_id": "qz92Bqq5RNLw5rY4i",
                 "lex_type": "LEX",
                 "lex_number": "2.11.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2087,7 +2053,7 @@
                 "lex_id": "qz92Bqq5RNLw5rY4i",
                 "lex_type": "LEX",
                 "lex_number": "2.11.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2101,13 +2067,7 @@
                 "lex_id": "qz92Bqq5RNLw5rY4i",
                 "lex_type": "LEX",
                 "lex_number": "2.11.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "qz92Bqq5RNLw5rY4i",
-                "lex_type": "LEX",
-                "lex_number": "2.11.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2121,7 +2081,7 @@
                 "lex_id": "qz92Bqq5RNLw5rY4i",
                 "lex_type": "LEX",
                 "lex_number": "2.11.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2135,7 +2095,7 @@
                 "lex_id": "qz92Bqq5RNLw5rY4i",
                 "lex_type": "LEX",
                 "lex_number": "2.11.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2149,7 +2109,7 @@
                 "lex_id": "XK4E3dxgc6w3Bpa4M",
                 "lex_type": "LEX",
                 "lex_number": "2.11.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2163,7 +2123,7 @@
                 "lex_id": "XK4E3dxgc6w3Bpa4M",
                 "lex_type": "LEX",
                 "lex_number": "2.11.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2177,7 +2137,7 @@
                 "lex_id": "XK4E3dxgc6w3Bpa4M",
                 "lex_type": "LEX",
                 "lex_number": "2.11.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2191,7 +2151,7 @@
                 "lex_id": "XK4E3dxgc6w3Bpa4M",
                 "lex_type": "LEX",
                 "lex_number": "2.11.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2205,7 +2165,7 @@
                 "lex_id": "atsiMEL4uE2N3xqQQ",
                 "lex_type": "LEX",
                 "lex_number": "2.11.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2219,7 +2179,7 @@
                 "lex_id": "atsiMEL4uE2N3xqQQ",
                 "lex_type": "LEX",
                 "lex_number": "2.11.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2233,7 +2193,7 @@
                 "lex_id": "atsiMEL4uE2N3xqQQ",
                 "lex_type": "LEX",
                 "lex_number": "2.11.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2247,7 +2207,7 @@
                 "lex_id": "atsiMEL4uE2N3xqQQ",
                 "lex_type": "LEX",
                 "lex_number": "2.11.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2261,7 +2221,7 @@
                 "lex_id": "qmDuqyhsCpGnNr47L",
                 "lex_type": "LEX",
                 "lex_number": "2.11.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2275,7 +2235,7 @@
                 "lex_id": "qmDuqyhsCpGnNr47L",
                 "lex_type": "LEX",
                 "lex_number": "2.11.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2289,7 +2249,7 @@
                 "lex_id": "qmDuqyhsCpGnNr47L",
                 "lex_type": "LEX",
                 "lex_number": "2.11.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2303,7 +2263,7 @@
                 "lex_id": "qmDuqyhsCpGnNr47L",
                 "lex_type": "LEX",
                 "lex_number": "2.11.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2317,7 +2277,7 @@
                 "lex_id": "ySZ4jwt54JonrnsdT",
                 "lex_type": "LEX",
                 "lex_number": "2.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2331,7 +2291,7 @@
                 "lex_id": "ySZ4jwt54JonrnsdT",
                 "lex_type": "LEX",
                 "lex_number": "2.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2345,7 +2305,7 @@
                 "lex_id": "ySZ4jwt54JonrnsdT",
                 "lex_type": "LEX",
                 "lex_number": "2.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2359,7 +2319,7 @@
                 "lex_id": "ySZ4jwt54JonrnsdT",
                 "lex_type": "LEX",
                 "lex_number": "2.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2373,7 +2333,7 @@
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2387,7 +2347,7 @@
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2401,13 +2361,13 @@
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2421,7 +2381,7 @@
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2435,7 +2395,7 @@
                 "lex_id": "8CLRRf82DtgeWJGeS",
                 "lex_type": "LEX",
                 "lex_number": "2.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2449,7 +2409,7 @@
                 "lex_id": "JJpbmCJ964DfEMJ9k",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2463,7 +2423,7 @@
                 "lex_id": "JJpbmCJ964DfEMJ9k",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2477,7 +2437,7 @@
                 "lex_id": "JJpbmCJ964DfEMJ9k",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2491,7 +2451,7 @@
                 "lex_id": "JJpbmCJ964DfEMJ9k",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2505,7 +2465,7 @@
                 "lex_id": "qpZwfeSHKJHtuAmcS",
                 "lex_type": "LEX",
                 "lex_number": "2.4.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2519,7 +2479,7 @@
                 "lex_id": "qpZwfeSHKJHtuAmcS",
                 "lex_type": "LEX",
                 "lex_number": "2.4.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2533,7 +2493,7 @@
                 "lex_id": "rY8MPSH4czjYkqCWn",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2547,7 +2507,7 @@
                 "lex_id": "rY8MPSH4czjYkqCWn",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2561,7 +2521,7 @@
                 "lex_id": "rY8MPSH4czjYkqCWn",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2575,7 +2535,7 @@
                 "lex_id": "rY8MPSH4czjYkqCWn",
                 "lex_type": "LEX",
                 "lex_number": "2.4.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2589,7 +2549,7 @@
                 "lex_id": "36eAMGNFoeaxhWWz6",
                 "lex_type": "LEX",
                 "lex_number": "2.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2603,7 +2563,7 @@
                 "lex_id": "36eAMGNFoeaxhWWz6",
                 "lex_type": "LEX",
                 "lex_number": "2.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2617,7 +2577,7 @@
                 "lex_id": "36eAMGNFoeaxhWWz6",
                 "lex_type": "LEX",
                 "lex_number": "2.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2631,7 +2591,7 @@
                 "lex_id": "36eAMGNFoeaxhWWz6",
                 "lex_type": "LEX",
                 "lex_number": "2.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2645,7 +2605,7 @@
                 "lex_id": "XqEdwnjS96xPJ7kvE",
                 "lex_type": "LEX",
                 "lex_number": "2.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2659,7 +2619,7 @@
                 "lex_id": "XqEdwnjS96xPJ7kvE",
                 "lex_type": "LEX",
                 "lex_number": "2.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2673,7 +2633,7 @@
                 "lex_id": "XqEdwnjS96xPJ7kvE",
                 "lex_type": "LEX",
                 "lex_number": "2.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2687,7 +2647,7 @@
                 "lex_id": "XqEdwnjS96xPJ7kvE",
                 "lex_type": "LEX",
                 "lex_number": "2.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2701,7 +2661,7 @@
                 "lex_id": "wYxNctHbJHprLKXYL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2715,7 +2675,7 @@
                 "lex_id": "wYxNctHbJHprLKXYL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2729,7 +2689,7 @@
                 "lex_id": "wYxNctHbJHprLKXYL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2743,7 +2703,7 @@
                 "lex_id": "wYxNctHbJHprLKXYL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2757,7 +2717,7 @@
                 "lex_id": "oZkqFqxSzX6nS4pFQ",
                 "lex_type": "LEX",
                 "lex_number": "2.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2771,7 +2731,7 @@
                 "lex_id": "oZkqFqxSzX6nS4pFQ",
                 "lex_type": "LEX",
                 "lex_number": "2.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2785,7 +2745,7 @@
                 "lex_id": "oZkqFqxSzX6nS4pFQ",
                 "lex_type": "LEX",
                 "lex_number": "2.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2799,7 +2759,7 @@
                 "lex_id": "oZkqFqxSzX6nS4pFQ",
                 "lex_type": "LEX",
                 "lex_number": "2.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2813,7 +2773,7 @@
                 "lex_id": "WJzA9nAe3BWxmbJTL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2827,7 +2787,7 @@
                 "lex_id": "WJzA9nAe3BWxmbJTL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2841,7 +2801,7 @@
                 "lex_id": "WJzA9nAe3BWxmbJTL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2855,7 +2815,7 @@
                 "lex_id": "WJzA9nAe3BWxmbJTL",
                 "lex_type": "LEX",
                 "lex_number": "2.6.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2869,7 +2829,7 @@
                 "lex_id": "qrYMGMEr4kWsepHRn",
                 "lex_type": "LEX",
                 "lex_number": "2.6.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2883,7 +2843,7 @@
                 "lex_id": "qrYMGMEr4kWsepHRn",
                 "lex_type": "LEX",
                 "lex_number": "2.6.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2897,7 +2857,7 @@
                 "lex_id": "qrYMGMEr4kWsepHRn",
                 "lex_type": "LEX",
                 "lex_number": "2.6.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2911,7 +2871,7 @@
                 "lex_id": "qrYMGMEr4kWsepHRn",
                 "lex_type": "LEX",
                 "lex_number": "2.6.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2925,7 +2885,7 @@
                 "lex_id": "9nKZfK3P6cknvXyRs",
                 "lex_type": "LEX",
                 "lex_number": "2.6.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2939,7 +2899,7 @@
                 "lex_id": "9nKZfK3P6cknvXyRs",
                 "lex_type": "LEX",
                 "lex_number": "2.6.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2953,7 +2913,7 @@
                 "lex_id": "9nKZfK3P6cknvXyRs",
                 "lex_type": "LEX",
                 "lex_number": "2.6.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2967,7 +2927,7 @@
                 "lex_id": "9nKZfK3P6cknvXyRs",
                 "lex_type": "LEX",
                 "lex_number": "2.6.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -2981,7 +2941,7 @@
                 "lex_id": "iGodMNrsWGwLGbkrg",
                 "lex_type": "LEX",
                 "lex_number": "2.6.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -2995,7 +2955,7 @@
                 "lex_id": "iGodMNrsWGwLGbkrg",
                 "lex_type": "LEX",
                 "lex_number": "2.6.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3009,7 +2969,7 @@
                 "lex_id": "iGodMNrsWGwLGbkrg",
                 "lex_type": "LEX",
                 "lex_number": "2.6.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3023,7 +2983,7 @@
                 "lex_id": "iGodMNrsWGwLGbkrg",
                 "lex_type": "LEX",
                 "lex_number": "2.6.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3037,7 +2997,7 @@
                 "lex_id": "PLS87Rc8QyuGLkprA",
                 "lex_type": "LEX",
                 "lex_number": "2.6.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3051,7 +3011,7 @@
                 "lex_id": "PLS87Rc8QyuGLkprA",
                 "lex_type": "LEX",
                 "lex_number": "2.6.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3065,7 +3025,7 @@
                 "lex_id": "PLS87Rc8QyuGLkprA",
                 "lex_type": "LEX",
                 "lex_number": "2.6.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3079,7 +3039,7 @@
                 "lex_id": "PLS87Rc8QyuGLkprA",
                 "lex_type": "LEX",
                 "lex_number": "2.6.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3093,7 +3053,7 @@
                 "lex_id": "Z8tWZAtknzCzNkH8Z",
                 "lex_type": "LEX",
                 "lex_number": "2.7.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3107,13 +3067,7 @@
                 "lex_id": "Z8tWZAtknzCzNkH8Z",
                 "lex_type": "LEX",
                 "lex_number": "2.7.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "Z8tWZAtknzCzNkH8Z",
-                "lex_type": "LEX",
-                "lex_number": "2.7.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3127,7 +3081,7 @@
                 "lex_id": "Z8tWZAtknzCzNkH8Z",
                 "lex_type": "LEX",
                 "lex_number": "2.7.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3141,7 +3095,7 @@
                 "lex_id": "ng6nRMiwXFPshfMsw",
                 "lex_type": "LEX",
                 "lex_number": "2.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3155,7 +3109,7 @@
                 "lex_id": "ng6nRMiwXFPshfMsw",
                 "lex_type": "LEX",
                 "lex_number": "2.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3169,7 +3123,7 @@
                 "lex_id": "ng6nRMiwXFPshfMsw",
                 "lex_type": "LEX",
                 "lex_number": "2.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3183,7 +3137,7 @@
                 "lex_id": "ng6nRMiwXFPshfMsw",
                 "lex_type": "LEX",
                 "lex_number": "2.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3197,7 +3151,7 @@
                 "lex_id": "MesWeDQ7YtyxhQiEi",
                 "lex_type": "LEX",
                 "lex_number": "2.9.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3211,7 +3165,7 @@
                 "lex_id": "MesWeDQ7YtyxhQiEi",
                 "lex_type": "LEX",
                 "lex_number": "2.9.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3225,7 +3179,7 @@
                 "lex_id": "Pitxpz972FpEDExMA",
                 "lex_type": "LEX",
                 "lex_number": "2.9.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3239,7 +3193,7 @@
                 "lex_id": "Pitxpz972FpEDExMA",
                 "lex_type": "LEX",
                 "lex_number": "2.9.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3253,7 +3207,7 @@
                 "lex_id": "hfNwuSvkPQiu7yR6e",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3267,13 +3221,7 @@
                 "lex_id": "hfNwuSvkPQiu7yR6e",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "hfNwuSvkPQiu7yR6e",
-                "lex_type": "LEX",
-                "lex_number": "2.10.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3287,7 +3235,7 @@
                 "lex_id": "hfNwuSvkPQiu7yR6e",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3301,7 +3249,7 @@
                 "lex_id": "Tm42kYbY76WzKMPq9",
                 "lex_type": "LEX",
                 "lex_number": "2.10.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3315,7 +3263,7 @@
                 "lex_id": "Tm42kYbY76WzKMPq9",
                 "lex_type": "LEX",
                 "lex_number": "2.10.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3329,7 +3277,7 @@
                 "lex_id": "Tm42kYbY76WzKMPq9",
                 "lex_type": "LEX",
                 "lex_number": "2.10.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3343,7 +3291,7 @@
                 "lex_id": "Tm42kYbY76WzKMPq9",
                 "lex_type": "LEX",
                 "lex_number": "2.10.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3357,7 +3305,7 @@
                 "lex_id": "fv4Gg2TnKjtmmXFaF",
                 "lex_type": "LEX",
                 "lex_number": "3.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3371,7 +3319,7 @@
                 "lex_id": "fv4Gg2TnKjtmmXFaF",
                 "lex_type": "LEX",
                 "lex_number": "3.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3385,7 +3333,7 @@
                 "lex_id": "fv4Gg2TnKjtmmXFaF",
                 "lex_type": "LEX",
                 "lex_number": "3.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3399,7 +3347,7 @@
                 "lex_id": "fv4Gg2TnKjtmmXFaF",
                 "lex_type": "LEX",
                 "lex_number": "3.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3413,7 +3361,7 @@
                 "lex_id": "EvYMcKueathqnHiQa",
                 "lex_type": "LEX",
                 "lex_number": "3.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3427,13 +3375,13 @@
                 "lex_id": "EvYMcKueathqnHiQa",
                 "lex_type": "LEX",
                 "lex_number": "3.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "EvYMcKueathqnHiQa",
                 "lex_type": "LEX",
                 "lex_number": "3.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3447,7 +3395,7 @@
                 "lex_id": "EvYMcKueathqnHiQa",
                 "lex_type": "LEX",
                 "lex_number": "3.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3461,7 +3409,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3475,7 +3423,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3489,7 +3437,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3503,13 +3451,13 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3523,7 +3471,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3537,13 +3485,13 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3557,7 +3505,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3571,7 +3519,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3585,7 +3533,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3599,7 +3547,7 @@
                 "lex_id": "aRDP78LsNPKLvwX36",
                 "lex_type": "LEX",
                 "lex_number": "3.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3613,7 +3561,7 @@
                 "lex_id": "gwQNJceiBSJhcrXxN",
                 "lex_type": "LEX",
                 "lex_number": "3.3.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3627,7 +3575,7 @@
                 "lex_id": "gwQNJceiBSJhcrXxN",
                 "lex_type": "LEX",
                 "lex_number": "3.3.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3641,7 +3589,7 @@
                 "lex_id": "gwQNJceiBSJhcrXxN",
                 "lex_type": "LEX",
                 "lex_number": "3.3.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3655,7 +3603,7 @@
                 "lex_id": "gwQNJceiBSJhcrXxN",
                 "lex_type": "LEX",
                 "lex_number": "3.3.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3669,7 +3617,7 @@
                 "lex_id": "CKytiXZTsf8a9bAp9",
                 "lex_type": "LEX",
                 "lex_number": "3.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3683,7 +3631,7 @@
                 "lex_id": "CKytiXZTsf8a9bAp9",
                 "lex_type": "LEX",
                 "lex_number": "3.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3697,7 +3645,7 @@
                 "lex_id": "CKytiXZTsf8a9bAp9",
                 "lex_type": "LEX",
                 "lex_number": "3.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3711,7 +3659,7 @@
                 "lex_id": "CKytiXZTsf8a9bAp9",
                 "lex_type": "LEX",
                 "lex_number": "3.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3725,7 +3673,7 @@
                 "lex_id": "cq5S2W47eeGbs3CM9",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3739,13 +3687,7 @@
                 "lex_id": "cq5S2W47eeGbs3CM9",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "cq5S2W47eeGbs3CM9",
-                "lex_type": "LEX",
-                "lex_number": "3.4.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3759,7 +3701,7 @@
                 "lex_id": "cq5S2W47eeGbs3CM9",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3773,7 +3715,7 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3787,13 +3729,13 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3807,13 +3749,13 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3827,7 +3769,7 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3841,7 +3783,7 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3855,7 +3797,7 @@
                 "lex_id": "Yvw7qGbnbfcEgB8Cp",
                 "lex_type": "LEX",
                 "lex_number": "3.4.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3869,7 +3811,7 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3883,7 +3825,7 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3897,7 +3839,7 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3911,7 +3853,7 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3925,7 +3867,7 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3939,13 +3881,13 @@
                 "lex_id": "wg4ErtcdNwDSnXemi",
                 "lex_type": "LEX",
                 "lex_number": "3.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             },
             {
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -3959,7 +3901,7 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3973,7 +3915,7 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -3987,13 +3929,13 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4007,13 +3949,13 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4027,13 +3969,13 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4047,7 +3989,7 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4061,7 +4003,7 @@
                 "lex_id": "qM7XyqWfrrPMnyQNP",
                 "lex_type": "LEX",
                 "lex_number": "3.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4075,7 +4017,7 @@
                 "lex_id": "GMPsHS5gdbDsvNhtv",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4089,13 +4031,7 @@
                 "lex_id": "GMPsHS5gdbDsvNhtv",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "GMPsHS5gdbDsvNhtv",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4109,7 +4045,7 @@
                 "lex_id": "GMPsHS5gdbDsvNhtv",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4123,13 +4059,13 @@
                 "lex_id": "GMPsHS5gdbDsvNhtv",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             },
             {
                 "lex_id": "MXYjiEujcvdDM2sim",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4143,7 +4079,7 @@
                 "lex_id": "u7yFXZ44qopyLPbQC",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4157,13 +4093,7 @@
                 "lex_id": "u7yFXZ44qopyLPbQC",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.3",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "u7yFXZ44qopyLPbQC",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4177,7 +4107,7 @@
                 "lex_id": "u7yFXZ44qopyLPbQC",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4191,7 +4121,7 @@
                 "lex_id": "MXYjiEujcvdDM2sim",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4205,13 +4135,7 @@
                 "lex_id": "MXYjiEujcvdDM2sim",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.4",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "MXYjiEujcvdDM2sim",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4225,7 +4149,7 @@
                 "lex_id": "MXYjiEujcvdDM2sim",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4239,7 +4163,7 @@
                 "lex_id": "sDHACQytX46YuwfWd",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4253,13 +4177,7 @@
                 "lex_id": "sDHACQytX46YuwfWd",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.6",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "sDHACQytX46YuwfWd",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.6",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4273,7 +4191,7 @@
                 "lex_id": "sDHACQytX46YuwfWd",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4287,7 +4205,7 @@
                 "lex_id": "WFZncv8rt4rWttxhf",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4301,13 +4219,7 @@
                 "lex_id": "WFZncv8rt4rWttxhf",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.7",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "WFZncv8rt4rWttxhf",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.7",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4321,7 +4233,7 @@
                 "lex_id": "WFZncv8rt4rWttxhf",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4335,7 +4247,7 @@
                 "lex_id": "EiN4xoyngmtHTxEEu",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4349,13 +4261,13 @@
                 "lex_id": "EiN4xoyngmtHTxEEu",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "EiN4xoyngmtHTxEEu",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4369,7 +4281,7 @@
                 "lex_id": "EiN4xoyngmtHTxEEu",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4383,7 +4295,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4397,7 +4309,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4411,7 +4323,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4425,7 +4337,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4439,7 +4351,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4453,7 +4365,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4467,7 +4379,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4481,7 +4393,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4495,7 +4407,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4509,7 +4421,7 @@
                 "lex_id": "StzbCdre7batagDQH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4523,7 +4435,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4537,7 +4449,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4551,7 +4463,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4565,7 +4477,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4579,7 +4491,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4593,7 +4505,7 @@
                 "lex_id": "xNnk9WbJmWemDX3YJ",
                 "lex_type": "LEX",
                 "lex_number": "4.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4607,7 +4519,7 @@
                 "lex_id": "X4f8GW8FHBXqu73s2",
                 "lex_type": "LEX",
                 "lex_number": "4.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4621,13 +4533,13 @@
                 "lex_id": "X4f8GW8FHBXqu73s2",
                 "lex_type": "LEX",
                 "lex_number": "4.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "X4f8GW8FHBXqu73s2",
                 "lex_type": "LEX",
                 "lex_number": "4.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4641,7 +4553,7 @@
                 "lex_id": "X4f8GW8FHBXqu73s2",
                 "lex_type": "LEX",
                 "lex_number": "4.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4655,7 +4567,7 @@
                 "lex_id": "JrKb77B2ugu6S4ZSh",
                 "lex_type": "LEX",
                 "lex_number": "4.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4669,7 +4581,7 @@
                 "lex_id": "JrKb77B2ugu6S4ZSh",
                 "lex_type": "LEX",
                 "lex_number": "4.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4683,7 +4595,7 @@
                 "lex_id": "JrKb77B2ugu6S4ZSh",
                 "lex_type": "LEX",
                 "lex_number": "4.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4697,7 +4609,7 @@
                 "lex_id": "JrKb77B2ugu6S4ZSh",
                 "lex_type": "LEX",
                 "lex_number": "4.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4711,7 +4623,7 @@
                 "lex_id": "J7R2xr6s74eh3gELR",
                 "lex_type": "LEX",
                 "lex_number": "4.1.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4725,7 +4637,7 @@
                 "lex_id": "J7R2xr6s74eh3gELR",
                 "lex_type": "LEX",
                 "lex_number": "4.1.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4739,7 +4651,7 @@
                 "lex_id": "J7R2xr6s74eh3gELR",
                 "lex_type": "LEX",
                 "lex_number": "4.1.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4753,7 +4665,7 @@
                 "lex_id": "J7R2xr6s74eh3gELR",
                 "lex_type": "LEX",
                 "lex_number": "4.1.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4767,7 +4679,7 @@
                 "lex_id": "XHQwt5qAwgtkK797m",
                 "lex_type": "LEX",
                 "lex_number": "4.1.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4781,7 +4693,7 @@
                 "lex_id": "XHQwt5qAwgtkK797m",
                 "lex_type": "LEX",
                 "lex_number": "4.1.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4795,7 +4707,7 @@
                 "lex_id": "XHQwt5qAwgtkK797m",
                 "lex_type": "LEX",
                 "lex_number": "4.1.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4809,7 +4721,7 @@
                 "lex_id": "XHQwt5qAwgtkK797m",
                 "lex_type": "LEX",
                 "lex_number": "4.1.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4823,7 +4735,7 @@
                 "lex_id": "PqmNXYKEm4wGoaZeu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4837,13 +4749,7 @@
                 "lex_id": "PqmNXYKEm4wGoaZeu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "PqmNXYKEm4wGoaZeu",
-                "lex_type": "LEX",
-                "lex_number": "4.2.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4857,7 +4763,7 @@
                 "lex_id": "PqmNXYKEm4wGoaZeu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4871,7 +4777,7 @@
                 "lex_id": "soXKgwBisMA7L6ozm",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4885,7 +4791,7 @@
                 "lex_id": "soXKgwBisMA7L6ozm",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4899,7 +4805,7 @@
                 "lex_id": "soXKgwBisMA7L6ozm",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4913,7 +4819,7 @@
                 "lex_id": "soXKgwBisMA7L6ozm",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4927,7 +4833,7 @@
                 "lex_id": "us3aXdEpFtnpYMTwW",
                 "lex_type": "LEX",
                 "lex_number": "4.2.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4941,7 +4847,7 @@
                 "lex_id": "us3aXdEpFtnpYMTwW",
                 "lex_type": "LEX",
                 "lex_number": "4.2.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4955,7 +4861,7 @@
                 "lex_id": "us3aXdEpFtnpYMTwW",
                 "lex_type": "LEX",
                 "lex_number": "4.2.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4969,7 +4875,7 @@
                 "lex_id": "us3aXdEpFtnpYMTwW",
                 "lex_type": "LEX",
                 "lex_number": "4.2.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -4983,7 +4889,7 @@
                 "lex_id": "XP2hMHfAQgtiikth5",
                 "lex_type": "LEX",
                 "lex_number": "4.2.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -4997,7 +4903,7 @@
                 "lex_id": "XP2hMHfAQgtiikth5",
                 "lex_type": "LEX",
                 "lex_number": "4.2.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5011,7 +4917,7 @@
                 "lex_id": "XP2hMHfAQgtiikth5",
                 "lex_type": "LEX",
                 "lex_number": "4.2.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5025,7 +4931,7 @@
                 "lex_id": "XP2hMHfAQgtiikth5",
                 "lex_type": "LEX",
                 "lex_number": "4.2.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5039,7 +4945,7 @@
                 "lex_id": "aZmJH6mv4vhY2SvKu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5053,7 +4959,7 @@
                 "lex_id": "aZmJH6mv4vhY2SvKu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5067,7 +4973,7 @@
                 "lex_id": "aZmJH6mv4vhY2SvKu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5081,7 +4987,7 @@
                 "lex_id": "aZmJH6mv4vhY2SvKu",
                 "lex_type": "LEX",
                 "lex_number": "4.2.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5095,7 +5001,7 @@
                 "lex_id": "2WgDd3ZztEQP6cZJ6",
                 "lex_type": "LEX",
                 "lex_number": "4.2.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5109,7 +5015,7 @@
                 "lex_id": "2WgDd3ZztEQP6cZJ6",
                 "lex_type": "LEX",
                 "lex_number": "4.2.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5123,7 +5029,7 @@
                 "lex_id": "2WgDd3ZztEQP6cZJ6",
                 "lex_type": "LEX",
                 "lex_number": "4.2.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5137,7 +5043,7 @@
                 "lex_id": "2WgDd3ZztEQP6cZJ6",
                 "lex_type": "LEX",
                 "lex_number": "4.2.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5151,7 +5057,7 @@
                 "lex_id": "oBCoXi3Fq5p4dSCGv",
                 "lex_type": "LEX",
                 "lex_number": "4.2.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5165,7 +5071,7 @@
                 "lex_id": "oBCoXi3Fq5p4dSCGv",
                 "lex_type": "LEX",
                 "lex_number": "4.2.6",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5179,7 +5085,7 @@
                 "lex_id": "oBCoXi3Fq5p4dSCGv",
                 "lex_type": "LEX",
                 "lex_number": "4.2.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5193,7 +5099,7 @@
                 "lex_id": "oBCoXi3Fq5p4dSCGv",
                 "lex_type": "LEX",
                 "lex_number": "4.2.6",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5207,7 +5113,7 @@
                 "lex_id": "vvQfEfn833pCqtrdT",
                 "lex_type": "LEX",
                 "lex_number": "4.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5221,7 +5127,7 @@
                 "lex_id": "vvQfEfn833pCqtrdT",
                 "lex_type": "LEX",
                 "lex_number": "4.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5235,7 +5141,7 @@
                 "lex_id": "vvQfEfn833pCqtrdT",
                 "lex_type": "LEX",
                 "lex_number": "4.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5249,7 +5155,7 @@
                 "lex_id": "vvQfEfn833pCqtrdT",
                 "lex_type": "LEX",
                 "lex_number": "4.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5263,7 +5169,7 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5277,7 +5183,7 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5291,13 +5197,13 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5311,13 +5217,13 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5331,7 +5237,7 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5345,7 +5251,7 @@
                 "lex_id": "869vy8GMNh5gPRT9F",
                 "lex_type": "LEX",
                 "lex_number": "4.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5359,7 +5265,7 @@
                 "lex_id": "63YAedDaJeK5o2sRZ",
                 "lex_type": "LEX",
                 "lex_number": "4.4.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5373,7 +5279,7 @@
                 "lex_id": "63YAedDaJeK5o2sRZ",
                 "lex_type": "LEX",
                 "lex_number": "4.4.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5387,7 +5293,7 @@
                 "lex_id": "63YAedDaJeK5o2sRZ",
                 "lex_type": "LEX",
                 "lex_number": "4.4.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5401,7 +5307,7 @@
                 "lex_id": "63YAedDaJeK5o2sRZ",
                 "lex_type": "LEX",
                 "lex_number": "4.4.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5415,7 +5321,7 @@
                 "lex_id": "cTsDvGRjNmbt98WM3",
                 "lex_type": "LEX",
                 "lex_number": "4.4.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5429,7 +5335,7 @@
                 "lex_id": "cTsDvGRjNmbt98WM3",
                 "lex_type": "LEX",
                 "lex_number": "4.4.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5443,7 +5349,7 @@
                 "lex_id": "cTsDvGRjNmbt98WM3",
                 "lex_type": "LEX",
                 "lex_number": "4.4.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5457,7 +5363,7 @@
                 "lex_id": "cTsDvGRjNmbt98WM3",
                 "lex_type": "LEX",
                 "lex_number": "4.4.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5471,7 +5377,7 @@
                 "lex_id": "Nb5szozCEPDaugzft",
                 "lex_type": "LEX",
                 "lex_number": "4.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5485,7 +5391,7 @@
                 "lex_id": "Nb5szozCEPDaugzft",
                 "lex_type": "LEX",
                 "lex_number": "4.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5499,7 +5405,7 @@
                 "lex_id": "Nb5szozCEPDaugzft",
                 "lex_type": "LEX",
                 "lex_number": "4.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5513,7 +5419,7 @@
                 "lex_id": "Nb5szozCEPDaugzft",
                 "lex_type": "LEX",
                 "lex_number": "4.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5527,7 +5433,7 @@
                 "lex_id": "t7FmEhcogHnx7cZih",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5541,13 +5447,13 @@
                 "lex_id": "t7FmEhcogHnx7cZih",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "t7FmEhcogHnx7cZih",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5561,7 +5467,7 @@
                 "lex_id": "t7FmEhcogHnx7cZih",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5575,7 +5481,7 @@
                 "lex_id": "2CkeMAKnJHgbS6hhd",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5589,7 +5495,7 @@
                 "lex_id": "2CkeMAKnJHgbS6hhd",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5603,7 +5509,7 @@
                 "lex_id": "2CkeMAKnJHgbS6hhd",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5617,7 +5523,7 @@
                 "lex_id": "2CkeMAKnJHgbS6hhd",
                 "lex_type": "LEX",
                 "lex_number": "4.6.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5631,7 +5537,7 @@
                 "lex_id": "HKmoTYEXEhLJcMWLY",
                 "lex_type": "LEX",
                 "lex_number": "4.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5645,7 +5551,7 @@
                 "lex_id": "HKmoTYEXEhLJcMWLY",
                 "lex_type": "LEX",
                 "lex_number": "4.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5659,7 +5565,7 @@
                 "lex_id": "HKmoTYEXEhLJcMWLY",
                 "lex_type": "LEX",
                 "lex_number": "4.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5673,7 +5579,7 @@
                 "lex_id": "HKmoTYEXEhLJcMWLY",
                 "lex_type": "LEX",
                 "lex_number": "4.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5687,7 +5593,7 @@
                 "lex_id": "MjoM3e3vYiYptWbsW",
                 "lex_type": "LEX",
                 "lex_number": "4.8.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5701,13 +5607,7 @@
                 "lex_id": "MjoM3e3vYiYptWbsW",
                 "lex_type": "LEX",
                 "lex_number": "4.8.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "MjoM3e3vYiYptWbsW",
-                "lex_type": "LEX",
-                "lex_number": "4.8.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5721,7 +5621,7 @@
                 "lex_id": "MjoM3e3vYiYptWbsW",
                 "lex_type": "LEX",
                 "lex_number": "4.8.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5735,7 +5635,7 @@
                 "lex_id": "oDTvFRHQa2kE3FKvT",
                 "lex_type": "LEX",
                 "lex_number": "4.8.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5749,7 +5649,7 @@
                 "lex_id": "oDTvFRHQa2kE3FKvT",
                 "lex_type": "LEX",
                 "lex_number": "4.8.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5763,7 +5663,7 @@
                 "lex_id": "h4585FEJuQQu2bBwk",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5777,13 +5677,7 @@
                 "lex_id": "h4585FEJuQQu2bBwk",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "h4585FEJuQQu2bBwk",
-                "lex_type": "LEX",
-                "lex_number": "5.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5797,7 +5691,7 @@
                 "lex_id": "h4585FEJuQQu2bBwk",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5811,7 +5705,7 @@
                 "lex_id": "KRHLQnKN2uPQWvwiN",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5825,13 +5719,7 @@
                 "lex_id": "KRHLQnKN2uPQWvwiN",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.2",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "KRHLQnKN2uPQWvwiN",
-                "lex_type": "LEX",
-                "lex_number": "5.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5845,7 +5733,7 @@
                 "lex_id": "KRHLQnKN2uPQWvwiN",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5859,7 +5747,7 @@
                 "lex_id": "mSoN3KeqoBjSJWG6r",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5873,13 +5761,13 @@
                 "lex_id": "mSoN3KeqoBjSJWG6r",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "mSoN3KeqoBjSJWG6r",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5893,7 +5781,7 @@
                 "lex_id": "mSoN3KeqoBjSJWG6r",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5907,7 +5795,7 @@
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5921,7 +5809,7 @@
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5935,13 +5823,13 @@
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5955,7 +5843,7 @@
                 "lex_id": "45B3rrQSaj8TfFQZh",
                 "lex_type": "LEX",
                 "lex_number": "5.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -5969,7 +5857,7 @@
                 "lex_id": "ZZpyn5xnaxvTqwaDY",
                 "lex_type": "LEX",
                 "lex_number": "5.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5983,7 +5871,7 @@
                 "lex_id": "ZZpyn5xnaxvTqwaDY",
                 "lex_type": "LEX",
                 "lex_number": "5.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -5997,7 +5885,7 @@
                 "lex_id": "ZZpyn5xnaxvTqwaDY",
                 "lex_type": "LEX",
                 "lex_number": "5.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6011,7 +5899,7 @@
                 "lex_id": "ZZpyn5xnaxvTqwaDY",
                 "lex_type": "LEX",
                 "lex_number": "5.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6025,7 +5913,7 @@
                 "lex_id": "Wm3dfkG9wjs64eP7K",
                 "lex_type": "LEX",
                 "lex_number": "5.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6039,7 +5927,7 @@
                 "lex_id": "Wm3dfkG9wjs64eP7K",
                 "lex_type": "LEX",
                 "lex_number": "5.6.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6053,7 +5941,7 @@
                 "lex_id": "Wm3dfkG9wjs64eP7K",
                 "lex_type": "LEX",
                 "lex_number": "5.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6067,7 +5955,7 @@
                 "lex_id": "Wm3dfkG9wjs64eP7K",
                 "lex_type": "LEX",
                 "lex_number": "5.6.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6081,7 +5969,7 @@
                 "lex_id": "EYuWd5L4ARiYKZp7u",
                 "lex_type": "LEX",
                 "lex_number": "5.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6095,13 +5983,13 @@
                 "lex_id": "EYuWd5L4ARiYKZp7u",
                 "lex_type": "LEX",
                 "lex_number": "5.7.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "EYuWd5L4ARiYKZp7u",
                 "lex_type": "LEX",
                 "lex_number": "5.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6115,7 +6003,7 @@
                 "lex_id": "EYuWd5L4ARiYKZp7u",
                 "lex_type": "LEX",
                 "lex_number": "5.7.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6129,7 +6017,7 @@
                 "lex_id": "2Qu7vQ5eC9ZhKc6hq",
                 "lex_type": "LEX",
                 "lex_number": "5.7.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6143,13 +6031,13 @@
                 "lex_id": "2Qu7vQ5eC9ZhKc6hq",
                 "lex_type": "LEX",
                 "lex_number": "5.7.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "2Qu7vQ5eC9ZhKc6hq",
                 "lex_type": "LEX",
                 "lex_number": "5.7.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6163,7 +6051,7 @@
                 "lex_id": "2Qu7vQ5eC9ZhKc6hq",
                 "lex_type": "LEX",
                 "lex_number": "5.7.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6177,7 +6065,7 @@
                 "lex_id": "oWasMYiMnimLWdLqL",
                 "lex_type": "LEX",
                 "lex_number": "5.7.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6191,7 +6079,7 @@
                 "lex_id": "oWasMYiMnimLWdLqL",
                 "lex_type": "LEX",
                 "lex_number": "5.7.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6205,7 +6093,7 @@
                 "lex_id": "oWasMYiMnimLWdLqL",
                 "lex_type": "LEX",
                 "lex_number": "5.7.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6219,7 +6107,7 @@
                 "lex_id": "oWasMYiMnimLWdLqL",
                 "lex_type": "LEX",
                 "lex_number": "5.7.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6233,7 +6121,7 @@
                 "lex_id": "dM4nanEipgqctSiG6",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6247,13 +6135,7 @@
                 "lex_id": "dM4nanEipgqctSiG6",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.2",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "dM4nanEipgqctSiG6",
-                "lex_type": "LEX",
-                "lex_number": "5.8.0.2",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6267,7 +6149,21 @@
                 "lex_id": "dM4nanEipgqctSiG6",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
+            }
+        ]
+    },
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2020/126/20260101/en/pdf-a/fedlex-data-admin-ch-eli-cc-2020-126-20260101-en-pdf-a.pdf": {
+        "doc_id": "b928e9ff34d630b29630eb3b2fe30c60",
+        "cat": "lex",
+        "source": "fedlex",
+        "content_format": "pdf",
+        "refs": [
+            {
+                "lex_id": "dM4nanEipgqctSiG6",
+                "lex_type": "LEX",
+                "lex_number": "5.8.0.2",
+                "lex_lang": "en"
             }
         ]
     },
@@ -6281,7 +6177,7 @@
                 "lex_id": "YTFdvWMAJ8ndTwu7y",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6295,13 +6191,7 @@
                 "lex_id": "YTFdvWMAJ8ndTwu7y",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.3",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "YTFdvWMAJ8ndTwu7y",
-                "lex_type": "LEX",
-                "lex_number": "5.8.0.3",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6315,7 +6205,21 @@
                 "lex_id": "YTFdvWMAJ8ndTwu7y",
                 "lex_type": "LEX",
                 "lex_number": "5.8.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
+            }
+        ]
+    },
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2020/127/20230901/en/pdf-a/fedlex-data-admin-ch-eli-cc-2020-127-20230901-en-pdf-a.pdf": {
+        "doc_id": "6f16124b87a9efd2fdd21d2912ebe648",
+        "cat": "lex",
+        "source": "fedlex",
+        "content_format": "pdf",
+        "refs": [
+            {
+                "lex_id": "YTFdvWMAJ8ndTwu7y",
+                "lex_type": "LEX",
+                "lex_number": "5.8.0.3",
+                "lex_lang": "en"
             }
         ]
     },
@@ -6329,7 +6233,7 @@
                 "lex_id": "zCxctwGoJwNC7FRT8",
                 "lex_type": "LEX",
                 "lex_number": "5.8.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6343,7 +6247,7 @@
                 "lex_id": "zCxctwGoJwNC7FRT8",
                 "lex_type": "LEX",
                 "lex_number": "5.8.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6357,7 +6261,7 @@
                 "lex_id": "zCxctwGoJwNC7FRT8",
                 "lex_type": "LEX",
                 "lex_number": "5.8.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6371,7 +6275,7 @@
                 "lex_id": "zCxctwGoJwNC7FRT8",
                 "lex_type": "LEX",
                 "lex_number": "5.8.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6385,7 +6289,7 @@
                 "lex_id": "EitxBc9T3uyjw2XbF",
                 "lex_type": "LEX",
                 "lex_number": "5.8.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6399,7 +6303,7 @@
                 "lex_id": "EitxBc9T3uyjw2XbF",
                 "lex_type": "LEX",
                 "lex_number": "5.8.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6413,7 +6317,7 @@
                 "lex_id": "EitxBc9T3uyjw2XbF",
                 "lex_type": "LEX",
                 "lex_number": "5.8.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6427,7 +6331,7 @@
                 "lex_id": "EitxBc9T3uyjw2XbF",
                 "lex_type": "LEX",
                 "lex_number": "5.8.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6441,7 +6345,7 @@
                 "lex_id": "gJnpvnC9XFadpNKWC",
                 "lex_type": "LEX",
                 "lex_number": "5.9.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6455,7 +6359,7 @@
                 "lex_id": "gJnpvnC9XFadpNKWC",
                 "lex_type": "LEX",
                 "lex_number": "5.9.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6469,7 +6373,7 @@
                 "lex_id": "gJnpvnC9XFadpNKWC",
                 "lex_type": "LEX",
                 "lex_number": "5.9.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6483,7 +6387,7 @@
                 "lex_id": "gJnpvnC9XFadpNKWC",
                 "lex_type": "LEX",
                 "lex_number": "5.9.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6497,7 +6401,7 @@
                 "lex_id": "Hu2EWRdvbzerpD8ct",
                 "lex_type": "LEX",
                 "lex_number": "6.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6511,7 +6415,7 @@
                 "lex_id": "Hu2EWRdvbzerpD8ct",
                 "lex_type": "LEX",
                 "lex_number": "6.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6525,7 +6429,7 @@
                 "lex_id": "Hu2EWRdvbzerpD8ct",
                 "lex_type": "LEX",
                 "lex_number": "6.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6539,7 +6443,7 @@
                 "lex_id": "Hu2EWRdvbzerpD8ct",
                 "lex_type": "LEX",
                 "lex_number": "6.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6553,7 +6457,7 @@
                 "lex_id": "hqWcsG9fqGWfyd5J3",
                 "lex_type": "LEX",
                 "lex_number": "6.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6567,7 +6471,7 @@
                 "lex_id": "hqWcsG9fqGWfyd5J3",
                 "lex_type": "LEX",
                 "lex_number": "6.1.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6581,7 +6485,7 @@
                 "lex_id": "hqWcsG9fqGWfyd5J3",
                 "lex_type": "LEX",
                 "lex_number": "6.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6595,7 +6499,7 @@
                 "lex_id": "hqWcsG9fqGWfyd5J3",
                 "lex_type": "LEX",
                 "lex_number": "6.1.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6609,7 +6513,7 @@
                 "lex_id": "sQFmu5LHQzwFLXX75",
                 "lex_type": "LEX",
                 "lex_number": "6.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6623,7 +6527,7 @@
                 "lex_id": "sQFmu5LHQzwFLXX75",
                 "lex_type": "LEX",
                 "lex_number": "6.1.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6637,7 +6541,7 @@
                 "lex_id": "sQFmu5LHQzwFLXX75",
                 "lex_type": "LEX",
                 "lex_number": "6.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6651,7 +6555,7 @@
                 "lex_id": "sQFmu5LHQzwFLXX75",
                 "lex_type": "LEX",
                 "lex_number": "6.1.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6665,7 +6569,7 @@
                 "lex_id": "yDEG42FNmHfYxT6rg",
                 "lex_type": "LEX",
                 "lex_number": "6.1.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6679,7 +6583,7 @@
                 "lex_id": "yDEG42FNmHfYxT6rg",
                 "lex_type": "LEX",
                 "lex_number": "6.1.5",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6693,7 +6597,7 @@
                 "lex_id": "yDEG42FNmHfYxT6rg",
                 "lex_type": "LEX",
                 "lex_number": "6.1.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6707,7 +6611,7 @@
                 "lex_id": "yDEG42FNmHfYxT6rg",
                 "lex_type": "LEX",
                 "lex_number": "6.1.5",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6721,7 +6625,7 @@
                 "lex_id": "FLKMWMfa495jMsi4f",
                 "lex_type": "LEX",
                 "lex_number": "6.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6735,7 +6639,7 @@
                 "lex_id": "FLKMWMfa495jMsi4f",
                 "lex_type": "LEX",
                 "lex_number": "6.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6749,7 +6653,7 @@
                 "lex_id": "FLKMWMfa495jMsi4f",
                 "lex_type": "LEX",
                 "lex_number": "6.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6763,7 +6667,7 @@
                 "lex_id": "FLKMWMfa495jMsi4f",
                 "lex_type": "LEX",
                 "lex_number": "6.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6777,7 +6681,7 @@
                 "lex_id": "Lk86zyQRyL9Jz94CM",
                 "lex_type": "LEX",
                 "lex_number": "6.3.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6791,13 +6695,13 @@
                 "lex_id": "Lk86zyQRyL9Jz94CM",
                 "lex_type": "LEX",
                 "lex_number": "6.3.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "Lk86zyQRyL9Jz94CM",
                 "lex_type": "LEX",
                 "lex_number": "6.3.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6811,7 +6715,7 @@
                 "lex_id": "Lk86zyQRyL9Jz94CM",
                 "lex_type": "LEX",
                 "lex_number": "6.3.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6825,7 +6729,7 @@
                 "lex_id": "7R5v5juiXoeaBkqiL",
                 "lex_type": "LEX",
                 "lex_number": "6.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6839,7 +6743,7 @@
                 "lex_id": "7R5v5juiXoeaBkqiL",
                 "lex_type": "LEX",
                 "lex_number": "6.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6853,7 +6757,7 @@
                 "lex_id": "7R5v5juiXoeaBkqiL",
                 "lex_type": "LEX",
                 "lex_number": "6.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6867,7 +6771,7 @@
                 "lex_id": "7R5v5juiXoeaBkqiL",
                 "lex_type": "LEX",
                 "lex_number": "6.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6881,7 +6785,7 @@
                 "lex_id": "DuGzjR25ZDbKJLzuJ",
                 "lex_type": "LEX",
                 "lex_number": "6.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6895,7 +6799,7 @@
                 "lex_id": "DuGzjR25ZDbKJLzuJ",
                 "lex_type": "LEX",
                 "lex_number": "6.4.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6909,7 +6813,7 @@
                 "lex_id": "DuGzjR25ZDbKJLzuJ",
                 "lex_type": "LEX",
                 "lex_number": "6.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6923,7 +6827,7 @@
                 "lex_id": "DuGzjR25ZDbKJLzuJ",
                 "lex_type": "LEX",
                 "lex_number": "6.4.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6937,7 +6841,7 @@
                 "lex_id": "nGQCb7WyswP3Wvyqx",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6951,7 +6855,7 @@
                 "lex_id": "nGQCb7WyswP3Wvyqx",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6965,7 +6869,7 @@
                 "lex_id": "iSWWQBssi2e3m4hM4",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -6979,13 +6883,13 @@
                 "lex_id": "iSWWQBssi2e3m4hM4",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "iSWWQBssi2e3m4hM4",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -6999,7 +6903,7 @@
                 "lex_id": "iSWWQBssi2e3m4hM4",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7013,7 +6917,7 @@
                 "lex_id": "kLEX753z7Rey9HF6h",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7027,13 +6931,13 @@
                 "lex_id": "kLEX753z7Rey9HF6h",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "kLEX753z7Rey9HF6h",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7047,7 +6951,7 @@
                 "lex_id": "kLEX753z7Rey9HF6h",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7061,7 +6965,7 @@
                 "lex_id": "JKtwBYwtCkvj74B2e",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7075,13 +6979,13 @@
                 "lex_id": "JKtwBYwtCkvj74B2e",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "JKtwBYwtCkvj74B2e",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7095,7 +6999,7 @@
                 "lex_id": "JKtwBYwtCkvj74B2e",
                 "lex_type": "LEX",
                 "lex_number": "7.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7109,7 +7013,7 @@
                 "lex_id": "MAmQhkX8RK9hzwaLH",
                 "lex_type": "LEX",
                 "lex_number": "7.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7123,7 +7027,7 @@
                 "lex_id": "MAmQhkX8RK9hzwaLH",
                 "lex_type": "LEX",
                 "lex_number": "7.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7137,7 +7041,7 @@
                 "lex_id": "MAmQhkX8RK9hzwaLH",
                 "lex_type": "LEX",
                 "lex_number": "7.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7151,7 +7055,7 @@
                 "lex_id": "MAmQhkX8RK9hzwaLH",
                 "lex_type": "LEX",
                 "lex_number": "7.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7165,7 +7069,7 @@
                 "lex_id": "8gAoT8uMu9YbCCM9k",
                 "lex_type": "LEX",
                 "lex_number": "7.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7179,7 +7083,7 @@
                 "lex_id": "8gAoT8uMu9YbCCM9k",
                 "lex_type": "LEX",
                 "lex_number": "7.5.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7193,7 +7097,7 @@
                 "lex_id": "8gAoT8uMu9YbCCM9k",
                 "lex_type": "LEX",
                 "lex_number": "7.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7207,7 +7111,7 @@
                 "lex_id": "8gAoT8uMu9YbCCM9k",
                 "lex_type": "LEX",
                 "lex_number": "7.5.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7221,7 +7125,7 @@
                 "lex_id": "h4ES7ZdAwCG7uipNR",
                 "lex_type": "LEX",
                 "lex_number": "8.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7235,7 +7139,7 @@
                 "lex_id": "h4ES7ZdAwCG7uipNR",
                 "lex_type": "LEX",
                 "lex_number": "8.2.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7249,7 +7153,7 @@
                 "lex_id": "h4ES7ZdAwCG7uipNR",
                 "lex_type": "LEX",
                 "lex_number": "8.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7263,7 +7167,7 @@
                 "lex_id": "h4ES7ZdAwCG7uipNR",
                 "lex_type": "LEX",
                 "lex_number": "8.2.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7277,7 +7181,7 @@
                 "lex_id": "2AKqesrYsNz5awErW",
                 "lex_type": "LEX",
                 "lex_number": "8.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7291,13 +7195,13 @@
                 "lex_id": "2AKqesrYsNz5awErW",
                 "lex_type": "LEX",
                 "lex_number": "8.3.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "2AKqesrYsNz5awErW",
                 "lex_type": "LEX",
                 "lex_number": "8.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7311,7 +7215,7 @@
                 "lex_id": "2AKqesrYsNz5awErW",
                 "lex_type": "LEX",
                 "lex_number": "8.3.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7325,7 +7229,7 @@
                 "lex_id": "oCE4FFfSEgoxCQsrE",
                 "lex_type": "LEX",
                 "lex_number": "8.3.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7339,7 +7243,7 @@
                 "lex_id": "oCE4FFfSEgoxCQsrE",
                 "lex_type": "LEX",
                 "lex_number": "8.3.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7353,7 +7257,7 @@
                 "lex_id": "oCE4FFfSEgoxCQsrE",
                 "lex_type": "LEX",
                 "lex_number": "8.3.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7367,7 +7271,7 @@
                 "lex_id": "oCE4FFfSEgoxCQsrE",
                 "lex_type": "LEX",
                 "lex_number": "8.3.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7381,7 +7285,7 @@
                 "lex_id": "ET8FiLDyGQhWdKZ5D",
                 "lex_type": "LEX",
                 "lex_number": "8.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7395,7 +7299,7 @@
                 "lex_id": "ET8FiLDyGQhWdKZ5D",
                 "lex_type": "LEX",
                 "lex_number": "8.3.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7409,7 +7313,7 @@
                 "lex_id": "ET8FiLDyGQhWdKZ5D",
                 "lex_type": "LEX",
                 "lex_number": "8.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7423,7 +7327,7 @@
                 "lex_id": "ET8FiLDyGQhWdKZ5D",
                 "lex_type": "LEX",
                 "lex_number": "8.3.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7437,7 +7341,7 @@
                 "lex_id": "joNJvPu2JTjptqA77",
                 "lex_type": "LEX",
                 "lex_number": "8.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7451,7 +7355,7 @@
                 "lex_id": "joNJvPu2JTjptqA77",
                 "lex_type": "LEX",
                 "lex_number": "8.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7465,7 +7369,7 @@
                 "lex_id": "joNJvPu2JTjptqA77",
                 "lex_type": "LEX",
                 "lex_number": "8.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7479,7 +7383,7 @@
                 "lex_id": "joNJvPu2JTjptqA77",
                 "lex_type": "LEX",
                 "lex_number": "8.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7493,7 +7397,7 @@
                 "lex_id": "mq4Z48eNiWFswPNzB",
                 "lex_type": "LEX",
                 "lex_number": "2.9.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7507,7 +7411,7 @@
                 "lex_id": "mq4Z48eNiWFswPNzB",
                 "lex_type": "LEX",
                 "lex_number": "2.9.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7521,7 +7425,7 @@
                 "lex_id": "wvt9RavDoZ5vF9frw",
                 "lex_type": "LEX",
                 "lex_number": "4.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7535,7 +7439,7 @@
                 "lex_id": "wvt9RavDoZ5vF9frw",
                 "lex_type": "LEX",
                 "lex_number": "4.1.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7549,7 +7453,7 @@
                 "lex_id": "wvt9RavDoZ5vF9frw",
                 "lex_type": "LEX",
                 "lex_number": "4.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7563,7 +7467,7 @@
                 "lex_id": "wvt9RavDoZ5vF9frw",
                 "lex_type": "LEX",
                 "lex_number": "4.1.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7577,7 +7481,7 @@
                 "lex_id": "WoDjcZPJEzAAYfLue",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7591,13 +7495,7 @@
                 "lex_id": "WoDjcZPJEzAAYfLue",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.8",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "WoDjcZPJEzAAYfLue",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.8",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7611,7 +7509,21 @@
                 "lex_id": "WoDjcZPJEzAAYfLue",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
+            }
+        ]
+    },
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2020/12/20200301/en/pdf-a/fedlex-data-admin-ch-eli-cc-2020-12-20200301-en-pdf-a-1.pdf": {
+        "doc_id": "67bc653c99ed9a2335c156017e34bfde",
+        "cat": "lex",
+        "source": "fedlex",
+        "content_format": "pdf",
+        "refs": [
+            {
+                "lex_id": "WoDjcZPJEzAAYfLue",
+                "lex_type": "LEX",
+                "lex_number": "4.1.0.8",
+                "lex_lang": "en"
             }
         ]
     },
@@ -7625,7 +7537,7 @@
                 "lex_id": "oWCZBz2nvGx3EKCTT",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7639,13 +7551,7 @@
                 "lex_id": "oWCZBz2nvGx3EKCTT",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.10",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "oWCZBz2nvGx3EKCTT",
-                "lex_type": "LEX",
-                "lex_number": "4.1.0.10",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7659,7 +7565,7 @@
                 "lex_id": "oWCZBz2nvGx3EKCTT",
                 "lex_type": "LEX",
                 "lex_number": "4.1.0.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7673,13 +7579,13 @@
                 "lex_id": "PL3KpHrvQxC3D9KcH",
                 "lex_type": "LEX",
                 "lex_number": "1.1.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "PL3KpHrvQxC3D9KcH",
                 "lex_type": "LEX",
                 "lex_number": "1.1.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7693,13 +7599,13 @@
                 "lex_id": "PL3KpHrvQxC3D9KcH",
                 "lex_type": "LEX",
                 "lex_number": "1.1.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "PL3KpHrvQxC3D9KcH",
                 "lex_type": "LEX",
                 "lex_number": "1.1.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7713,7 +7619,7 @@
                 "lex_id": "AZ8w5fCcYAXdGLyXz",
                 "lex_type": "LEX",
                 "lex_number": "5.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7727,7 +7633,7 @@
                 "lex_id": "AZ8w5fCcYAXdGLyXz",
                 "lex_type": "LEX",
                 "lex_number": "5.1.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7741,7 +7647,7 @@
                 "lex_id": "AZ8w5fCcYAXdGLyXz",
                 "lex_type": "LEX",
                 "lex_number": "5.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7755,7 +7661,7 @@
                 "lex_id": "AZ8w5fCcYAXdGLyXz",
                 "lex_type": "LEX",
                 "lex_number": "5.1.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7769,7 +7675,7 @@
                 "lex_id": "MjWfzTnkog6ByTynH",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7783,7 +7689,7 @@
                 "lex_id": "MjWfzTnkog6ByTynH",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7797,7 +7703,7 @@
                 "lex_id": "MjWfzTnkog6ByTynH",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7811,7 +7717,7 @@
                 "lex_id": "MjWfzTnkog6ByTynH",
                 "lex_type": "LEX",
                 "lex_number": "4.2.1.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7825,7 +7731,7 @@
                 "lex_id": "pijWFXTJcP9QvGMpm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7839,7 +7745,7 @@
                 "lex_id": "pijWFXTJcP9QvGMpm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7853,7 +7759,7 @@
                 "lex_id": "pijWFXTJcP9QvGMpm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7867,7 +7773,7 @@
                 "lex_id": "pijWFXTJcP9QvGMpm",
                 "lex_type": "LEX",
                 "lex_number": "1.1.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7881,7 +7787,7 @@
                 "lex_id": "k6Pv23v5WkfYEa968",
                 "lex_type": "LEX",
                 "lex_number": "2.11.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7895,7 +7801,7 @@
                 "lex_id": "k6Pv23v5WkfYEa968",
                 "lex_type": "LEX",
                 "lex_number": "2.11.7",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7909,7 +7815,7 @@
                 "lex_id": "k6Pv23v5WkfYEa968",
                 "lex_type": "LEX",
                 "lex_number": "2.11.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7923,7 +7829,7 @@
                 "lex_id": "k6Pv23v5WkfYEa968",
                 "lex_type": "LEX",
                 "lex_number": "2.11.7",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7937,7 +7843,7 @@
                 "lex_id": "StDgmAMkSXQGhXPsT",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7951,7 +7857,7 @@
                 "lex_id": "StDgmAMkSXQGhXPsT",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -7965,7 +7871,7 @@
                 "lex_id": "StDgmAMkSXQGhXPsT",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7979,7 +7885,7 @@
                 "lex_id": "StDgmAMkSXQGhXPsT",
                 "lex_type": "LEX",
                 "lex_number": "2.10.0.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -7993,7 +7899,7 @@
                 "lex_id": "o5yb8FpxRnXfEzFBG",
                 "lex_type": "LEX",
                 "lex_number": "3.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8007,7 +7913,7 @@
                 "lex_id": "o5yb8FpxRnXfEzFBG",
                 "lex_type": "LEX",
                 "lex_number": "3.3.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8021,7 +7927,7 @@
                 "lex_id": "o5yb8FpxRnXfEzFBG",
                 "lex_type": "LEX",
                 "lex_number": "3.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8035,7 +7941,7 @@
                 "lex_id": "o5yb8FpxRnXfEzFBG",
                 "lex_type": "LEX",
                 "lex_number": "3.3.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8049,7 +7955,7 @@
                 "lex_id": "mbC9fbnYg6ZHch9wp",
                 "lex_type": "LEX",
                 "lex_number": "2.10.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8063,7 +7969,7 @@
                 "lex_id": "mbC9fbnYg6ZHch9wp",
                 "lex_type": "LEX",
                 "lex_number": "2.10.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8077,7 +7983,7 @@
                 "lex_id": "mbC9fbnYg6ZHch9wp",
                 "lex_type": "LEX",
                 "lex_number": "2.10.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8091,7 +7997,7 @@
                 "lex_id": "mbC9fbnYg6ZHch9wp",
                 "lex_type": "LEX",
                 "lex_number": "2.10.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8105,7 +8011,7 @@
                 "lex_id": "tkLqhkj3ESQ6WPwpj",
                 "lex_type": "LEX",
                 "lex_number": "1.2.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8119,7 +8025,7 @@
                 "lex_id": "tkLqhkj3ESQ6WPwpj",
                 "lex_type": "LEX",
                 "lex_number": "1.2.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8133,7 +8039,7 @@
                 "lex_id": "tkLqhkj3ESQ6WPwpj",
                 "lex_type": "LEX",
                 "lex_number": "1.2.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8147,7 +8053,7 @@
                 "lex_id": "tkLqhkj3ESQ6WPwpj",
                 "lex_type": "LEX",
                 "lex_number": "1.2.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8161,7 +8067,7 @@
                 "lex_id": "7BaKPnm7yGwoqfQK9",
                 "lex_type": "LEX",
                 "lex_number": "1.1.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8175,7 +8081,7 @@
                 "lex_id": "7BaKPnm7yGwoqfQK9",
                 "lex_type": "LEX",
                 "lex_number": "1.1.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8189,7 +8095,7 @@
                 "lex_id": "7BaKPnm7yGwoqfQK9",
                 "lex_type": "LEX",
                 "lex_number": "1.1.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8203,7 +8109,7 @@
                 "lex_id": "7BaKPnm7yGwoqfQK9",
                 "lex_type": "LEX",
                 "lex_number": "1.1.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8217,7 +8123,7 @@
                 "lex_id": "BZc4iYDbPh4FufpSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.1.12",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8231,13 +8137,13 @@
                 "lex_id": "BZc4iYDbPh4FufpSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.1.12",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "BZc4iYDbPh4FufpSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.1.12",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8251,7 +8157,7 @@
                 "lex_id": "BZc4iYDbPh4FufpSQ",
                 "lex_type": "LEX",
                 "lex_number": "1.1.12",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8265,7 +8171,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8279,7 +8185,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8293,7 +8199,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8307,7 +8213,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8321,7 +8227,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8335,7 +8241,7 @@
                 "lex_id": "u2ToMoGoXaKZeAWqH",
                 "lex_type": "LEX",
                 "lex_number": "4.1.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8349,7 +8255,7 @@
                 "lex_id": "cSyBePExFTuyWMrPX",
                 "lex_type": "LEX",
                 "lex_number": "1.13.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8363,7 +8269,7 @@
                 "lex_id": "cSyBePExFTuyWMrPX",
                 "lex_type": "LEX",
                 "lex_number": "1.13.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8377,7 +8283,7 @@
                 "lex_id": "cSyBePExFTuyWMrPX",
                 "lex_type": "LEX",
                 "lex_number": "1.13.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8391,7 +8297,7 @@
                 "lex_id": "cSyBePExFTuyWMrPX",
                 "lex_type": "LEX",
                 "lex_number": "1.13.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8405,7 +8311,7 @@
                 "lex_id": "KqBPRzfMakNgy8xAi",
                 "lex_type": "LEX",
                 "lex_number": "2.10.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8419,7 +8325,7 @@
                 "lex_id": "KqBPRzfMakNgy8xAi",
                 "lex_type": "LEX",
                 "lex_number": "2.10.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8433,7 +8339,7 @@
                 "lex_id": "KqBPRzfMakNgy8xAi",
                 "lex_type": "LEX",
                 "lex_number": "2.10.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8447,7 +8353,7 @@
                 "lex_id": "KqBPRzfMakNgy8xAi",
                 "lex_type": "LEX",
                 "lex_number": "2.10.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8461,7 +8367,7 @@
                 "lex_id": "CJn98eao33hmg8Q9K",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8475,13 +8381,13 @@
                 "lex_id": "CJn98eao33hmg8Q9K",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "CJn98eao33hmg8Q9K",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8495,7 +8401,7 @@
                 "lex_id": "CJn98eao33hmg8Q9K",
                 "lex_type": "LEX",
                 "lex_number": "5.1.0.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8509,7 +8415,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8523,7 +8429,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8537,7 +8443,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8551,7 +8457,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8565,7 +8471,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8579,7 +8485,7 @@
                 "lex_id": "LXY3xbkzGWmERpe9y",
                 "lex_type": "LEX",
                 "lex_number": "1.2.12",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8593,7 +8499,7 @@
                 "lex_id": "SGANoMCaXqGLzLGXD",
                 "lex_type": "LEX",
                 "lex_number": "5.6.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8607,7 +8513,7 @@
                 "lex_id": "SGANoMCaXqGLzLGXD",
                 "lex_type": "LEX",
                 "lex_number": "5.6.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8621,7 +8527,7 @@
                 "lex_id": "SGANoMCaXqGLzLGXD",
                 "lex_type": "LEX",
                 "lex_number": "5.6.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8635,7 +8541,7 @@
                 "lex_id": "SGANoMCaXqGLzLGXD",
                 "lex_type": "LEX",
                 "lex_number": "5.6.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8649,7 +8555,7 @@
                 "lex_id": "uqRuqemcWmvgsR6Wo",
                 "lex_type": "LEX",
                 "lex_number": "5.6.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8663,7 +8569,7 @@
                 "lex_id": "uqRuqemcWmvgsR6Wo",
                 "lex_type": "LEX",
                 "lex_number": "5.6.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8677,7 +8583,7 @@
                 "lex_id": "uqRuqemcWmvgsR6Wo",
                 "lex_type": "LEX",
                 "lex_number": "5.6.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8691,7 +8597,7 @@
                 "lex_id": "uqRuqemcWmvgsR6Wo",
                 "lex_type": "LEX",
                 "lex_number": "5.6.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8705,7 +8611,7 @@
                 "lex_id": "3C8JkTCmRQceqsktP",
                 "lex_type": "LEX",
                 "lex_number": "1.1.14",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8719,7 +8625,7 @@
                 "lex_id": "3C8JkTCmRQceqsktP",
                 "lex_type": "LEX",
                 "lex_number": "1.1.14",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8733,7 +8639,7 @@
                 "lex_id": "3C8JkTCmRQceqsktP",
                 "lex_type": "LEX",
                 "lex_number": "1.1.14",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8747,7 +8653,7 @@
                 "lex_id": "3C8JkTCmRQceqsktP",
                 "lex_type": "LEX",
                 "lex_number": "1.1.14",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8761,7 +8667,7 @@
                 "lex_id": "5iia8YcHWuA3BMSdE",
                 "lex_type": "LEX",
                 "lex_number": "1.1.13",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8775,7 +8681,7 @@
                 "lex_id": "5iia8YcHWuA3BMSdE",
                 "lex_type": "LEX",
                 "lex_number": "1.1.13",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8789,7 +8695,7 @@
                 "lex_id": "5iia8YcHWuA3BMSdE",
                 "lex_type": "LEX",
                 "lex_number": "1.1.13",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8803,7 +8709,7 @@
                 "lex_id": "5iia8YcHWuA3BMSdE",
                 "lex_type": "LEX",
                 "lex_number": "1.1.13",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8817,7 +8723,7 @@
                 "lex_id": "N2RpYyoQF9NDyynGN",
                 "lex_type": "LEX",
                 "lex_number": "4.1.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8831,7 +8737,7 @@
                 "lex_id": "N2RpYyoQF9NDyynGN",
                 "lex_type": "LEX",
                 "lex_number": "4.1.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8845,7 +8751,7 @@
                 "lex_id": "N2RpYyoQF9NDyynGN",
                 "lex_type": "LEX",
                 "lex_number": "4.1.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8859,7 +8765,7 @@
                 "lex_id": "N2RpYyoQF9NDyynGN",
                 "lex_type": "LEX",
                 "lex_number": "4.1.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8873,7 +8779,7 @@
                 "lex_id": "BYm8sTcNhZd7jzmch",
                 "lex_type": "LEX",
                 "lex_number": "1.8.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8887,7 +8793,7 @@
                 "lex_id": "BYm8sTcNhZd7jzmch",
                 "lex_type": "LEX",
                 "lex_number": "1.8.3",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8901,7 +8807,7 @@
                 "lex_id": "BYm8sTcNhZd7jzmch",
                 "lex_type": "LEX",
                 "lex_number": "1.8.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8915,7 +8821,7 @@
                 "lex_id": "BYm8sTcNhZd7jzmch",
                 "lex_type": "LEX",
                 "lex_number": "1.8.3",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8929,7 +8835,7 @@
                 "lex_id": "aMn4Ly7HaYGAq4EJs",
                 "lex_type": "LEX",
                 "lex_number": "2.9.4",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8943,7 +8849,7 @@
                 "lex_id": "aMn4Ly7HaYGAq4EJs",
                 "lex_type": "LEX",
                 "lex_number": "2.9.4",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8957,7 +8863,7 @@
                 "lex_id": "rbMdzE96JBcSL9WFT",
                 "lex_type": "LEX",
                 "lex_number": "4.2.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8971,7 +8877,7 @@
                 "lex_id": "rbMdzE96JBcSL9WFT",
                 "lex_type": "LEX",
                 "lex_number": "4.2.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -8985,7 +8891,7 @@
                 "lex_id": "rbMdzE96JBcSL9WFT",
                 "lex_type": "LEX",
                 "lex_number": "4.2.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -8999,7 +8905,7 @@
                 "lex_id": "rbMdzE96JBcSL9WFT",
                 "lex_type": "LEX",
                 "lex_number": "4.2.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9013,7 +8919,7 @@
                 "lex_id": "AZb7SPbDfoYbd3p3h",
                 "lex_type": "LEX",
                 "lex_number": "4.1.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9027,13 +8933,7 @@
                 "lex_id": "AZb7SPbDfoYbd3p3h",
                 "lex_type": "LEX",
                 "lex_number": "4.1.10",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "AZb7SPbDfoYbd3p3h",
-                "lex_type": "LEX",
-                "lex_number": "4.1.10",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9047,7 +8947,7 @@
                 "lex_id": "AZb7SPbDfoYbd3p3h",
                 "lex_type": "LEX",
                 "lex_number": "4.1.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9061,7 +8961,7 @@
                 "lex_id": "GNmKGZXKRWSBDnPYL",
                 "lex_type": "LEX",
                 "lex_number": "4.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9075,7 +8975,7 @@
                 "lex_id": "GNmKGZXKRWSBDnPYL",
                 "lex_type": "LEX",
                 "lex_number": "4.2.9",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9089,7 +8989,7 @@
                 "lex_id": "GNmKGZXKRWSBDnPYL",
                 "lex_type": "LEX",
                 "lex_number": "4.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9103,7 +9003,7 @@
                 "lex_id": "GNmKGZXKRWSBDnPYL",
                 "lex_type": "LEX",
                 "lex_number": "4.2.9",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9117,7 +9017,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9131,7 +9031,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9145,7 +9045,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9159,7 +9059,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9173,7 +9073,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9187,7 +9087,7 @@
                 "lex_id": "RvJXp3ikjyQYBQCoB",
                 "lex_type": "LEX",
                 "lex_number": "1.1.15",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9201,7 +9101,7 @@
                 "lex_id": "BYjZsTPXS5LPtkMAP",
                 "lex_type": "LEX",
                 "lex_number": "4.2.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9215,7 +9115,7 @@
                 "lex_id": "BYjZsTPXS5LPtkMAP",
                 "lex_type": "LEX",
                 "lex_number": "4.2.10",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9229,7 +9129,7 @@
                 "lex_id": "BYjZsTPXS5LPtkMAP",
                 "lex_type": "LEX",
                 "lex_number": "4.2.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9243,7 +9143,7 @@
                 "lex_id": "BYjZsTPXS5LPtkMAP",
                 "lex_type": "LEX",
                 "lex_number": "4.2.10",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9257,7 +9157,7 @@
                 "lex_id": "kmK9JTwDa8eahs2EC",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.2",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9271,13 +9171,7 @@
                 "lex_id": "kmK9JTwDa8eahs2EC",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.2",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "kmK9JTwDa8eahs2EC",
-                "lex_type": "LEX",
-                "lex_number": "2.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9291,7 +9185,7 @@
                 "lex_id": "kmK9JTwDa8eahs2EC",
                 "lex_type": "LEX",
                 "lex_number": "2.1.0.2",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9305,7 +9199,7 @@
                 "lex_id": "6s7ax58jHXq64K6jb",
                 "lex_type": "LEX",
                 "lex_number": "2.6.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9319,7 +9213,7 @@
                 "lex_id": "6s7ax58jHXq64K6jb",
                 "lex_type": "LEX",
                 "lex_number": "2.6.8",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9333,7 +9227,7 @@
                 "lex_id": "6s7ax58jHXq64K6jb",
                 "lex_type": "LEX",
                 "lex_number": "2.6.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9347,7 +9241,7 @@
                 "lex_id": "6s7ax58jHXq64K6jb",
                 "lex_type": "LEX",
                 "lex_number": "2.6.8",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9361,7 +9255,7 @@
                 "lex_id": "vg79b6zRwEGWvYKWd",
                 "lex_type": "LEX",
                 "lex_number": "4.2.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9375,7 +9269,7 @@
                 "lex_id": "vg79b6zRwEGWvYKWd",
                 "lex_type": "LEX",
                 "lex_number": "4.2.11",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9389,7 +9283,7 @@
                 "lex_id": "vg79b6zRwEGWvYKWd",
                 "lex_type": "LEX",
                 "lex_number": "4.2.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9403,7 +9297,7 @@
                 "lex_id": "vg79b6zRwEGWvYKWd",
                 "lex_type": "LEX",
                 "lex_number": "4.2.11",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9417,7 +9311,7 @@
                 "lex_id": "q5H3GLEFkmfaN3zvb",
                 "lex_type": "LEX",
                 "lex_number": "1.1.16",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9431,7 +9325,7 @@
                 "lex_id": "q5H3GLEFkmfaN3zvb",
                 "lex_type": "LEX",
                 "lex_number": "1.1.16",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9445,7 +9339,7 @@
                 "lex_id": "q5H3GLEFkmfaN3zvb",
                 "lex_type": "LEX",
                 "lex_number": "1.1.16",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9459,7 +9353,7 @@
                 "lex_id": "q5H3GLEFkmfaN3zvb",
                 "lex_type": "LEX",
                 "lex_number": "1.1.16",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9473,7 +9367,7 @@
                 "lex_id": "aKbiFivCT56fLDDH2",
                 "lex_type": "LEX",
                 "lex_number": "3.3.0.1",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9487,13 +9381,7 @@
                 "lex_id": "aKbiFivCT56fLDDH2",
                 "lex_type": "LEX",
                 "lex_number": "3.3.0.1",
-                "lex_lang": "Fr"
-            },
-            {
-                "lex_id": "aKbiFivCT56fLDDH2",
-                "lex_type": "LEX",
-                "lex_number": "3.3.0.1",
-                "lex_lang": "En"
+                "lex_lang": "fr"
             }
         ]
     },
@@ -9507,7 +9395,21 @@
                 "lex_id": "aKbiFivCT56fLDDH2",
                 "lex_type": "LEX",
                 "lex_number": "3.3.0.1",
-                "lex_lang": "En"
+                "lex_lang": "en"
+            }
+        ]
+    },
+    "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2024/740/20250101/en/pdf-a/fedlex-data-admin-ch-eli-cc-2024-740-20250101-en-pdf-a-1.pdf": {
+        "doc_id": "22d0ee93c127df7a7543aa782f3bbd2a",
+        "cat": "lex",
+        "source": "fedlex",
+        "content_format": "pdf",
+        "refs": [
+            {
+                "lex_id": "aKbiFivCT56fLDDH2",
+                "lex_type": "LEX",
+                "lex_number": "3.3.0.1",
+                "lex_lang": "en"
             }
         ]
     },
@@ -9521,13 +9423,13 @@
                 "lex_id": "xLxaXn4QFoNKxidFR",
                 "lex_type": "LEX",
                 "lex_number": "1.1.17",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "xLxaXn4QFoNKxidFR",
                 "lex_type": "LEX",
                 "lex_number": "1.1.17",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     },
@@ -9541,13 +9443,13 @@
                 "lex_id": "xLxaXn4QFoNKxidFR",
                 "lex_type": "LEX",
                 "lex_number": "1.1.17",
-                "lex_lang": "Fr"
+                "lex_lang": "fr"
             },
             {
                 "lex_id": "xLxaXn4QFoNKxidFR",
                 "lex_type": "LEX",
                 "lex_number": "1.1.17",
-                "lex_lang": "En"
+                "lex_lang": "en"
             }
         ]
     }
