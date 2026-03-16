@@ -1,0 +1,29 @@
+[
+    {
+        "src":"openai",
+        "langs":[
+            "fr"
+        ],
+        "question":"Quelle est la mission principale des écoles polytechniques fédérales (EPF) selon la loi sur les EPF?",
+        "doc_url":"https:\/\/fedlex.data.admin.ch\/filestore\/fedlex.data.admin.ch\/eli\/cc\/1993\/210_210_210\/20250501\/fr\/pdf-a\/fedlex-data-admin-ch-eli-cc-1993-210_210_210-20250501-fr-pdf-a.pdf",
+        "doc_id":"798ae3b942171489dbd8c8b285497513"
+    },
+    {
+        "src":"openai",
+        "langs":[
+            "en"
+        ],
+        "question":"What are the main responsibilities of the institutions within the ETH Domain according to the ETH Act?",
+        "doc_url":"https:\/\/fedlex.data.admin.ch\/filestore\/fedlex.data.admin.ch\/eli\/cc\/1993\/210_210_210\/20250501\/en\/pdf-a\/fedlex-data-admin-ch-eli-cc-1993-210_210_210-20250501-en-pdf-a.pdf",
+        "doc_id":"b8a0dfbd02300d8aec58cd0b530030e6"
+    },
+    {
+        "src":"openai",
+        "langs":[
+            "fr"
+        ],
+        "question":"Quelles sont les écoles polytechniques fédérales mentionnées dans le document ?",
+        "doc_url":"https:\/\/fedlex.data.admin.ch\/filestore\/fedlex.data.admin.ch\/eli\/cc\/2004\/16\/20250501\/fr\/pdf-a\/fedlex-data-admin-ch-eli-cc-2004-16-20250501-fr-pdf-a.pdf",
+        "doc_id":"2e886cc981460ba41007b9f8343fc9c7"
+    }
+]
