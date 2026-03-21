@@ -1,0 +1,2 @@
+timestamp,nb_unique_refs,nb_languages,lang_en,lang_fr,corpus_size,multi_ref_lex,multi_ref_appendix,multi_ref_summary,lang_mismatch_lex,lang_mismatch_appendix,lang_mismatch_summary,cat_nb_unique,cat_summary,cat_lex,cat_appendix,source_nb_unique,source_polylex,source_fedlex,source_others,content_format_nb_unique,content_format_txt,content_format_pdf,content_format_docx
+20260321_093733,338,2,169,169,659,23,13,2,23,10,2,3,336,276,47,3,336,37,286,3,336,321,2
