@@ -56,7 +56,7 @@ reaction_on_message_received = false
 
 # Authorize users to spontaneously upload files with messages
 [features.spontaneous_file_upload]
-    enabled = true
+    enabled = false
     # Define accepted file types using MIME types
     # Examples:
     # 1. For specific file types:
@@ -95,7 +95,7 @@ reaction_on_message_received = false
 
 [UI]
 # Name of the assistant.
-name = "Assistant"
+name = "Polylex Chatbot"
 
 # default_theme = "dark"
 
@@ -153,7 +153,7 @@ alert_style = "classic"
 # custom_meta_image_url = "https://chainlit-cloud.s3.eu-west-3.amazonaws.com/logo/chainlit_banner.png"
 
 # Load assistant logo directly from URL.
-logo_file_url = ""
+logo_file_url = "https://epfl-si.github.io/elements/svg/epfl-logo.svg"
 
 # Load assistant avatar image directly from URL.
 default_avatar_file_url = ""
@@ -167,12 +167,12 @@ default_avatar_file_url = ""
 # custom_build = "./public/build"
 
 # Specify optional one or more custom links in the header.
-# [[UI.header_links]]
-#     name = "Issues"
-#     display_name = "Report Issue"
-#     icon_url = "https://avatars.githubusercontent.com/u/128686189?s=200&v=4"
-#     url = "https://github.com/Chainlit/chainlit/issues"
-#     target = "_blank" (default)  # Optional: "_self", "_parent", "_top".
+[[UI.header_links]]
+      name = "polylex_access"
+      display_name = "Polylex Index"
+      icon_url = "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/law-1991004_1920-1536x864.jpg"
+      url = "https://polylex.epfl.ch"
+      target = "_blank"  # Optional: "_self", "_parent", "_top".
 
 [meta]
 generated_by = "2.11.0"
