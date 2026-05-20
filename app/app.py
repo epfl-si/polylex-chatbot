@@ -12,6 +12,7 @@ from langdetect import detect
 
 langfuse = Langfuse()
 
+# TODO : utiliser @cl.on_chat_start pour historique ?
 @cl.on_message
 async def main(message: cl.Message):
     langfuse_handler = CallbackHandler()
@@ -120,17 +121,59 @@ Question :
         config={"callbacks": [langfuse_handler]}
     )
 
+    answer = response.get("answer")
+    retrieved_chunks = response.get("context")
+
+    sources = []
+    actions = []
+
+    for retrieved_chunk in retrieved_chunks:
+        lex_number = retrieved_chunk.metadata.get("lex_number")
+        lex_type = "LEX" # TODO : retrieved_chunk.metadata.get("lex_type")
+        doc_url = retrieved_chunk.metadata.get("lex_url")
+        label = f"{lex_type} {lex_number}"
+        actions.append(
+            cl.Action(
+                name="open_source",
+                label=label,
+                tooltip="Display source content", # TODO : a traduire
+                payload={
+                    "label": label,
+                    "chunk": retrieved_chunk.page_content,
+                    "url": doc_url,
+                },
+            )
+        )
+
+        sources.append(
+            cl.Text(
+                content=retrieved_chunk.page_content, name=label, display="side"
+            )
+        )
+
     trace_id = langfuse_handler.last_trace_id
 
+    actions.extend([
+        cl.Action(
+            name="like",
+            payload={"trace_id": trace_id},
+            label="👍",
+            tooltip="The answer was useful!",
+        ),
+        cl.Action(
+            name="dislike",
+            payload={"trace_id": trace_id},
+            label="👎",
+            tooltip="The answer was useless!",
+        ),
+    ])
+
     await cl.Message(
-        content=response.get("answer"),
-        actions=[
-            cl.Action(name="like", payload={"trace_id": trace_id}, label="👍", tooltip="The answer was useful!"),
-            cl.Action(name="dislike", payload={"trace_id": trace_id}, label="👎", tooltip="The answer was useless!"),
-        ]
+        content=answer,
+        actions=actions
     ).send()
 
-    # TODO : add sources in specific box (out of response of LLM)
+    # TODO : trouver meilleur moyen pour acceder aux sources
 
 @cl.action_callback("like")
 async def like(action):
@@ -147,3 +190,22 @@ async def dislike(action):
         value=0,
         trace_id=action.payload.get('trace_id'),
     )
+
+@cl.action_callback("open_source")
+async def open_source(action: cl.Action):
+    label = action.payload["label"]
+    chunk = action.payload["chunk"]
+    url = action.payload["url"]
+
+    await cl.ElementSidebar.set_title(label)
+    await cl.ElementSidebar.set_elements([
+        cl.Text(
+            name=label,
+            content=chunk,
+            display="side",
+        )
+    ])
+
+    await cl.Message(
+        content=f"Source `{label}` : [open in browser]({url})" # TODO : nul
+    ).send()
