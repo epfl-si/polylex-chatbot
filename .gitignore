@@ -1,3 +1,8 @@
 rag/data/*
+rag/20260304_data/*
+rag/20260422_data/*
 rag/text_from_scanned_pdfs/*
-rag/qdrant_data
+rag/qdrant_data/*
+rag/ocr_model/*
+app/.env
+.idea/*
