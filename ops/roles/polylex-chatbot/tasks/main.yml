@@ -1,0 +1,11 @@
+- include_tasks:
+    file: vm.yml
+    apply:
+      tags: vm
+  tags: vm
+
+- include_tasks:
+    file: chatbot.yml
+    apply:
+      tags: chatbot
+  tags: chatbot

@@ -1,0 +1,11 @@
+- name: ext4 filesystem on /dev/sda
+  community.general.filesystem:
+    fstype: ext4
+    dev: /dev/sda
+
+- name: /dev/sda as /var/lib/docker
+  ansible.posix.mount:
+    path: /var/lib/docker
+    src: /dev/sda
+    state: mounted
+    fstype: ext4

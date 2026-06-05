@@ -1,0 +1,8 @@
+all:
+  hosts:
+    itswbhst0031.xaas.epfl.ch:
+      inventory_deployment_stage: test
+      ansible_user: root
+    itswbhst0030.xaas.epfl.ch:
+      inventory_deployment_stage: prod
+      ansible_user: root
