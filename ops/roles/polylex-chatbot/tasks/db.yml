@@ -1,0 +1,32 @@
+- name: Qdrant directory
+  file:
+    path: /srv/vector_database
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  become: true
+
+- name: Qdrant docker-compose.yml
+  template:
+    src: docker-compose.yml
+    dest: /srv/vector_database/docker-compose.yml
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+
+- name: Quay login
+  community.docker.docker_login:
+    registry_url: "{{ quay_registry }}"
+    username: "{{ secrets.quay.username }}"
+    password: "{{ secrets.quay.token }}"
+  become: true
+  no_log: true
+
+- name: Qdrant service
+  community.docker.docker_compose_v2:
+    project_src: /srv/vector_database
+    state: present
+    pull: always
+  become: true
