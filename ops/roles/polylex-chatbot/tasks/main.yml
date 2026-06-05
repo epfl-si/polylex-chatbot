@@ -5,6 +5,18 @@
   tags: vm
 
 - include_tasks:
+    file: db.yml
+    apply:
+      tags: db
+  tags: db
+
+- include_tasks:
+    file: monitoring.yml
+    apply:
+      tags: monitoring
+  tags: monitoring
+
+- include_tasks:
     file: chatbot.yml
     apply:
       tags: chatbot

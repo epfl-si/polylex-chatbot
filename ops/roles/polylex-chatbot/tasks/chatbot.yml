@@ -1,5 +1,5 @@
 - name: Apt prerequisites
-  ansible.builtin.apt:
+  apt:
     name:
       - software-properties-common
       - python3-apt
@@ -23,6 +23,7 @@
     cmd: virtualenv /srv/chatbot/venv -p python3.13 # TODO
     creates: "/srv/chatbot/venv"
 
+# FIXME : eviter de cloner aussi dossier monitoring
 - name: Git checkout
   git:
     repo: "https://github.com/epfl-si/polylex-chatbot.git"
@@ -31,7 +32,7 @@
     force: yes
 
 - name: Python requirements
-  ansible.builtin.pip:
+  pip:
     requirements: /srv/chatbot/src/requirements.txt
     virtualenv: /srv/chatbot/venv
 

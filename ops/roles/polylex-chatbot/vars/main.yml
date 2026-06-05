@@ -1,0 +1,3 @@
+quay_registry: "quay-its.epfl.ch/svc0041"
+keybase_secrets: "{{ lookup('pipe', 'keybase fs read /keybase/team/epfl_wppolylex/rag-chatbot/secrets.yml') | from_yaml }}"
+secrets: "{{ keybase_secrets[inventory_deployment_stage] }}"
