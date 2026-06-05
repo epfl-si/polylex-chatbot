@@ -1,0 +1,94 @@
+- name: Langfuse directory
+  file:
+    path: /srv/monitoring
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  become: true
+
+- name: Langfuse repository
+  git:
+    repo: https://github.com/langfuse/langfuse.git
+    dest: /srv/monitoring
+    version: main
+  become: true
+
+- name: Langfuse Docker Compose override
+  ansible.builtin.copy:
+    dest: /srv/monitoring/docker-compose.override.yml
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      services:
+        langfuse-worker:
+          image: quay-its.epfl.ch/svc0041/langfuse-worker:3
+        langfuse-web:
+          image: quay-its.epfl.ch/svc0041/langfuse:3
+        clickhouse:
+          image: quay-its.epfl.ch/svc0041/clickhouse-server:latest
+        minio:
+          image: quay-its.epfl.ch/svc0041/minio:latest
+        redis:
+          image: quay-its.epfl.ch/svc0041/redis:7
+        postgres:
+          image: quay-its.epfl.ch/svc0041/postgres:17
+  become: true
+
+- name: Langfuse environment base
+  ansible.builtin.copy:
+    src: /srv/monitoring/.env.prod.example
+    dest: /srv/monitoring/.env
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0600"
+    force: false
+  become: true
+
+- name: Langfuse environment custom
+  lineinfile:
+    path: /srv/monitoring/.env
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+    create: true
+    owner: root
+    group: root
+    mode: "0600"
+  loop:
+    - key: LANGFUSE_INIT_ORG_ID
+      value: polylex-chatbot
+    - key: LANGFUSE_INIT_PROJECT_ID
+      value: rag-v1
+    - key: LANGFUSE_INIT_PROJECT_PUBLIC_KEY
+      value: "{{ secrets.langfuse.public_key }}"
+    - key: LANGFUSE_INIT_PROJECT_SECRET_KEY
+      value: "{{ secrets.langfuse.secret_key }}"
+    - key: LANGFUSE_INIT_USER_EMAIL
+      value: "{{ secrets.langfuse.user_email }}"
+    - key: LANGFUSE_INIT_USER_NAME
+      value: "{{ secrets.langfuse.username }}"
+    - key: LANGFUSE_INIT_USER_PASSWORD
+      value: "{{ secrets.langfuse.password }}"
+    - key: DATABASE_URL
+      value: "postgresql://postgres:{{ secrets.langfuse.postgres_password }}@postgres:5432/postgres"
+    - key: POSTGRES_PASSWORD
+      value: "{{ secrets.langfuse.postgres_password }}"
+  become: true
+  no_log: true
+
+- name: Quay login
+  community.docker.docker_login:
+    registry_url: "{{ quay_registry }}"
+    username: "{{ secrets.quay.username }}"
+    password: "{{ secrets.quay.token }}"
+  become: true
+  no_log: true
+
+- name: Langfuse services
+  community.docker.docker_compose_v2:
+    project_src: /srv/monitoring
+    state: present
+    pull: always
+  become: true
