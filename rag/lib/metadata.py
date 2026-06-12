@@ -1,5 +1,7 @@
 import hashlib
-from rag.lib.config import LANGUAGES
+import re
+from langdetect import detect
+from rag.lib.config import LANGUAGES, HARD_CODED_LANGS
 from rag.lib.html_utils import transform_html_in_text, get_urls_from_html
 from rag.lib.documents import resolve_document_url
 
@@ -18,6 +20,22 @@ def upsert_doc(data, key, cat, source, content_format, ref):
     if cat not in data[key]["cats"]:
         data[key]["cats"].append(cat)
     data[key]["refs"].append(ref)
+
+def join_language(data):
+    '''
+    Add unique language for each entry of data
+    '''
+    for content, metadata_dict in data.items():
+        refs = metadata_dict.get("refs")
+        metadata = metadata_dict
+        if len(refs) == 1:
+            metadata["lang"] = refs[0].get("lex_lang")
+            data[content] = metadata
+        else:
+            content_format = metadata_dict.get("content_format")
+            metadata["lang"] = detect_language(content, content_format)
+            data[content] = metadata
+    return data
 
 def build_metadata(response, debugging=False):
     data = {}
@@ -55,6 +73,36 @@ def build_metadata(response, debugging=False):
         if debugging:
             break
 
-    return data
+    return join_language(data)
+
+def detect_language(content, content_format):
+    # use directly lib to find language from a text
+    if content_format == "txt":
+        return detect(content)
+
+    # try to find lang tag in url
+    lang_pattern = re.compile(r"[_-](fr|en|an)\.[^/]+$", re.IGNORECASE)
+    match = re.search(lang_pattern, content)
+    detected_lang = match.group(1) if match else ""
+    if detected_lang != "":
+        detected_lang = detected_lang.lower()
+        detected_lang = "en" if detected_lang == "an" else detected_lang
+        return detected_lang
+
+    # use hard-coded correct language for exceptions
+    real_lang = HARD_CODED_LANGS.get(content)
+    if real_lang:
+        return real_lang
+
+    # try to detect language from filename -> FIXME : avertir que pas tres fiable ?
+    filename_pattern = re.compile(r"[^/]+\.[^/]+$")
+    match = re.search(filename_pattern, content)
+    filename = match.group() if match else ""
+    detected_lang = detect(filename)
+    if detected_lang in LANGUAGES:
+        return detected_lang
+
+    print(f"Error while trying to detect language for {content}, default to 'fr'")
+    return "fr"
 
 __all__ = [build_metadata]
