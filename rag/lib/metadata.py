@@ -158,6 +158,4 @@ def save_metadata(metadata, path):
     with open(metadata_filename, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=4, ensure_ascii=False)
 
-    return metadata_filename
-
 __all__ = [build_metadata, add_indexing_flag, save_metadata]
