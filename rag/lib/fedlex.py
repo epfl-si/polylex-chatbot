@@ -2,6 +2,8 @@ from playwright.sync_api import sync_playwright
 import asyncio
 import requests
 
+# TODO : gerer le async puisque dans script mtn
+
 def resolve_redirect_sync(url):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
