@@ -1,7 +1,10 @@
 import hashlib
 import re
+import os
+import json
 import pandas as pd
 from tika import parser
+from datetime import datetime
 from langdetect import detect
 from rag.lib.config import LANGUAGES, HARD_CODED_LANGS, ARTICLE_PATTERN
 from rag.lib.html_utils import transform_html_in_text, get_urls_from_html
@@ -142,4 +145,19 @@ def add_indexing_flag(metadata, data_path):
 
     return metadata
 
-__all__ = [build_metadata, add_indexing_flag]
+def save_metadata(metadata, path):
+    '''
+    Save metadata to disk
+    '''
+
+    os.makedirs(path, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    metadata_filename = os.path.join(path, f"{timestamp}_lexes_metadata.json")
+
+    with open(metadata_filename, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=4, ensure_ascii=False)
+
+    return metadata_filename
+
+__all__ = [build_metadata, add_indexing_flag, save_metadata]
