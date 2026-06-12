@@ -1,7 +1,9 @@
 import hashlib
 import re
+import pandas as pd
+from tika import parser
 from langdetect import detect
-from rag.lib.config import LANGUAGES, HARD_CODED_LANGS
+from rag.lib.config import LANGUAGES, HARD_CODED_LANGS, ARTICLE_PATTERN
 from rag.lib.html_utils import transform_html_in_text, get_urls_from_html
 from rag.lib.documents import resolve_document_url
 
@@ -105,4 +107,39 @@ def detect_language(content, content_format):
     print(f"Error while trying to detect language for {content}, default to 'fr'")
     return "fr"
 
-__all__ = [build_metadata]
+def add_indexing_flag(metadata, data_path):
+    '''
+    Add an `is_indexed` flag to each entry in metadata based on document statistics
+    '''
+
+    # TODO : remove pandas df
+    stats_per_doc = []
+
+    for file in data_path.glob("*.pdf"):
+        parsed_file = parser.from_file(str(file))
+        file_metadata = parsed_file.get("metadata", {})
+        nb_pages = int(file_metadata.get("xmpTPg:NPages", 1))
+        extracted_text = parsed_file.get("content") or ""
+        nb_occ_article = sum(1 for _ in ARTICLE_PATTERN.finditer(extracted_text))
+        stats_per_doc.append({
+            "doc_id": file.stem,
+            "nb_pages": nb_pages,
+            "nb_occ_article": nb_occ_article
+        })
+
+    stats = pd.DataFrame(stats_per_doc)
+    pdfs_not_to_index = stats.loc[(stats["nb_pages"] > 100) | ((stats["nb_pages"] > 50) & (stats["nb_occ_article"] == 0))]["doc_id"].values
+    
+    # TODO : gerer les logs
+    print(pdfs_not_to_index)
+
+    for metadata_dict in metadata.values():
+        doc_id = metadata_dict["doc_id"]
+        if doc_id in pdfs_not_to_index:
+            metadata_dict["is_indexed"] = False
+        else:
+            metadata_dict["is_indexed"] = True
+
+    return metadata
+
+__all__ = [build_metadata, add_indexing_flag]
