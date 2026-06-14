@@ -158,4 +158,63 @@ def save_metadata(metadata, path):
     with open(metadata_filename, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=4, ensure_ascii=False)
 
-__all__ = [build_metadata, add_indexing_flag, save_metadata]
+def load_metadata(path):
+    metadata = {}
+
+    most_recent_file = max(
+        (f for f in path.iterdir() if f.suffix == ".json"),
+        key=lambda f: f.stat().st_mtime
+    )
+
+    with open(most_recent_file, "r", encoding="utf-8") as f:
+        metadata = json.load(f)
+    return metadata
+
+def find_best_ref(metadata_dict):
+    refs = metadata_dict.get("refs")
+    lang = metadata_dict.get("lang")
+
+    first_ref = refs[0]
+    same = all(
+        ref.get("lex_id") == first_ref.get("lex_id") and
+        ref.get("lex_type") == first_ref.get("lex_type") and
+        ref.get("lex_number") == first_ref.get("lex_number")
+        for ref in refs
+    )
+
+    # same lex but mistmatch between languages
+    if same:
+        for ref in refs:
+            if ref.get("lex_lang") == lang:
+                return ref
+
+    # ref from lex and appendix, best is lex
+    for ref in refs:
+        if ref.get("lex_type") == "lex":
+            return ref
+
+    # ref from appendices, first one (random) # FIXME : peut mieux faire ?
+    return refs[0]
+
+def build_metadata_lookup_tables(metadata):
+    doc_id_to_metadata = {}
+    metadata_to_title = {}
+
+    for content, metadata_dict in metadata.items():
+        ref = find_best_ref(metadata_dict)
+        lex_id = ref.get("lex_id")
+        lang = metadata_dict.get("lang")
+        if "summary" in metadata_dict.get("cats"):
+            metadata_to_title[(lex_id, lang)] = content
+        else:
+            doc_id = metadata_dict.get("doc_id")
+            lex_number = ref.get("lex_number")
+            lex_url = ref.get("lex_url")
+            source = metadata_dict.get("source")
+            is_indexed = metadata_dict.get("is_indexed")
+            doc_id_to_metadata[doc_id] = {"lex_id": lex_id, "lex_number": lex_number, "lex_url": lex_url, "lang": lang,
+                                          "source": source, "is_indexed": is_indexed}
+
+    return doc_id_to_metadata, metadata_to_title
+
+__all__ = [build_metadata, add_indexing_flag, save_metadata, load_metadata, build_metadata_lookup_tables]
