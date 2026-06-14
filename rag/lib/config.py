@@ -47,3 +47,4 @@ SPLITTER = RecursiveCharacterTextSplitter(
     add_start_index=True,
 )
 CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
+ENV_PATH = Path.cwd().parent / ".env"

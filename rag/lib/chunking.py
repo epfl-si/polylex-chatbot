@@ -1,5 +1,7 @@
 import re
 from tika import parser
+from pathlib import Path
+from dotenv import set_key
 from langchain_core.documents import Document
 
 from rag.lib.config import SPLITTER
@@ -72,4 +74,37 @@ def save_chunks(txt_path, chunks):
             content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
 
-__all__ = ["create_chunks", "save_chunks"]
+def save_avg_lens(path, chunks_splitted_by_lang):
+    env_path = Path(path)
+    env_path.touch(exist_ok=True)
+    for lang, data in chunks_splitted_by_lang.items():
+        avg_len = round(data["avg_len"], 2)
+        var_name = f"AVG_LEN_{lang.upper()}"
+        set_key(
+            dotenv_path=str(env_path),
+            key_to_set=var_name,
+            value_to_set=avg_len
+        )
+
+def divide_chunks_per_lang(chunks, langs, path):
+    result = {
+        lang: {
+            "chunks": [],
+            "avg_len": 0
+        }
+        for lang in langs
+    }
+
+    for chunk in chunks:
+        chunk_lang = chunk.metadata.get("language")
+        result[chunk_lang]["chunks"].append(chunk)
+
+    for data in result.values():
+        chunks_per_lang = data["chunks"]
+        data["avg_len"] = sum(len(chunk.page_content.split()) for chunk in chunks_per_lang) / len(chunks_per_lang)
+
+    save_avg_lens(path, result)
+
+    return result
+
+__all__ = ["create_chunks", "save_chunks", "divide_chunks_per_lang"]
