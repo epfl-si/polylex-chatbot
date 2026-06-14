@@ -1,6 +1,9 @@
 import logging
 import argparse
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from rag.lib.metadata import build_metadata, add_indexing_flag, save_metadata
 from rag.lib.downloads import download_documents

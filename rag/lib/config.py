@@ -1,5 +1,8 @@
 import re
+import os
 from pathlib import Path
+from qdrant_client import models
+from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 DATA_PATH = Path.cwd().parent / "data"
@@ -48,3 +51,20 @@ SPLITTER = RecursiveCharacterTextSplitter(
 )
 CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
 ENV_PATH = Path.cwd().parent / ".env"
+
+# TODO : rendre ca plus generique
+DB_DENSE_VECTORS_CONFIG = {
+    "dense": models.VectorParams(
+        size=1024,  # TODO : mettre une variable car depend du modele d'embedding
+        distance=models.Distance.COSINE
+        )
+    }
+DB_SPARSE_VECTORS_CONFIG = {
+    "sparse_fr": models.SparseVectorParams(modifier=models.Modifier.IDF),
+    "sparse_en": models.SparseVectorParams(modifier=models.Modifier.IDF)
+    }
+EMBEDDING_MODEL_CONFIG = OpenAIEmbeddings(
+    model="BAAI/bge-m3",
+    base_url="https://inference.rcp.epfl.ch/v1",
+    api_key=os.getenv("BGE_API_KEY_EMBEDDINGS")
+)
