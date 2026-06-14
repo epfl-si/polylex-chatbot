@@ -66,4 +66,10 @@ def create_chunks(path, doc_id_to_metadata_lookup, metadata_to_title_lookup):
 
     return chunks
 
-__all__ = ["create_chunks"]
+def save_chunks(txt_path, chunks):
+    with open(txt_path, "w", encoding="utf-8") as f:
+        for chunk in chunks:
+            content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
+            f.write(content + chunk.page_content + "\n")
+
+__all__ = ["create_chunks", "save_chunks"]
