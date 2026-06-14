@@ -6,3 +6,23 @@
 # Vector database - Qdrant
 
 - Use https://qdrant.tech/documentation/guides/installation/ then `docker compose up -d` from the root of the repository
+
+# Logs - Langfuse
+
+- Use https://langfuse.com/self-hosting/deployment/docker-compose then `docker compose up -d` from the langfuse directory
+
+# Init DB
+
+```shell
+python -m rag.lib.build_corpus \
+  --metadata-dir ./test_stats_dir \
+  --data-dir ./test_data_dir
+```
+
+```shell
+python -m rag.lib.index_corpus \
+  --metadata-dir ./test_stats_dir \
+  --data-dir ./test_data_dir \
+  --chunks-log-path ./test_stats_dir/chunks.txt \
+  --collection-name dev_collection
+```
