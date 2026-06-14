@@ -1,0 +1,65 @@
+- name: RAG directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - /srv/rag
+    - /srv/rag/data
+    - /srv/rag/stats
+  become: true
+
+- name: Env. file
+  template:
+    src: .env
+    dest: /srv/rag/.env
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+
+- name: Quay login
+  docker_login:
+    registry_url: "{{ quay_registry }}"
+    username: "{{ secrets.quay.username }}"
+    password: "{{ secrets.quay.token }}"
+  become: true
+  no_log: true
+
+- name: Job to build corpus
+  docker_container:
+    name: polylex-build-corpus
+    image: polylex-chatbot:0.0.0
+    command: python rag/lib/build_corpus.py
+    env_file: /srv/rag/.env
+    volumes:
+      - /srv/rag/data:/rag/data # TODO : changer path pour que ca fonctionne
+      - /srv/rag/stats:/rag/stats
+    state: started
+    detach: false
+    cleanup: true
+
+- name: Job to index corpus
+  docker_container:
+    name: polylex-index-corpus
+    image: polylex-chatbot:0.0.0
+    command: python rag/lib/index_corpus.py
+    env_file: /srv/rag/.env # TODO : changer path pour que ca fonctionne
+    volumes:
+      - /srv/rag/data:/rag/data
+      - /srv/rag/stats:/rag/stats
+    state: started
+    detach: false
+    cleanup: true
+
+- name: Polylex Chatbot service
+  docker_container:
+    name: polylex-chatbot
+    image: polylex-chatbot:0.0.0
+    state: started
+    restart_policy: always
+    env_file: /srv/rag/.env
+    ports:
+      - "80:80"

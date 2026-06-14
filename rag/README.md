@@ -26,3 +26,21 @@ python -m rag.lib.index_corpus \
   --chunks-log-path ./test_stats_dir/chunks.txt \
   --collection-name dev_collection
 ```
+
+# Create docker polylex-chatbot image
+
+`docker build --no-cache -t polylex-chatbot .`
+
+```shell
+docker run --env-file ./rag/.env \
+  -v ./docker_data:/data \
+  polylex-chatbot \
+  python -m rag.lib.build_corpus
+```
+
+```shell
+docker run --env-file ./rag/.env \
+  -v ./docker_data:/data \
+  polylex-chatbot \
+  python -m rag.lib.index_corpus
+```
