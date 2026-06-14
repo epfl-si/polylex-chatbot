@@ -1,5 +1,6 @@
 import re
 from pathlib import Path
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 DATA_PATH = Path.cwd().parent / "data"
 STATS_PATH = Path.cwd().parent / "stats"
@@ -29,3 +30,19 @@ HARD_CODED_LANGS = {
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr" # FIXME : fr + de, grave ?
 }
 ARTICLE_PATTERN = re.compile(r"\b(?:Article\s+\d+|Art\.\s*\d+)\b")
+SPLITTER = RecursiveCharacterTextSplitter(
+    chunk_size=2000, # TODO : comment definir (dans ce cas nb caracteres et pas tokens) ? Avant 1000, mieux (au max 2196 car ajout du titre) ?
+    chunk_overlap=200, # TODO : comment definir (dans ce cas nb caracteres et pas tokens) ?
+    separators=[
+        ARTICLE_PATTERN,
+        "\n\n",
+        "\n",
+        ".",
+        " ",
+        "",
+    ],
+    #length_function=count_nb_tokens, # TODO : si necessaire de compter en tokens alors modifier ici et modifier size + overlap
+    is_separator_regex=True,
+    keep_separator=True,
+    add_start_index=True,
+)
