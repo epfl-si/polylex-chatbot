@@ -83,7 +83,8 @@ def save_avg_lens(path, chunks_splitted_by_lang):
         set_key(
             dotenv_path=str(env_path),
             key_to_set=var_name,
-            value_to_set=avg_len
+            value_to_set=str(avg_len),
+            quote_mode="never"
         )
 
 def divide_chunks_per_lang(chunks, langs, path):
