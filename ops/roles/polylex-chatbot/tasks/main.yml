@@ -17,7 +17,7 @@
   tags: monitoring
 
 - include_tasks:
-    file: chatbot.yml
+    file: rag.yml
     apply:
-      tags: chatbot
-  tags: chatbot
+      tags: rag
+  tags: rag
