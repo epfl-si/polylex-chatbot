@@ -46,3 +46,4 @@ SPLITTER = RecursiveCharacterTextSplitter(
     keep_separator=True,
     add_start_index=True,
 )
+CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
