@@ -14,50 +14,64 @@ def clean_text(text, source):
         cleaner_text = re.sub(r'\b(?:RO \d{4} \d+|RS \d+(?:\.\d+)+)\b', '', cleaner_text)
     return cleaner_text
 
-def create_chunks(path, doc_id_to_metadata_lookup, metadata_to_title_lookup):
+def get_doc_id_from_file(file):
+    suffix = file.suffix.lower()
+    stem = file.stem
+
+    if suffix in [".pdf", ".docx"]:
+        return stem
+
+    if suffix == ".txt":
+        return stem.split("_summary_")[0]
+
+    return None
+
+def create_chunks(path, language_matched_metadata_by_doc_id):
     '''
-    Create text chunks for each indexed PDF in the given path and enrich them with metadata
+    Create text chunks for each document in the given path and enrich them with metadata
     '''
 
     chunks = []
 
-    for file in path.glob("*.pdf"):
-        doc_id = file.stem
-        if not doc_id_to_metadata_lookup[doc_id]["is_indexed"]:
+    for file in path.iterdir():
+        doc_id = get_doc_id_from_file(file)
+        if doc_id is None or not language_matched_metadata_by_doc_id[doc_id]["is_indexed"]:
             continue
-        lex_id = doc_id_to_metadata_lookup[doc_id]["lex_id"]
-        lex_number = doc_id_to_metadata_lookup[doc_id]["lex_number"]
-        lex_url = doc_id_to_metadata_lookup[doc_id]["lex_url"]
-        lang = doc_id_to_metadata_lookup[doc_id]["lang"]
-        source = doc_id_to_metadata_lookup[doc_id]["source"]
-        summary = metadata_to_title_lookup.get((lex_id, lang))
-        # FIXME : comment faire si txt pas dispo dans la bonne langue (est-ce que ca arrive ?) ?
-        if not summary:
-            print(f"KO for {file}")
-        title = summary.split("\n")[0]
-        parsed_pdf = parser.from_file(str(file), requestOptions={"timeout": 300})
-        extracted_text = parsed_pdf.get("content")
-        cleaner_text = clean_text(extracted_text, source)
-        extracted_metadata = parsed_pdf.get("metadata")
 
-        doc = Document(
-            page_content=cleaner_text,
-            metadata={
-                "doc_id": doc_id,
-                "filepath": str(file),
-                "language": lang,
-                "source": source,
-                "lex_number": lex_number,
-                "lex_url": lex_url,
-                "total_pages": int(extracted_metadata["xmpTPg:NPages"]),
-                "creationDate": extracted_metadata.get('xmp:CreateDate')
-            },
-        )
+        title = language_matched_metadata_by_doc_id[doc_id]["title"]
+        source = language_matched_metadata_by_doc_id[doc_id]["source"]
+
+        # TODO : s'occuper d'indexer les docx et les txt (txt -> directement un chunk avec ref recuperee avec language_matched_metadata_by_doc_id[doc_id])
+        if file.suffix.lower() in [".docx", ".txt"]:
+            continue
+        else:
+            parsed_pdf = parser.from_file(str(file), requestOptions={"timeout": 300})
+            extracted_text = parsed_pdf.get("content")
+            cleaner_text = clean_text(extracted_text, source)
+            extracted_metadata = parsed_pdf.get("metadata")
+
+            doc = Document(
+                page_content=cleaner_text,
+                metadata={
+                    "doc_id": doc_id,
+                    "filepath": str(file),
+                    "total_pages": int(extracted_metadata["xmpTPg:NPages"]),
+                    "creationDate": extracted_metadata.get('xmp:CreateDate'),
+                    "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
+                    "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
+                    "cat": language_matched_metadata_by_doc_id[doc_id]["cat"],
+                    "source": source,
+                    "content_format": language_matched_metadata_by_doc_id[doc_id]["content_format"],
+                    "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
+                    "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
+                    "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
+                },
+            )
 
         chunks_from_struct = SPLITTER.split_documents([doc])
 
         for chunk in chunks_from_struct:
-            page_content = f"{title} \n {chunk.page_content}" if title else chunk.page_content
+            page_content = f"{title}\n\n{chunk.page_content}" if title else chunk.page_content
             metadata = chunk.metadata
             chunks.append(
                 Document(
@@ -74,6 +88,7 @@ def save_chunks(txt_path, chunks):
             content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
 
+# TODO : save dans config et pas env...
 def save_avg_lens(path, chunks_splitted_by_lang):
     env_path = Path(path)
     env_path.touch(exist_ok=True)

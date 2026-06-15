@@ -13,37 +13,51 @@ from rag.lib.documents import resolve_document_url
 def make_doc_id(key):
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:32]
 
-def upsert_doc(data, key, cat, source, content_format, ref):
-    if key not in data:
-        data[key] = {
-            "doc_id": make_doc_id(key),
+def upsert_doc(metadata_dict, redirected_url, src_url, cat, source, content_format, ref, title, description):
+    doc_id = make_doc_id(redirected_url)
+    if doc_id not in metadata_dict:
+        metadata_dict[doc_id] = {
+            "src_url": src_url,
+            "redirected_url": redirected_url,
             "cats": [],
             "source": source,
             "content_format": content_format,
-            "refs": []
+            "refs": [],
+            "summaries": {}
         }
-    if cat not in data[key]["cats"]:
-        data[key]["cats"].append(cat)
-    data[key]["refs"].append(ref)
 
-def join_language(data):
+    if cat not in metadata_dict[doc_id]["cats"]:
+        metadata_dict[doc_id]["cats"].append(cat)
+    metadata_dict[doc_id]["refs"].append(ref)
+
+    # no summary to index if document is only an appendix
+    # and no override either because never several lexes in refs
+    if cat != "appendix":
+        lang = ref.get("lex_lang")
+        metadata_dict[doc_id]["summaries"][lang] = {
+            "title": title,
+            "description": description
+        }
+
+def join_language(metadata_dict):
     '''
     Add unique language for each entry of data
     '''
-    for content, metadata_dict in data.items():
-        refs = metadata_dict.get("refs")
-        metadata = metadata_dict
+
+    for doc_id, metadata in metadata_dict.items():
+        refs = metadata.get("refs")
+        tmp_metadata = metadata
         if len(refs) == 1:
-            metadata["lang"] = refs[0].get("lex_lang")
-            data[content] = metadata
+            tmp_metadata["lang"] = refs[0].get("lex_lang")
+            metadata_dict[doc_id] = tmp_metadata
         else:
-            content_format = metadata_dict.get("content_format")
-            metadata["lang"] = detect_language(content, content_format)
-            data[content] = metadata
-    return data
+            content_format = metadata.get("content_format")
+            tmp_metadata["lang"] = detect_language(metadata.get("redirected_url"), content_format)
+            metadata_dict[doc_id] = tmp_metadata
+    return metadata_dict
 
 def build_metadata(response, debugging=False):
-    data = {}
+    metadata_dict = {}
 
     for lex in response.json():
         lex_id = lex.get('_id')
@@ -52,35 +66,35 @@ def build_metadata(response, debugging=False):
 
         for lang in LANGUAGES:
             cap_lang = lang.capitalize()
-            lex_url = lex.get(f"url{cap_lang}")
+            src_url = lex.get(f"url{cap_lang}")
+            lex_title = lex.get(f"title{cap_lang}")
             lex_description = lex.get(f"description{cap_lang}")
-            lex_summary = lex.get(f"title{cap_lang}") + "\n" + transform_html_in_text(lex_description)
-            lex_appendix_urls = get_urls_from_html(lex_description)
+            appendix_urls = get_urls_from_html(lex_description)
+            lex_description_cleaned = transform_html_in_text(lex_description)
+
             base_ref = {
                 "lex_id": lex_id,
                 "lex_type": lex_type,
                 "lex_number": lex_number,
-                "lex_lang": lang,
-                "lex_url": lex_url
+                "lex_lang": lang
             }
-            upsert_doc(data, lex_summary, "summary", "polylex", "txt", {**base_ref, "cat": "summary"})
 
-            transformed_lex_url, lex_source, lex_format = resolve_document_url(lex_url, lang)
-            if transformed_lex_url != "" and lex_source != "" and lex_format != "":
-                upsert_doc(data, transformed_lex_url, "lex", lex_source, lex_format, {**base_ref, "cat": "lex"})
+            redirected_url, source, content_format = resolve_document_url(src_url, lang)
+            if redirected_url != "" and source != "" and content_format != "":
+                upsert_doc(metadata_dict, redirected_url, src_url, "lex", source, content_format, {**base_ref, "cat": "lex"}, lex_title, lex_description_cleaned)
 
-            for lex_appendix_url in lex_appendix_urls:
-                transformed_lex_appendix_url, lex_appendix_source, lex_appendix_format = resolve_document_url(
-                    lex_appendix_url, lang)
-                if transformed_lex_appendix_url != "" and lex_appendix_source != "" and lex_appendix_format != "":
-                    upsert_doc(data, transformed_lex_appendix_url, "appendix", lex_appendix_source, lex_appendix_format,
-                               {**base_ref, "cat": "appendix"})
+            for appendix_url in appendix_urls:
+                redirected_url, source, content_format = resolve_document_url(appendix_url, lang)
+                if redirected_url != "" and source != "" and content_format != "":
+                    upsert_doc(metadata_dict, redirected_url, src_url, "appendix", source, content_format, {**base_ref, "cat": "appendix"}, lex_title, lex_description_cleaned)
+
         if debugging:
             break
 
-    return join_language(data)
+    return join_language(metadata_dict)
 
 def detect_language(content, content_format):
+    # TODO : plus de txt donc dead code + lire premiere page du fichier plutot que seulement detecter selon url ?
     # use directly lib to find language from a text
     if content_format == "txt":
         return detect(content)
@@ -136,8 +150,8 @@ def add_indexing_flag(metadata, data_path):
     # TODO : gerer les logs
     print(pdfs_not_to_index)
 
-    for metadata_dict in metadata.values():
-        doc_id = metadata_dict["doc_id"]
+    for doc_id, metadata_dict in metadata.items():
+        # TODO : dans ce cas docx par defaut indexe mais faire mieux
         if doc_id in pdfs_not_to_index:
             metadata_dict["is_indexed"] = False
         else:
@@ -168,6 +182,7 @@ def load_metadata(path):
 
     with open(most_recent_file, "r", encoding="utf-8") as f:
         metadata = json.load(f)
+
     return metadata
 
 def find_best_ref(metadata_dict):
@@ -196,25 +211,25 @@ def find_best_ref(metadata_dict):
     # ref from appendices, first one (random) # FIXME : peut mieux faire ?
     return refs[0]
 
-def build_metadata_lookup_tables(metadata):
-    doc_id_to_metadata = {}
-    metadata_to_title = {}
+def build_language_matched_metadata_by_doc_id(metadata):
+    language_matched_metadata_by_doc_id = {}
 
-    for content, metadata_dict in metadata.items():
+    for doc_id, metadata_dict in metadata.items():
         ref = find_best_ref(metadata_dict)
-        lex_id = ref.get("lex_id")
         lang = metadata_dict.get("lang")
-        if "summary" in metadata_dict.get("cats"):
-            metadata_to_title[(lex_id, lang)] = content
-        else:
-            doc_id = metadata_dict.get("doc_id")
-            lex_number = ref.get("lex_number")
-            lex_url = ref.get("lex_url")
-            source = metadata_dict.get("source")
-            is_indexed = metadata_dict.get("is_indexed")
-            doc_id_to_metadata[doc_id] = {"lex_id": lex_id, "lex_number": lex_number, "lex_url": lex_url, "lang": lang,
-                                          "source": source, "is_indexed": is_indexed}
+        language_matched_metadata_by_doc_id[doc_id] = {
+            "is_indexed": metadata_dict.get("is_indexed"),
+            "title": metadata_dict.get("summaries", {}).get(lang, {}).get("title", ""),
+            "lex_id": ref.get("lex_id"),
+            "lex_type": ref.get("lex_type"),
+            "lex_number": ref.get("lex_number"),
+            "lex_lang": lang,
+            "cat": ref.get("cat"),
+            "src_url": metadata_dict.get("src_url"),
+            "source": metadata_dict.get("source"),
+            "content_format": metadata_dict.get("content_format")
+        }
 
-    return doc_id_to_metadata, metadata_to_title
+    return language_matched_metadata_by_doc_id
 
-__all__ = [build_metadata, add_indexing_flag, save_metadata, load_metadata, build_metadata_lookup_tables]
+__all__ = [build_metadata, add_indexing_flag, save_metadata, load_metadata, build_language_matched_metadata_by_doc_id]

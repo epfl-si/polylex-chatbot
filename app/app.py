@@ -19,7 +19,7 @@ async def main(message: cl.Message):
 
     # TODO : secure content send from the user (for language detection + send to LLM)
     lang = detect(message.content)
-    if lang not in ["fr", "en"]:
+    if lang not in ["fr", "en"]: # TODO : lire fichier de config !
         # TODO : handle this error with call to LLM + same for question out of context
         print(f"Language {lang} is not supported.")  # TODO
         return
@@ -128,10 +128,11 @@ Question :
     actions = []
 
     for retrieved_chunk in retrieved_chunks:
+        lex_type = retrieved_chunk.metadata.get("lex_type")
         lex_number = retrieved_chunk.metadata.get("lex_number")
-        lex_type = "LEX" # TODO : retrieved_chunk.metadata.get("lex_type")
-        doc_url = retrieved_chunk.metadata.get("lex_url")
-        label = f"{lex_type} {lex_number}"
+        src_url = retrieved_chunk.metadata.get("src_url")
+        cat = retrieved_chunk.metadata.get("cat")
+        label = f"{lex_type} {lex_number}{' (appendix)' if cat == 'appendix' else ''}"
         actions.append(
             cl.Action(
                 name="open_source",
@@ -140,7 +141,7 @@ Question :
                 payload={
                     "label": label,
                     "chunk": retrieved_chunk.page_content,
-                    "url": doc_url,
+                    "url": src_url,
                 },
             )
         )

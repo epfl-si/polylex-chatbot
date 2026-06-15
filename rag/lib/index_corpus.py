@@ -9,7 +9,7 @@ load_dotenv()
 
 from rag.lib.indexing import index_chunks
 from rag.lib.config import DATA_PATH, STATS_PATH, CHUNKS_TXT_PATH, LANGUAGES, ENV_PATH
-from rag.lib.metadata import load_metadata, build_metadata_lookup_tables
+from rag.lib.metadata import load_metadata, build_language_matched_metadata_by_doc_id
 from rag.lib.chunking import create_chunks, save_chunks, divide_chunks_per_lang
 
 logging.basicConfig(
@@ -59,10 +59,10 @@ def index_corpus(data_dir, metadata_dir, chunks_log_path, collection_name):
 
     logger.info("Reading metadata and building lookup tables on it")
     metadata = load_metadata(metadata_dir)
-    doc_id_to_metadata, metadata_to_title = build_metadata_lookup_tables(metadata)
+    language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
     logger.info("Creating chunks and saving it to %s (human-readable format)", chunks_log_path)
-    chunks = create_chunks(data_dir, doc_id_to_metadata, metadata_to_title)
+    chunks = create_chunks(data_dir, language_matched_metadata_by_doc_id)
     save_chunks(chunks_log_path, chunks)
 
     logger.info("Computing average chunk length per language for BM25 indices")
