@@ -39,19 +39,19 @@ def download_documents(data, path):
 
     archive_existing_and_create_data_directory(path)
 
-    for content, metadata in data.items():
-        doc_id = metadata.get("doc_id")
+    for doc_id, metadata in data.items():
         content_format = metadata.get("content_format")
-        if content_format == "txt":
-            filename = f"{doc_id}.txt"
-            write_txt(filename, path, content)
-        elif content_format == "docx":
-            filename = f"{doc_id}.docx"
-            download_file(content, path, filename)
-        elif content_format == "pdf":
-            filename = f"{doc_id}.pdf"
-            download_file(content, path, filename)
+        redirected_url = metadata.get("redirected_url")
+
+        if content_format in ["docx", "pdf"]:
+            filename = f"{doc_id}.{content_format}"
+            download_file(redirected_url, path, filename)
         else:
-            print(f"File format not yet supported: '{content}'")
+            print(f"File format '{content_format}' not yet supported for doc_id='{doc_id}'")
+
+        for lang, summary in metadata.get("summaries").items():
+            filename = f"{doc_id}_summary_{lang}.txt"
+            content = f"{summary.get("title")}\n\n{summary.get("description")}".strip()
+            write_txt(filename, path, content)
 
 __all__ = ["download_documents"]
