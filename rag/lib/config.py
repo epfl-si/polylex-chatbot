@@ -5,9 +5,8 @@ from qdrant_client import models
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-# TODO : voir si toujour ok en local comme ca
-DATA_PATH = Path.cwd().parent / "data" / "document"
-STATS_PATH = Path.cwd().parent / "data" / "metadata"
+DATA_PATH = Path.cwd().parent / "data"
+STATS_PATH = Path.cwd().parent / "stats"
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
 LANGUAGES = ["fr", "en"]
 # TODO : change name
@@ -50,8 +49,7 @@ SPLITTER = RecursiveCharacterTextSplitter(
     keep_separator=True,
     add_start_index=True,
 )
-# TODO : voir si toujour ok en local comme ca
-CHUNKS_TXT_PATH = Path.cwd().parent / "data" / "chunks.txt"
+CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
 ENV_PATH = Path.cwd().parent / ".env"
 
 # TODO : rendre ca plus generique

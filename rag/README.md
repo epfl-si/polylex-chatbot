@@ -27,6 +27,10 @@ python -m rag.lib.index_corpus \
   --collection-name dev_collection
 ```
 
+# Deploy with Ansible
+
+`ansible-playbook -i ops/inventory.yml ops/playbook.yml`
+
 # Create docker polylex-chatbot image
 
 `docker build --no-cache -t polylex-chatbot .`

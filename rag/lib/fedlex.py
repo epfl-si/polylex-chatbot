@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright
+#from playwright.sync_api import sync_playwright
 import asyncio
 import requests
 
@@ -64,7 +64,7 @@ LIMIT 1
     return bindings[0]["fileUrl"]["value"]
 
 def get_fedlex_pdf_from_sparql(url, lang):
-    redirected_url = resolve_redirect(url)
+    redirected_url = "" # resolve_redirect(url) TODO : reutiliser quand Playwright ok
     sparql_url = get_fedlex_api_style_url(redirected_url)
     return get_fedlex_pdf_url(sparql_url, lang)
 

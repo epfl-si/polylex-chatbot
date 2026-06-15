@@ -1,3 +1,4 @@
+import os
 import logging
 import argparse
 from pathlib import Path
@@ -47,7 +48,7 @@ def parse_args():
     parser.add_argument(
         "--collection-name",
         type=str,
-        default=f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection",
+        default=os.getenv("COLLECTION_NAME"), # TODO : f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection",
         help="Name of the collection to create.",
     )
 
@@ -75,8 +76,6 @@ def index_corpus(data_dir, metadata_dir, chunks_log_path, collection_name):
 
 if __name__ == "__main__":
     args = parse_args()
-
-    load_dotenv()
 
     index_corpus(
         data_dir=args.data_dir,
