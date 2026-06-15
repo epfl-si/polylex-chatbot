@@ -119,7 +119,7 @@ def add_indexing_flag(metadata, data_path):
     stats_per_doc = []
 
     for file in data_path.glob("*.pdf"):
-        parsed_file = parser.from_file(str(file))
+        parsed_file = parser.from_file(str(file), requestOptions={"timeout": 300})
         file_metadata = parsed_file.get("metadata", {})
         nb_pages = int(file_metadata.get("xmpTPg:NPages", 1))
         extracted_text = parsed_file.get("content") or ""

@@ -16,7 +16,7 @@ langfuse
 matplotlib
 openai
 pandas
-playwright
+#playwright
 pydantic
 pymupdf
 python-docx

@@ -35,7 +35,7 @@ def create_chunks(path, doc_id_to_metadata_lookup, metadata_to_title_lookup):
         if not summary:
             print(f"KO for {file}")
         title = summary.split("\n")[0]
-        parsed_pdf = parser.from_file(str(file))
+        parsed_pdf = parser.from_file(str(file), requestOptions={"timeout": 300})
         extracted_text = parsed_pdf.get("content")
         cleaner_text = clean_text(extracted_text, source)
         extracted_metadata = parsed_pdf.get("metadata")
