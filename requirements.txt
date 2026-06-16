@@ -1,4 +1,3 @@
-#playwright
 beautifulsoup4
 chainlit
 docling
@@ -18,6 +17,7 @@ langfuse
 matplotlib
 openai
 pandas
+playwright
 pydantic
 pymupdf
 python-docx

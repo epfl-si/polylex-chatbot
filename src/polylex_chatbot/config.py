@@ -81,8 +81,8 @@ EMBEDDING_MODEL_CONFIG = OpenAIEmbeddings(
     base_url=os.getenv("MODELS_BASE_URL"),
     api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
 )
-SPARSE_MODEL_CONFIG_FR = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=os.getenv("AVG_LEN_FR"), language="french")
-SPARSE_MODEL_CONFIG_EN = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=os.getenv("AVG_LEN_EN"), language="english")
+SPARSE_MODEL_CONFIG_FR = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=float(os.getenv("AVG_LEN_FR")), language="french")
+SPARSE_MODEL_CONFIG_EN = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=float(os.getenv("AVG_LEN_EN")), language="english")
 
 # retrieval
 QDRANT_NB_CHUNKS_RETRIEVED = 5
