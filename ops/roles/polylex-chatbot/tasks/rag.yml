@@ -65,13 +65,12 @@
     virtualenv: /srv/rag/venv
     extra_args: --no-cache-dir
 
-# TODO : a ajouter une fois que Playwright ok avec OS de la VM
-#- name: Playwright Chromium
-#  command: /srv/rag/venv/bin/python3 -m playwright install --with-deps chromium
-#  become: true
-#  environment:
-#    PLAYWRIGHT_BROWSERS_PATH: /srv/rag/ms-playwright
-#  changed_when: false
+- name: Playwright Chromium
+  command: /srv/rag/venv/bin/python3 -m playwright install --with-deps chromium
+  become: true
+  environment:
+    PLAYWRIGHT_BROWSERS_PATH: /srv/rag/ms-playwright
+  changed_when: false
 
 - name: Env file
   template:
