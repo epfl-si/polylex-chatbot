@@ -1,13 +1,21 @@
 import re
 import os
 from pathlib import Path
+from datetime import datetime
 from qdrant_client import models
-from langchain_openai import OpenAIEmbeddings
+from langchain_qdrant import FastEmbedSparse
+from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+# paths
 DATA_PATH = Path.cwd().parent / "data"
 STATS_PATH = Path.cwd().parent / "stats"
+CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
+
+# api
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
+
+# languages
 LANGUAGES = ["fr", "en"]
 # TODO : change name
 HARD_CODED_LANGS = {
@@ -32,6 +40,8 @@ HARD_CODED_LANGS = {
     "https://www.epfl.ch/about/overview/wp-content/uploads/2026/01/LEX-1.1.17.pdf": "en",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr" # FIXME : fr + de, grave ?
 }
+
+# chunking
 ARTICLE_PATTERN = re.compile(r"\b(?:Article\s+\d+|Art\.\s*\d+)\b")
 SPLITTER = RecursiveCharacterTextSplitter(
     chunk_size=2000, # TODO : comment definir (dans ce cas nb caracteres et pas tokens) ? Avant 1000, mieux (au max 2196 car ajout du titre) ?
@@ -49,22 +59,39 @@ SPLITTER = RecursiveCharacterTextSplitter(
     keep_separator=True,
     add_start_index=True,
 )
-CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
-ENV_PATH = Path.cwd().parent / ".env"
 
-# TODO : rendre ca plus generique
-DB_DENSE_VECTORS_CONFIG = {
+# database
+DB_COLLECTION_NAME = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
+DB_DENSE_INDEX_CONFIG = {
     "dense": models.VectorParams(
-        size=1024,  # TODO : mettre une variable car depend du modele d'embedding
+        size=int(os.getenv("MODEL_EMBEDDING_DIM_VECTOR")),
         distance=models.Distance.COSINE
         )
     }
-DB_SPARSE_VECTORS_CONFIG = {
-    "sparse_fr": models.SparseVectorParams(modifier=models.Modifier.IDF),
-    "sparse_en": models.SparseVectorParams(modifier=models.Modifier.IDF)
-    }
+DB_SPARSE_INDEX_CONFIG_FR = {"sparse_fr": models.SparseVectorParams(modifier=models.Modifier.IDF)}
+DB_SPARSE_INDEX_CONFIG_EN = {"sparse_en": models.SparseVectorParams(modifier=models.Modifier.IDF)}
+DB_SPARSE_INDEX_CONFIG = {
+    **DB_SPARSE_INDEX_CONFIG_FR,
+    **DB_SPARSE_INDEX_CONFIG_EN,
+}
+
+# embeddings (sparse + dense)
 EMBEDDING_MODEL_CONFIG = OpenAIEmbeddings(
-    model="BAAI/bge-m3",
-    base_url="https://inference.rcp.epfl.ch/v1",
-    api_key=os.getenv("BGE_API_KEY_EMBEDDINGS")
+    model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+    base_url=os.getenv("MODELS_BASE_URL"),
+    api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
+)
+SPARSE_MODEL_CONFIG_FR = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=os.getenv("AVG_LEN_FR"), language="french")
+SPARSE_MODEL_CONFIG_EN = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=os.getenv("AVG_LEN_EN"), language="english")
+
+# retrieval
+QDRANT_NB_CHUNKS_RETRIEVED = 5
+
+# generation
+LLM_MODEL_CONFIG = OpenAI(
+    model=os.getenv("MODEL_LLM_NAME"),
+    base_url=os.getenv("MODELS_BASE_URL"),
+    api_key=os.getenv("MODEL_LLM_API_KEY"),
+    max_tokens=500,
+    temperature=0.0
 )

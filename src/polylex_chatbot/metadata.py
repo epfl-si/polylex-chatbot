@@ -6,9 +6,9 @@ import pandas as pd
 from tika import parser
 from datetime import datetime
 from langdetect import detect
-from rag.lib.config import LANGUAGES, HARD_CODED_LANGS, ARTICLE_PATTERN
-from rag.lib.html_utils import transform_html_in_text, get_urls_from_html
-from rag.lib.documents import resolve_document_url
+from .config import LANGUAGES, HARD_CODED_LANGS, ARTICLE_PATTERN
+from .html_utils import transform_html_in_text, get_urls_from_html
+from .documents import resolve_document_url
 
 def make_doc_id(key):
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:32]
