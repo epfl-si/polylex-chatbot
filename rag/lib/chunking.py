@@ -35,38 +35,45 @@ def create_chunks(path, language_matched_metadata_by_doc_id):
 
     for file in path.iterdir():
         doc_id = get_doc_id_from_file(file)
+
         if doc_id is None or not language_matched_metadata_by_doc_id[doc_id]["is_indexed"]:
             continue
 
         title = language_matched_metadata_by_doc_id[doc_id]["title"]
         source = language_matched_metadata_by_doc_id[doc_id]["source"]
+        suffix = file.suffix.lower()
 
-        # TODO : s'occuper d'indexer les docx et les txt (txt -> directement un chunk avec ref recuperee avec language_matched_metadata_by_doc_id[doc_id])
-        if file.suffix.lower() in [".docx", ".txt"]:
-            continue
+        if suffix == ".txt":
+            extracted_text = file.read_text(encoding="utf-8")
+            extracted_metadata = {}
+        elif suffix in [".docx", ".pdf"]:
+            parsed_doc = parser.from_file(str(file), requestOptions={"timeout": 300})
+            extracted_text = parsed_doc.get("content")
+            extracted_metadata = parsed_doc.get("metadata")
         else:
-            parsed_pdf = parser.from_file(str(file), requestOptions={"timeout": 300})
-            extracted_text = parsed_pdf.get("content")
-            cleaner_text = clean_text(extracted_text, source)
-            extracted_metadata = parsed_pdf.get("metadata")
+            # TODO : mettre dans les logs
+            print(f"File '{file}' not chunked (suffix not handled)")
+            continue
 
-            doc = Document(
-                page_content=cleaner_text,
-                metadata={
-                    "doc_id": doc_id,
-                    "filepath": str(file),
-                    "total_pages": int(extracted_metadata["xmpTPg:NPages"]),
-                    "creationDate": extracted_metadata.get('xmp:CreateDate'),
-                    "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
-                    "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
-                    "cat": language_matched_metadata_by_doc_id[doc_id]["cat"],
-                    "source": source,
-                    "content_format": language_matched_metadata_by_doc_id[doc_id]["content_format"],
-                    "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
-                    "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
-                    "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
-                },
-            )
+        cleaner_text = clean_text(extracted_text, source)
+
+        doc = Document(
+            page_content=cleaner_text,
+            metadata={
+                "doc_id": doc_id,
+                "filepath": str(file),
+                "total_pages": int(extracted_metadata.get("xmpTPg:NPages", 1)),
+                "creationDate": extracted_metadata.get("xmp:CreateDate"),
+                "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
+                "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
+                "cat": language_matched_metadata_by_doc_id[doc_id]["cat"],
+                "source": source,
+                "content_format": language_matched_metadata_by_doc_id[doc_id]["content_format"],
+                "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
+                "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
+                "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
+            },
+        )
 
         chunks_from_struct = SPLITTER.split_documents([doc])
 
