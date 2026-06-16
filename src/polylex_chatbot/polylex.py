@@ -1,5 +1,5 @@
 import requests
-from rag.lib.config import LEXES_API_URL
+from .config import LEXES_API_URL
 
 def fetch_polylex_api():
     response = requests.get(LEXES_API_URL)

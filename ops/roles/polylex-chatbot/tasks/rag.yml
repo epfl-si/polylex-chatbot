@@ -1,3 +1,4 @@
+# TODO : verifier que dossiers / hierarchie ok + dossier data / stats au bon endroit selon config.py (trop haut mtn)
 - name: RAG directories
   file:
     path: "{{ item }}"
@@ -7,9 +8,7 @@
     mode: "0755"
   loop:
     - /srv/rag
-    - /srv/rag/lib
-    - /srv/rag/data
-    - /srv/rag/stats
+    - /srv/rag/scr
     - /srv/rag/chatbot
   become: true
 
@@ -74,7 +73,7 @@
 #    PLAYWRIGHT_BROWSERS_PATH: /srv/rag/ms-playwright
 #  changed_when: false
 
-- name: RAG env file
+- name: Env file
   template:
     src: .env
     dest: /srv/rag/.env
@@ -84,23 +83,29 @@
 
 - name: RAG source directory
   copy:
-    src: ../../../rag/lib/
-    dest: /srv/rag/lib/
+    src: ../../../src/
+    dest: /srv/rag/src/
     owner: root
     group: root
     mode: "0644"
 
+# TODO : verifier que run ok avec PYTHONPATH
 # TODO : executer les scripts uniquement si besoin avec tag a part
 - name: Script to build corpus
-  command: /srv/rag/venv/bin/python3 -m rag.lib.build_corpus
+  command: /srv/rag/venv/bin/python3 scripts/build_corpus.py
   args:
-    chdir: /srv
+    chdir: /srv/rag
+  environment:
+    PYTHONPATH: /srv/rag/src
 
+# TODO : verifier que run ok avec PYTHONPATH
 # TODO : executer les scripts uniquement si besoin avec tag a part
 - name: Script to index corpus
-  command: /srv/rag/venv/bin/python3 -m rag.lib.index_corpus
+  command: /srv/rag/venv/bin/python3 scripts/index_corpus.py
   args:
-    chdir: /srv
+    chdir: /srv/rag
+  environment:
+    PYTHONPATH: /srv/rag/src
 
 - name: Chatbot source directory
   synchronize:
@@ -109,14 +114,6 @@
     delete: true
     rsync_opts:
       - "--exclude=.env"
-
-- name: Chatbot env file
-  template:
-    src: chatbot.env.j2
-    dest: /srv/rag/chatbot/.env
-    owner: root
-    group: root
-    mode: "0600"
 
 - name: /etc/systemd/system/polylex-chatbot.service
   copy:
@@ -131,7 +128,7 @@
       Environment="PATH=/srv/rag/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       Environment="VIRTUAL_ENV=/srv/rag/venv"
       WorkingDirectory=/srv/rag/chatbot
-      EnvironmentFile=/srv/rag/chatbot/.env
+      EnvironmentFile=/srv/rag/.env
       ExecStart=/srv/rag/venv/bin/chainlit run app.py --host 0.0.0.0 --port 80
       [Install]
       WantedBy=multi-user.target

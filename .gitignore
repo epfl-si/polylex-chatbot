@@ -4,5 +4,5 @@ rag/20260422_data/*
 rag/text_from_scanned_pdfs/*
 rag/qdrant_data/*
 rag/ocr_model/*
-app/.env
 .idea/*
+.env

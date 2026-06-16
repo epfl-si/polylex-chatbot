@@ -1,5 +1,5 @@
 import re
-from rag.lib.fedlex import get_fedlex_pdf_from_sparql
+from .fedlex import get_fedlex_pdf_from_sparql
 
 def resolve_document_url(url, lang):
     transformed_url, source, content_format = "", "", ""
