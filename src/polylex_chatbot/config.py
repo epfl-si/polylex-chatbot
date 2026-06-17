@@ -8,9 +8,9 @@ from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # paths
-DATA_PATH = Path.cwd().parent / "data"
-STATS_PATH = Path.cwd().parent / "stats"
-CHUNKS_TXT_PATH = Path.cwd().parent / "chunks.txt"
+DATA_PATH = Path.cwd() / "data"
+STATS_PATH = Path.cwd() / "stats"
+CHUNKS_TXT_PATH = Path.cwd() / "chunks.txt"
 
 # api
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
