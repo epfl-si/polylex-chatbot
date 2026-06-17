@@ -1,17 +1,28 @@
 import os
-from qdrant_client import QdrantClient, models
 from uuid import uuid4
 from itertools import islice
-from .config import (DB_COLLECTION_NAME, DB_DENSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
+from dotenv import find_dotenv, set_key
+from qdrant_client import QdrantClient, models
+
+from .config import (DB_DENSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
                      EMBEDDING_MODEL_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN
                      )
+
+def save_collection_name(collection_name):
+    var_name = "DB_COLLECTION_NAME"
+    set_key(
+        dotenv_path=find_dotenv(),
+        key_to_set=var_name,
+        value_to_set=str(collection_name)
+    )
 
 def batched(iterable, batch_size):
     it = iter(iterable)
     while batch := list(islice(it, batch_size)):
         yield batch
 
-def index_chunks(chunks):
+def index_chunks(chunks, collection_name):
+    save_collection_name(collection_name)
 
     # TODO : securiser avec credentials la connexion vers la db
     client = QdrantClient(
@@ -19,7 +30,7 @@ def index_chunks(chunks):
     )
 
     client.create_collection(
-        collection_name=DB_COLLECTION_NAME,
+        collection_name=os.getenv("DB_COLLECTION_NAME"),
         vectors_config=DB_DENSE_INDEX_CONFIG,
         sparse_vectors_config=DB_SPARSE_INDEX_CONFIG
     )
@@ -66,7 +77,7 @@ def index_chunks(chunks):
 
     for batch in batched(points, 64):
         client.upsert(
-            collection_name=DB_COLLECTION_NAME,
+            collection_name=os.getenv("DB_COLLECTION_NAME"),
             points=batch,
         )
 

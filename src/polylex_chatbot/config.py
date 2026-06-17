@@ -1,7 +1,6 @@
 import re
 import os
 from pathlib import Path
-from datetime import datetime
 from qdrant_client import models
 from langchain_qdrant import FastEmbedSparse
 from langchain_openai import OpenAI, OpenAIEmbeddings
@@ -61,7 +60,6 @@ SPLITTER = RecursiveCharacterTextSplitter(
 )
 
 # database
-DB_COLLECTION_NAME = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
 DB_DENSE_INDEX_CONFIG = {
     "dense": models.VectorParams(
         size=int(os.getenv("MODEL_EMBEDDING_DIM_VECTOR")),

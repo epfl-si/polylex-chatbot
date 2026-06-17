@@ -16,7 +16,7 @@ from polylex_chatbot.config import (LANGUAGES,
                                     EMBEDDING_MODEL_CONFIG, LLM_MODEL_CONFIG,
                                     DB_DENSE_INDEX_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN,
                                     DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
-                                    DB_COLLECTION_NAME, QDRANT_NB_CHUNKS_RETRIEVED
+                                    QDRANT_NB_CHUNKS_RETRIEVED
                                     )
 
 langfuse = Langfuse()
@@ -88,7 +88,7 @@ Question :
             url=os.getenv("QDRANT_URL"),
             embedding=embeddings,
             sparse_embedding=cfg["model"],
-            collection_name=DB_COLLECTION_NAME,
+            collection_name=os.getenv("DB_COLLECTION_NAME"),
             retrieval_mode=RetrievalMode.HYBRID,
             vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
             sparse_vector_name=cfg["vector_name"],
