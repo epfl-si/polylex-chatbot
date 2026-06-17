@@ -23,7 +23,9 @@ pymupdf
 python-docx
 python-dotenv
 qdrant-client
+ragas
 requests
+sacrebleu
 starlette
 tesseract
 tika
