@@ -45,10 +45,14 @@ def create_chunks(path, language_matched_metadata_by_doc_id):
         if suffix == ".txt":
             extracted_text = file.read_text(encoding="utf-8")
             extracted_metadata = {}
+            category = "summary"
+            content_format = ".txt"
         elif suffix in [".docx", ".pdf"]:
             parsed_doc = parser.from_file(str(file), requestOptions={"timeout": 300})
             extracted_text = parsed_doc.get("content")
             extracted_metadata = parsed_doc.get("metadata")
+            category = language_matched_metadata_by_doc_id[doc_id]["cat"]
+            content_format = language_matched_metadata_by_doc_id[doc_id]["content_format"]
         else:
             # TODO : mettre dans les logs
             print(f"File '{file}' not chunked (suffix not handled)")
@@ -65,9 +69,9 @@ def create_chunks(path, language_matched_metadata_by_doc_id):
                 "creationDate": extracted_metadata.get("xmp:CreateDate"),
                 "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
                 "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
-                "cat": language_matched_metadata_by_doc_id[doc_id]["cat"],
+                "cat": category,
                 "source": source,
-                "content_format": language_matched_metadata_by_doc_id[doc_id]["content_format"],
+                "content_format": content_format,
                 "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
                 "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
                 "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
