@@ -24,8 +24,14 @@
       services:
         langfuse-worker:
           image: quay-its.epfl.ch/svc0041/langfuse-worker:3
+          environment:
+            LANGFUSE_LLM_CONNECTION_WHITELISTED_HOST: "{{ secrets.rcp.config.inference_hostname }}"
+            LANGFUSE_LLM_CONNECTION_WHITELISTED_IPS: "{{ secrets.rcp.config.ip }}"
         langfuse-web:
           image: quay-its.epfl.ch/svc0041/langfuse:3
+          environment:
+            LANGFUSE_LLM_CONNECTION_WHITELISTED_HOST: "{{ secrets.rcp.config.inference_hostname }}"
+            LANGFUSE_LLM_CONNECTION_WHITELISTED_IPS: "{{ secrets.rcp.config.ip }}"
         clickhouse:
           image: quay-its.epfl.ch/svc0041/clickhouse-server:latest
         minio:
@@ -75,6 +81,10 @@
       value: "postgresql://postgres:{{ secrets.langfuse.postgres_password }}@postgres:5432/postgres"
     - key: POSTGRES_PASSWORD
       value: "{{ secrets.langfuse.postgres_password }}"
+    - key: LANGFUSE_LLM_CONNECTION_WHITELISTED_HOST
+      value: "{{ secrets.rcp.config.inference_hostname }}"
+    - key: LANGFUSE_LLM_CONNECTION_WHITELISTED_IPS
+      value: "{{ secrets.rcp.config.ip }}"
   become: true
   no_log: true
 
