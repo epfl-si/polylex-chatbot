@@ -49,3 +49,12 @@ async def chrf_evaluator(*, output, expected_output, **kwargs):
         name="chrf_score",
         value=score
     )
+
+def len_ratio_answers_evaluator(*, output, expected_output, **kwargs):
+    ground_truth = expected_output.get("answer")
+    generated_response = output.get("generated_response")
+    len_ratio = len(ground_truth) / len(generated_response)
+    return Evaluation(
+        name="len_ratio_answers",
+        value=len_ratio
+    )
