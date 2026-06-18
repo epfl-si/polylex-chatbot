@@ -32,3 +32,10 @@ PYTHONPATH="$PWD/src" chainlit run app/app.py -w
 ## Deploy with Ansible
 
 `ansible-playbook -i ops/inventory.yml ops/playbook.yml`
+
+## Access
+
+| Environment | Chatbot                               | Langfuse                              | Qdrant                                          |
+|-------------|---------------------------------------|---------------------------------------|-------------------------------------------------|
+| Test        | https://polylex-chatbot-test.epfl.ch/ | http://itswbhst0031.xaas.epfl.ch:3000 | http://itswbhst0031.xaas.epfl.ch:6333/dashboard |
+| Prod        | https://polylex-chatbot.epfl.ch/      | http://itswbhst0030.xaas.epfl.ch:3000 | http://itswbhst0030.xaas.epfl.ch:6333/dashboard |
