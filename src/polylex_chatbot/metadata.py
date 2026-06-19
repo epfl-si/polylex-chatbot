@@ -86,7 +86,7 @@ def build_metadata(response, debugging=False):
             for appendix_url in appendix_urls:
                 redirected_url, source, content_format = resolve_document_url(appendix_url, lang)
                 if redirected_url != "" and source != "" and content_format != "":
-                    upsert_doc(metadata_dict, redirected_url, src_url, "appendix", source, content_format, {**base_ref, "cat": "appendix"}, lex_title, lex_description_cleaned)
+                    upsert_doc(metadata_dict, redirected_url, appendix_url, "appendix", source, content_format, {**base_ref, "cat": "appendix"}, lex_title, lex_description_cleaned)
 
         if debugging:
             break
