@@ -86,6 +86,7 @@ SPARSE_MODEL_CONFIG_EN = FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME
 QDRANT_NB_CHUNKS_RETRIEVED = 5
 
 # generation
+MAX_USER_MESSAGE_LEN = 1500
 LLM_MODEL_CONFIG = OpenAI(
     model=os.getenv("MODEL_LLM_NAME"),
     base_url=os.getenv("MODELS_BASE_URL"),

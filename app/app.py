@@ -19,7 +19,8 @@ from polylex_chatbot.config import (LANGUAGES,
                                     EMBEDDING_MODEL_CONFIG, LLM_MODEL_CONFIG,
                                     DB_DENSE_INDEX_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN,
                                     DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
-                                    QDRANT_NB_CHUNKS_RETRIEVED
+                                    QDRANT_NB_CHUNKS_RETRIEVED,
+                                    MAX_USER_MESSAGE_LEN
                                     )
 
 logging.basicConfig(
@@ -35,17 +36,25 @@ langfuse = Langfuse()
 # TODO : utiliser @cl.on_chat_start pour historique ?
 @cl.on_message
 async def main(message: cl.Message):
-    logger.info("New message received: content_length=%s", len(message.content))
+    len_message = len(message.content)
+    logger.info("New message received: content_length=%s", len_message)
+
+    if len_message > MAX_USER_MESSAGE_LEN:
+        logger.warning("Message from user too long: %s / %s characters", len_message, MAX_USER_MESSAGE_LEN)
+        await cl.Message(
+            content=f"Le message est trop long ({len_message} / {MAX_USER_MESSAGE_LEN} caractères)." # TODO : traduire
+        ).send()
+        return
 
     langfuse_handler = CallbackHandler()
 
     try:
-        # TODO : secure content send from the user (for language detection + send to LLM)
         lang = detect(message.content)
+
         logger.info("Detected language: %s", lang)
+
         if lang not in LANGUAGES:
             logger.warning("Unsupported language detected: %s", lang)
-            # TODO : handle this error with call to LLM + same for question out of context
             await cl.Message(
                 content=f"La langue détectée `{lang}` n'est pas supportée. Seules les questions posées en français ou en anglais sont acceptées." # TODO : traduire
             ).send()
