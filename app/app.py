@@ -31,19 +31,52 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+TRANSLATIONS = {
+    "en": {
+        "message_too_long": "The message is too long ({len_message} / {max_len} characters).",
+        "unsupported_language": "The detected language `{lang}` is not supported. Only questions in French or English are accepted.",
+        "generic_error": "An error occurred while processing the question. Please try again.",
+        "source_display_error": "Unable to display this source.",
+        "like_tooltip": "The answer was useful!",
+        "dislike_tooltip": "The answer was not useful.",
+        "appendix": "appendix"
+    },
+    "fr": {
+        "message_too_long": "Le message est trop long ({len_message} / {max_len} caractères).",
+        "unsupported_language": "La langue détectée `{lg}` n'est pas supportée. Seules les questions posées en français ou en anglais sont acceptées.",
+        "generic_error": "Une erreur est survenue pendant le traitement de la question. Veuillez réessayer.",
+        "source_display_error": "Impossible d'afficher cette source.",
+        "like_tooltip": "La réponse était utile !",
+        "dislike_tooltip": "La réponse n'était pas utile.",
+        "appendix": "annexe"
+    }
+}
+
+def get_ui_lang():
+    languages = cl.user_session.get("languages") or "" # TODO : selon https://github.com/Chainlit/chainlit/issues/879 pas possible de recuperer la langue du navigateur...
+    first_lang = languages.split(",")[0].split(";")[0].strip().lower()
+    selected_lang = "en" if first_lang.startswith("en") else "fr"
+    return selected_lang
+
+def translate(key, lang, **kwargs):
+    translations = TRANSLATIONS.get(lang, TRANSLATIONS["fr"])
+    template = translations.get(key, TRANSLATIONS["fr"].get(key, key))
+    return template.format(**kwargs)
+
 langfuse = Langfuse()
 
 # TODO : utiliser @cl.on_chat_start pour historique ?
 @cl.on_message
 async def main(message: cl.Message):
+    ui_lang = get_ui_lang()
+    cl.user_session.set("ui_lang", ui_lang)
+
     len_message = len(message.content)
     logger.info("New message received: content_length=%s", len_message)
 
     if len_message > MAX_USER_MESSAGE_LEN:
         logger.warning("Message from user too long: %s / %s characters", len_message, MAX_USER_MESSAGE_LEN)
-        await cl.Message(
-            content=f"Le message est trop long ({len_message} / {MAX_USER_MESSAGE_LEN} caractères)." # TODO : traduire
-        ).send()
+        await cl.Message(content=translate("message_too_long", ui_lang, len_message=len_message, max_len=MAX_USER_MESSAGE_LEN)).send()
         return
 
     langfuse_handler = CallbackHandler()
@@ -55,9 +88,7 @@ async def main(message: cl.Message):
 
         if lang not in LANGUAGES:
             logger.warning("Unsupported language detected: %s", lang)
-            await cl.Message(
-                content=f"La langue détectée `{lang}` n'est pas supportée. Seules les questions posées en français ou en anglais sont acceptées." # TODO : traduire
-            ).send()
+            await cl.Message(content=translate("unsupported_language", ui_lang, lg=lang)).send()
             return
 
         embeddings = EMBEDDING_MODEL_CONFIG
@@ -157,7 +188,8 @@ Question :
             lex_number = retrieved_chunk.metadata.get("lex_number")
             src_url = retrieved_chunk.metadata.get("src_url")
             cat = retrieved_chunk.metadata.get("cat")
-            label = f"{lex_type} {lex_number}{' (appendix)' if cat == 'appendix' else ''}"
+            appendix_label = translate("appendix", ui_lang)
+            label = f"{lex_type} {lex_number}{f' ({appendix_label})' if cat == 'appendix' else ''}"
 
             source_id = str(uuid.uuid4())
 
@@ -191,13 +223,13 @@ Question :
                 name="like",
                 payload={"trace_id": trace_id},
                 label="👍",
-                tooltip="The answer was useful!" # TODO : traduire selon langue du navigateur
+                tooltip=translate("like_tooltip", ui_lang)
             ),
             cl.Action(
                 name="dislike",
                 payload={"trace_id": trace_id},
                 label="👎",
-                tooltip="The answer was useless!" # TODO : traduire selon langue du navigateur
+                tooltip=translate("dislike_tooltip", ui_lang)
             ),
         ]
 
@@ -211,9 +243,7 @@ Question :
 
     except Exception:
         logger.exception("Unhandled error while processing message")
-        await cl.Message(
-            content="Une erreur est survenue pendant le traitement de la question. Veuillez réessayer..." # TODO : traduire dans la langue du navigateur
-        ).send()
+        await cl.Message(content=translate("generic_error", ui_lang)).send()
 
 @cl.action_callback("like")
 async def like(action):
@@ -237,6 +267,7 @@ async def dislike(action):
 
 @cl.action_callback("open_source")
 async def open_source(action):
+    ui_lang = cl.user_session.get("ui_lang")
     source_id = action.payload.get("source_id")
 
     source_registry = cl.user_session.get("source_registry") or {}
@@ -262,6 +293,4 @@ async def open_source(action):
 
     except Exception:
         logger.exception("Failed to open source: label=%s and url=%s", label, url)
-        await cl.Message(
-            content="Impossible d'afficher cette source." # TODO : traduire dans langue du navigateur
-        ).send()
+        await cl.Message(content=translate("source_display_error", ui_lang)).send()
