@@ -132,7 +132,7 @@
             "title": "Panneau des param\u00e8tres",
             "customize": "Personnalisez vos param\u00e8tres de chat ici"
         },
-        "watermark": "Les LLMs peuvent se tromper. V\u00e9rifiez les r\u00e9ponses."
+        "watermark": "Les r\u00e9ponses g\u00e9n\u00e9r\u00e9es par ce syst\u00e8me de RAG peuvent \u00eatre incompl\u00e8tes, impr\u00e9cises ou incorrectes.\nLes sources utilis\u00e9es par le LLM sont disponibles sous chaque r\u00e9ponse.\nEn cas de doute, veuillez consulter l'index Polylex ou demander conseil \u00e0 une personne comp\u00e9tente."
     },
     "threadHistory": {
         "sidebar": {

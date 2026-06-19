@@ -62,7 +62,7 @@ async def main(message: cl.Message):
 
         embeddings = EMBEDDING_MODEL_CONFIG
 
-        # TODO : improve prompts (simple to complex)
+        # TODO : dire que si question hors contexte alors ne pas prendre en compte + répondre dans la langue de l'utilisateur
         prompt_template_en = """
 You are an AI assistant specialized in answering questions using provided context.
 
