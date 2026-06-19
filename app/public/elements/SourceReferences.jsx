@@ -33,7 +33,6 @@ export default function SourceReferences() {
           variant="outline"
           size="sm"
           onClick={() => openSource(source)}
-          title="Open document and display retrieved chunk" // TODO : a traduire
         >
           <ExternalLink className="mr-2 h-4 w-4" />
           {source.label}
