@@ -1,5 +1,9 @@
+import os
+from openai import AsyncOpenAI
 from langfuse import Evaluation
 from ragas.metrics.collections import CHRFScore
+from ragas.embeddings.base import embedding_factory
+from ragas.metrics.collections import SemanticSimilarity
 
 def make_hit_at_x_evaluator(x):
     def hit_at_x_evaluator(*, output, metadata, **kwargs):
@@ -57,4 +61,18 @@ def len_ratio_answers_evaluator(*, output, expected_output, **kwargs):
     return Evaluation(
         name="len_ratio_answers",
         value=len_ratio
+    )
+
+async def semantic_similarity_evaluator(*, output, expected_output, **kwargs):
+    client = AsyncOpenAI(api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY"), base_url=os.getenv("MODELS_BASE_URL"))
+    embeddings = embedding_factory(
+        model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+        client=client
+    )
+    reference = expected_output.get("answer")
+    response = output.get("generated_response")
+    score  = await SemanticSimilarity(embeddings=embeddings).ascore(reference=reference, response=response)
+    return Evaluation(
+        name="semantic_similarity",
+        value=score
     )
