@@ -8,7 +8,8 @@
     mode: "0755"
   loop:
     - /srv/rag
-    - /srv/rag/scr
+    - /srv/rag/src
+    - /srv/rag/scripts
     - /srv/rag/chatbot
   become: true
 
@@ -80,7 +81,7 @@
     group: root
     mode: "0644"
 
-- name: RAG source directory
+- name: RAG src directory
   copy:
     src: ../../../src/
     dest: /srv/rag/src/
@@ -88,7 +89,14 @@
     group: root
     mode: "0644"
 
-# TODO : verifier que run ok avec PYTHONPATH
+- name: RAG scripts directory
+  copy:
+    src: ../../../scripts/
+    dest: /srv/rag/scripts/
+    owner: root
+    group: root
+    mode: "0644"
+
 # TODO : executer les scripts uniquement si besoin avec tag a part
 - name: Script to build corpus
   command: /srv/rag/venv/bin/python3 scripts/build_corpus.py
@@ -97,7 +105,6 @@
   environment:
     PYTHONPATH: /srv/rag/src
 
-# TODO : verifier que run ok avec PYTHONPATH
 # TODO : executer les scripts uniquement si besoin avec tag a part
 - name: Script to index corpus
   command: /srv/rag/venv/bin/python3 scripts/index_corpus.py

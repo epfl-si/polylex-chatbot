@@ -1,3 +1,4 @@
+import os
 import re
 from tika import parser
 from dotenv import find_dotenv, set_key
@@ -102,11 +103,13 @@ def save_avg_lens(chunks_splitted_by_lang):
     for lang, data in chunks_splitted_by_lang.items():
         avg_len = round(data["avg_len"], 2)
         var_name = f"AVG_LEN_{lang.upper()}"
+        value = str(avg_len)
         set_key(
             dotenv_path=find_dotenv(),
             key_to_set=var_name,
-            value_to_set=str(avg_len)
+            value_to_set=value
         )
+        os.environ[var_name] = value
 
 def divide_chunks_per_lang(chunks, langs):
     result = {
