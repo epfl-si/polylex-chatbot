@@ -94,3 +94,25 @@ LLM_MODEL_CONFIG = OpenAI(
     max_tokens=500,
     temperature=0.0
 )
+
+# TODO : dire que si question hors contexte alors ne pas prendre en compte + répondre dans la langue de l'utilisateur
+# TODO : ajouter -> si contexte ne contient pas l'info alors dire "je sais pas" + concis et factuel
+
+PROMPT_TEMPLATE_FR = """Réponds à la question en utilisant uniquement le contexte fourni.
+
+Contexte:
+{context_text}
+
+Question:
+{query}
+
+Réponse:"""
+PROMPT_TEMPLATE_EN = """Answer the question using only the provided context.
+
+Context:
+{context_text}
+
+Question:
+{query}
+
+Answer:"""

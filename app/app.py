@@ -6,11 +6,7 @@ import chainlit as cl
 from langdetect import detect
 from langfuse import Langfuse
 from langfuse.langchain import CallbackHandler
-from qdrant_client.http.models import SearchParams
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_classic.chains import create_retrieval_chain
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
@@ -20,8 +16,10 @@ from polylex_chatbot.config import (LANGUAGES,
                                     DB_DENSE_INDEX_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN,
                                     DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
                                     QDRANT_NB_CHUNKS_RETRIEVED,
-                                    MAX_USER_MESSAGE_LEN
+                                    MAX_USER_MESSAGE_LEN, PROMPT_TEMPLATE_FR, PROMPT_TEMPLATE_EN
                                     )
+from polylex_chatbot.retrieval import retrieve_documents
+from polylex_chatbot.generation import generate_response
 
 logging.basicConfig(
     level=logging.INFO,
@@ -71,7 +69,9 @@ async def main(message: cl.Message):
     ui_lang = get_ui_lang()
     cl.user_session.set("ui_lang", ui_lang)
 
-    len_message = len(message.content)
+    query = message.content
+
+    len_message = len(query)
     logger.info("New message received: content_length=%s", len_message)
 
     if len_message > MAX_USER_MESSAGE_LEN:
@@ -82,7 +82,7 @@ async def main(message: cl.Message):
     langfuse_handler = CallbackHandler()
 
     try:
-        lang = detect(message.content)
+        lang = detect(query)
 
         logger.info("Detected language: %s", lang)
 
@@ -91,103 +91,50 @@ async def main(message: cl.Message):
             await cl.Message(content=translate("unsupported_language", ui_lang, lg=lang)).send()
             return
 
-        embeddings = EMBEDDING_MODEL_CONFIG
-
-        # TODO : dire que si question hors contexte alors ne pas prendre en compte + répondre dans la langue de l'utilisateur
-        prompt_template_en = """
-You are an AI assistant specialized in answering questions using provided context.
-
-Rules:
-- You MUST base your answer ONLY on the provided context.
-- If the context does not contain the answer, say "I don't know".
-- Do NOT use prior knowledge unless explicitly allowed.
-- Cite relevant parts of the context when possible.
-- Be concise and factual.
-
-Context:
-{context}
-
-Question:
-{input}
-"""
-
-        prompt_template_fr = """
-Vous êtes un assistant IA spécialisé dans la réponse aux questions à partir d’un contexte fourni.
-
-Règles :
-- Vous DEVEZ baser votre réponse UNIQUEMENT sur le contexte fourni.
-- Si le contexte ne contient pas la réponse, dites "Je ne sais pas".
-- N’utilisez PAS de connaissances externes sauf si cela est explicitement autorisé.
-- Citez les parties pertinentes du contexte lorsque c’est possible.
-- Soyez concis et factuel.
-
-Contexte :
-{context}
-
-Question :
-{input}
-    """
-
         config_by_lang = {
             "fr": {
-                "model": SPARSE_MODEL_CONFIG_FR,
-                "vector_name" : list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0],
-                "prompt": prompt_template_fr
+                "qdrant_config": QdrantVectorStore.from_existing_collection(
+                    url=os.getenv("QDRANT_URL"),
+                    embedding=EMBEDDING_MODEL_CONFIG,
+                    sparse_embedding=SPARSE_MODEL_CONFIG_FR,
+                    collection_name=os.getenv("DB_COLLECTION_NAME"),
+                    retrieval_mode=RetrievalMode.HYBRID,
+                    vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+                    sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
+                ),
+                "prompt": PROMPT_TEMPLATE_FR
             },
             "en": {
-                "model": SPARSE_MODEL_CONFIG_EN,
-                "vector_name" : list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0],
-                "prompt": prompt_template_en
+                "qdrant_config": QdrantVectorStore.from_existing_collection(
+                    url=os.getenv("QDRANT_URL"),
+                    embedding=EMBEDDING_MODEL_CONFIG,
+                    sparse_embedding=SPARSE_MODEL_CONFIG_EN,
+                    collection_name=os.getenv("DB_COLLECTION_NAME"),
+                    retrieval_mode=RetrievalMode.HYBRID,
+                    vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+                    sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
+                ),
+                "prompt": PROMPT_TEMPLATE_EN
             }
         }
 
-        retrievers = {
-            lang: QdrantVectorStore.from_existing_collection(
-                url=os.getenv("QDRANT_URL"),
-                embedding=embeddings,
-                sparse_embedding=cfg["model"],
-                collection_name=os.getenv("DB_COLLECTION_NAME"),
-                retrieval_mode=RetrievalMode.HYBRID,
-                vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
-                sparse_vector_name=cfg["vector_name"],
-            ).as_retriever(
-                search_type="similarity",
-                search_kwargs={
-                    "k": QDRANT_NB_CHUNKS_RETRIEVED,
-                    "search_params": SearchParams(exact=True)
-                }
-            )
-            for lang, cfg in config_by_lang.items()
-        }
+        retrieval_result = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), QDRANT_NB_CHUNKS_RETRIEVED)
+        context_for_llm = retrieval_result.get("retrieved_contexts")
+        logger.info("Context retrieved: nb_chunks=%s", len(context_for_llm))
 
-        llm = LLM_MODEL_CONFIG
-
-        prompt = ChatPromptTemplate.from_template(config_by_lang[lang]["prompt"])
-        combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-        retrieval_chain = create_retrieval_chain(retrievers[lang], combine_docs_chain)
-
-        logger.info("Invoking retrieval chain.")
-        response = retrieval_chain.invoke(
-            {"input": message.content},
-            config={"callbacks": [langfuse_handler]}
-        )
-
-        answer = response.get("answer")
-        retrieved_chunks = response.get("context") or []
-        logger.info(
-            "Retrieval chain completed: nb_chunks=%s and len_answer=%s",
-            len(retrieved_chunks),
-            len(answer or "")
-        )
+        answer = generate_response(LLM_MODEL_CONFIG, query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
+        logger.info("Answer generated: len_answer=%s", len(answer or ""))
 
         source_refs = []
         source_registry = cl.user_session.get("source_registry") or {}
 
-        for i, retrieved_chunk in enumerate(retrieved_chunks, start=1):
-            lex_type = retrieved_chunk.metadata.get("lex_type")
-            lex_number = retrieved_chunk.metadata.get("lex_number")
-            src_url = retrieved_chunk.metadata.get("src_url")
-            cat = retrieved_chunk.metadata.get("cat")
+        for retrieved_chunk in context_for_llm:
+            content = retrieved_chunk.get("content")
+            metadata = retrieved_chunk.get("metadata")
+            lex_type = metadata.get("lex_type")
+            lex_number = metadata.get("lex_number")
+            src_url = metadata.get("src_url")
+            cat = metadata.get("cat")
             appendix_label = translate("appendix", ui_lang)
             label = f"{lex_type} {lex_number}{f' ({appendix_label})' if cat == 'appendix' else ''}"
 
@@ -195,7 +142,7 @@ Question :
 
             source_registry[source_id] = {
                 "label": label,
-                "chunk": retrieved_chunk.page_content,
+                "chunk": content,
                 "url": src_url
             }
 
