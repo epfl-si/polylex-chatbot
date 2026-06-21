@@ -13,7 +13,7 @@ env_path = load_project_env()
 
 from polylex_chatbot.config import (LANGUAGES,
                                     EMBEDDING_MODEL_CONFIG, LLM_MODEL_CONFIG,
-                                    DB_DENSE_INDEX_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN,
+                                    DB_DENSE_INDEX_CONFIG, get_sparse_model_config_fr, get_sparse_model_config_en,
                                     DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
                                     QDRANT_NB_CHUNKS_RETRIEVED,
                                     MAX_USER_MESSAGE_LEN, PROMPT_TEMPLATE_FR, PROMPT_TEMPLATE_EN
@@ -96,7 +96,7 @@ async def main(message: cl.Message):
                 "qdrant_config": QdrantVectorStore.from_existing_collection(
                     url=os.getenv("QDRANT_URL"),
                     embedding=EMBEDDING_MODEL_CONFIG,
-                    sparse_embedding=SPARSE_MODEL_CONFIG_FR,
+                    sparse_embedding=get_sparse_model_config_fr(),
                     collection_name=os.getenv("DB_COLLECTION_NAME"),
                     retrieval_mode=RetrievalMode.HYBRID,
                     vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
@@ -108,7 +108,7 @@ async def main(message: cl.Message):
                 "qdrant_config": QdrantVectorStore.from_existing_collection(
                     url=os.getenv("QDRANT_URL"),
                     embedding=EMBEDDING_MODEL_CONFIG,
-                    sparse_embedding=SPARSE_MODEL_CONFIG_EN,
+                    sparse_embedding=get_sparse_model_config_en(),
                     collection_name=os.getenv("DB_COLLECTION_NAME"),
                     retrieval_mode=RetrievalMode.HYBRID,
                     vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],

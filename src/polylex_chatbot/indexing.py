@@ -5,16 +5,18 @@ from dotenv import find_dotenv, set_key
 from qdrant_client import QdrantClient, models
 
 from .config import (DB_DENSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
-                     EMBEDDING_MODEL_CONFIG, SPARSE_MODEL_CONFIG_FR, SPARSE_MODEL_CONFIG_EN
+                     EMBEDDING_MODEL_CONFIG, get_sparse_model_config_fr, get_sparse_model_config_en
                      )
 
 def save_collection_name(collection_name):
     var_name = "DB_COLLECTION_NAME"
+    value = str(collection_name)
     set_key(
         dotenv_path=find_dotenv(),
         key_to_set=var_name,
-        value_to_set=str(collection_name)
+        value_to_set=value
     )
+    os.environ[var_name] = value
 
 def batched(iterable, batch_size):
     it = iter(iterable)
@@ -41,8 +43,8 @@ def index_chunks(chunks, collection_name):
     dense_vectors = embeddings.embed_documents(texts)
 
     # FIXME : ok de gerer les langues comme ca ?
-    sparse_fr_vectors = SPARSE_MODEL_CONFIG_FR.embed_documents(texts)
-    sparse_en_vectors = SPARSE_MODEL_CONFIG_EN.embed_documents(texts)
+    sparse_fr_vectors = get_sparse_model_config_fr().embed_documents(texts)
+    sparse_en_vectors = get_sparse_model_config_en().embed_documents(texts)
 
     points = []
 
