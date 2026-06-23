@@ -6,18 +6,11 @@ import chainlit as cl
 from langdetect import detect
 from langfuse import Langfuse
 from langfuse.langchain import CallbackHandler
-from langchain_qdrant import QdrantVectorStore, RetrievalMode
 
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.config import (LANGUAGES,
-                                    EMBEDDING_MODEL_CONFIG, LLM_MODEL_CONFIG,
-                                    DB_DENSE_INDEX_CONFIG, get_sparse_model_config_fr, get_sparse_model_config_en,
-                                    DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
-                                    QDRANT_NB_CHUNKS_RETRIEVED,
-                                    MAX_USER_MESSAGE_LEN, PROMPT_TEMPLATE_FR, PROMPT_TEMPLATE_EN
-                                    )
+from polylex_chatbot.config import LANGUAGES, init_db_client, QDRANT_NB_CHUNKS_RETRIEVED, LLM_MODEL_CONFIG, MAX_USER_MESSAGE_LEN, PROMPT_TEMPLATE_FR, PROMPT_TEMPLATE_EN, RELEVANCE_THRESHOLD
 from polylex_chatbot.retrieval import retrieve_documents
 from polylex_chatbot.generation import generate_response
 
@@ -32,7 +25,7 @@ logger = logging.getLogger(__name__)
 TRANSLATIONS = {
     "en": {
         "message_too_long": "The message is too long ({len_message} / {max_len} characters).",
-        "unsupported_language": "The detected language `{lang}` is not supported. Only questions in French or English are accepted.",
+        "unsupported_language": "The detected language `{lg}` is not supported. Only questions in French or English are accepted.",
         "generic_error": "An error occurred while processing the question. Please try again.",
         "source_display_error": "Unable to display this source.",
         "like_tooltip": "The answer was useful!",
@@ -93,34 +86,23 @@ async def main(message: cl.Message):
 
         config_by_lang = {
             "fr": {
-                "qdrant_config": QdrantVectorStore.from_existing_collection(
-                    url=os.getenv("QDRANT_URL"),
-                    embedding=EMBEDDING_MODEL_CONFIG,
-                    sparse_embedding=get_sparse_model_config_fr(),
-                    collection_name=os.getenv("DB_COLLECTION_NAME"),
-                    retrieval_mode=RetrievalMode.HYBRID,
-                    vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
-                    sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
-                ),
+                "qdrant_config": init_db_client(lang),
                 "prompt": PROMPT_TEMPLATE_FR
             },
             "en": {
-                "qdrant_config": QdrantVectorStore.from_existing_collection(
-                    url=os.getenv("QDRANT_URL"),
-                    embedding=EMBEDDING_MODEL_CONFIG,
-                    sparse_embedding=get_sparse_model_config_en(),
-                    collection_name=os.getenv("DB_COLLECTION_NAME"),
-                    retrieval_mode=RetrievalMode.HYBRID,
-                    vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
-                    sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
-                ),
+                "qdrant_config": init_db_client(lang),
                 "prompt": PROMPT_TEMPLATE_EN
             }
         }
 
         retrieval_result = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), QDRANT_NB_CHUNKS_RETRIEVED)
         context_for_llm = retrieval_result.get("retrieved_contexts")
-        logger.info("Context retrieved: nb_chunks=%s", len(context_for_llm))
+        retrieved_scores = retrieval_result.get("retrieved_scores")
+        relevant_chunks = []
+        for i, score in enumerate(retrieved_scores):
+            if score >= RELEVANCE_THRESHOLD:
+                relevant_chunks.append(context_for_llm[i])
+        logger.info("Context retrieved: %s / %s relevant chunks with scores %s", len(relevant_chunks), len(context_for_llm), retrieved_scores)
 
         answer = generate_response(LLM_MODEL_CONFIG, query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
         logger.info("Answer generated: len_answer=%s", len(answer or ""))
@@ -128,7 +110,7 @@ async def main(message: cl.Message):
         source_refs = []
         source_registry = cl.user_session.get("source_registry") or {}
 
-        for retrieved_chunk in context_for_llm:
+        for retrieved_chunk in relevant_chunks:
             content = retrieved_chunk.get("content")
             metadata = retrieved_chunk.get("metadata")
             lex_type = metadata.get("lex_type")

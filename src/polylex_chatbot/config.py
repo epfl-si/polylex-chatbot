@@ -4,6 +4,7 @@ from pathlib import Path
 from qdrant_client import models
 from langchain_qdrant import FastEmbedSparse
 from langchain_openai import OpenAI, OpenAIEmbeddings
+from langchain_qdrant import QdrantVectorStore, RetrievalMode
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # paths
@@ -72,6 +73,28 @@ DB_SPARSE_INDEX_CONFIG = {
     **DB_SPARSE_INDEX_CONFIG_FR,
     **DB_SPARSE_INDEX_CONFIG_EN,
 }
+def init_db_client(lang):
+    if lang == "fr":
+        return QdrantVectorStore.from_existing_collection(
+            url=os.getenv("QDRANT_URL"),
+            embedding=EMBEDDING_MODEL_CONFIG,
+            sparse_embedding=get_sparse_model_config_fr(),
+            collection_name=os.getenv("DB_COLLECTION_NAME"),
+            retrieval_mode=RetrievalMode.HYBRID,
+            vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+            sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
+        )
+    elif lang == "en":
+        return QdrantVectorStore.from_existing_collection(
+            url=os.getenv("QDRANT_URL"),
+            embedding=EMBEDDING_MODEL_CONFIG,
+            sparse_embedding=get_sparse_model_config_en(),
+            collection_name=os.getenv("DB_COLLECTION_NAME"),
+            retrieval_mode=RetrievalMode.HYBRID,
+            vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+            sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
+        )
+    return None
 
 # embeddings (sparse + dense)
 EMBEDDING_MODEL_CONFIG = OpenAIEmbeddings(
@@ -96,10 +119,6 @@ LLM_MODEL_CONFIG = OpenAI(
     max_tokens=500,
     temperature=0.0
 )
-
-# TODO : dire que si question hors contexte alors ne pas prendre en compte + répondre dans la langue de l'utilisateur
-# TODO : ajouter -> si contexte ne contient pas l'info alors dire "je sais pas" + concis et factuel
-
 PROMPT_TEMPLATE_FR = """Réponds à la question en utilisant uniquement le contexte fourni.
 
 Contexte:
@@ -118,3 +137,4 @@ Question:
 {query}
 
 Answer:"""
+RELEVANCE_THRESHOLD = 0.2
