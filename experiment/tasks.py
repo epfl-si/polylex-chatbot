@@ -1,10 +1,10 @@
 from polylex_chatbot.retrieval import retrieve_documents
 from polylex_chatbot.generation import generate_response
 
-def make_retrieval_task(db, reranker_model_name, reranker_api_key, base_url, k):
+def make_retrieval_task(db, nb_chunks_retrieved, reranker_model_name, reranker_api_key, base_url, nb_chunks_reranked):
     def retrieval_task(*, item, **kwargs):
         query = item.input.get("query")
-        return retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, k)
+        return retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, nb_chunks_retrieved, nb_chunks_reranked)
     return retrieval_task
 
 def make_generation_task(llm_model_config, generation_top_k, prompt):
@@ -19,11 +19,11 @@ def make_generation_task(llm_model_config, generation_top_k, prompt):
         }
     return generation_task
 
-def make_rag_task(db, reranker_model_name, reranker_api_key, base_url, k, llm_model_config, generation_top_k, prompt):
+def make_rag_task(db, nb_chunks_retrieved, reranker_model_name, reranker_api_key, base_url, nb_chunks_reranked, llm_model_config, nb_chunks_sent, prompt):
     def rag_task(*, item, **kwargs):
         query = item.input.get("query")
-        retrieval_result = retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, k)
-        context_for_llm = retrieval_result.get("retrieved_contexts")[:generation_top_k]
+        retrieval_result = retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, nb_chunks_retrieved, nb_chunks_reranked)
+        context_for_llm = retrieval_result.get("retrieved_contexts")[:nb_chunks_sent]
         answer = generate_response(llm_model_config, query, prompt, context_for_llm)
         return {
             **retrieval_result,
