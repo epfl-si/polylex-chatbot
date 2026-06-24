@@ -1,9 +1,8 @@
 import requests
 from qdrant_client.http.models import SearchParams
 
-# TODO : top_n doit etre une constante qq part
 # source : https://gitlab.epfl.ch/rcp/aiaas/client-usage-examples/-/blob/main/requests-reranker.py
-def rerank_documents(api_key, base_url, query, documents, model, top_n=20):
+def rerank_documents(api_key, base_url, query, documents, model, top_n):
     """
     Reranks documents based on their relevance to a given query.
 
@@ -12,8 +11,8 @@ def rerank_documents(api_key, base_url, query, documents, model, top_n=20):
         base_url (str): The base URL for the reranking API
         query (str): The query to rerank documents for
         documents (list[str]): A list of documents to rerank
-        model (str): The model to use for reranking.
-        top_n (int, optional): The number of top documents to return. Defaults to 3.
+        model (str): The model to use for reranking
+        top_n (int): The number of top documents to return
 
     Returns:
         list[str]: The reranked documents
@@ -38,12 +37,12 @@ def rerank_documents(api_key, base_url, query, documents, model, top_n=20):
 
     return ranked_documents
 
-def retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, k):
-    hits = db.similarity_search_with_score(query, k=k, search_params=SearchParams(exact=True))
+def retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, nb_retrieved, nb_reranked):
+    hits = db.similarity_search_with_score(query, k=nb_retrieved, search_params=SearchParams(exact=True))
 
     documents = [document.page_content for document, _ in hits]
 
-    reranked_hits = rerank_documents(reranker_api_key, base_url, query, documents, reranker_model_name)
+    reranked_hits = rerank_documents(reranker_api_key, base_url, query, documents, reranker_model_name, nb_reranked)
 
     retrieved_doc_ids = []
     reranked_scores = []

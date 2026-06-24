@@ -108,10 +108,12 @@ def get_sparse_model_config_en():
     return FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=float(os.getenv("AVG_LEN_EN")), language="english")
 
 # retrieval
-QDRANT_NB_CHUNKS_RETRIEVED = 5
+NB_CHUNKS_RETRIEVED = 100
+NB_CHUNKS_RERANKED = 20
 
 # generation
 MAX_USER_MESSAGE_LEN = 1500
+NB_CHUNKS_SENT = 5
 LLM_MODEL_CONFIG = OpenAI(
     model=os.getenv("MODEL_LLM_NAME"),
     base_url=os.getenv("MODELS_BASE_URL"),

@@ -32,16 +32,18 @@ def mrr_doc_evaluator(*, output, metadata, **kwargs):
         comment=f"expected_doc_id={expected_doc_id} and retrieved={retrieved_doc_ids}",
     )
 
-def nb_correct_doc_evaluator(*, output, metadata, **kwargs):
+def ratio_correct_docs_evaluator(*, output, metadata, **kwargs):
     expected_doc_id = metadata.get("expected_doc_id")
     retrieved_doc_ids = output.get("retrieved_doc_ids")
     nb_correct_docs = 0
+    nb_total_docs = len(retrieved_doc_ids)
     for retrieved_doc_id in retrieved_doc_ids:
         if retrieved_doc_id == expected_doc_id:
             nb_correct_docs += 1
+    ratio_correct_docs = nb_correct_docs / nb_total_docs
     return Evaluation(
-        name="nb_correct_doc",
-        value=nb_correct_docs,
+        name="ratio_correct_docs",
+        value=ratio_correct_docs,
         comment=f"expected_doc_id={expected_doc_id} and retrieved={retrieved_doc_ids}",
     )
 
@@ -54,13 +56,16 @@ async def chrf_evaluator(*, output, expected_output, **kwargs):
         value=score
     )
 
-def len_ratio_answers_evaluator(*, output, expected_output, **kwargs):
+def len_answers_quality_evaluator(*, output, expected_output, **kwargs):
     ground_truth = expected_output.get("answer")
+    len_ground_truth = len(ground_truth)
     generated_response = output.get("generated_response")
-    len_ratio = len(ground_truth) / len(generated_response)
+    len_generated_response = len(generated_response)
+    # 0 if len_generated_response << len_ground_truth, 1 if len_generated_response == len_ground_truth and 0 if len_generated_response >> len_ground_truth
+    len_answers_quality = min(len_ground_truth, len_generated_response) / max(len_ground_truth, len_generated_response)
     return Evaluation(
-        name="len_ratio_answers",
-        value=len_ratio
+        name="len_answers_quality",
+        value=len_answers_quality
     )
 
 async def semantic_similarity_evaluator(*, output, expected_output, **kwargs):
