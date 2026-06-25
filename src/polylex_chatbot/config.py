@@ -119,27 +119,9 @@ LLM_MODEL_CONFIG = OpenAI(
     model=os.getenv("MODEL_LLM_NAME"),
     base_url=os.getenv("MODELS_BASE_URL"),
     api_key=os.getenv("MODEL_LLM_API_KEY"),
-    max_tokens=500,
+    max_tokens=500, # TODO : a augmenter ?
     temperature=0.0
 )
-PROMPT_TEMPLATE_FR = """Réponds à la question en utilisant uniquement le contexte fourni.
-
-Contexte:
-{context_text}
-
-Question:
-{query}
-
-Réponse:"""
-PROMPT_TEMPLATE_EN = """Answer the question using only the provided context.
-
-Context:
-{context_text}
-
-Question:
-{query}
-
-Answer:"""
 RELEVANCE_THRESHOLD = 0.2
 
 # evaluation

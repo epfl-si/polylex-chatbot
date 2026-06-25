@@ -10,7 +10,7 @@ from langfuse.langchain import CallbackHandler
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.config import LANGUAGES, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, NB_CHUNKS_SENT, LLM_MODEL_CONFIG, MAX_USER_MESSAGE_LEN, PROMPT_TEMPLATE_FR, PROMPT_TEMPLATE_EN, RELEVANCE_THRESHOLD
+from polylex_chatbot.config import LANGUAGES, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, NB_CHUNKS_SENT, LLM_MODEL_CONFIG, MAX_USER_MESSAGE_LEN, RELEVANCE_THRESHOLD
 from polylex_chatbot.retrieval import retrieve_documents
 from polylex_chatbot.generation import generate_response
 
@@ -87,11 +87,11 @@ async def main(message: cl.Message):
         config_by_lang = {
             "fr": {
                 "qdrant_config": init_db_client(lang),
-                "prompt": PROMPT_TEMPLATE_FR
+                "prompt": os.getenv("PROMPT_TEMPLATE_FR")
             },
             "en": {
                 "qdrant_config": init_db_client(lang),
-                "prompt": PROMPT_TEMPLATE_EN
+                "prompt": os.getenv("PROMPT_TEMPLATE_EN")
             }
         }
 
