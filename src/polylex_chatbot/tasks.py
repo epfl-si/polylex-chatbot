@@ -1,5 +1,5 @@
-from polylex_chatbot.retrieval import retrieve_documents
-from polylex_chatbot.generation import generate_response
+from .retrieval import retrieve_documents
+from .generation import generate_response
 
 def make_retrieval_task(db, nb_chunks_retrieved, reranker_model_name, reranker_api_key, base_url, nb_chunks_reranked):
     def retrieval_task(*, item, **kwargs):
