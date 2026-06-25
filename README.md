@@ -27,6 +27,12 @@ PYTHONPATH="$PWD/src" chainlit run app/app.py -w
 (cd app && PYTHONPATH="../src" chainlit run app.py -w)
 ```
 
+## Analyze scores from a run
+
+```shell
+PYTHONPATH="$PWD/src" python scripts/analyze_run.py "<run_name>"
+```
+
 # VM (test + prod)
 
 ## Deploy with Ansible

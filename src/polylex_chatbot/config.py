@@ -10,7 +10,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # paths
 DATA_PATH = Path.cwd() / "data"
 STATS_PATH = Path.cwd() / "stats"
-CHUNKS_TXT_PATH = Path.cwd() / "chunks.txt"
+CHUNKS_TXT_PATH = Path.cwd() / "stats" / "chunks.txt"
+EVALUATION_RESULTS_PATH = Path.cwd() / "stats"
 
 # api
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
@@ -140,3 +141,49 @@ Question:
 
 Answer:"""
 RELEVANCE_THRESHOLD = 0.2
+
+# evaluation
+EVALUATION_DATASET_NAME = "20250520_clean_dev_dataset"
+COLS_ORDER_IN_EVALUATION_DF = [
+    "trace_id",
+    "question",
+    # retrieval
+    "hit_at_1",
+    "hit_at_2",
+    "hit_at_3",
+    "hit_at_4",
+    "hit_at_5",
+    "hit_at_10",
+    "hit_at_15",
+    "hit_at_20",
+    "Context Relevance (Contextrelevance-Langfuse)", # evaluate if useful context retrieved
+    "mrr_doc",
+    "ratio_correct_docs",
+    # generation (based on ground truth)
+    "semantic_similarity",
+    "len_answers_quality",
+    "Answer Correctness - RAGAS",
+    "chrf_score",
+    # generation (LLM feeling)
+    "Groundedness (Faithfulness-RAGAS)", # evaluate if answer based on context retrieved
+    "Answer Relevance (Relevance-Langfuse)" # evaluate if answer is relevant to the question
+]
+DICT_METRIC_LABELS = {
+    "hit_at_1": "Recall@1",
+    "hit_at_2": "Recall@2",
+    "hit_at_3": "Recall@3",
+    "hit_at_4": "Recall@4",
+    "hit_at_5": "Recall@5",
+    "hit_at_10": "Recall@10",
+    "hit_at_15": "Recall@15",
+    "hit_at_20": "Recall@20",
+    "Context Relevance (Contextrelevance-Langfuse)": "Context relevance",
+    "mrr_doc": "Reciprocal rank",
+    "ratio_correct_docs": "Precision",
+    "semantic_similarity": "Semantic similarity",
+    "len_answers_quality": "Answer lengths comparison",
+    "Answer Correctness - RAGAS": "Answer correctness",
+    "chrf_score": "Score chrF",
+    "Groundedness (Faithfulness-RAGAS)": "Groundedness",
+    "Answer Relevance (Relevance-Langfuse)": "Answer relevance"
+}
