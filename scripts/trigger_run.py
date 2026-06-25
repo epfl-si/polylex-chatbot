@@ -9,7 +9,7 @@ from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
 from polylex_chatbot.config import (EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED,
-                                    LLM_MODEL_CONFIG, NB_CHUNKS_SENT, PROMPT_TEMPLATE_FR)
+                                    LLM_MODEL_CONFIG, NB_CHUNKS_SENT)
 from polylex_chatbot.tasks import make_rag_task
 from polylex_chatbot.evaluators import *
 
@@ -46,7 +46,7 @@ if __name__ == "__main__":
         description=f"{args.run_description} (using '{collection_name}' collection and '{llm_name}' llm)",
         task=make_rag_task(qdrant, NB_CHUNKS_RETRIEVED, os.getenv("MODEL_RERANKER_NAME"),
                            os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RERANKED,
-                           LLM_MODEL_CONFIG, NB_CHUNKS_SENT, PROMPT_TEMPLATE_FR),
+                           LLM_MODEL_CONFIG, NB_CHUNKS_SENT, os.getenv("PROMPT_TEMPLATE_FR")),
         evaluators=[
             # retrieval
             make_hit_at_x_evaluator(1),
