@@ -1,0 +1,44 @@
+@startuml
+title Flux de l'interaction utilisateur avec le chatbot
+
+start
+
+partition "Initialisation de l'application" {
+  :Chargement des variables d'environnement (.env et config.py);
+  :Configuration du logger;
+  :Connexion à Langfuse;
+}
+
+partition "Validation du message" {
+  :Envoi d'un message par l'utilisateur;
+  :Validation du message;
+  if (Message dans une langue supportée ?) then (oui)
+    if (Message d'une longeur inférieure à la longueur maximale ?) then (non)
+      :Affichage d'un message d'erreur;
+      stop
+    else (oui)
+  endif
+  else (non)
+    :Affichage d'un message d'erreur;
+    stop
+  endif
+}
+
+partition "Récupération du contexte et génération de la réponse" {
+  :Récupération des chunks pertinents;
+  :Elimination des chunks ayant obtenu un score inférieur au seuil de pertinence;
+  :Appel au LLM;
+}
+
+partition "Présentation du résultat" {
+  :Affichage de la réponse générée;
+  :Affichage des sources (document s'ouvre dans nouvel onglet et contenu du chunk s'affiche dans la sidebar);
+  :Affichage des boutons de feedback;
+}
+
+partition "Monitoring" {
+  :Envoi de la trace à Langfuse;
+}
+
+stop
+@enduml
