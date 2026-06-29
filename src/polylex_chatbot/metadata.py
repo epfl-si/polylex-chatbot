@@ -2,7 +2,6 @@ import hashlib
 import re
 import os
 import json
-import pandas as pd
 from tika import parser
 from datetime import datetime
 from langdetect import detect
@@ -128,35 +127,20 @@ def add_indexing_flag(metadata, data_path):
     '''
     Add an `is_indexed` flag to each entry in metadata based on document statistics
     '''
-
-    # TODO : remove pandas df
-    stats_per_doc = []
-
-    for file in data_path.glob("*.pdf"):
-        parsed_file = parser.from_file(str(file), requestOptions={"timeout": 300})
-        file_metadata = parsed_file.get("metadata", {})
-        nb_pages = int(file_metadata.get("xmpTPg:NPages", 1))
-        extracted_text = parsed_file.get("content") or ""
-        nb_occ_article = sum(1 for _ in ARTICLE_PATTERN.finditer(extracted_text))
-        stats_per_doc.append({
-            "doc_id": file.stem,
-            "nb_pages": nb_pages,
-            "nb_occ_article": nb_occ_article
-        })
-
-    stats = pd.DataFrame(stats_per_doc)
-    pdfs_not_to_index = stats.loc[(stats["nb_pages"] > 100) | ((stats["nb_pages"] > 50) & (stats["nb_occ_article"] == 0))]["doc_id"].values
-    
-    # TODO : gerer les logs
-    print(pdfs_not_to_index)
-
+    # TODO : valider ce code
     for doc_id, metadata_dict in metadata.items():
-        # TODO : dans ce cas docx par defaut indexe mais faire mieux
-        if doc_id in pdfs_not_to_index:
-            metadata_dict["is_indexed"] = False
-        else:
-            metadata_dict["is_indexed"] = True
-
+        path = data_path / f"{doc_id}.pdf"
+        is_indexed = True
+        if path.is_file():
+            parsed_file = parser.from_file(str(path), requestOptions={"timeout": 300})
+            nb_pages = int(parsed_file.get("metadata", {}).get("xmpTPg:NPages", 1))
+            extracted_text = parsed_file.get("content") or ""
+            nb_occ_article = sum(1 for _ in ARTICLE_PATTERN.finditer(extracted_text))
+            if nb_pages > 100 or (nb_pages > 50 and nb_occ_article == 0):
+                is_indexed = False
+                # TODO : gerer les logs
+                print(f"File at {path} is not indexed")
+        metadata_dict["is_indexed"] = is_indexed
     return metadata
 
 def save_metadata(metadata, path):
@@ -172,7 +156,7 @@ def save_metadata(metadata, path):
     with open(metadata_filename, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=4, ensure_ascii=False)
 
-def load_metadata(path):
+def load_metadata(path, only_indexed_documents=False):
     metadata = {}
 
     most_recent_file = max(
@@ -182,6 +166,13 @@ def load_metadata(path):
 
     with open(most_recent_file, "r", encoding="utf-8") as f:
         metadata = json.load(f)
+
+    if only_indexed_documents:
+        return {
+            url: entry
+            for url, entry in metadata.items()
+            if entry.get("is_indexed") is True
+        }
 
     return metadata
 
