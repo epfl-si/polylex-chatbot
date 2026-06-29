@@ -18,7 +18,12 @@
 ```shell
 PYTHONPATH="$PWD/src" python scripts/build_corpus.py
 PYTHONPATH="$PWD/src" python scripts/index_corpus.py
-PYTHONPATH="$PWD/src" chainlit run app/app.py -w
+```
+
+## Compute stats on corpus
+
+```shell
+PYTHONPATH="$PWD/src" python scripts/compute_stats.py
 ```
 
 ## Run Chatbot
