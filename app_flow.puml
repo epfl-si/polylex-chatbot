@@ -1,4 +1,5 @@
 @startuml
+
 title Flux de l'interaction utilisateur avec le chatbot
 
 start
