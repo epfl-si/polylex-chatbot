@@ -82,7 +82,7 @@ Cette observation indique que les scores obtenus pour chaque métrique ne sont p
 
 En considérant uniquement les moyennes par métrique, on constate qu'elles sont relativement élevées en considérant le contexte propre à chaque métrique :
 
-![confidence_intervals.png](rag_experiment/20260616_164451_collection_Mistral-Small-3.2-24B-Instruct-2506/confidence_intervals.png)
+![confidence_intervals.png](stats/rag_experiment/20260616_164451_collection_Mistral-Small-3.2-24B-Instruct-2506/confidence_intervals.png)
 
 ## Analyse détaillée des questions ayant obtenu des scores atypiques
 
@@ -104,7 +104,7 @@ L'analyse résumée ci-dessous et regroupée par question se base sur les graphi
 | Quels sont les membres qui composent la Direction de l'EPFL ?                                                                                                                                                                       | Le contexte ne contient pas les informations souhaitées, mais fournit plutôt des informations vagues et directement propres aux personnes / rôles au sein de la Direction. Le LLM s’est bien basé sur le contexte pour répondre (score de 1). En revanche, la correctitude de la réponse est moyenne (score de 0.6 modifié manuellement à la place de 100) puisque la réponse cite des noms de personnes (pas forcément à jour) au lieu de citer uniquement les différents rôles.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |  
 | Je viens d'obtenir mon bachelor à l'EPFL. Quel est mon titre officiel ?                                                                                                                                                             | Cette question a obtenu un score de 0 pour la correctitude de la réponse, alors que la réponse générée est belle est bien correcte. Cette contradiction vient du fait que la réponse "ground truth" ne fait que mentionner la référence menant aux titres alors que la réponse générée mentionne également comment ces titres sont construits (concaténation de bachelor + domaine).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |  
 
-![metric_boxplots.png](rag_experiment/20260616_164451_collection_Mistral-Small-3.2-24B-Instruct-2506/metric_boxplots.png)
+![metric_boxplots.png](stats/rag_experiment/20260616_164451_collection_Mistral-Small-3.2-24B-Instruct-2506/metric_boxplots.png)
 
 # Conclusion
 
