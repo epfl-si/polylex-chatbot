@@ -116,7 +116,7 @@ def plot_statistics(df_stats, path):
     yerr_upper = ci_upper - means
     x = np.arange(len(df_stats.columns))
     x_labels = [DICT_METRIC_LABELS[col] for col in df_stats.columns]
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(8, 6))
     plt.errorbar(x, means.values, yerr=[yerr_lower, yerr_upper], fmt="o", capsize=5, linewidth=1.5)
     plt.xticks(x, x_labels, rotation=45, ha="right")
     plt.ylabel("Value")
@@ -129,7 +129,9 @@ def plot_statistics(df_stats, path):
 def compute_and_plot_statistics(df_scores, path):
     df_stats = compute_statistics(df_scores)
     df_stats.to_csv(path / "df_stats.csv", index=True)
-    plot_statistics(df_stats, path)
+    df_stats_filtred = df_stats.drop(columns=["hit_at_1", "hit_at_2", "hit_at_3", "hit_at_4", "hit_at_5", "hit_at_10", "hit_at_15", "hit_at_20", "ratio_correct_docs"])
+    df_stats_reordered = df_stats_filtred[["mrr_doc", "Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)", "Answer Correctness - RAGAS", "semantic_similarity", "len_answers_quality", "chrf_score"]]
+    plot_statistics(df_stats_reordered, path)
 
 def generate_boxplots_grid(df_results, cols, path):
     fig, axes = plt.subplots(4, 2, figsize=(15, 12))

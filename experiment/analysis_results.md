@@ -114,5 +114,5 @@ On peut cependant relever les éléments suivants :
 - L'évaluation automatique par des LLMs permet de gagner du temps, mais elle reste subjective et relativement peu fiable. Par exemple :
   - pour la question concernant le rachat d'un ordinateur par un doctorant, le LLM a simplement jugé que la réponse "je ne sais pas" était correcte puisque l'information était dans tous les cas indisponibles, ce qui n'est pas le cas;
   - pour la question concernant la validité d'un nom de domaine, le LLM s'est essentiellement basé sur ses propres connaissances pour juger que la réponse n'était pas pertinente.
-- En général, les réponses données comme "ground truth" sont souvent peu exploitables et amènent donc à des évaluations pas vraiment représentatives.
+- En général, les réponses données comme "ground truth" sont souvent peu exploitables par un LLM-as-Judge en raison de la variabilité dans le niveau de détails et amènent donc à des évaluations pas vraiment représentatives.
 - Certaines questions telles que les conditions de réussite d'un bloc au master, l'appartenance du COSEC à la VPF et la composition de la Direction ont obtenu une réponse peu informative de la part du LLM, soit par manque de contexte pertinent, soit par incompréhension de la réponse attendue. Il est donc possible d'envisager une étape de "query rewriting" pour essayer d'y remédier.

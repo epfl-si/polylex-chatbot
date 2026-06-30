@@ -1,4 +1,3 @@
-# TODO : verifier que dossiers / hierarchie ok + dossier data / stats au bon endroit selon config.py (trop haut mtn)
 - name: RAG directories
   file:
     path: "{{ item }}"

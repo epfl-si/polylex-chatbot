@@ -84,6 +84,7 @@ async def main(message: cl.Message):
             await cl.Message(content=translate("unsupported_language", ui_lang, lg=lang)).send()
             return
 
+        # TODO : mettre un message de log si modele pas loade (timeout)
         config_by_lang = {
             "fr": {
                 "qdrant_config": init_db_client(lang),
@@ -104,7 +105,7 @@ async def main(message: cl.Message):
                 relevant_chunks.append(context_for_llm[i])
         logger.info("Context retrieved: %s / %s relevant chunks with scores %s", len(relevant_chunks), len(context_for_llm), retrieved_scores)
 
-        answer = generate_response(LLM_MODEL_CONFIG, query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
+        answer = generate_response(LLM_MODEL_CONFIG, query, config_by_lang[lang]["prompt"], relevant_chunks, langfuse_handler)
         logger.info("Answer generated: len_answer=%s", len(answer or ""))
 
         source_refs = []
