@@ -1,0 +1,47 @@
+@startuml
+
+left to right direction
+
+skinparam shadowing false
+skinparam roundCorner 10
+
+rectangle "Réseau EPFL" {
+
+  rectangle "User" as user
+
+  rectangle "Test" as TEST {
+    rectangle "Load Balancer" as lb_test
+
+    rectangle "VM" as vm_test {
+      rectangle "Qdrant" as qdrant_test
+      rectangle "Langfuse" as langfuse_test
+      rectangle "RAG" as rag_test
+      rectangle "Chainlit" as chainlit_test
+    }
+  }
+
+  rectangle "prod" as PROD {
+
+    rectangle "Load Balancer" as lb_prod
+
+    rectangle "VM" as vm_prod {
+      rectangle "Qdrant" as qdrant_prod
+      rectangle "Langfuse" as langfuse_prod
+      rectangle "RAG" as rag_prod
+      rectangle "Chainlit" as chainlit_prod
+    }
+  }
+
+  rectangle "RCP" as rcp
+}
+
+user --> lb_test : https://polylex-chatbot-test.epfl.ch
+user --> lb_prod : https://polylex-chatbot.epfl.ch
+
+lb_test --> vm_test
+lb_prod --> vm_prod
+
+vm_test <--> rcp
+vm_prod <--> rcp
+
+@enduml
