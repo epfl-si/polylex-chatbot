@@ -10,11 +10,14 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # paths
 DATA_PATH = Path.cwd() / "data"
 STATS_PATH = Path.cwd() / "stats"
-CHUNKS_TXT_PATH = Path.cwd() / "stats" / "chunks.txt"
-EVALUATION_RESULTS_PATH = Path.cwd() / "stats"
+CHUNKS_PATH = Path.cwd() / "stats"
+EVALUATION_RESULTS_PATH = Path.cwd() / "evaluations"
 
 # api
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
+
+# rcp
+RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS = 60
 
 # languages
 LANGUAGES = ["fr", "en"]
@@ -39,7 +42,8 @@ HARD_CODED_LANGS = {
     "https://www.epfl.ch/about/overview/wp-content/uploads/2021/12/LEX-1.1.12.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2022/03/LEX-5.1.0.4.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2026/01/LEX-1.1.17.pdf": "en",
-    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr" # FIXME : fr + de, grave ?
+    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr", # FIXME : fr + de, grave ?
+    "https://www.epfl.ch/about/overview/wp-content/uploads/2026/05/LEX-4.6.0.1.pdf": "fr"
 }
 
 # chunking
@@ -62,10 +66,11 @@ SPLITTER = RecursiveCharacterTextSplitter(
 )
 
 # database
-DB_DENSE_INDEX_CONFIG = {
-    "dense": models.VectorParams(
-        size=int(os.getenv("MODEL_EMBEDDING_DIM_VECTOR")),
-        distance=models.Distance.COSINE
+def get_db_dense_index_config():
+    return {
+        "dense": models.VectorParams(
+            size=int(os.getenv("MODEL_EMBEDDINGS_DIM_VECTOR")),
+            distance=models.Distance.COSINE
         )
     }
 DB_SPARSE_INDEX_CONFIG_FR = {"sparse_fr": models.SparseVectorParams(modifier=models.Modifier.IDF)}
@@ -78,31 +83,32 @@ def init_db_client(lang):
     if lang == "fr":
         return QdrantVectorStore.from_existing_collection(
             url=os.getenv("QDRANT_URL"),
-            embedding=EMBEDDING_MODEL_CONFIG,
+            embedding=get_embeddings_model_config(),
             sparse_embedding=get_sparse_model_config_fr(),
             collection_name=os.getenv("DB_COLLECTION_NAME"),
             retrieval_mode=RetrievalMode.HYBRID,
-            vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+            vector_name=list(get_db_dense_index_config().keys())[0],
             sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
         )
     elif lang == "en":
         return QdrantVectorStore.from_existing_collection(
             url=os.getenv("QDRANT_URL"),
-            embedding=EMBEDDING_MODEL_CONFIG,
+            embedding=get_embeddings_model_config(),
             sparse_embedding=get_sparse_model_config_en(),
             collection_name=os.getenv("DB_COLLECTION_NAME"),
             retrieval_mode=RetrievalMode.HYBRID,
-            vector_name=list(DB_DENSE_INDEX_CONFIG.keys())[0],
+            vector_name=list(get_db_dense_index_config())[0],
             sparse_vector_name=list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
         )
     return None
 
 # embeddings (sparse + dense)
-EMBEDDING_MODEL_CONFIG = OpenAIEmbeddings(
-    model=os.getenv("MODEL_EMBEDDINGS_NAME"),
-    base_url=os.getenv("MODELS_BASE_URL"),
-    api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
-)
+def get_embeddings_model_config():
+    return OpenAIEmbeddings(
+        model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+        base_url=os.getenv("MODELS_BASE_URL"),
+        api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
+    )
 def get_sparse_model_config_fr():
     return FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=float(os.getenv("AVG_LEN_FR")), language="french")
 def get_sparse_model_config_en():
@@ -115,13 +121,14 @@ NB_CHUNKS_RERANKED = 20
 # generation
 MAX_USER_MESSAGE_LEN = 1500
 NB_CHUNKS_SENT = 5
-LLM_MODEL_CONFIG = OpenAI(
-    model=os.getenv("MODEL_LLM_NAME"),
-    base_url=os.getenv("MODELS_BASE_URL"),
-    api_key=os.getenv("MODEL_LLM_API_KEY"),
-    max_tokens=500, # TODO : a augmenter ?
-    temperature=0.0
-)
+def get_llm_model_config():
+    return OpenAI(
+        model=os.getenv("MODEL_LLM_NAME"),
+        base_url=os.getenv("MODELS_BASE_URL"),
+        api_key=os.getenv("MODEL_LLM_API_KEY"),
+        max_tokens=500, # TODO : a augmenter ?
+        temperature=0.0
+    )
 RELEVANCE_THRESHOLD = 0.2
 
 # evaluation

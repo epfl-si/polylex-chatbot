@@ -3,11 +3,10 @@ import re
 import os
 import json
 from tika import parser
-from datetime import datetime
 from langdetect import detect
 from .config import LANGUAGES, HARD_CODED_LANGS, ARTICLE_PATTERN
 from .html_utils import transform_html_in_text, get_urls_from_html
-from .documents import resolve_document_url
+from .downloads import resolve_document_url
 
 def make_doc_id(key):
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:32]
@@ -39,9 +38,9 @@ def upsert_doc(metadata_dict, redirected_url, src_url, cat, source, content_form
         }
 
 def join_language(metadata_dict):
-    '''
+    """
     Add unique language for each entry of data
-    '''
+    """
 
     for doc_id, metadata in metadata_dict.items():
         refs = metadata.get("refs")
@@ -124,9 +123,9 @@ def detect_language(content, content_format):
     return "fr"
 
 def add_indexing_flag(metadata, data_path):
-    '''
+    """
     Add an `is_indexed` flag to each entry in metadata based on document statistics
-    '''
+    """
     # TODO : valider ce code
     for doc_id, metadata_dict in metadata.items():
         path = data_path / f"{doc_id}.pdf"
@@ -143,28 +142,27 @@ def add_indexing_flag(metadata, data_path):
         metadata_dict["is_indexed"] = is_indexed
     return metadata
 
-def save_metadata(metadata, path):
-    '''
-    Save metadata to disk
-    '''
+def save_metadata(metadata, path, corpus_name):
+    """
+    Save metadata to the specified directory
+    """
 
-    os.makedirs(path, exist_ok=True)
+    corpus_metadata_path = path / corpus_name
+    corpus_metadata_path.mkdir(parents=True, exist_ok=True)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    metadata_filename = os.path.join(path, f"{timestamp}_lexes_metadata.json")
+    corpus_metadata_filename = os.path.join(corpus_metadata_path, "corpus_metadata.json")
 
-    with open(metadata_filename, "w", encoding="utf-8") as f:
+    with open(corpus_metadata_filename, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=4, ensure_ascii=False)
+
+    return corpus_metadata_filename
 
 def load_metadata(path, only_indexed_documents=False):
     metadata = {}
 
-    most_recent_file = max(
-        (f for f in path.iterdir() if f.suffix == ".json"),
-        key=lambda f: f.stat().st_mtime
-    )
+    corpus_metadata_filename = os.path.join(path, "corpus_metadata.json")
 
-    with open(most_recent_file, "r", encoding="utf-8") as f:
+    with open(corpus_metadata_filename, "r", encoding="utf-8") as f:
         metadata = json.load(f)
 
     if only_indexed_documents:

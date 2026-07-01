@@ -19,3 +19,12 @@ def generate_response(llm, query, prompt, context, monitoring_config=None):
         response = chain.invoke(inputs, config={"callbacks": [monitoring_config]}).strip()
 
     return response
+
+def prepare_llm_context(chunks, scores, nb_chunks_max, relevance_threshold):
+    context = []
+    for i, score in enumerate(scores):
+        if score >= relevance_threshold and i < nb_chunks_max:
+            context.append(chunks[i])
+    return context
+
+__all__=[generate_response, prepare_llm_context]

@@ -76,9 +76,10 @@ def count_nb_tokens(content):
     return nb_tokens
 
 def compute_corpus_metadata_stats(data):
-    corpus_metadata_stats = {"corpus_size": len(data)}
-
-    corpus_metadata_stats[f"nb_summaries"] = count_nb_summaries(data)
+    corpus_metadata_stats = {
+        "corpus_size": len(data),
+        "nb_summaries": count_nb_summaries(data)
+    }
 
     languages_result = Counter(item["lang"] for item in data.values())
     for lang, count in languages_result.items():

@@ -59,6 +59,7 @@ LIMIT 1
     data = r.json()
     bindings = data["results"]["bindings"]
     if not bindings:
+        # TODO : gerer certains cas car URL parfois redirigee incorrectement
         print(f"No SPARQL results for {url}")
         return ""
     return bindings[0]["fileUrl"]["value"]

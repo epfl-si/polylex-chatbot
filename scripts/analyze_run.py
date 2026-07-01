@@ -129,6 +129,7 @@ def plot_statistics(df_stats, path):
 def compute_and_plot_statistics(df_scores, path):
     df_stats = compute_statistics(df_scores)
     df_stats.to_csv(path / "df_stats.csv", index=True)
+    # TODO : ameliorer cette partie car cols en dur
     df_stats_filtred = df_stats.drop(columns=["hit_at_1", "hit_at_2", "hit_at_3", "hit_at_4", "hit_at_5", "hit_at_10", "hit_at_15", "hit_at_20", "ratio_correct_docs"])
     df_stats_reordered = df_stats_filtred[["mrr_doc", "Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)", "Answer Correctness - RAGAS", "semantic_similarity", "len_answers_quality", "chrf_score"]]
     plot_statistics(df_stats_reordered, path)

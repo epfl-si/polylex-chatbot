@@ -9,7 +9,7 @@ from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
 from polylex_chatbot.config import (EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED,
-                                    LLM_MODEL_CONFIG, NB_CHUNKS_SENT)
+                                    get_llm_model_config, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
 from polylex_chatbot.tasks import make_rag_task
 from polylex_chatbot.evaluators import *
 
@@ -21,7 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="TODO")
+    parser = argparse.ArgumentParser(description="Trigger run")
     # TODO : a voir mais pour lancer script argument qui indique quel .env lire pour permettre d'avoir toutes les bonnes variables d'environnement (a creer manuellement avant de run)
     # TODO : si c'est le cas alors ne pas importer par defaut .env dans les imports mais importer ensuite ici
     parser.add_argument("env-path", help="Path to the env file to use")
@@ -46,7 +46,8 @@ if __name__ == "__main__":
         description=f"{args.run_description} (using '{collection_name}' collection and '{llm_name}' llm)",
         task=make_rag_task(qdrant, NB_CHUNKS_RETRIEVED, os.getenv("MODEL_RERANKER_NAME"),
                            os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RERANKED,
-                           LLM_MODEL_CONFIG, NB_CHUNKS_SENT, os.getenv("PROMPT_TEMPLATE_FR")),
+                           get_llm_model_config(), NB_CHUNKS_SENT, RELEVANCE_THRESHOLD, os.getenv("PROMPT_TEMPLATE_FR")
+                           ),
         evaluators=[
             # retrieval
             make_hit_at_x_evaluator(1),

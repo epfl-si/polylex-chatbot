@@ -2,6 +2,7 @@ import os
 import sys
 import uuid
 import logging
+import asyncio
 import chainlit as cl
 from langdetect import detect
 from langfuse import Langfuse
@@ -10,9 +11,9 @@ from langfuse.langchain import CallbackHandler
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.config import LANGUAGES, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, NB_CHUNKS_SENT, LLM_MODEL_CONFIG, MAX_USER_MESSAGE_LEN, RELEVANCE_THRESHOLD
+from polylex_chatbot.config import LANGUAGES, RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, NB_CHUNKS_SENT, get_llm_model_config, MAX_USER_MESSAGE_LEN, RELEVANCE_THRESHOLD
 from polylex_chatbot.retrieval import retrieve_documents
-from polylex_chatbot.generation import generate_response
+from polylex_chatbot.generation import generate_response, prepare_llm_context
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 TRANSLATIONS = {
     "en": {
+        "model_not_loaded": "The models used by the RAG system have not been loaded yet. Please wait a few moments...",
         "message_too_long": "The message is too long ({len_message} / {max_len} characters).",
         "unsupported_language": "The detected language `{lg}` is not supported. Only questions in French or English are accepted.",
         "generic_error": "An error occurred while processing the question. Please try again.",
@@ -33,6 +35,7 @@ TRANSLATIONS = {
         "appendix": "appendix"
     },
     "fr": {
+        "model_not_loaded": "Les modèles utilisés par le système de RAG ne sont pas encore chargés. Merci de patienter quelques instants...",
         "message_too_long": "Le message est trop long ({len_message} / {max_len} caractères).",
         "unsupported_language": "La langue détectée `{lg}` n'est pas supportée. Seules les questions posées en français ou en anglais sont acceptées.",
         "generic_error": "Une erreur est survenue pendant le traitement de la question. Veuillez réessayer.",
@@ -42,6 +45,18 @@ TRANSLATIONS = {
         "appendix": "annexe"
     }
 }
+
+def build_config_by_lang():
+    return {
+        "fr": {
+            "qdrant_config": init_db_client("fr"),
+            "prompt": os.getenv("PROMPT_TEMPLATE_FR")
+        },
+        "en": {
+            "qdrant_config": init_db_client("en"),
+            "prompt": os.getenv("PROMPT_TEMPLATE_EN")
+        }
+    }
 
 def get_ui_lang():
     languages = cl.user_session.get("languages") or "" # TODO : selon https://github.com/Chainlit/chainlit/issues/879 pas possible de recuperer la langue du navigateur...
@@ -56,14 +71,26 @@ def translate(key, lang, **kwargs):
 
 langfuse = Langfuse()
 
-# TODO : utiliser @cl.on_chat_start pour historique ?
-@cl.on_message
-async def main(message: cl.Message):
+@cl.on_chat_start
+async def on_chat_start():
     ui_lang = get_ui_lang()
     cl.user_session.set("ui_lang", ui_lang)
+    try:
+        config_by_lang = await asyncio.wait_for(asyncio.to_thread(build_config_by_lang), timeout=RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
+        cl.user_session.set("config_by_lang", config_by_lang)
+    except asyncio.TimeoutError:
+        await cl.Message(content=translate("model_not_loaded", ui_lang)).send()
+        return
+    except Exception:
+        await cl.Message(content=translate("generic_error", ui_lang)).send()
+        return
+
+@cl.on_message
+async def main(message: cl.Message):
+    ui_lang = cl.user_session.get("user_lang")
+    config_by_lang = cl.user_session.get("config_by_lang")
 
     query = message.content
-
     len_message = len(query)
     logger.info("New message received: content_length=%s", len_message)
 
@@ -84,34 +111,20 @@ async def main(message: cl.Message):
             await cl.Message(content=translate("unsupported_language", ui_lang, lg=lang)).send()
             return
 
-        # TODO : mettre un message de log si modele pas loade (timeout)
-        config_by_lang = {
-            "fr": {
-                "qdrant_config": init_db_client(lang),
-                "prompt": os.getenv("PROMPT_TEMPLATE_FR")
-            },
-            "en": {
-                "qdrant_config": init_db_client(lang),
-                "prompt": os.getenv("PROMPT_TEMPLATE_EN")
-            }
-        }
-
-        retrieval_result = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)[:NB_CHUNKS_SENT]
-        context_for_llm = retrieval_result.get("retrieved_contexts")
+        retrieval_result = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)
+        retrieved_chunks = retrieval_result.get("retrieved_contexts")
         retrieved_scores = retrieval_result.get("retrieved_scores")
-        relevant_chunks = []
-        for i, score in enumerate(retrieved_scores):
-            if score >= RELEVANCE_THRESHOLD:
-                relevant_chunks.append(context_for_llm[i])
-        logger.info("Context retrieved: %s / %s relevant chunks with scores %s", len(relevant_chunks), len(context_for_llm), retrieved_scores)
+        context_for_llm = prepare_llm_context(retrieved_chunks, retrieved_scores, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
 
-        answer = generate_response(LLM_MODEL_CONFIG, query, config_by_lang[lang]["prompt"], relevant_chunks, langfuse_handler)
+        logger.info("Context retrieved: %s / %s relevant chunks with scores %s", len(context_for_llm), len(retrieved_chunks), retrieved_scores)
+
+        answer = generate_response(get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
         logger.info("Answer generated: len_answer=%s", len(answer or ""))
 
         source_refs = []
         source_registry = cl.user_session.get("source_registry") or {}
 
-        for retrieved_chunk in relevant_chunks:
+        for retrieved_chunk in context_for_llm:
             content = retrieved_chunk.get("content")
             metadata = retrieved_chunk.get("metadata")
             lex_type = metadata.get("lex_type")
