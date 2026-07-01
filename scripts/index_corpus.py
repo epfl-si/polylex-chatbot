@@ -1,11 +1,11 @@
+import os
 import logging
+import argparse
 from datetime import datetime
 
 from polylex_chatbot.env import load_project_env
-env_path = load_project_env()
-
 from polylex_chatbot.indexing import index_chunks
-from polylex_chatbot.config import DATA_PATH, STATS_PATH, CHUNKS_TXT_PATH, LANGUAGES
+from polylex_chatbot.config import DATA_PATH, STATS_PATH, CHUNKS_PATH, LANGUAGES
 from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
 from polylex_chatbot.chunking import create_chunks, save_chunks, divide_chunks_per_lang
 
@@ -16,30 +16,49 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def index_corpus(data_dir, metadata_dir, chunks_log_path, collection_name):
+def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, collection_description, env_file):
     logger.info("Start to index corpus")
 
     logger.info("Reading metadata and building lookup tables on it")
     metadata = load_metadata(metadata_dir)
     language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
-    logger.info("Creating chunks and saving it to %s (human-readable format)", chunks_log_path)
-    chunks = create_chunks(data_dir, language_matched_metadata_by_doc_id)
-    save_chunks(chunks_log_path, chunks)
+    logger.info("Creating chunks...")
+    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id)
 
     logger.info("Computing average chunk length per language for BM25 indices")
     # FIXME : pas utilise car BM25_lang utilise indexe chacun tous les chunks, ok ou ko ?
-    chunks_splitted_by_lang = divide_chunks_per_lang(chunks, LANGUAGES)
+    chunks_splitted_by_lang = divide_chunks_per_lang(chunks, LANGUAGES, env_file)
 
     logger.info("Indexing chunks in %s collection", collection_name)
-    index_chunks(chunks, collection_name)
+    index_chunks(chunks, collection_name, collection_description, env_file)
+
+    chunks_filename = save_chunks(chunks_log_path, chunks)
+    logger.info("Chunks saved in a human-readable format to %s", chunks_filename)
 
     logger.info("Corpus indexed successfully")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Index corpus")
+    parser.add_argument("--env-path", required=True, help="Path to the environment file")
+    parser.add_argument("--collection-description", required=True, help="Description of the collection to be created (corpus name, chunking strategy, contextualisation strategy, embedding model, ...)")
+    parser.add_argument("--corpus-dir", help="Directory where documents are stored", default=None)
+    parser.add_argument("--metadata-dir", help="Directory where metadata are stored", default=None)
+    parser.add_argument("--collection-name", help="Name of the collection to create", default=None)
+    args = parser.parse_args()
+
+    env_file = load_project_env(args.env_path)
+
+    corpus_name = os.getenv("CORPUS_NAME")
+    corpus_dir = args.corpus_dir or DATA_PATH / corpus_name
+    metadata_dir = args.metadata_dir or STATS_PATH / corpus_name
+    collection_name = args.collection_name or f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
+
     index_corpus(
-        data_dir=DATA_PATH,
-        metadata_dir=STATS_PATH,
-        chunks_log_path=CHUNKS_TXT_PATH,
-        collection_name=f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
+        corpus_dir=corpus_dir,
+        metadata_dir=metadata_dir,
+        chunks_log_path=CHUNKS_PATH,
+        collection_name=collection_name,
+        collection_description=args.collection_description,
+        env_file=env_file
     )

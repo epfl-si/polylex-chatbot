@@ -14,7 +14,7 @@ services:
       - source: qdrant_config
         target: /qdrant/config/production.yaml
     volumes:
-      - ./rag/qdrant_data:/qdrant/storage
+      - ./database/qdrant_data:/qdrant/storage
 
 configs:
   qdrant_config:

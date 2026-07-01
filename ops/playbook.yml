@@ -1,5 +1,10 @@
 - name: Polylex Chatbot deployment
   hosts: all
-  gather_facts: no
-  roles:
-    - role: roles/polylex-chatbot
+  gather_facts: false
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Polylex Chatbot tasks
+      import_tasks: tasks/main.yml

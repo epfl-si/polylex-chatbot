@@ -27,9 +27,9 @@ def get_doc_id_from_file(file):
     return None
 
 def create_chunks(path, language_matched_metadata_by_doc_id):
-    '''
+    """
     Create text chunks for each document in the given path and enrich them with metadata
-    '''
+    """
 
     chunks = []
 
@@ -87,31 +87,37 @@ def create_chunks(path, language_matched_metadata_by_doc_id):
             chunks.append(
                 Document(
                     page_content=page_content,
-                    metadata=metadata  # TODO : ajouter reference aux articles contenus dans ce chunk ?
+                    metadata=metadata
                 )
             )
 
     return chunks
 
-def save_chunks(txt_path, chunks):
-    with open(txt_path, "w", encoding="utf-8") as f:
+def save_chunks(path, chunks):
+    dir_collection = path / os.getenv("CORPUS_NAME") / os.getenv("DB_COLLECTION_NAME")
+    dir_collection.mkdir(parents=True, exist_ok=True)
+    chunks_filename = os.path.join(dir_collection, "chunks.txt")
+
+    with open(chunks_filename, "w", encoding="utf-8") as f:
         for chunk in chunks:
             content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
 
-def save_avg_lens(chunks_splitted_by_lang):
+    return chunks_filename
+
+def save_avg_lens(chunks_splitted_by_lang, env_file):
     for lang, data in chunks_splitted_by_lang.items():
         avg_len = round(data["avg_len"], 2)
         var_name = f"AVG_LEN_{lang.upper()}"
         value = str(avg_len)
         set_key(
-            dotenv_path=find_dotenv(),
+            dotenv_path=find_dotenv(filename=env_file),
             key_to_set=var_name,
             value_to_set=value
         )
         os.environ[var_name] = value
 
-def divide_chunks_per_lang(chunks, langs):
+def divide_chunks_per_lang(chunks, langs, env_file):
     result = {
         lang: {
             "chunks": [],
@@ -128,7 +134,7 @@ def divide_chunks_per_lang(chunks, langs):
         chunks_per_lang = data["chunks"]
         data["avg_len"] = sum(len(chunk.page_content.split()) for chunk in chunks_per_lang) / len(chunks_per_lang)
 
-    save_avg_lens(result)
+    save_avg_lens(result, env_file)
 
     return result
 

@@ -69,9 +69,9 @@ def len_answers_quality_evaluator(*, output, expected_output, **kwargs):
     )
 
 async def semantic_similarity_evaluator(*, output, expected_output, **kwargs):
-    client = AsyncOpenAI(api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY"), base_url=os.getenv("MODELS_BASE_URL"))
+    client = AsyncOpenAI(api_key=os.getenv("MODEL_EMBEDDINGS_JUDGE_API_KEY"), base_url=os.getenv("MODELS_BASE_URL"))
     embeddings = embedding_factory(
-        model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+        model=os.getenv("MODEL_EMBEDDINGS_JUDGE_NAME"),
         client=client
     )
     reference = expected_output.get("answer")
