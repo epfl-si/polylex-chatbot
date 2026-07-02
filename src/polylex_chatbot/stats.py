@@ -140,18 +140,14 @@ def compute_corpus_content_stats(data_path):
 
     return pd.DataFrame(stats)
 
-def save_stats(parent_path, directory_name, suffix, stats):
-    subdirectory = parent_path / directory_name
-    subdirectory.mkdir(parents=True, exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filepath = os.path.join(subdirectory, f"{timestamp}_stats.{suffix}")
+def save_stats(path, filename, suffix, stats):
+    filepath = os.path.join(path, f"{filename}.{suffix}")
 
     if suffix == "json":
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(stats, f, indent=4, ensure_ascii=False)
     elif suffix == "csv":
-        stats.to_csv(filepath, index=False)
+        stats.to_csv(filepath, index=True)
 
     return filepath
 

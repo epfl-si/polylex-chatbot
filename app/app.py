@@ -76,19 +76,27 @@ async def on_chat_start():
     ui_lang = get_ui_lang()
     cl.user_session.set("ui_lang", ui_lang)
     try:
+        logger.info("Init db...")
         config_by_lang = await asyncio.wait_for(asyncio.to_thread(build_config_by_lang), timeout=RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
         cl.user_session.set("config_by_lang", config_by_lang)
     except asyncio.TimeoutError:
+        logger.warning("Database init timed out after %s seconds (embedding model is not yet loaded)", RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
         await cl.Message(content=translate("model_not_loaded", ui_lang)).send()
         return
-    except Exception:
+    except Exception as e:
+        logger.exception("Error during database init: %s", e)
         await cl.Message(content=translate("generic_error", ui_lang)).send()
         return
 
 @cl.on_message
 async def main(message: cl.Message):
-    ui_lang = cl.user_session.get("user_lang")
+    ui_lang = cl.user_session.get("ui_lang")
     config_by_lang = cl.user_session.get("config_by_lang")
+
+    if config_by_lang is None:
+        logger.warning("Config is not initialized")
+        await cl.Message(content=translate("model_not_loaded", ui_lang)).send()
+        return
 
     query = message.content
     len_message = len(query)
@@ -184,8 +192,8 @@ async def main(message: cl.Message):
 
         logger.info("Answer sent successfully: trace_id=%s", trace_id)
 
-    except Exception:
-        logger.exception("Unhandled error while processing message")
+    except Exception as e:
+        logger.exception("Unhandled error while processing message: %s", e)
         await cl.Message(content=translate("generic_error", ui_lang)).send()
 
 @cl.action_callback("like")
@@ -234,6 +242,6 @@ async def open_source(action):
 
         logger.info("Source displayed in sidebar: label=%s", label)
 
-    except Exception:
-        logger.exception("Failed to open source: label=%s and url=%s", label, url)
+    except Exception as e:
+        logger.exception("Failed to open source: label=%s and url=%s (error: %s)", label, url, e)
         await cl.Message(content=translate("source_display_error", ui_lang)).send()

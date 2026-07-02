@@ -17,7 +17,7 @@ EVALUATION_RESULTS_PATH = Path.cwd() / "evaluations"
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"
 
 # rcp
-RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS = 60
+RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS = 30
 
 # languages
 LANGUAGES = ["fr", "en"]

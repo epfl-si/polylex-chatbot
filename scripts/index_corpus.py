@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, collection_description, env_file):
     logger.info("Start to index corpus")
 
-    logger.info("Reading metadata and building lookup tables on it")
+    logger.info("Reading metadata from %s and building lookup tables on it", metadata_dir)
     metadata = load_metadata(metadata_dir)
     language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
