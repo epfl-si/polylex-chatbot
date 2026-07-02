@@ -1,3 +1,4 @@
+import os
 import re
 import logging
 import textwrap
@@ -10,8 +11,6 @@ from langfuse import Langfuse
 import matplotlib.pyplot as plt
 
 from polylex_chatbot.env import load_project_env
-env_path = load_project_env()
-
 from polylex_chatbot.config import EVALUATION_DATASET_NAME, EVALUATION_RESULTS_PATH, COLS_ORDER_IN_EVALUATION_DF, DICT_METRIC_LABELS
 
 logging.basicConfig(
@@ -21,10 +20,10 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def create_results_dir(collection_name, llm_name):
-    run_path = EVALUATION_RESULTS_PATH / "rag_experiment" / f"{collection_name}_{llm_name}"
-    run_path.mkdir(parents=True, exist_ok=True)
-    return run_path
+def create_analysis_results_dir(parent_path, llm_name):
+    analysis_results_dir = parent_path / f"{llm_name}"
+    analysis_results_dir.mkdir(parents=True, exist_ok=True)
+    return analysis_results_dir
 
 def create_df_from_langfuse_scores(results):
     rows = []
@@ -51,7 +50,7 @@ def create_df_from_langfuse_scores(results):
     df_wide.columns.name = None
     return df_wide
 
-def create_df_from_langfuse_run(run):
+def create_df_from_langfuse_run(langfuse, run):
     trace_ids = [item.trace_id for item in run.dataset_run_items]
     results = [langfuse.api.trace.get(trace_id) for trace_id in trace_ids]
     df_results = create_df_from_langfuse_scores(results)
@@ -63,9 +62,11 @@ def validate_scores(df_results):
     score_columns = df_results.drop(columns=["trace_id", "question"])
     are_scores_in_range = ((score_columns >= 0) & (score_columns <= 1)).all().all()
     if not are_scores_in_range:
-        # TODO : faire autrement ou supprimer
-        if df_results.loc[df_results["trace_id"] == "ec0b9ac77f760564", "Answer Correctness - RAGAS"].iloc[0] == 100.0:
+        # TODO : faire autrement
+        if ((df_results["trace_id"] == "ec0b9ac77f760564") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
             df_results.loc[df_results["trace_id"] == "ec0b9ac77f760564", "Answer Correctness - RAGAS"] = 0.6
+        elif ((df_results["trace_id"] == "b925f2da614ac791") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
+            df_results.loc[df_results["trace_id"] == "b925f2da614ac791", "Answer Correctness - RAGAS"] = 0.2
         else:
             raise ValueError("Scores need to be manually checked (out of range)!")
     return df_results
@@ -170,29 +171,22 @@ def generate_boxplots_grid(df_results, cols, path):
     )
     plt.savefig(path / "metric_boxplots.png")
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Compute statistics, generate plots, and save the results.")
-    parser.add_argument("run_name", help="Name of the run to analyze")
-    parser.add_argument("--dataset-name", default=EVALUATION_DATASET_NAME)
-    args = parser.parse_args()
-
+def analyze_run(evaluation_dir, dataset_name, run_name):
+    logger.info("Init Langfuse client...")
     langfuse = Langfuse()
+    run = langfuse.get_dataset_run(dataset_name=dataset_name, run_name=run_name)
 
-    logger.info("Collecting metadata from run")
-    run = langfuse.get_dataset_run(dataset_name=args.dataset_name, run_name=args.run_name)
-    collection_name = run.metadata.get("collection_name")
     llm_name = run.metadata.get("llm_name").split("/")[1]
+    analysis_results_dir = create_analysis_results_dir(evaluation_dir, llm_name)
+    logger.info("Directory '%s' created", analysis_results_dir)
 
-    results_dir = create_results_dir(collection_name, llm_name)
-    logger.info("Directory '%s' created", results_dir)
-
-    df_results = create_df_from_langfuse_run(run)
+    df_results = create_df_from_langfuse_run(langfuse, run)
     df_results = validate_scores(df_results)
-    df_results_path = results_dir / "df_scores_ordered.csv"
+    df_results_path = analysis_results_dir / "df_scores_ordered.csv"
     df_results.to_csv(df_results_path, index=False)
     logger.info("Df with all metrics saved in '%s'", df_results_path)
 
-    generate_recall_metrics_plot(df_results, results_dir)
+    generate_recall_metrics_plot(df_results, analysis_results_dir)
     logger.info("Plot with recall metrics generated and saved")
 
     df_scores = df_results.drop(columns=["trace_id", "question"])
@@ -202,15 +196,35 @@ if __name__ == "__main__":
         "ground_truth_vs_generated": ["semantic_similarity", "Answer Correctness - RAGAS", "len_answers_quality", "chrf_score"],
         "triad": ["Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)"]
     }
-    compute_kendall_matrices(df_scores, kendall_groups, results_dir)
+    compute_kendall_matrices(df_scores, kendall_groups, analysis_results_dir)
     logger.info("Kendall matrices computed and saved")
 
-    compute_and_plot_statistics(df_scores, results_dir)
+    compute_and_plot_statistics(df_scores, analysis_results_dir)
     logger.info("Statistics computed, plotted and saved")
 
     metrics_to_plot = ["hit_at_5", "Context Relevance (Contextrelevance-Langfuse)",
                        "Answer Correctness - RAGAS", "semantic_similarity",
                        "len_answers_quality", "Answer Relevance (Relevance-Langfuse)",
                        "Groundedness (Faithfulness-RAGAS)", "chrf_score"]
-    generate_boxplots_grid(df_results, metrics_to_plot, results_dir)
+    generate_boxplots_grid(df_results, metrics_to_plot, analysis_results_dir)
     logger.info("Boxplots grid with selected metrics generated and saved")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Compute statistics and save plots from evaluation results")
+    parser.add_argument("--env-path", required=True, help="Path to the environment file")
+    parser.add_argument("--evaluation-dir", help="Parent directory where results will be stored", default=None)
+    parser.add_argument("--dataset-name", help="Dataset on which run has been triggered", default=EVALUATION_DATASET_NAME)
+    parser.add_argument("--run-name", help="Name of the run to analyze")
+    args = parser.parse_args()
+
+    env_file = load_project_env(args.env_path)
+
+    corpus_name = os.getenv("CORPUS_NAME")
+    collection_name = os.getenv("DB_COLLECTION_NAME")
+    evaluation_dir = args.evaluation_dir or EVALUATION_RESULTS_PATH / corpus_name / collection_name
+
+    analyze_run(
+        evaluation_dir=evaluation_dir,
+        dataset_name=args.dataset_name,
+        run_name=args.run_name
+    )

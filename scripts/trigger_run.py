@@ -2,12 +2,9 @@
 
 import logging
 import argparse
-from datetime import datetime
 from langfuse import get_client
 
 from polylex_chatbot.env import load_project_env
-env_path = load_project_env()
-
 from polylex_chatbot.config import (EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED,
                                     get_llm_model_config, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
 from polylex_chatbot.tasks import make_rag_task
@@ -20,30 +17,23 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Trigger run")
-    # TODO : a voir mais pour lancer script argument qui indique quel .env lire pour permettre d'avoir toutes les bonnes variables d'environnement (a creer manuellement avant de run)
-    # TODO : si c'est le cas alors ne pas importer par defaut .env dans les imports mais importer ensuite ici
-    parser.add_argument("env-path", help="Path to the env file to use")
-    parser.add_argument("run-description", help="Description of the run")
-    parser.add_argument("--dataset-name", default=EVALUATION_DATASET_NAME)
-    args = parser.parse_args()
-
+def trigger_run(run_description, dataset_name):
+    logger.info("Init Langfuse client...")
     langfuse = get_client()
-    dataset = langfuse.get_dataset(args.dataset_name)
-
-    logger.info("Collecting metadata to describe the run")
-    collection_name = os.getenv("DB_COLLECTION_NAME")
-    llm_name = os.getenv("MODEL_LLM_NAME")
-    run_name = f"{collection_name}_{llm_name}_{datetime.now().isoformat()}"
+    dataset = langfuse.get_dataset(dataset_name)
 
     logger.info("Create db client")
     qdrant = init_db_client("fr")
 
-    logger.info("Running experiment...")
+    logger.info("Running evaluation...")
+
+    collection_name = os.getenv("DB_COLLECTION_NAME")
+    llm_name = os.getenv("MODEL_LLM_NAME")
+    run_name = f"{collection_name}_{llm_name}"
+
     rag_result = dataset.run_experiment(
         name=run_name,
-        description=f"{args.run_description} (using '{collection_name}' collection and '{llm_name}' llm)",
+        description=f"{run_description} (using '{collection_name}' collection and '{llm_name}' llm)",
         task=make_rag_task(qdrant, NB_CHUNKS_RETRIEVED, os.getenv("MODEL_RERANKER_NAME"),
                            os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RERANKED,
                            get_llm_model_config(), NB_CHUNKS_SENT, RELEVANCE_THRESHOLD, os.getenv("PROMPT_TEMPLATE_FR")
@@ -74,4 +64,18 @@ if __name__ == "__main__":
         }
     )
 
-    logger.info("Experiment completed!\nResults:\n%s", rag_result.format())
+    logger.info("Evaluation completed!\nResults:\n%s", rag_result.format())
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Trigger evaluation")
+    parser.add_argument("--env-path", required=True, help="Path to the environment file")
+    parser.add_argument("--run-description", help="Description of the run", default="")
+    parser.add_argument("--dataset-name", help="Dataset on which to evaluate the configuration (dev or test)", default=EVALUATION_DATASET_NAME)
+    args = parser.parse_args()
+
+    env_file = load_project_env(args.env_path)
+
+    trigger_run(
+        run_description=args.run_description,
+        dataset_name=args.dataset_name
+    )

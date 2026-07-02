@@ -30,7 +30,7 @@ def build_corpus(data_dir, metadata_dir, corpus_name):
     logger.info("Documents downloaded to %s", corpus_dir)
 
     logger.info("Compute document statistics to determine which documents should be indexed")
-    metadata = add_indexing_flag(metadata, data_dir)
+    metadata = add_indexing_flag(metadata, corpus_dir)
 
     corpus_metadata_dir = save_metadata(metadata, metadata_dir, corpus_name)
     logger.info("Writing metadata to %s", corpus_metadata_dir)
