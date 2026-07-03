@@ -50,20 +50,18 @@ HARD_CODED_LANGS = {
 # chunking
 ARTICLE_PATTERN = re.compile(r"\b(?:Article\s+\d+|Art\.\s*\d+)\b")
 SPLITTER = RecursiveCharacterTextSplitter(
-    chunk_size=2000, # TODO : comment definir (dans ce cas nb caracteres et pas tokens) ? Avant 1000, mieux (au max 2196 car ajout du titre) ?
-    chunk_overlap=200, # TODO : comment definir (dans ce cas nb caracteres et pas tokens) ?
+    chunk_size=2000,
+    chunk_overlap=200,
     separators=[
         ARTICLE_PATTERN,
         "\n\n",
         "\n",
-        ".",
         " ",
-        "",
+        ""
     ],
-    #length_function=count_nb_tokens, # TODO : si necessaire de compter en tokens alors modifier ici et modifier size + overlap
     is_separator_regex=True,
     keep_separator=True,
-    add_start_index=True,
+    add_start_index=True
 )
 
 # database
