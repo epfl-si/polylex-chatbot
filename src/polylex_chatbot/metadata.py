@@ -126,7 +126,6 @@ def add_indexing_flag(metadata, data_path):
     """
     Add an `is_indexed` flag to each entry in metadata based on document statistics
     """
-    # TODO : valider ce code
     for doc_id, metadata_dict in metadata.items():
         path = data_path / f"{doc_id}.pdf"
         is_indexed = True

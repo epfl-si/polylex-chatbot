@@ -1,5 +1,3 @@
-# TODO : tester retrieval_task et generation_task separement
-
 import logging
 import argparse
 from langfuse import get_client
