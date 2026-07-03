@@ -5,7 +5,7 @@ from datetime import datetime
 
 from polylex_chatbot.env import load_project_env
 from polylex_chatbot.indexing import index_chunks
-from polylex_chatbot.config import DATA_PATH, STATS_PATH, CHUNKS_PATH, LANGUAGES
+from polylex_chatbot.config import DATA_PATH, STATS_PATH, CHUNKS_PATH, LANGUAGES, create_documents_splitter
 from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
 from polylex_chatbot.chunking import create_chunks, save_chunks, divide_chunks_per_lang
 
@@ -20,11 +20,11 @@ def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, col
     logger.info("Start to index corpus")
 
     logger.info("Reading metadata from %s and building lookup tables on it", metadata_dir)
-    metadata = load_metadata(metadata_dir, only_indexed_documents=True)
+    metadata = load_metadata(metadata_dir)
     language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
     logger.info("Creating chunks...")
-    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id)
+    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id, create_documents_splitter)
 
     logger.info("Computing average chunk length per language for BM25 indices")
     # FIXME : pas utilise car BM25_lang utilise indexe chacun tous les chunks, ok ou ko ?
@@ -34,7 +34,7 @@ def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, col
     index_chunks(chunks, collection_name, collection_description, env_file)
 
     chunks_filename = save_chunks(chunks_log_path, chunks)
-    logger.info("Chunks saved in a human-readable format to %s", chunks_filename)
+    logger.info("Chunks saved in a human-readable format to %s and save in plot chunks distribution", chunks_filename)
 
     logger.info("Corpus indexed successfully")
 

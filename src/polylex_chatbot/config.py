@@ -49,20 +49,32 @@ HARD_CODED_LANGS = {
 
 # chunking
 ARTICLE_PATTERN = re.compile(r"\b(?:Article\s+\d+|Art\.\s*\d+)\b")
-SPLITTER = RecursiveCharacterTextSplitter(
-    chunk_size=2000,
-    chunk_overlap=200,
-    separators=[
-        ARTICLE_PATTERN,
-        "\n\n",
-        "\n",
-        " ",
-        ""
-    ],
-    is_separator_regex=True,
-    keep_separator=True,
-    add_start_index=True
-)
+def create_documents_splitter():
+    chunk_overlap = os.getenv("CHUNK_OVERLAP_NB_CHARS")
+    if chunk_overlap == 0:
+        separators = [
+            ARTICLE_PATTERN,
+            "\n\n",
+            "\n",
+            " ",
+            ""
+        ]
+    else:
+        separators = [
+            "\n\n",
+            "\n",
+            " ",
+            ""
+        ]
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=os.getenv("CHUNK_SIZE_NB_CHARS"),
+        chunk_overlap=os.getenv("CHUNK_OVERLAP_NB_CHARS"),
+        separators=separators,
+        is_separator_regex=True,
+        keep_separator=True,
+        add_start_index=True
+    )
+    return splitter.split_documents
 
 # database
 def get_db_dense_index_config():
