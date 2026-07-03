@@ -38,4 +38,4 @@ def generate_response(llm, query, prompt, context, monitoring_config=None):
 
     return response
 
-__all__=[generate_response, prepare_llm_context]
+__all__ = ["generate_response", "prepare_llm_context"]

@@ -69,4 +69,4 @@ def get_fedlex_pdf_from_sparql(url, lang):
     sparql_url = get_fedlex_api_style_url(redirected_url)
     return get_fedlex_pdf_url(sparql_url, lang)
 
-__all__ = [get_fedlex_pdf_from_sparql]
+__all__ = ["get_fedlex_pdf_from_sparql"]
