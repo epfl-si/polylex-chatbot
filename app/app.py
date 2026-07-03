@@ -126,7 +126,17 @@ async def main(message: cl.Message):
         logger.info("Context built: len_context=%s", len(context_for_llm))
         logger.info("Ratio relevant chunks: %s / %s (scores: %s)", nb_chunks_in_llm_context, nb_chunks_max, retrieved_scores)
 
-        answer = generate_response(get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
+        try:
+            logger.info("Call to LLM...")
+            answer = await asyncio.wait_for(asyncio.to_thread(generate_response, get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler), timeout=RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
+        except asyncio.TimeoutError:
+            logger.warning("Call to LLM timed out after %s seconds (llm model is not yet loaded)", RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
+            await cl.Message(content=translate("model_not_loaded", ui_lang)).send()
+            return
+        except Exception as e:
+            logger.exception("Error during LLM call: %s", e)
+            await cl.Message(content=translate("generic_error", ui_lang)).send()
+            return
         logger.info("Answer generated: len_answer=%s", len(answer or ""))
 
         source_refs = []
