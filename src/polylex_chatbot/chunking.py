@@ -26,7 +26,7 @@ def get_doc_id_from_file(file):
 
     return None
 
-def create_chunks(path, language_matched_metadata_by_doc_id):
+def create_chunks(path, language_matched_metadata_by_doc_id, split_document_function=None):
     """
     Create text chunks for each document in the given path and enrich them with metadata
     """
@@ -36,60 +36,65 @@ def create_chunks(path, language_matched_metadata_by_doc_id):
     for file in path.iterdir():
         doc_id = get_doc_id_from_file(file)
 
-        if doc_id is None or not language_matched_metadata_by_doc_id[doc_id]["is_indexed"]:
+        if doc_id is None:
+            # TODO : gerer dans les logs
+            print(f"File format not supported for '{file}'")
             continue
 
-        title = language_matched_metadata_by_doc_id[doc_id]["title"]
-        source = language_matched_metadata_by_doc_id[doc_id]["source"]
-        suffix = file.suffix.lower()
+        if language_matched_metadata_by_doc_id[doc_id]["is_indexed"]:
+            title = language_matched_metadata_by_doc_id[doc_id]["title"]
+            source = language_matched_metadata_by_doc_id[doc_id]["source"]
+            suffix = file.suffix.lower()
 
-        if suffix == ".txt":
-            extracted_text = file.read_text(encoding="utf-8")
-            extracted_metadata = {}
-            category = "summary"
-            content_format = ".txt"
-        elif suffix in [".docx", ".pdf"]:
-            parsed_doc = parser.from_file(str(file), requestOptions={"timeout": 300})
-            extracted_text = parsed_doc.get("content")
-            extracted_metadata = parsed_doc.get("metadata")
-            category = language_matched_metadata_by_doc_id[doc_id]["cat"]
-            content_format = language_matched_metadata_by_doc_id[doc_id]["content_format"]
-        else:
-            # TODO : mettre dans les logs
-            print(f"File '{file}' not chunked (suffix not handled)")
-            continue
+            if suffix == ".txt":
+                extracted_text = file.read_text(encoding="utf-8")
+                extracted_metadata = {}
+                category = "summary"
+                content_format = ".txt"
+            elif suffix in [".docx", ".pdf"]:
+                parsed_doc = parser.from_file(str(file), requestOptions={"timeout": 300})
+                extracted_text = parsed_doc.get("content")
+                extracted_metadata = parsed_doc.get("metadata")
+                category = language_matched_metadata_by_doc_id[doc_id]["cat"]
+                content_format = language_matched_metadata_by_doc_id[doc_id]["content_format"]
+            else:
+                # TODO : mettre dans les logs
+                print(f"File '{file}' not chunked (suffix not handled)")
+                continue
 
-        cleaner_text = clean_text(extracted_text, source)
+            cleaner_text = clean_text(extracted_text, source)
 
-        doc = Document(
-            page_content=cleaner_text,
-            metadata={
-                "doc_id": doc_id,
-                "filepath": str(file),
-                "total_pages": int(extracted_metadata.get("xmpTPg:NPages", 1)),
-                "creationDate": extracted_metadata.get("xmp:CreateDate"),
-                "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
-                "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
-                "cat": category,
-                "source": source,
-                "content_format": content_format,
-                "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
-                "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
-                "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
-            },
-        )
-
-        chunks_from_struct = SPLITTER.split_documents([doc])
-
-        for chunk in chunks_from_struct:
-            page_content = f"{title}\n\n{chunk.page_content}" if title else chunk.page_content
-            metadata = chunk.metadata
-            chunks.append(
-                Document(
-                    page_content=page_content,
-                    metadata=metadata
-                )
+            doc = Document(
+                page_content=cleaner_text,
+                metadata={
+                    "doc_id": doc_id,
+                    "filepath": str(file),
+                    "total_pages": int(extracted_metadata.get("xmpTPg:NPages", 1)),
+                    "creationDate": extracted_metadata.get("xmp:CreateDate"),
+                    "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
+                    "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
+                    "cat": category,
+                    "source": source,
+                    "content_format": content_format,
+                    "lex_id": language_matched_metadata_by_doc_id[doc_id]["lex_id"],
+                    "lex_type": language_matched_metadata_by_doc_id[doc_id]["lex_type"],
+                    "lex_number": language_matched_metadata_by_doc_id[doc_id]["lex_number"]
+                },
             )
+
+            split_fn = split_document_function or SPLITTER.split_documents
+            chunks_from_struct = split_fn([doc])
+
+            for chunk in chunks_from_struct:
+                page_content = f"{title}\n\n{chunk.page_content}" if title else chunk.page_content
+                metadata = chunk.metadata
+
+                chunks.append(
+                    Document(
+                        page_content=page_content,
+                        metadata=metadata
+                    )
+                )
 
     return chunks
 
