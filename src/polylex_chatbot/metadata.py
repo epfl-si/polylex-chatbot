@@ -220,4 +220,4 @@ def build_language_matched_metadata_by_doc_id(metadata):
 
     return language_matched_metadata_by_doc_id
 
-__all__ = [build_metadata, add_indexing_flag, save_metadata, load_metadata, build_language_matched_metadata_by_doc_id]
+__all__ = ["build_metadata", "add_indexing_flag", "save_metadata", "load_metadata", "build_language_matched_metadata_by_doc_id"]
