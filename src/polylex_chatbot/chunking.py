@@ -1,10 +1,9 @@
 import os
 import re
 from tika import parser
+from matplotlib import pyplot as plt
 from dotenv import find_dotenv, set_key
 from langchain_core.documents import Document
-
-from .config import SPLITTER
 
 def clean_text(text, source):
     # TODO : a ameliorer
@@ -26,7 +25,7 @@ def get_doc_id_from_file(file):
 
     return None
 
-def create_chunks(path, language_matched_metadata_by_doc_id, split_document_function=None):
+def create_chunks(path, language_matched_metadata_by_doc_id, split_document_function):
     """
     Create text chunks for each document in the given path and enrich them with metadata
     """
@@ -82,8 +81,7 @@ def create_chunks(path, language_matched_metadata_by_doc_id, split_document_func
                 },
             )
 
-            split_fn = split_document_function or SPLITTER.split_documents
-            chunks_from_struct = split_fn([doc])
+            chunks_from_struct = split_document_function([doc])
 
             for chunk in chunks_from_struct:
                 page_content = f"{title}\n\n{chunk.page_content}" if title else chunk.page_content
@@ -98,6 +96,17 @@ def create_chunks(path, language_matched_metadata_by_doc_id, split_document_func
 
     return chunks
 
+def save_chunks_distribution(path, chunks):
+    contents = [chunk.page_content for chunk in chunks]
+    content_nb_chars = [len(content) for content in contents]
+
+    plt.hist(content_nb_chars, bins=50)
+    plt.xlabel("Nb chars")
+    plt.ylabel("Frequency")
+    plt.title(f"Nb chunks: {len(chunks)} / min_len={min(content_nb_chars)} and max_len={max(content_nb_chars)}")
+
+    plt.savefig(path / "plot_chunks_distribution.png")
+
 def save_chunks(path, chunks):
     dir_collection = path / os.getenv("CORPUS_NAME") / os.getenv("DB_COLLECTION_NAME")
     dir_collection.mkdir(parents=True, exist_ok=True)
@@ -107,6 +116,8 @@ def save_chunks(path, chunks):
         for chunk in chunks:
             content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
+
+    save_chunks_distribution(path, chunks)
 
     return chunks_filename
 
