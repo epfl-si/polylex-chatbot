@@ -87,6 +87,7 @@ async def on_chat_start():
         logger.exception("Error during database init: %s", e)
         await cl.Message(content=translate("generic_error", ui_lang)).send()
         return
+    logger.info("Db successfully init")
 
 @cl.on_message
 async def main(message: cl.Message):
@@ -119,12 +120,11 @@ async def main(message: cl.Message):
             await cl.Message(content=translate("unsupported_language", ui_lang, lg=lang)).send()
             return
 
-        retrieval_result = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)
-        retrieved_chunks = retrieval_result.get("retrieved_contexts")
-        retrieved_scores = retrieval_result.get("retrieved_scores")
-        context_for_llm = prepare_llm_context(retrieved_chunks, retrieved_scores, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
-
-        logger.info("Context retrieved: %s / %s relevant chunks with scores %s", len(context_for_llm), len(retrieved_chunks), retrieved_scores)
+        logger.info("Retrieve chunks and build context...")
+        _, retrieved_scores, retrieved_chunks = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)
+        context_for_llm, chunks_in_llm_context, nb_chunks_in_llm_context, nb_chunks_max = prepare_llm_context(retrieved_chunks, retrieved_scores, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
+        logger.info("Context built: len_context=%s", len(context_for_llm))
+        logger.info("Ratio relevant chunks: %s / %s (scores: %s)", nb_chunks_in_llm_context, nb_chunks_max, retrieved_scores)
 
         answer = generate_response(get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler)
         logger.info("Answer generated: len_answer=%s", len(answer or ""))
@@ -132,9 +132,9 @@ async def main(message: cl.Message):
         source_refs = []
         source_registry = cl.user_session.get("source_registry") or {}
 
-        for retrieved_chunk in context_for_llm:
-            content = retrieved_chunk.get("content")
-            metadata = retrieved_chunk.get("metadata")
+        for chunk in chunks_in_llm_context:
+            content = chunk.get("content")
+            metadata = chunk.get("metadata")
             lex_type = metadata.get("lex_type")
             lex_number = metadata.get("lex_number")
             src_url = metadata.get("src_url")

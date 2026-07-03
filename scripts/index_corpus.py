@@ -20,7 +20,7 @@ def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, col
     logger.info("Start to index corpus")
 
     logger.info("Reading metadata from %s and building lookup tables on it", metadata_dir)
-    metadata = load_metadata(metadata_dir)
+    metadata = load_metadata(metadata_dir, only_indexed_documents=True)
     language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
     logger.info("Creating chunks...")

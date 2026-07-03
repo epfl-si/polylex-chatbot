@@ -18,7 +18,7 @@ def compute_stats(corpus_dir, metadata_dir):
     logger.info("Start to compute stats on corpus")
 
     logger.info("Reading metadata from %s", metadata_dir)
-    metadata = load_metadata(metadata_dir, only_indexed_documents=True)
+    metadata = load_metadata(metadata_dir)
     logger.info("Number of documents inside the corpus: %s", len(metadata))
 
     logger.info("Compute stats on corpus metadata")

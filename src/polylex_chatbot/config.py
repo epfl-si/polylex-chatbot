@@ -12,6 +12,7 @@ DATA_PATH = Path.cwd() / "data"
 STATS_PATH = Path.cwd() / "stats"
 CHUNKS_PATH = Path.cwd() / "stats"
 EVALUATION_RESULTS_PATH = Path.cwd() / "evaluations"
+COMPARISONS_RESULTS_PATH = Path.cwd() / "comparisons"
 
 # api
 LEXES_API_URL = "https://polylex-admin.epfl.ch/api/v1/lexes?isAbrogated=0"

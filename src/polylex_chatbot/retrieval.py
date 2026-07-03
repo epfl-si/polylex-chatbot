@@ -66,8 +66,4 @@ def retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_ur
             }
         )
 
-    return {
-        "retrieved_doc_ids": retrieved_doc_ids,
-        "retrieved_scores": reranked_scores,
-        "retrieved_contexts": retrieved_contexts
-    }
+    return retrieved_doc_ids, reranked_scores, retrieved_contexts
