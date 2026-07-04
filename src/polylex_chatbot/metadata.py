@@ -133,7 +133,7 @@ def add_indexing_flag(metadata, data_path):
             parsed_file = parser.from_file(str(path), requestOptions={"timeout": 300})
             nb_pages = int(parsed_file.get("metadata", {}).get("xmpTPg:NPages", 1))
             extracted_text = parsed_file.get("content") or ""
-            nb_occ_article = sum(1 for _ in ARTICLE_PATTERN.finditer(extracted_text))
+            nb_occ_article = sum(1 for _ in re.finditer(ARTICLE_PATTERN, extracted_text))
             if nb_pages > 100 or (nb_pages > 50 and nb_occ_article == 0):
                 is_indexed = False
                 # TODO : gerer les logs
