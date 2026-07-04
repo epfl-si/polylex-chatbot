@@ -6,5 +6,6 @@ rag/ocr_model/*
 
 .env
 .env.*
+envs/*
 
 .idea/*

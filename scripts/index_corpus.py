@@ -24,7 +24,8 @@ def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, col
     language_matched_metadata_by_doc_id = build_language_matched_metadata_by_doc_id(metadata)
 
     logger.info("Creating chunks...")
-    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id, create_documents_splitter)
+    split_document_function = create_documents_splitter()
+    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id, split_document_function)
 
     logger.info("Computing average chunk length per language for BM25 indices")
     # FIXME : pas utilise car BM25_lang utilise indexe chacun tous les chunks, ok ou ko ?

@@ -117,7 +117,7 @@ def save_chunks(path, chunks):
             content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
 
-    save_chunks_distribution(path, chunks)
+    save_chunks_distribution(dir_collection, chunks)
 
     return chunks_filename
 

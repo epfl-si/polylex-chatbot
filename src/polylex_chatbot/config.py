@@ -50,7 +50,8 @@ HARD_CODED_LANGS = {
 # chunking
 ARTICLE_PATTERN = r"\b(?:Article\s+\d+|Art\.\s*\d+)\b"
 def create_documents_splitter():
-    chunk_overlap = os.getenv("CHUNK_OVERLAP_NB_CHARS")
+    chunk_size = int(os.getenv("CHUNK_SIZE_NB_CHARS"))
+    chunk_overlap = int(os.getenv("CHUNK_OVERLAP_NB_CHARS"))
     if chunk_overlap == 0:
         separators = [
             ARTICLE_PATTERN,
@@ -67,8 +68,8 @@ def create_documents_splitter():
             ""
         ]
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=os.getenv("CHUNK_SIZE_NB_CHARS"),
-        chunk_overlap=os.getenv("CHUNK_OVERLAP_NB_CHARS"),
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
         separators=separators,
         is_separator_regex=True,
         keep_separator=True,
@@ -115,11 +116,20 @@ def init_db_client(lang):
 
 # embeddings (sparse + dense)
 def get_embeddings_model_config():
-    return OpenAIEmbeddings(
-        model=os.getenv("MODEL_EMBEDDINGS_NAME"),
-        base_url=os.getenv("MODELS_BASE_URL"),
-        api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
-    )
+    model_embeddings_name = os.getenv("MODEL_EMBEDDINGS_NAME")
+    if model_embeddings_name == "Alibaba-NLP/gte-multilingual-base":
+        return OpenAIEmbeddings(
+            model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+            base_url=os.getenv("MODELS_BASE_URL"),
+            api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY"),
+            check_embedding_ctx_length=False
+        )
+    else:
+        return OpenAIEmbeddings(
+            model=os.getenv("MODEL_EMBEDDINGS_NAME"),
+            base_url=os.getenv("MODELS_BASE_URL"),
+            api_key=os.getenv("MODEL_EMBEDDINGS_API_KEY")
+        )
 def get_sparse_model_config_fr():
     return FastEmbedSparse(model_name=os.getenv("MODEL_SPARSE_NAME"), avg_len=float(os.getenv("AVG_LEN_FR")), language="french")
 def get_sparse_model_config_en():
@@ -143,7 +153,7 @@ def get_llm_model_config():
 RELEVANCE_THRESHOLD = 0.2
 
 # evaluation
-EVALUATION_DATASET_NAME = "20250520_clean_dev_dataset"
+EVALUATION_DATASET_NAME = "20260704_dev_dataset"
 COLS_ORDER_IN_EVALUATION_DF = [
     "trace_id",
     "question",
