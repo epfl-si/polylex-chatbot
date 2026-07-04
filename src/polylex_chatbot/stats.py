@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import pandas as pd
 from tika import parser
@@ -101,7 +102,7 @@ def compute_corpus_metadata_stats(data):
     return corpus_metadata_stats
 
 def compute_file_content_stats(filename, suffix, content):
-    nb_occ_article = sum(1 for _ in ARTICLE_PATTERN.finditer(content))
+    nb_occ_article = sum(1 for _ in re.finditer(ARTICLE_PATTERN, content))
     ratio_alnum, ratio_al, ratio_num = count_ratio_alnum_chars(content)
 
     stats = {

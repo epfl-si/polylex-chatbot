@@ -48,7 +48,7 @@ HARD_CODED_LANGS = {
 }
 
 # chunking
-ARTICLE_PATTERN = re.compile(r"\b(?:Article\s+\d+|Art\.\s*\d+)\b")
+ARTICLE_PATTERN = r"\b(?:Article\s+\d+|Art\.\s*\d+)\b"
 def create_documents_splitter():
     chunk_overlap = os.getenv("CHUNK_OVERLAP_NB_CHARS")
     if chunk_overlap == 0:
