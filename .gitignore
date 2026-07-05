@@ -4,6 +4,8 @@ rag/text_from_scanned_pdfs/*
 rag/qdrant_data/*
 rag/ocr_model/*
 
+app/.files
+
 .env
 .env.*
 envs/*

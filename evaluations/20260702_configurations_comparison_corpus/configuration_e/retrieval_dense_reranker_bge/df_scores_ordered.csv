@@ -1,0 +1,14 @@
+trace_id,question,hit_at_1,hit_at_2,hit_at_3,hit_at_4,hit_at_5,hit_at_10,hit_at_15,hit_at_20,mrr_doc,ratio_correct_docs,semantic_similarity,len_answers_quality,chrf_score
+10889007bd5d0130,A combien de semaines de vacances par an ai-je le droit à partir de 60 ans en tant qu'employé à l'EPFL ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.3951466798510337,0.07142857142857142,0.2028874793145853
+17adacd5e6fee772,Quels sont les membres qui composent la Direction de l'EPFL ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.9089777592193838,0.978494623655914,0.4360412303498762
+24fc46fd12d44200,Puis-je être immatriculé dans deux universités en même temps?,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.125,0.05,0.3875855938214017,0.42857142857142855,0.15413281166296272
+32fa52e6a5a37508,Est-ce qu'une décision de la Commission des prix de la recherche ou d’un jury spécifique doit être notifiées formellement au candidat par le biais d'une lettre recommandée ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5738449454513539,0.192,0.29745472176240784
+446ed76107796538,Est-ce que le COSEC est rattaché à la VPF à l'EPFL ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6412177797273049,0.31958762886597936,0.3080257295886042
+48200f6cd4552533,Les emprunts dans un travail écrit doivent-ils être reconnaissable via une note en bas de page ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2889405566196315,0.12601626016260162,0.2174431596030492
+4c9a80c44e1fdeac,Est-ce qu'un doctorant peut racheter son ordinateur ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.29836015534397964,0.2744479495268139,0.09534555548808153
+6e190a4e9081b680,Existe-t-il un code d'honneur pour les étudiants en bachelor et où puis-je le trouver?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6728776496964639,0.5335820895522388,0.2046338995342391
+823757b737e3e93f,"En tant qu’étudiant, puis-je créer un site web pour mon association avec un nom de domaine externe (ex: monlabo.ch) au lieu d’un site epfl.ch ? Est-ce que j'ai des contraintes à respecter concernant le choix du nom de domaine ?",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.34310456745977536,0.45910290237467016,0.2778185236381072
+ce7ea712352c61bd,Je viens d'obtenir mon bachelor à l'EPFL. Quel est mon titre officiel ?,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5667062180276938,0.23222748815165878,0.0853093993708434
+d562e218307a1721,"J'envisage de commencer mes études à l'EPFL. ""Combien d'années faut-il compter pour faire sa formation à l'EPFL ?""",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.656482512853398,0.22148760330578512,0.09185988240651188
+ea3be4675c9276ae,"Je suis en première année de bachelor et j'ai obtenu la moyenne de 3,49 au semestre. Comment m'inscrire en BA2?",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5222534581601253,0.8926553672316384,0.27918250867940364
+f01129eb12ef247c,Quelles sont les conditons de réussite pour un bloc au niveau master à l'EPFL ?,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.15,0.5602118594069758,0.587737843551797,0.2548294069519793
