@@ -25,14 +25,16 @@ def create_analysis_results_dir(parent_path, llm_name):
     analysis_results_dir.mkdir(parents=True, exist_ok=True)
     return analysis_results_dir
 
-def create_df_from_langfuse_scores(results):
+def create_df_from_langfuse_traces(results):
     rows = []
     for result in results:
         question = result.input.get("query")
+        generated_answer = result.output.get("generated_response")
         for metric in result.scores:
             rows.append({
                 "trace_id": metric.observation_id,
                 "question": question,
+                "generated_answer": generated_answer,
                 "metric": metric.name,
                 "value": metric.value
             })
@@ -40,7 +42,7 @@ def create_df_from_langfuse_scores(results):
     df_wide = (
         df_long
         .pivot_table(
-            index=["trace_id", "question"],
+            index=["trace_id", "question", "generated_answer"],
             columns=["metric"],
             values="value",
             aggfunc="first"
@@ -53,13 +55,13 @@ def create_df_from_langfuse_scores(results):
 def create_df_from_langfuse_run(langfuse, run):
     trace_ids = [item.trace_id for item in run.dataset_run_items]
     results = [langfuse.api.trace.get(trace_id) for trace_id in trace_ids]
-    df_results = create_df_from_langfuse_scores(results)
+    df_results = create_df_from_langfuse_traces(results)
     df_results_ordered = df_results[[col for col in COLS_ORDER_IN_EVALUATION_DF if col in df_results.columns]]
     return df_results_ordered
 
 def validate_scores(df_results):
     df_results = df_results.copy()
-    score_columns = df_results.drop(columns=["trace_id", "question"])
+    score_columns = df_results.drop(columns=["trace_id", "question", "generated_answer"])
     are_scores_in_range = ((score_columns >= 0) & (score_columns <= 1)).all().all()
     if not are_scores_in_range:
         # TODO : faire autrement
@@ -67,6 +69,10 @@ def validate_scores(df_results):
             df_results.loc[df_results["trace_id"] == "ec0b9ac77f760564", "Answer Correctness - RAGAS"] = 0.6
         elif ((df_results["trace_id"] == "b925f2da614ac791") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
             df_results.loc[df_results["trace_id"] == "b925f2da614ac791", "Answer Correctness - RAGAS"] = 0.2
+        elif ((df_results["trace_id"] == "8dd6b4ff3787634e") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
+            df_results.loc[df_results["trace_id"] == "8dd6b4ff3787634e", "Answer Correctness - RAGAS"] = 1.0
+        elif ((df_results["trace_id"] == "0414c474f0ff1dcd") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
+            df_results.loc[df_results["trace_id"] == "0414c474f0ff1dcd", "Answer Correctness - RAGAS"] = 1.0
         else:
             raise ValueError("Scores need to be manually checked (out of range)!")
     return df_results
@@ -205,7 +211,7 @@ def analyze_run(evaluation_dir, dataset_name, run_name, name_dir):
     generate_recall_metrics_plot(df_results, analysis_results_dir)
     logger.info("Plot with recall metrics generated and saved")
 
-    df_scores = df_results.drop(columns=["trace_id", "question"])
+    df_scores = df_results.drop(columns=["trace_id", "question", "generated_answer"])
 
     kendall_groups = {
         "retrieval": ["mrr_doc", "ratio_correct_docs", "Context Relevance (Contextrelevance-Langfuse)"],

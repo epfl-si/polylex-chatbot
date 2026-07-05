@@ -224,12 +224,47 @@ Hybrid + reranker:
 
 ## Recherche de la meilleure configuration pour la partie génération
 
-TODO : analyse résumée pour rapport
+Trois LLMs avaient initialement été sélectionnés sur la base de la documentation disponible et des benchmarks consultés:
+- [meta-llama/Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B)
+- [mistralai/Mistral-Small-3.2-24B-Instruct-2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506)
+- [Qwen/Qwen3-32B](https://huggingface.co/Qwen/Qwen3-32B).
+
+Cependant, certains de ces modèles étaient rarement chargés sur RCP, ce qui entraînait parfois des temps d’attente importants pour pouvoir ensuite utiliser le modèle.
+De plus, une fois chargés, certains modèles présentaient des temps de réponse très longs, voire finissant par un timeout.
+
+Deux autres modèles ont donc été évalués à leur place, en se basant sur ceux disponibles sur RCP et quasiment toujours chargés.
+
+Au final, seul le modèle Mistral a été conservé. Les deux autres modèles ont été remplacés de la façon suivante :
+- Llama par une version développée à l'EPFL -> [EPFLiGHT/Llama-33-70b-Legitron](https://huggingface.co/EPFLiGHT/Llama-33-70b-Legitron) (remplacement en raison de timeouts à répétition)
+- Qwen par un modèle plus petit -> [Qwen/Qwen3-30B-A3B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507) (remplacement pour bénéficier d'un modèle qui est constamment accessible sans temps d'attente).
+
+Concernant les prompts, un travail de prompt engineering a été effectué afin d'obtenir une réponse pertinente de la part du LLM.
+
+Pour Mistral, un prompt très simple suffit pour que le modèle ne réponde pas à des questions hors contexte, se base sur le contexte à disposition et réponde de façon concise dans la langue de l'utilisateur :
+- PROMPT_TEMPLATE_FR="Réponds à la question en utilisant uniquement le contexte fourni.\n\nContexte:\n{context_text}\n\nQuestion:\n{query}\n\nRéponse:"
+- PROMPT_TEMPLATE_EN="Answer the question using only the provided context.\n\nContext:\n{context_text}\n\nQuestion:\n{query}\n\nAnswer:".
+
+Pour les deux autres modèles, ce simple prompt ne suffit absolument pas. En effet, plusieurs comportements non souhaités ont été observés tels que des réponses pour des questions hors contexte (le LLM s'est basé sur ses connaissances internes ou a halluciné) ou des justifications excessives lorsque le LLM se basait sur le contexte fourni pour répondre. Le prompt final pour ces deux modèles est le suivant :
+- PROMPT_TEMPLATE_FR="Tu es un assistant juridique chargé de répondre à des questions à partir de documents fournis.\n\nRéponds uniquement à partir du contexte ci-dessous.\nN'utilise aucune connaissance externe.\nSi le contexte ne contient pas l'information nécessaire, réponds exactement : \"Je n'ai pas trouvé d'information pertinente dans les documents fournis.\"\nRéponds directement à la question.\n\nContexte :\n{context_text}\n\nQuestion :\n{query}\n\nRéponse :"
+- PROMPT_TEMPLATE_EN="You are a legal assistant tasked with answering questions based on provided documents.\n\nAnswer only using the context below.\nDo not use any external knowledge.\nIf the context does not contain the necessary information, answer exactly: \"I did not find any relevant information in the provided documents.\"\nAnswer the question directly.\n\nContext:\n{context_text}\n\nQuestion:\n{query}\n\nAnswer:".
+
+Malgré ce prompt retravaillé, ces deux LLMs préfèrent parfois répondre qu'ils n'ont pas accès aux informations pertinentes, alors même que l'information est disponible.
+Pour cette raison, il est plus judicieux d'utiliser Mistral comme LLM dans le système de RAG et penser à retravailler les prompts avant d'utiliser ces autres modèles.
+
+L'évaluation de la partie génération du système de RAG se base au départ sur des observations humaines, puis sur des évaluations fournies par un LLM-as-Judge.
+
+Dans un premier temps, Mistral a été utilisé comme LLM-as-Judge. Cependant, celui-ci n’était pas toujours disponible sur RCP, Qwen a donc temporairement été utilisé à sa place.
+Cette alternative s’est toutefois révélée problématique, car Qwen interprétait parfois incorrectement certaines instructions présentes dans les prompts par défaut des métriques.
+Mistral a donc finalement à nouveau été utilisé comme LLM-as-Judge. Ce choix introduit néanmoins un biais potentiel puisque les réponses évaluées proviennent également de Mistral.
+C’est pourquoi il a été décidé, en plus d'une réduction du nombre de configurations à tester, de ne pas comparer les différentes stratégies de construction du contexte sur plusieurs LLMs, mais uniquement sur les résultats obtenus avec Mistral.
+En effet, une comparaison impliquant plusieurs LLMs évalués par un de ces LLms a de fortes chances d'être biaisée.
+
+TODO : parler des résultats avec les constructions du contexte
 
 ### Mise en place de l'environnement
 
 1. copie du ./envs/.env.configuration_e dans ./envs/.env.generation
-2. réactivation des LLM-as-Judges dans Langfuse et check que communication entre Langfuse et RCP soit ok (TODO)
+2. réactivation des LLM-as-Judges dans Langfuse et check que communication entre Langfuse et RCP soit ok
 
 ### Procédure pour créer un run avec une certaine configuration LLM
 
@@ -238,48 +273,51 @@ TODO : analyse résumée pour rapport
   - prompt -> modification de `PROMPT_TEMPLATE_FR` et `PROMPT_TEMPLATE_EN`
 2. `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_file>" --run-description="<run_description>"`
 
-# TODO : modifier les valeurs dans les 3 .env créés
-# TODO : tester a chaque fois sur les 3 LLMs
-
-### Evaluations avec un contexte contenant toujours 5 chunks
-
-#### Résultats
-
-TODO
-
-#### Analyse
-
-TODO
-
 ### Evaluations avec un contexte contenant au maximum 5 chunks selon threshold
 
-#### Résultats
+Mistral semble être le meilleur modèle.
+LLama produit des réponses assez brèves, mais répond parfois qu'il n'a pas à disposition l'information pertinente alors que c'est bien le cas.
+Qwen agit souvent de la même manière, en plus d'être bien trop verbeux.
 
+#### Commandes
+
+Trigger runs:
+
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_llama" --run-description="CONFIGURATION COMPARISONS - llama (only generation compared : max 5 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - mistral (only generation compared : max 5 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_qwen" --run-description="CONFIGURATION COMPARISONS - qwen (only generation compared : max 5 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_llama" --run-description="CONFIGURATION COMPARISONS - llama (only generation compared : max 5 chunks in context (with bge as judge))"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - mistral (only generation compared : max 5 chunks in context (with bge as judge))"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_qwen" --run-description="CONFIGURATION COMPARISONS - qwen (only generation compared : max 5 chunks in context (with bge as judge))"
+
+*note : erreur dans le nom du LLM (bge à la place de mistral)
+
+Analyze runs:
+
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_llama" --run-name="configuration_e_EPFLiGHT/Llama-33-70b-Legitron - 2026-07-05T14:01:10.183110Z" --name-dir="generation_llama_max_5_chunks_qwen_judge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T13:32:43.609971Z" --name-dir="generation_mistral_max_5_chunks_qwen_judge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_qwen" --run-name="configuration_e_Qwen/Qwen3-30B-A3B-Instruct-2507 - 2026-07-05T13:32:55.257682Z" --name-dir="generation_qwen_max_5_chunks_qwen_judge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_llama" --run-name="configuration_e_EPFLiGHT/Llama-33-70b-Legitron - 2026-07-05T14:01:10.183110Z" --name-dir="generation_llama_max_5_chunks_mistral_judge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T14:01:17.395430Z" --name-dir="generation_mistral_max_5_chunks_mistral_judge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_qwen" --run-name="configuration_e_Qwen/Qwen3-30B-A3B-Instruct-2507 - 2026-07-05T14:01:24.025065Z" --name-dir="generation_qwen_max_5_chunks_mistral_judge"
+
+### Autres configurations pour construire le contexte du LLM
+
+Contexte contenant toujours 5 chunks :
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - mistral (only generation compared : 5 chunks in context (with mistral as judge)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T16:17:55.556222Z" --name-dir="generation_mistral_5_chunks_mistral_judge"
+
+Contexte contenant 2 documents en entier sauf exception de longueur :
 TODO
 
-#### Analyse
-
+Contexte contenant 2 documents des chunks ou des documents :
 TODO
 
-### Evaluations avec un contexte contenant deux documents en entier sauf exception de longueur
-
-#### Résultats
-
-TODO
-
-#### Analyse
-
-TODO
-
-### Evaluations avec un contexte contenant des chunks ou des documents
-
-#### Résultats
-
-TODO
-
-#### Analyse
-
-TODO
+# TODO : comparer uniquement sur mistral jugé par mistral:
+- maximum 5 chunks
+- toujours 5 chunks
+- 2 documents
+- documents ou chunks
 
 # TODO : considérer les ttests
 
