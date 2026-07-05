@@ -157,6 +157,7 @@ EVALUATION_DATASET_NAME = "20260704_dev_dataset"
 COLS_ORDER_IN_EVALUATION_DF = [
     "trace_id",
     "question",
+    "generated_answer",
     # retrieval
     "hit_at_1",
     "hit_at_2",
