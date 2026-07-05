@@ -71,6 +71,13 @@ def validate_scores(df_results):
             raise ValueError("Scores need to be manually checked (out of range)!")
     return df_results
 
+def get_existing_cols(df_cols, cols, context):
+    existing_cols = [col for col in cols if col in df_cols]
+    missing_cols = [col for col in cols if col not in df_cols]
+    if missing_cols:
+        logger.info("%s: missing cols (%s)", context, missing_cols)
+    return existing_cols
+
 def generate_recall_metrics_plot(df_results, path):
     recall_cols = [col for col in df_results.columns if re.match(r"^hit_at_\d+$", col)]
     recall_df = pd.DataFrame({
@@ -94,7 +101,9 @@ def generate_recall_metrics_plot(df_results, path):
 def compute_kendall_matrices(df_scores, groups, parent_path):
     for name, cols in groups.items():
         path = parent_path / f"kendall_matrix_{name}.csv"
-        scores = df_scores[cols]
+        context = f"Kendall matrix for {name}"
+        existing_cols = get_existing_cols(df_scores.columns, cols, context)
+        scores = df_scores[existing_cols]
         kendall_matrix = scores.corr(method="kendall")
         kendall_matrix.to_csv(path, index=False)
 
@@ -130,19 +139,24 @@ def plot_statistics(df_stats, path):
 def compute_and_plot_statistics(df_scores, path):
     df_stats = compute_statistics(df_scores)
     df_stats.to_csv(path / "df_stats.csv", index=True)
+
     # TODO : ameliorer cette partie car cols en dur
     df_stats_filtred = df_stats.drop(columns=["hit_at_1", "hit_at_2", "hit_at_3", "hit_at_4", "hit_at_5", "hit_at_10", "hit_at_15", "hit_at_20", "ratio_correct_docs"])
-    df_stats_reordered = df_stats_filtred[["mrr_doc", "Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)", "Answer Correctness - RAGAS", "semantic_similarity", "len_answers_quality", "chrf_score"]]
+    cols_reordered = ["mrr_doc", "Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)", "Answer Correctness - RAGAS", "semantic_similarity", "len_answers_quality", "chrf_score"]
+    existing_cols = get_existing_cols(df_stats_filtred.columns, cols_reordered, "Df with all metrics")
+
+    df_stats_reordered = df_stats_filtred[existing_cols]
     plot_statistics(df_stats_reordered, path)
 
 def generate_boxplots_grid(df_results, cols, path):
+    existing_cols = get_existing_cols(df_results.columns, cols, "Metric boxplots")
     fig, axes = plt.subplots(4, 2, figsize=(15, 12))
     axes = axes.flatten()
     legend_handles = None
     legend_labels = None
     hue_order = pd.unique(df_results["question"])
     palette = sns.color_palette("husl", n_colors=len(hue_order))
-    for ax, col in zip(axes, cols):
+    for ax, col in zip(axes, existing_cols):
         sns.boxplot(data=df_results, y=col, color="lightgray", showfliers=False, width=0.6, ax=ax)
         sns.stripplot(data=df_results, y=col, hue="question", hue_order=hue_order, palette=palette, jitter=0.3, ax=ax)
         ax.set_title(f"{DICT_METRIC_LABELS[col]}")
@@ -153,7 +167,7 @@ def generate_boxplots_grid(df_results, cols, path):
             legend_handles, legend_labels = ax.get_legend_handles_labels()
         if ax.get_legend() is not None:
             ax.get_legend().remove()
-    for ax in axes[len(cols):]:
+    for ax in axes[len(existing_cols):]:
         ax.remove()
     fig.subplots_adjust(bottom=0.26, hspace=0.4, wspace=0.2)
     legend_labels = [
@@ -171,13 +185,15 @@ def generate_boxplots_grid(df_results, cols, path):
     )
     plt.savefig(path / "metric_boxplots.png")
 
-def analyze_run(evaluation_dir, dataset_name, run_name):
+def analyze_run(evaluation_dir, dataset_name, run_name, name_dir):
     logger.info("Init Langfuse client...")
     langfuse = Langfuse()
     run = langfuse.get_dataset_run(dataset_name=dataset_name, run_name=run_name)
 
-    llm_name = run.metadata.get("llm_name").split("/")[1]
-    analysis_results_dir = create_analysis_results_dir(evaluation_dir, llm_name)
+    if name_dir is None:
+        name_dir = run.metadata.get("llm_name").split("/")[1]
+
+    analysis_results_dir = create_analysis_results_dir(evaluation_dir, name_dir)
     logger.info("Directory '%s' created", analysis_results_dir)
 
     df_results = create_df_from_langfuse_run(langfuse, run)
@@ -215,6 +231,7 @@ if __name__ == "__main__":
     parser.add_argument("--evaluation-dir", help="Parent directory where results will be stored", default=None)
     parser.add_argument("--dataset-name", help="Dataset on which run has been triggered", default=EVALUATION_DATASET_NAME)
     parser.add_argument("--run-name", help="Name of the run to analyze")
+    parser.add_argument("--name-dir", help="Name of directory where results will be stored", default=None)
     args = parser.parse_args()
 
     env_file = load_project_env(args.env_path)
@@ -226,5 +243,6 @@ if __name__ == "__main__":
     analyze_run(
         evaluation_dir=evaluation_dir,
         dataset_name=args.dataset_name,
-        run_name=args.run_name
+        run_name=args.run_name,
+        name_dir=args.name_dir
     )
