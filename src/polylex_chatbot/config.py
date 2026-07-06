@@ -1,4 +1,3 @@
-import re
 import os
 from pathlib import Path
 from qdrant_client import models
@@ -7,8 +6,10 @@ from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+from polylex_chatbot.llm_context_utils import prepare_llm_context_max_5_chunks
+
 # paths
-DATA_PATH = Path.cwd() / "data"
+DOCUMENTS_PATH = Path.cwd() / "documents"
 STATS_PATH = Path.cwd() / "stats"
 CHUNKS_PATH = Path.cwd() / "stats"
 EVALUATION_RESULTS_PATH = Path.cwd() / "evaluations"
@@ -34,16 +35,16 @@ HARD_CODED_LANGS = {
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/LEX-3.1.7_annexe2.pdf": "en",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2020/09/LEX-3.1.7_annexe4.pdf": "en",
     "https://ethrat.stage.mxm.agency/wp-content/uploads/2021/10/210101_Richtlinien_NB_ETHR_F.pdf": "fr",
-    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/4.4.1_Regles_applications_fr_an-1.pdf": "fr", # FIXME : fr + en, grave ?
+    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/4.4.1_Regles_applications_fr_an-1.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/4.4.1_Description_fonction_fr_an.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/LEX-5.1.0.3.pdf": "fr",
-    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.1_conv_tresorerie_all.pdf": "fr", # FIXME : fr + de, grave ?
+    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.1_conv_tresorerie_all.pdf": "fr",
     "https://ethrat.ch/wp-content/uploads/2021/09/Immobilienweisung_ETH-Bereich_2016_F_0.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/LEX-1.1.9.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2021/12/LEX-1.1.12.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2022/03/LEX-5.1.0.4.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2026/01/LEX-1.1.17.pdf": "en",
-    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr", # FIXME : fr + de, grave ?
+    "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/5.7.2_dir_placement_all.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2026/05/LEX-4.6.0.1.pdf": "fr"
 }
 
@@ -151,6 +152,8 @@ def get_llm_model_config():
         temperature=0.0
     )
 RELEVANCE_THRESHOLD = 0.2
+def prepare_llm_context(chunks, scores, nb_chunks_max, relevance_threshold):
+    return prepare_llm_context_max_5_chunks(chunks, scores, nb_chunks_max, relevance_threshold)
 
 # evaluation
 EVALUATION_DATASET_NAME = "20260704_dev_dataset"

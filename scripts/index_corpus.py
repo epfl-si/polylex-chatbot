@@ -5,7 +5,8 @@ from datetime import datetime
 
 from polylex_chatbot.env import load_project_env
 from polylex_chatbot.indexing import index_chunks
-from polylex_chatbot.config import DATA_PATH, STATS_PATH, CHUNKS_PATH, LANGUAGES, create_documents_splitter
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH
+from polylex_chatbot.config import STATS_PATH, CHUNKS_PATH, LANGUAGES, create_documents_splitter
 from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
 from polylex_chatbot.chunking import create_chunks, save_chunks, divide_chunks_per_lang
 
@@ -16,7 +17,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, collection_description, env_file):
+def index_corpus(textual_contents_dir, metadata_dir, chunks_log_path, collection_name, collection_description, env_file):
     logger.info("Start to index corpus")
 
     logger.info("Reading metadata from %s and building lookup tables on it", metadata_dir)
@@ -25,7 +26,7 @@ def index_corpus(corpus_dir, metadata_dir, chunks_log_path, collection_name, col
 
     logger.info("Creating chunks...")
     split_document_function = create_documents_splitter()
-    chunks = create_chunks(corpus_dir, language_matched_metadata_by_doc_id, split_document_function)
+    chunks = create_chunks(textual_contents_dir, language_matched_metadata_by_doc_id, split_document_function)
 
     logger.info("Computing average chunk length per language for BM25 indices")
     # FIXME : pas utilise car BM25_lang utilise indexe chacun tous les chunks, ok ou ko ?
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Index corpus")
     parser.add_argument("--env-path", required=True, help="Path to the environment file")
     parser.add_argument("--collection-description", required=True, help="Description of the collection to be created (corpus name, chunking strategy, contextualisation strategy, embedding model, ...)")
-    parser.add_argument("--corpus-dir", help="Directory where documents are stored", default=None)
+    parser.add_argument("--corpus-dir", help="Directory where textual contents from documents are stored", default=None)
     parser.add_argument("--metadata-dir", help="Directory where metadata are stored", default=None)
     parser.add_argument("--collection-name", help="Name of the collection to create", default=None)
     args = parser.parse_args()
@@ -51,12 +52,12 @@ if __name__ == "__main__":
     env_file = load_project_env(args.env_path)
 
     corpus_name = os.getenv("CORPUS_NAME")
-    corpus_dir = args.corpus_dir or DATA_PATH / corpus_name
+    textual_contents_dir = args.corpus_dir or TEXTUAL_CONTENTS_PATH / corpus_name
     metadata_dir = args.metadata_dir or STATS_PATH / corpus_name
     collection_name = args.collection_name or f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
 
     index_corpus(
-        corpus_dir=corpus_dir,
+        textual_contents_dir=textual_contents_dir,
         metadata_dir=metadata_dir,
         chunks_log_path=CHUNKS_PATH,
         collection_name=collection_name,

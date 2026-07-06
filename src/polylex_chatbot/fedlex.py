@@ -22,7 +22,7 @@ def resolve_redirect(url):
     return loop.run_until_complete(_resolve_redirect_async(url))
 
 def get_fedlex_api_style_url(url):
-    # FIXME : all manual tricks, a bit bad...
+    # manual tricks but seems to work...
     api_url = url.replace("https://www.fedlex.admin.ch/", "https://fedlex.data.admin.ch/")
     api_url = api_url.replace("fedlex.data.admin.ch/eli/oc", "fedlex.data.admin.ch/eli/cc")
     url_end_exceptions = ["/fr", "/en", "/fr#a2"]

@@ -1,0 +1,23 @@
+{
+    "corpus_size": 322,
+    "nb_summaries": 300,
+    "nb_en": 144,
+    "nb_fr": 178,
+    "nb_en_lex": 120,
+    "nb_fr_lex": 156,
+    "nb_fr_appendix": 21,
+    "nb_en_appendix": 23,
+    "nb_fr_appendix_lex": 1,
+    "nb_en_appendix_lex": 1,
+    "nb_en_fedlex": 5,
+    "nb_fr_fedlex": 29,
+    "nb_fr_others": 149,
+    "nb_en_others": 139,
+    "nb_en_pdf": 143,
+    "nb_fr_pdf": 177,
+    "nb_fr_docx": 1,
+    "nb_en_docx": 1,
+    "nb_duplicated_docs": 35,
+    "nb_mismatch_categories": 2,
+    "nb_mismatch_languages": 33
+}

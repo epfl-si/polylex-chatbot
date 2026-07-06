@@ -1,4 +1,6 @@
 data/*
+documents/*
+textual_contents/*
 
 rag/text_from_scanned_pdfs/*
 rag/qdrant_data/*

@@ -5,9 +5,10 @@ from datetime import datetime
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.metadata import build_metadata, add_indexing_flag, save_metadata
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH
+from polylex_chatbot.metadata import build_metadata, save_textual_content_and_complete_metadata, save_metadata
 from polylex_chatbot.downloads import fetch_polylex_api, download_documents
-from polylex_chatbot.config import DATA_PATH, STATS_PATH
+from polylex_chatbot.config import DOCUMENTS_PATH, STATS_PATH
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,7 +17,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def build_corpus(data_dir, metadata_dir, corpus_name):
+def build_corpus(documents_dir, textual_contents_dir, metadata_dir, corpus_name):
     logger.info("Start to build corpus")
 
     logger.info("Collecting data")
@@ -25,15 +26,14 @@ def build_corpus(data_dir, metadata_dir, corpus_name):
     logger.info("Creating metadata dict")
     metadata = build_metadata(data)
 
-    logger.info("Downloading documents...")
-    corpus_dir = download_documents(metadata, data_dir, corpus_name)
-    logger.info("Documents downloaded to %s", corpus_dir)
+    logger.info("Downloading documents to %s ...", documents_dir)
+    download_documents(metadata, documents_dir, corpus_name)
 
-    logger.info("Compute document statistics to determine which documents should be indexed")
-    metadata = add_indexing_flag(metadata, corpus_dir)
+    logger.info("Extract and save textual content from documents in %s, and add nb_tokens and indexing flag in metadata dict", textual_contents_dir)
+    metadata = save_textual_content_and_complete_metadata(documents_dir, textual_contents_dir, metadata)
 
-    corpus_metadata_dir = save_metadata(metadata, metadata_dir, corpus_name)
-    logger.info("Writing metadata to %s", corpus_metadata_dir)
+    logger.info("Writing metadata to %s ...", metadata_dir)
+    save_metadata(metadata, metadata_dir)
 
     logger.info("Corpus built successfully")
 
@@ -46,9 +46,19 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
+    corpus_name = args.corpus_name
+
+    documents_dir = DOCUMENTS_PATH / corpus_name
+    textual_contents_dir = TEXTUAL_CONTENTS_PATH / corpus_name
+    metadata_dir = STATS_PATH / corpus_name
+
+    documents_dir.mkdir(parents=True, exist_ok=True)
+    textual_contents_dir.mkdir(parents=True, exist_ok=True)
+    metadata_dir.mkdir(parents=True, exist_ok=True)
 
     build_corpus(
-        data_dir=DATA_PATH,
-        metadata_dir=STATS_PATH,
-        corpus_name=args.corpus_name
+        documents_dir=documents_dir,
+        textual_contents_dir=textual_contents_dir,
+        metadata_dir=metadata_dir,
+        corpus_name=corpus_name
     )

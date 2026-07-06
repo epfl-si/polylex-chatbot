@@ -2,13 +2,12 @@ import os
 import re
 import json
 import pandas as pd
-from tika import parser
-from docx import Document
 from collections import Counter
 from matplotlib import pyplot as plt
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-from polylex_chatbot.config import ARTICLE_PATTERN
+from .config import ARTICLE_PATTERN
+from .chunking import get_doc_id_from_file
 
 def count_nb_summaries(data):
     nb_summaries = 0
@@ -101,15 +100,15 @@ def compute_corpus_metadata_stats(data):
 
     return corpus_metadata_stats
 
-def compute_file_content_stats(filename, suffix, content):
+def compute_file_content_stats(filename, suffix, content, nb_tokens):
     nb_occ_article = sum(1 for _ in re.finditer(ARTICLE_PATTERN, content))
     ratio_alnum, ratio_al, ratio_num = count_ratio_alnum_chars(content)
 
     stats = {
-        "doc_id": filename,
+        "filename": filename,
         "suffix": suffix,
         "nb_chars": len(content),
-        "nb_tokens": count_nb_tokens(content),
+        "nb_tokens": nb_tokens,
         "ratio_alnum": ratio_alnum,
         "ratio_al": ratio_al,
         "ratio_num": ratio_num,
@@ -118,25 +117,20 @@ def compute_file_content_stats(filename, suffix, content):
 
     return stats
 
-def compute_corpus_content_stats(data_path):
+def compute_corpus_content_stats(textual_contents_path, metadata):
     stats = []
 
-    for file in data_path.iterdir():
-        suffix = file.suffix
-        if suffix == ".txt":
-            content = file.read_text(encoding="utf-8")
-            stats.append(compute_file_content_stats(file.name, suffix, content))
-        elif suffix == ".docx":
-            doc = Document(file)
-            content = "\n".join(p.text for p in doc.paragraphs)
-            stats.append(compute_file_content_stats(file.name, suffix, content))
-        elif suffix == ".pdf":
-            parsed = parser.from_file(str(file))
-            content = parsed.get("content")
-            stats.append(compute_file_content_stats(file.name, suffix, content))
+    for file in textual_contents_path.iterdir():
+        doc_id = get_doc_id_from_file(file)
+        filename = file.stem
+        content = file.read_text(encoding="utf-8")
+        if "summary" in filename:
+            suffix = "txt"
+            nb_tokens = count_nb_tokens(content)
         else:
-            # TODO : gerer dans les logs
-            print(f"Error while reading {file}: format '{suffix}' not supported")
+            suffix = metadata[doc_id]["content_format"]
+            nb_tokens = metadata[doc_id]["nb_tokens"]
+        stats.append(compute_file_content_stats(filename, suffix, content, nb_tokens))
 
     return pd.DataFrame(stats)
 
@@ -154,10 +148,10 @@ def save_stats(path, filename, suffix, stats):
 def compute_content_lengths(stats):
     content_lengths = pd.concat(
         {
-            "summaries_nb_chars": stats.loc[stats["suffix"] == ".txt", "nb_chars"].describe(),
-            "summaries_nb_tokens": stats.loc[stats["suffix"] == ".txt", "nb_tokens"].describe(),
-            "documents_nb_chars": stats.loc[stats["suffix"] != ".txt", "nb_chars"].describe(),
-            "documents_nb_tokens": stats.loc[stats["suffix"] != ".txt", "nb_tokens"].describe()
+            "summaries_nb_chars": stats.loc[stats["suffix"] == "txt", "nb_chars"].describe(),
+            "summaries_nb_tokens": stats.loc[stats["suffix"] == "txt", "nb_tokens"].describe(),
+            "documents_nb_chars": stats.loc[stats["suffix"] != "txt", "nb_chars"].describe(),
+            "documents_nb_tokens": stats.loc[stats["suffix"] != "txt", "nb_tokens"].describe()
         },
         axis=1
     )
@@ -172,4 +166,4 @@ def compute_and_save_nb_occ_article_plot(path, stats):
     plt.title("Nombre d’occurrences du pattern 'article' par document")
     plt.savefig(path / "plot_nb_occ_article.png")
 
-__all__ = ["compute_corpus_metadata_stats", "compute_corpus_content_stats", "save_stats", "compute_content_lengths", "compute_and_save_nb_occ_article_plot"]
+__all__ = ["count_nb_tokens", "compute_corpus_metadata_stats", "compute_corpus_content_stats", "save_stats", "compute_content_lengths", "compute_and_save_nb_occ_article_plot"]
