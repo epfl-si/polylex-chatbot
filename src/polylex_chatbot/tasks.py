@@ -1,5 +1,6 @@
+from .config import prepare_llm_context
 from .retrieval import retrieve_documents
-from .generation import generate_response, prepare_llm_context
+from .generation import generate_response
 
 def make_rag_task(db, nb_chunks_retrieved, reranker_model_name, reranker_api_key, base_url, nb_chunks_reranked, llm_model_config, nb_chunks_sent, relevance_threshold, prompt):
     def rag_task(*, item, **kwargs):

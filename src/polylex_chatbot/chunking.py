@@ -1,6 +1,5 @@
 import os
 import re
-from tika import parser
 from matplotlib import pyplot as plt
 from dotenv import find_dotenv, set_key
 from langchain_core.documents import Document
@@ -27,49 +26,35 @@ def get_doc_id_from_file(file):
 
 def create_chunks(path, language_matched_metadata_by_doc_id, split_document_function):
     """
-    Create text chunks for each document in the given path and enrich them with metadata
+    Create text chunks for each textual content in the given path and enrich them with metadata
     """
 
     chunks = []
 
     for file in path.iterdir():
+        filename = file.stem
         doc_id = get_doc_id_from_file(file)
-
-        if doc_id is None:
-            # TODO : gerer dans les logs
-            print(f"File format not supported for '{file}'")
-            continue
 
         if language_matched_metadata_by_doc_id[doc_id]["is_indexed"]:
             title = language_matched_metadata_by_doc_id[doc_id]["title"]
             source = language_matched_metadata_by_doc_id[doc_id]["source"]
-            suffix = file.suffix.lower()
+            content = file.read_text(encoding="utf-8")
 
-            if suffix == ".txt":
-                extracted_text = file.read_text(encoding="utf-8")
-                extracted_metadata = {}
+            if "summary" in filename:
                 category = "summary"
-                content_format = ".txt"
-            elif suffix in [".docx", ".pdf"]:
-                parsed_doc = parser.from_file(str(file), requestOptions={"timeout": 300})
-                extracted_text = parsed_doc.get("content")
-                extracted_metadata = parsed_doc.get("metadata")
+                content_format = "txt"
+                nb_tokens = 0
+            else:
                 category = language_matched_metadata_by_doc_id[doc_id]["cat"]
                 content_format = language_matched_metadata_by_doc_id[doc_id]["content_format"]
-            else:
-                # TODO : mettre dans les logs
-                print(f"File '{file}' not chunked (suffix not handled)")
-                continue
-
-            cleaner_text = clean_text(extracted_text, source)
+                nb_tokens = language_matched_metadata_by_doc_id[doc_id]["nb_tokens"]
 
             doc = Document(
-                page_content=cleaner_text,
+                page_content=content,
                 metadata={
                     "doc_id": doc_id,
-                    "filepath": str(file),
-                    "total_pages": int(extracted_metadata.get("xmpTPg:NPages", 1)),
-                    "creationDate": extracted_metadata.get("xmp:CreateDate"),
+                    "filename": filename,
+                    "nb_tokens": nb_tokens,
                     "src_url": language_matched_metadata_by_doc_id[doc_id]["src_url"],
                     "language": language_matched_metadata_by_doc_id[doc_id]["lex_lang"],
                     "cat": category,
@@ -114,7 +99,7 @@ def save_chunks(path, chunks):
 
     with open(chunks_filename, "w", encoding="utf-8") as f:
         for chunk in chunks:
-            content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - TOTAL PAGES: {chunk.metadata["total_pages"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
+            content = f"\n------------ DOC ID: {chunk.metadata["doc_id"]} - LANGUAGE: {chunk.metadata["language"]} - SOURCE: {chunk.metadata["source"]} - LEX NUMBER: {chunk.metadata["lex_number"]} - START INDEX: {chunk.metadata["start_index"]} ------------\n"
             f.write(content + chunk.page_content + "\n")
 
     save_chunks_distribution(dir_collection, chunks)
@@ -154,4 +139,4 @@ def divide_chunks_per_lang(chunks, langs, env_file):
 
     return result
 
-__all__ = ["create_chunks", "save_chunks", "divide_chunks_per_lang"]
+__all__ = ["clean_text", "get_doc_id_from_file", "create_chunks", "save_chunks", "divide_chunks_per_lang"]

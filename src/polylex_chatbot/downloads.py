@@ -72,29 +72,25 @@ def save_corpus_name(corpus_name):
 
 def download_documents(data, path, corpus_name):
     """
-    Download the documents referenced in data to the specified directory
+    Download the documents referenced in data to the specified path
     """
-
-    corpus_path = path / corpus_name
-    corpus_path.mkdir(parents=True, exist_ok=True)
 
     save_corpus_name(corpus_name)
 
     for doc_id, metadata in data.items():
         content_format = metadata.get("content_format")
         redirected_url = metadata.get("redirected_url")
+        filename = metadata.get("filename")
 
         if content_format in ["docx", "pdf"]:
-            filename = f"{doc_id}.{content_format}"
-            download_file(redirected_url, corpus_path, filename)
+            download_file(redirected_url, path, filename)
         else:
+            # TODO : mettre dans les logs
             print(f"File format '{content_format}' not yet supported for doc_id='{doc_id}'")
 
         for lang, summary in metadata.get("summaries").items():
             filename = f"{doc_id}_summary_{lang}.txt"
             content = f"{summary.get("title")}\n\n{summary.get("description")}".strip()
-            write_txt(filename, corpus_path, content)
+            write_txt(filename, path, content)
 
-    return corpus_path
-
-__all__ = ["fetch_polylex_api", "resolve_document_url", "download_documents"]
+__all__ = ["fetch_polylex_api", "resolve_document_url", "download_documents", "write_txt"]
