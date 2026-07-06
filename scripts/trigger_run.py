@@ -3,8 +3,7 @@ import argparse
 from langfuse import get_client
 
 from polylex_chatbot.env import load_project_env
-from polylex_chatbot.config import (EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED,
-                                    get_llm_model_config, NB_CHUNKS_SENT, RELEVANCE_THRESHOLD)
+from polylex_chatbot.config import EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, get_llm_model_config
 from polylex_chatbot.tasks import make_rag_task
 from polylex_chatbot.evaluators import *
 
@@ -34,7 +33,7 @@ def trigger_run(run_description, dataset_name):
         description=f"{run_description} (using '{collection_name}' collection and '{llm_name}' llm)",
         task=make_rag_task(qdrant, NB_CHUNKS_RETRIEVED, os.getenv("MODEL_RERANKER_NAME"),
                            os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RERANKED,
-                           get_llm_model_config(), NB_CHUNKS_SENT, RELEVANCE_THRESHOLD, os.getenv("PROMPT_TEMPLATE_FR")
+                           get_llm_model_config(), os.getenv("PROMPT_TEMPLATE_FR")
                            ),
         evaluators=[
             # retrieval
@@ -57,8 +56,7 @@ def trigger_run(run_description, dataset_name):
             "collection_name": collection_name,
             "llm_name": llm_name,
             "nb_chunks_retrieved": NB_CHUNKS_RETRIEVED,
-            "nb_chunks_reranked": NB_CHUNKS_RERANKED,
-            "nb_chunks_sent": NB_CHUNKS_SENT
+            "nb_chunks_reranked": NB_CHUNKS_RERANKED
         }
     )
 

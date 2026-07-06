@@ -45,19 +45,17 @@ def retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_ur
     reranked_hits = rerank_documents(reranker_api_key, base_url, query, documents, reranker_model_name, nb_reranked)
 
     retrieved_doc_ids = []
-    reranked_scores = []
+    retrieved_scores = []
     retrieved_contexts = []
 
     for rank, hit in enumerate(reranked_hits, start=1):
         original_index = hit["index"]
-        rerank_score = hit["relevance_score"]
 
-        document, _ = hits[original_index]
+        document, score = hits[original_index]
         doc_id = document.metadata.get("doc_id")
 
         retrieved_doc_ids.append(doc_id)
-        reranked_scores.append(rerank_score)
-
+        retrieved_scores.append(score)
         retrieved_contexts.append(
             {
                 "rank": rank,
@@ -66,4 +64,4 @@ def retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_ur
             }
         )
 
-    return retrieved_doc_ids, reranked_scores, retrieved_contexts
+    return retrieved_doc_ids, retrieved_scores, retrieved_contexts

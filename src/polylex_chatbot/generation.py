@@ -1,13 +1,24 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-def build_context_for_llm(items, item_type):
+def build_context_for_llm(items):
     if len(items) == 0:
         return "-"
 
     contents = [item.get("content") for item in items]
-    # TODO : a la place de item_type, remplacer par le nom de la LEX ?
-    context = "\n\n".join(f"[{item_type} {i}]\n{content}" for i, content in enumerate(contents, start=1))
+
+    formatted_refs = []
+    for item in items:
+        metadata = item.get("metadata")
+        lex_type = metadata.get("lex_type")
+        lex_number = metadata.get("lex_number")
+        category = metadata.get("cat")
+        formatted_ref = f"{lex_type} {lex_number}"
+        if category == "appendix":
+            formatted_ref = formatted_ref + " (appendix)"
+        formatted_refs.append(formatted_ref)
+
+    context = "\n\n".join(f"[{item_ref} {i}]\n{content}" for i, (content, item_ref) in enumerate(zip(contents, formatted_refs), start=1))
 
     return context
 
