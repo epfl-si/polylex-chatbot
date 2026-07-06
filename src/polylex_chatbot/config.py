@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from qdrant_client import models
 from langchain_qdrant import FastEmbedSparse
@@ -6,7 +5,7 @@ from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from polylex_chatbot.llm_context_utils import prepare_llm_context_max_5_chunks
+from polylex_chatbot.llm_context_utils import *
 
 # paths
 DOCUMENTS_PATH = Path.cwd() / "documents"
@@ -142,7 +141,7 @@ NB_CHUNKS_RERANKED = 20
 
 # generation
 MAX_USER_MESSAGE_LEN = 1500
-NB_CHUNKS_SENT = 5
+NB_MAX_ITEMS_SENT = 10
 def get_llm_model_config():
     return OpenAI(
         model=os.getenv("MODEL_LLM_NAME"),
@@ -151,9 +150,12 @@ def get_llm_model_config():
         max_tokens=500, # TODO : a augmenter ?
         temperature=0.0
     )
-RELEVANCE_THRESHOLD = 0.2
-def prepare_llm_context(chunks, scores, nb_chunks_max, relevance_threshold):
-    return prepare_llm_context_max_5_chunks(chunks, scores, nb_chunks_max, relevance_threshold)
+def prepare_llm_context(chunks, scores):
+    #return prepare_llm_context_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
+    #return prepare_llm_context_max_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
+    #return prepare_llm_context_n_documents_or_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
+    return prepare_llm_context_modular_context(chunks, scores, NB_MAX_ITEMS_SENT)
+
 
 # evaluation
 EVALUATION_DATASET_NAME = "20260704_dev_dataset"

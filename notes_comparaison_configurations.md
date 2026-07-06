@@ -18,14 +18,14 @@ L'optimisation des différents hyperparamètres s'est faite en se basant sur les
 - splitter
 - contextualisation des chunks
 - BM25 model
-- embedder
+- embeddings model
 - retrieval mode + nb_retrieved
 - reranker + nb_reranked
 
 ### Génération
 
-- context -> TODO
-- prompt + llm -> 3 modèles avec un prompt propre à chaque modèle
+- context
+- prompt + llm
 - relevance threshold
 - temperature LLM
 
@@ -224,7 +224,7 @@ Hybrid + reranker:
 
 ## Recherche de la meilleure configuration pour la partie génération
 
-Trois LLMs avaient initialement été sélectionnés sur la base de la documentation disponible et des benchmarks consultés:
+Trois LLMs avaient initialement été sélectionnés sur la base de la documentation disponible et des benchmarks consultés :
 - [meta-llama/Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B)
 - [mistralai/Mistral-Small-3.2-24B-Instruct-2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506)
 - [Qwen/Qwen3-32B](https://huggingface.co/Qwen/Qwen3-32B).
@@ -259,7 +259,13 @@ Mistral a donc finalement à nouveau été utilisé comme LLM-as-Judge. Ce choix
 C’est pourquoi il a été décidé, en plus d'une réduction du nombre de configurations à tester, de ne pas comparer les différentes stratégies de construction du contexte sur plusieurs LLMs, mais uniquement sur les résultats obtenus avec Mistral.
 En effet, une comparaison impliquant plusieurs LLMs évalués par un de ces LLms a de fortes chances d'être biaisée.
 
-TODO : parler des résultats avec les constructions du contexte
+Le dernier hyperparamètre à fixer est la construction du contexte à fournir au LLM. Plusieurs configurations ont été comparées :
+- fournir un nombre fixe de chunks (2, 5 et 20 chunks)
+- fournir au maximum 10 chunks selon un seuil de pertinance fixé à 0.2 pour chaque chunk
+- fournir les deux documents complets correspondant aux deux chunks les plus pertinents
+- fournir, sur la base de 10 chunks récupérés au départ, les documents correspondant aux chunks d'un même document et les chunks uniques si leur score est plus élevé que la limite de 0.2.
+
+Il s'avère que le LLM fournit les réponses les plus optimales lorsqu'il a à disposition les documents en entier.
 
 ### Mise en place de l'environnement
 
@@ -269,8 +275,9 @@ TODO : parler des résultats avec les constructions du contexte
 ### Procédure pour créer un run avec une certaine configuration LLM
 
 1. création d'un .env puis :
-  - llm -> modification de `MODEL_LLM_NAME` et `MODEL_LLM_API_KEY`
-  - prompt -> modification de `PROMPT_TEMPLATE_FR` et `PROMPT_TEMPLATE_EN`
+  - llm -> modification de `MODEL_LLM_NAME` et `MODEL_LLM_API_KEY` dans .env
+  - prompt -> modification de `PROMPT_TEMPLATE_FR` et `PROMPT_TEMPLATE_EN` dans .env
+  - context -> modification de `NB_MAX_ITEMS_SENT` et fonction appelée `prepare_llm_context(chunks, scores)` dans config.py
 2. `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_file>" --run-description="<run_description>"`
 
 ### Evaluations avec un contexte contenant au maximum 5 chunks selon threshold
@@ -303,21 +310,59 @@ Analyze runs:
 
 ### Autres configurations pour construire le contexte du LLM
 
+La comparaison entre ces configurations a été effectuée sur une autre collection (même corpus mais autres métadonnées disponibles et légèrement plus de points).
+Il a fallu en effet mettre à disposition le nombre de tokens d'un document comme métadonnée afin de s'assurer que le contexte du LLM ne serait pas dépassé lorsqu'on envoie directement tout le contenu d'un ou plusieurs documents à la place de donner le contenu des chunks.
+
+#### Contexte avec un nombre fixe de chunks
+
+Contexte contenant toujours 2 chunks :
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : 2 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T14:05:39.382080Z" --name-dir="generation_mistral_2_chunks_mistral_judge"
+
 Contexte contenant toujours 5 chunks :
-- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - mistral (only generation compared : 5 chunks in context (with mistral as judge)"
-- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T16:17:55.556222Z" --name-dir="generation_mistral_5_chunks_mistral_judge"
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : 5 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T14:19:45.681424Z" --name-dir="generation_mistral_5_chunks_mistral_judge"
 
-Contexte contenant 2 documents en entier sauf exception de longueur :
-TODO
+Contexte contenant toujours 20 chunks :
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : 20 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T14:23:27.660590Z" --name-dir="generation_mistral_20_chunks_mistral_judge"
 
-Contexte contenant 2 documents des chunks ou des documents :
-TODO
+#### Contexte avec un nombre maximal de chunks selon limite sur le score
 
-# TODO : comparer uniquement sur mistral jugé par mistral:
-- maximum 5 chunks
-- toujours 5 chunks
-- 2 documents
-- documents ou chunks
+Avec un seuil fixé à 0.2, seuls quelques chunks sont jugés pertinents à envoyer au LLM, il n'est donc nécessaire de considérer qu'une configuration avec au maximum 10 chunks envoyés au LLM.
+
+Contexte contenant au maximum 10 chunks :
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : max 10 chunks in context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T14:32:02.850657Z" --name-dir="generation_mistral_max_10_chunks_mistral_judge"
+
+#### Contexte avec un nombre fixe de documents
+
+En considérant l'envoi de 2 documents entiers au LLM, il n'y a que quelques cas (moins de cinq) pour lesquels le contexte du LLM serait dépassé.
+Dans ces rares cas, seuls les chunks correspondant sont envoyés au LLM (comme la configuration avec l'envoi de 2 chunks).
+
+Cette configuration obtient des réponses très pertinentes générées par le LLM et semble être une configuration idéale.
+
+Contexte contenant 2 documents (ou 2 chunks si contexte surchargé) :
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : 2 docs in context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T16:15:57.181316Z" --name-dir="generation_mistral_2_docs_mistral_judge"
+
+#### Contexte avec des chunks ou des documents selon la pertinence
+
+Pour cette configuration, on considère au départ 10 chunks et le contexte pour le LLM se construit de la façon suivante, dans la limite de la place disponible :
+- si plusieurs chunks proviennent d'un même document et que ce document n'est pas trop long, il est inclu au contexte (si le document est trop long, les chunks respectifs sont inclus au contexte)
+- si un chunk provient d'un document référencé uniquement une fois mais que son score est supérieur à la limite, il est inclu au contexte
+- (les autres chunks ne sont pas considérés).
+
+Cette configuration semble pertinente sur le jeu de questions de développement et permet de tester les différentes façons de construire le contexte.
+Le contexte du LLM n'a jamais été dépassé et un ou plusieurs documents sont envoyés au LLM, ainsi qu'un ou plusieurs chunks pertinents pour chaque question.
+
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : modular context)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T17:19:12.780266Z" --name-dir="generation_mistral_modular_context_mistral_judge"
+
+Une dernière modification apportée est de mentionner de quelle LEX / DOC le contenu textuel provient, à la place d'indiquer *[Chunk i]*, *[Document i]* ou encore *[Item i]*.
+
+- PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : modular context with lex type + lex number as context for each item)"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T18:54:57.009253Z" --name-dir="generation_mistral_modular_context_item_referenced_mistral_judge"
 
 # TODO : considérer les ttests
 
