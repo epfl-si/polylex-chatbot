@@ -110,9 +110,9 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
             items_in_llm_context[-1]["content"] = get_doc_content_from_chunk(ref_chunk)
             approxim_nb_tokens_in_context += nb_tokens
             handled_indices.update(indices_of_chunks_from_current_doc_id)
-            print(f"Document with doc id 'doc_id' added in context (referenced {count} times)")
+            print(f"Document with doc id '{doc_id}' added in context (referenced {count} times)")
         else:
-            print(f"Document with doc id 'doc_id' referenced {count} times but too large to get in context ({nb_tokens})")
+            print(f"Document with doc id '{doc_id}' referenced {count} times but too large to get in context ({nb_tokens})")
             for index in indices_of_chunks_from_current_doc_id:
                 chunk = chunks_to_use[index]
                 score = scores_to_use[index]
