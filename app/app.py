@@ -61,7 +61,7 @@ def build_config_by_lang():
     }
 
 def get_ui_lang():
-    languages = cl.user_session.get("languages") or "" # TODO : selon https://github.com/Chainlit/chainlit/issues/879 pas possible de recuperer la langue du navigateur...
+    languages = cl.user_session.get("languages") or ""
     first_lang = languages.split(",")[0].split(";")[0].strip().lower()
     selected_lang = "en" if first_lang.startswith("en") else "fr"
     return selected_lang

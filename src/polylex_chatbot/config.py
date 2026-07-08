@@ -22,8 +22,7 @@ RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS = 30
 
 # languages
 LANGUAGES = ["fr", "en"]
-# TODO : change name
-HARD_CODED_LANGS = {
+DICT_MATCH_LANG_FOR_DOC = {
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.1.7-Ruling-EPFL-Geneve.pdf": "fr",
     "https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/1.1.7-Ruling-EPFL-Vaud-.pdf": "fr",
     "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2008/857/20250501/fr/pdf-a/fedlex-data-admin-ch-eli-cc-2008-857-20250501-fr-pdf-a-1.pdf": "fr",

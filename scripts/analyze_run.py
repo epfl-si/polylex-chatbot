@@ -64,7 +64,7 @@ def validate_scores(df_results):
     score_columns = df_results.drop(columns=["trace_id", "question", "generated_answer"])
     are_scores_in_range = ((score_columns >= 0) & (score_columns <= 1)).all().all()
     if not are_scores_in_range:
-        # TODO : faire autrement
+        # a bit bad but LLM sometimes hallucinate
         if ((df_results["trace_id"] == "ec0b9ac77f760564") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
             df_results.loc[df_results["trace_id"] == "ec0b9ac77f760564", "Answer Correctness - RAGAS"] = 0.6
         elif ((df_results["trace_id"] == "b925f2da614ac791") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
@@ -150,7 +150,6 @@ def compute_and_plot_statistics(df_scores, path):
     df_stats = compute_statistics(df_scores)
     df_stats.to_csv(path / "df_stats.csv", index=True)
 
-    # TODO : ameliorer cette partie car cols en dur
     df_stats_filtred = df_stats.drop(columns=["hit_at_1", "hit_at_2", "hit_at_3", "hit_at_4", "hit_at_5", "hit_at_10", "hit_at_15", "hit_at_20", "ratio_correct_docs"])
     cols_reordered = ["mrr_doc", "Context Relevance (Contextrelevance-Langfuse)", "Groundedness (Faithfulness-RAGAS)", "Answer Relevance (Relevance-Langfuse)", "Answer Correctness - RAGAS", "semantic_similarity", "len_answers_quality", "chrf_score"]
     existing_cols = get_existing_cols(df_stats_filtred.columns, cols_reordered, "Df with all metrics")
