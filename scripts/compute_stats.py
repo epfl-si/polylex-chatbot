@@ -3,9 +3,8 @@ import logging
 import argparse
 
 from polylex_chatbot.env import load_project_env
-from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG
-from polylex_chatbot.config import STATS_PATH
 from polylex_chatbot.metadata import load_metadata
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG, STATS_PATH
 from polylex_chatbot.stats import compute_corpus_metadata_stats, compute_corpus_content_stats, save_stats, compute_content_lengths, compute_and_save_nb_occ_article_plot
 
 logging.basicConfig(

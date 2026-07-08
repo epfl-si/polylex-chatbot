@@ -5,10 +5,10 @@ from datetime import datetime
 
 from polylex_chatbot.env import load_project_env
 from polylex_chatbot.indexing import index_chunks
-from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG
-from polylex_chatbot.config import STATS_PATH, CHUNKS_PATH, LANGUAGES, create_documents_splitter
-from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
+from polylex_chatbot.config import create_documents_splitter
 from polylex_chatbot.chunking import create_chunks, save_chunks, divide_chunks_per_lang
+from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG, STATS_PATH, CHUNKS_PATH, LANGUAGES
 
 logging.basicConfig(
     level=logging.INFO,

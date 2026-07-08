@@ -11,7 +11,7 @@ from langfuse import Langfuse
 import matplotlib.pyplot as plt
 
 from polylex_chatbot.env import load_project_env
-from polylex_chatbot.config import EVALUATION_DATASET_NAME, EVALUATION_RESULTS_PATH, COLS_ORDER_IN_EVALUATION_DF, DICT_METRIC_LABELS
+from polylex_chatbot.constants import EVALUATION_DATASET_NAME, EVALUATION_RESULTS_PATH, COLS_ORDER_IN_EVALUATION_DF, DICT_METRIC_LABELS
 
 logging.basicConfig(
     level=logging.INFO,

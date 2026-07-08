@@ -3,7 +3,7 @@ import os
 import requests
 from dotenv import find_dotenv, set_key
 
-from .config import LEXES_API_URL
+from .constants import LEXES_API_URL
 from .fedlex import get_fedlex_pdf_from_sparql
 
 def fetch_polylex_api():

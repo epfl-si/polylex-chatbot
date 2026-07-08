@@ -2,10 +2,11 @@ import logging
 import argparse
 from langfuse import get_client
 
-from polylex_chatbot.env import load_project_env
-from polylex_chatbot.config import EVALUATION_DATASET_NAME, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, get_llm_model_config
-from polylex_chatbot.tasks import make_rag_task
 from polylex_chatbot.evaluators import *
+from polylex_chatbot.tasks import make_rag_task
+from polylex_chatbot.env import load_project_env
+from polylex_chatbot.config import init_db_client, get_llm_model_config
+from polylex_chatbot.constants import EVALUATION_DATASET_NAME, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED
 
 logging.basicConfig(
     level=logging.INFO,

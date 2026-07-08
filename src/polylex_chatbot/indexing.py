@@ -4,9 +4,8 @@ from itertools import islice
 from dotenv import find_dotenv, set_key
 from qdrant_client import QdrantClient, models
 
-from .config import (get_db_dense_index_config, DB_SPARSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN,
-                     get_embeddings_model_config, get_sparse_model_config_fr, get_sparse_model_config_en
-                     )
+from .constants import DB_SPARSE_INDEX_CONFIG, DB_SPARSE_INDEX_CONFIG_FR, DB_SPARSE_INDEX_CONFIG_EN
+from .config import get_db_dense_index_config, get_embeddings_model_config, get_sparse_model_config_fr, get_sparse_model_config_en
 
 def save_collection_name(collection_name, env_file):
     var_name = "DB_COLLECTION_NAME"
