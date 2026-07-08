@@ -6,7 +6,7 @@ from collections import Counter
 from matplotlib import pyplot as plt
 from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 
-from .config import ARTICLE_PATTERN
+from .constants import ARTICLE_PATTERN
 from .chunking import get_doc_id_from_file
 
 def count_nb_summaries(data):

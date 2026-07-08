@@ -2,8 +2,8 @@ import os
 import copy
 from collections import Counter
 
-from .constants import TEXTUAL_CONTENTS_PATH_CHATBOT, RELEVANCE_THRESHOLD
 from .generation import build_context_for_llm
+from .constants import TEXTUAL_CONTENTS_PATH_CHATBOT, RELEVANCE_THRESHOLD
 
 def prepare_llm_context_n_chunks(chunks, scores, nb_chunks_sent):
     chunks_in_llm_context = chunks[:nb_chunks_sent]

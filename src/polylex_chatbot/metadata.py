@@ -1,15 +1,15 @@
-import hashlib
 import re
 import os
 import json
+import hashlib
 from tika import parser
 from docx import Document
 from langdetect import detect
 
 from .stats import count_nb_tokens
 from .chunking import get_doc_id_from_file, clean_text
-from .config import LANGUAGES, DICT_MATCH_LANG_FOR_DOC
 from .downloads import resolve_document_url, write_txt
+from .constants import LANGUAGES, DICT_MATCH_LANG_FOR_DOC
 from .html_utils import transform_html_in_text, get_urls_from_html
 
 def make_doc_id(key):

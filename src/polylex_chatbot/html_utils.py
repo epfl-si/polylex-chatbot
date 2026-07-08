@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
 import re
+from bs4 import BeautifulSoup
 
 def get_urls_from_html(text_in_html):
     soup = BeautifulSoup(text_in_html, "html.parser")

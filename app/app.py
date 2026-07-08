@@ -11,7 +11,8 @@ from langfuse.langchain import CallbackHandler
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.config import LANGUAGES, RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS, init_db_client, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, prepare_llm_context, get_llm_model_config, MAX_USER_MESSAGE_LEN
+from polylex_chatbot.constants import LANGUAGES, RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, MAX_USER_MESSAGE_LEN
+from polylex_chatbot.config import init_db_client, prepare_llm_context, get_llm_model_config
 from polylex_chatbot.retrieval import retrieve_documents
 from polylex_chatbot.generation import generate_response
 
