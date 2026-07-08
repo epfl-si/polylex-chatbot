@@ -1,5 +1,4 @@
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 
 def build_context_for_llm(items):
     if len(items) == 0:
@@ -24,7 +23,7 @@ def build_context_for_llm(items):
 
 def generate_response(llm, query, prompt, context, monitoring_config=None):
     prompt_template = ChatPromptTemplate.from_template(prompt)
-    chain = prompt_template | llm | StrOutputParser()
+    raw_chain = prompt_template | llm
 
     inputs = {
         "query": query,
@@ -32,10 +31,15 @@ def generate_response(llm, query, prompt, context, monitoring_config=None):
     }
 
     if monitoring_config is None:
-        response = chain.invoke(inputs).strip()
+        llm_results = raw_chain.invoke(inputs)
     else:
-        response = chain.invoke(inputs, config={"callbacks": [monitoring_config]}).strip()
+        llm_results = raw_chain.invoke(inputs, config={"callbacks": [monitoring_config]})
 
-    return response
+    response = getattr(llm_results, "content")
+
+    finish_reason = getattr(llm_results, "response_metadata").get("finish_reason")
+    usage_metadata = getattr(llm_results, "usage_metadata")
+
+    return response, finish_reason, usage_metadata
 
 __all__ = ["build_context_for_llm", "generate_response"]

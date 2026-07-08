@@ -1,7 +1,7 @@
 from pathlib import Path
 from qdrant_client import models
 from langchain_qdrant import FastEmbedSparse
-from langchain_openai import OpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -143,11 +143,11 @@ NB_CHUNKS_RERANKED = 20
 MAX_USER_MESSAGE_LEN = 1500
 NB_MAX_ITEMS_SENT = 10
 def get_llm_model_config():
-    return OpenAI(
+    return ChatOpenAI(
         model=os.getenv("MODEL_LLM_NAME"),
         base_url=os.getenv("MODELS_BASE_URL"),
         api_key=os.getenv("MODEL_LLM_API_KEY"),
-        max_tokens=500, # TODO : a augmenter ?
+        max_tokens=2000,
         temperature=0.0
     )
 def prepare_llm_context(chunks, scores):

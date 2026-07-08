@@ -27,6 +27,7 @@ TRANSLATIONS = {
     "en": {
         "model_not_loaded": "The models used by the RAG system have not been loaded yet. Please wait a few moments...",
         "message_too_long": "The message is too long ({len_message} / {max_len} characters).",
+        "context_too_long": "The context sent to LLM was too long...",
         "unsupported_language": "The detected language `{lg}` is not supported. Only questions in French or English are accepted.",
         "generic_error": "An error occurred while processing the question. Please try again.",
         "source_display_error": "Unable to display this source.",
@@ -37,6 +38,7 @@ TRANSLATIONS = {
     "fr": {
         "model_not_loaded": "Les modèles utilisés par le système de RAG ne sont pas encore chargés. Merci de patienter quelques instants...",
         "message_too_long": "Le message est trop long ({len_message} / {max_len} caractères).",
+        "context_too_long": "Le contexte envoyé au LLM était trop long...",
         "unsupported_language": "La langue détectée `{lg}` n'est pas supportée. Seules les questions posées en français ou en anglais sont acceptées.",
         "generic_error": "Une erreur est survenue pendant le traitement de la question. Veuillez réessayer.",
         "source_display_error": "Impossible d'afficher cette source.",
@@ -123,12 +125,15 @@ async def main(message: cl.Message):
         logger.info("Retrieve chunks and build context...")
         _, retrieved_scores, retrieved_chunks = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)
         context_for_llm, items_in_llm_context, nb_relevant_chunks, nb_max_items = prepare_llm_context(retrieved_chunks, retrieved_scores)
-        logger.info("Context built: len_context=%s", len(context_for_llm))
+        # scores are based on semantic similarity from the DB, but results are reranked afterward, so order matters
         logger.info("Ratio relevant chunks: %s / %s (scores: %s)", nb_relevant_chunks, nb_max_items, retrieved_scores)
-
         try:
             logger.info("Call to LLM...")
-            answer = await asyncio.wait_for(asyncio.to_thread(generate_response, get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler), timeout=RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
+            answer, finish_reason, usage_metadata = await asyncio.wait_for(asyncio.to_thread(generate_response, get_llm_model_config(), query, config_by_lang[lang]["prompt"], context_for_llm, langfuse_handler), timeout=RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
+            if finish_reason == "length":
+                logger.warning("Message sent to LLM was too long: %s", usage_metadata)
+                await cl.Message(content=translate("context_too_long", ui_lang)).send()
+                return
         except asyncio.TimeoutError:
             logger.warning("Call to LLM timed out after %s seconds (llm model is not yet loaded)", RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS)
             await cl.Message(content=translate("model_not_loaded", ui_lang)).send()
@@ -137,7 +142,7 @@ async def main(message: cl.Message):
             logger.exception("Error during LLM call: %s", e)
             await cl.Message(content=translate("generic_error", ui_lang)).send()
             return
-        logger.info("Answer generated: len_answer=%s", len(answer or ""))
+        logger.info("Answer generated, usage: %s", usage_metadata)
 
         source_refs = []
         source_registry = cl.user_session.get("source_registry") or {}

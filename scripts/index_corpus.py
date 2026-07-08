@@ -5,7 +5,7 @@ from datetime import datetime
 
 from polylex_chatbot.env import load_project_env
 from polylex_chatbot.indexing import index_chunks
-from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG
 from polylex_chatbot.config import STATS_PATH, CHUNKS_PATH, LANGUAGES, create_documents_splitter
 from polylex_chatbot.metadata import load_metadata, build_language_matched_metadata_by_doc_id
 from polylex_chatbot.chunking import create_chunks, save_chunks, divide_chunks_per_lang
@@ -43,7 +43,7 @@ def index_corpus(textual_contents_dir, metadata_dir, chunks_log_path, collection
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Index corpus")
     parser.add_argument("--env-path", required=True, help="Path to the environment file")
-    parser.add_argument("--collection-description", required=True, help="Description of the collection to be created (corpus name, chunking strategy, contextualisation strategy, embedding model, ...)")
+    parser.add_argument("--collection-description", help="Description of the collection to be created (corpus name, chunking strategy, contextualisation strategy, embedding model, ...)", default="")
     parser.add_argument("--corpus-dir", help="Directory where textual contents from documents are stored", default=None)
     parser.add_argument("--metadata-dir", help="Directory where metadata are stored", default=None)
     parser.add_argument("--collection-name", help="Name of the collection to create", default=None)
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     env_file = load_project_env(args.env_path)
 
     corpus_name = os.getenv("CORPUS_NAME")
-    textual_contents_dir = args.corpus_dir or TEXTUAL_CONTENTS_PATH / corpus_name
+    textual_contents_dir = args.corpus_dir or TEXTUAL_CONTENTS_PATH_RAG / corpus_name
     metadata_dir = args.metadata_dir or STATS_PATH / corpus_name
     collection_name = args.collection_name or f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_collection"
 

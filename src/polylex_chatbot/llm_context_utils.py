@@ -1,7 +1,8 @@
 import os
+import copy
 from collections import Counter
 
-from .constants import TEXTUAL_CONTENTS_PATH, RELEVANCE_THRESHOLD
+from .constants import TEXTUAL_CONTENTS_PATH_CHATBOT, RELEVANCE_THRESHOLD
 from .generation import build_context_for_llm
 
 def prepare_llm_context_n_chunks(chunks, scores, nb_chunks_sent):
@@ -31,7 +32,7 @@ def should_send_documents_to_llm(nb_tokens_in_context):
 def get_doc_content_from_chunk(chunk):
     filename = f"{chunk.get("metadata").get("filename")}.txt"
     title = chunk.get("content").split("\n\n", 1)[0]
-    filepath = TEXTUAL_CONTENTS_PATH / os.getenv("CORPUS_NAME") / filename
+    filepath = TEXTUAL_CONTENTS_PATH_CHATBOT / os.getenv("CORPUS_NAME") / filename
     textual_content = filepath.read_text(encoding="utf-8")
     content = f"{title}\n\n{textual_content}" if title else textual_content
     return content
@@ -93,7 +94,11 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
     doc_ids = [chunk.get("metadata").get("doc_id") for chunk in chunks_to_use]
     count_doc_ids = Counter(doc_ids)
 
+    context_full = False
     for doc_id, count in count_doc_ids.most_common():
+        if context_full:
+            break
+
         if count == 1:
             print(f"No more chunks retrieved from the same document")
             break
@@ -106,8 +111,9 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
             if not can_add(nb_tokens):
                 print(f"Document with doc id '{doc_id}' can not be added in context (no more space left) but is referenced {count} times")
                 break
-            items_in_llm_context.append(ref_chunk)
-            items_in_llm_context[-1]["content"] = get_doc_content_from_chunk(ref_chunk)
+            ref_chunk_for_context = copy.deepcopy(ref_chunk)
+            items_in_llm_context.append(ref_chunk_for_context)
+            items_in_llm_context[-1]["content"] = get_doc_content_from_chunk(ref_chunk_for_context)
             approxim_nb_tokens_in_context += nb_tokens
             handled_indices.update(indices_of_chunks_from_current_doc_id)
             print(f"Document with doc id '{doc_id}' added in context (referenced {count} times)")
@@ -121,6 +127,7 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
                     continue
                 if not can_add(APPROX_TOKENS_PER_CHUNK):
                     print(f"Chunk is relevant, but no more space left (score: {score})")
+                    context_full = True
                     break
                 items_in_llm_context.append(chunk)
                 approxim_nb_tokens_in_context += APPROX_TOKENS_PER_CHUNK
@@ -129,20 +136,20 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
 
     for index, chunk in enumerate(chunks_to_use):
         score = scores_to_use[index]
+
         if index in handled_indices:
             continue
 
         if scores_to_use[index] < RELEVANCE_THRESHOLD:
             print(f"Chunk referenced once is not relevant, so not added in context (score: {score})")
-            continue
+        else:
+            if not can_add(APPROX_TOKENS_PER_CHUNK):
+                print(f"Chunk referenced once is relevant, but no more space left (score: {score})")
+                break
 
-        if not can_add(APPROX_TOKENS_PER_CHUNK):
-            print(f"No more space left in context!")
-            break
-
-        items_in_llm_context.append(chunk)
-        approxim_nb_tokens_in_context += APPROX_TOKENS_PER_CHUNK
-        print(f"Chunk referenced once is added in context with a score of {score}")
+            items_in_llm_context.append(chunk)
+            approxim_nb_tokens_in_context += APPROX_TOKENS_PER_CHUNK
+            print(f"Chunk referenced once is added in context with a score of {score}")
 
     context_for_llm = build_context_for_llm(items_in_llm_context)
     nb_relevant_items = sum(1 for index, chunk in enumerate(chunks_to_use) if scores_to_use[index] >= RELEVANCE_THRESHOLD)

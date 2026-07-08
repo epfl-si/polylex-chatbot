@@ -3,7 +3,7 @@ import logging
 import argparse
 
 from polylex_chatbot.env import load_project_env
-from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG
 from polylex_chatbot.config import STATS_PATH
 from polylex_chatbot.metadata import load_metadata
 from polylex_chatbot.stats import compute_corpus_metadata_stats, compute_corpus_content_stats, save_stats, compute_content_lengths, compute_and_save_nb_occ_article_plot
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     env_file = load_project_env(args.env_path)
 
     corpus_name = os.getenv("CORPUS_NAME")
-    textual_contents_dir = args.corpus_dir or TEXTUAL_CONTENTS_PATH / corpus_name
+    textual_contents_dir = args.corpus_dir or TEXTUAL_CONTENTS_PATH_RAG / corpus_name
     metadata_dir = args.metadata_dir or STATS_PATH / corpus_name
 
     compute_stats(

@@ -1,72 +1,112 @@
-- name: ext4 filesystem on /dev/sda
-  community.general.filesystem:
-    fstype: ext4
-    dev: /dev/sda
+- name: VM filesystem
+  block:
+    - name: ext4 filesystem on /dev/sda
+      community.general.filesystem:
+        fstype: ext4
+        dev: /dev/sda
 
-- name: /dev/sda as /var/lib/docker
-  ansible.posix.mount:
-    path: /var/lib/docker
-    src: /dev/sda
-    state: mounted
-    fstype: ext4
+    - name: /dev/sda as /var/lib/docker
+      ansible.posix.mount:
+        path: /var/lib/docker
+        src: /dev/sda
+        state: mounted
+        fstype: ext4
 
-- name: Docker apt prerequisites
-  apt:
-    name:
-      - ca-certificates
-      - curl
-    state: present
-    update_cache: true
-  become: true
+- name: Docker installation
+  block:
+    - name: Docker apt prerequisites
+      apt:
+        name:
+          - ca-certificates
+          - curl
+        state: present
+        update_cache: true
+      become: true
 
-- name: Docker apt keyring directory
-  file:
-    path: /etc/apt/keyrings
-    state: directory
-    mode: "0755"
-  become: true
+    - name: Docker apt keyring directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: "0755"
+      become: true
 
-- name: Docker official gpg key
-  get_url:
-    url: "https://download.docker.com/linux/ubuntu/gpg"
-    dest: /etc/apt/keyrings/docker.asc
-    mode: "0644"
-  become: true
+    - name: Docker official gpg key
+      get_url:
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+        dest: /etc/apt/keyrings/docker.asc
+        mode: "0644"
+      become: true
 
-- name: Docker apt suite
-  command: >
-    sh -c '. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}"'
-  register: docker_apt_suite
-  changed_when: false
+    - name: Docker apt suite
+      command: >
+        sh -c '. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}"'
+      register: docker_apt_suite
+      changed_when: false
 
-- name: Docker apt architecture
-  command: dpkg --print-architecture
-  register: docker_apt_architecture
-  changed_when: false
+    - name: Docker apt architecture
+      command: dpkg --print-architecture
+      register: docker_apt_architecture
+      changed_when: false
 
-- name: Docker apt sources
-  copy:
-    dest: /etc/apt/sources.list.d/docker.sources
-    owner: root
-    group: root
-    mode: "0644"
-    content: |
-      Types: deb
-      URIs: https://download.docker.com/linux/ubuntu
-      Suites: {{ docker_apt_suite.stdout }}
-      Components: stable
-      Architectures: {{ docker_apt_architecture.stdout }}
-      Signed-By: /etc/apt/keyrings/docker.asc
-  become: true
+    - name: Docker apt sources
+      copy:
+        dest: /etc/apt/sources.list.d/docker.sources
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          Types: deb
+          URIs: https://download.docker.com/linux/ubuntu
+          Suites: {{ docker_apt_suite.stdout }}
+          Components: stable
+          Architectures: {{ docker_apt_architecture.stdout }}
+          Signed-By: /etc/apt/keyrings/docker.asc
+      become: true
 
-- name: Docker packages
-  apt:
-    name:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
-      - docker-buildx-plugin
-      - docker-compose-plugin
-    state: present
-    update_cache: true
-  become: true
+    - name: Docker packages
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+        update_cache: true
+      become: true
+
+- name: Apt packages
+  block:
+    - name: Apt prerequisites
+      apt:
+        name:
+          - software-properties-common
+          - python3-apt
+          - gpg
+          - openjdk-21-jre-headless
+          - tesseract-ocr
+        state: present
+        update_cache: true
+
+    - name: ppa deadsnakes/ppa
+      command:
+        cmd: add-apt-repository -y ppa:deadsnakes/ppa
+        creates: "/etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-resolute.sources"
+
+    - name: Apt cache cleaning
+      apt:
+        autoclean: true
+        autoremove: true
+      become: true
+
+    - name: Apt packages for python
+      apt:
+        name:
+          - python3.12
+          - python3-virtualenv
+
+    - name: Pip cache removed
+      file:
+        path: /root/.cache/pip
+        state: absent
+      become: true

@@ -12,136 +12,123 @@
     - /srv/rag/chatbot
   become: true
 
-- name: Apt prerequisites
-  apt:
-    name:
-      - software-properties-common
-      - python3-apt
-      - gpg
-      - openjdk-21-jre-headless
-      - tesseract-ocr
-    state: present
-    update_cache: true
+- name: Python venv and packages
+  block:
+    - name: Virtual env for rag
+      command:
+        cmd: virtualenv /srv/rag/venv -p python3.12
+        creates: "/srv/rag/venv"
 
-- name: ppa deadsnakes/ppa
-  command:
-    cmd: add-apt-repository -y ppa:deadsnakes/ppa
-    creates: "/etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-resolute.sources"
+    - name: Python requirements file
+      copy:
+        src: ../../requirements.txt
+        dest: /srv/rag/requirements.txt
+        owner: root
+        group: root
+        mode: "0644"
 
-- name: Apt cache cleaning
-  apt:
-    autoclean: true
-    autoremove: true
-  become: true
+    - name: Python requirements
+      pip:
+        requirements: /srv/rag/requirements.txt
+        virtualenv: /srv/rag/venv
+        extra_args: --no-cache-dir
 
-- name: Pip cache removed
-  file:
-    path: /root/.cache/pip
-    state: absent
-  become: true
+    - name: Playwright Chromium
+      command: /srv/rag/venv/bin/python3 -m playwright install --with-deps chromium
+      become: true
+      environment:
+        PLAYWRIGHT_BROWSERS_PATH: /srv/rag/ms-playwright
 
-- name: Apt packages for python
-  apt:
-    name:
-      - python3.13
-      - python3-virtualenv
+- name: Code copy
+  tags:
+    - new_release
+  notify:
+    - Polylex Chatbot restart
+  block:
+    - name: Env file
+      template:
+        src: .env
+        dest: /srv/rag/.env
+        owner: root
+        group: root
+        mode: "0644"
 
-- name: Virtual env for rag
-  command:
-    cmd: virtualenv /srv/rag/venv -p python3.13
-    creates: "/srv/rag/venv"
+    - name: RAG src directory
+      copy:
+        src: ../../src/
+        dest: /srv/rag/src/
+        owner: root
+        group: root
+        mode: "0644"
 
-- name: Python requirements file
-  copy:
-    src: ../../../requirements.txt
-    dest: /srv/rag/requirements.txt
-    owner: root
-    group: root
-    mode: "0644"
+    - name: RAG scripts directory
+      copy:
+        src: ../../scripts/
+        dest: /srv/rag/scripts/
+        owner: root
+        group: root
+        mode: "0644"
 
-- name: Python requirements
-  pip:
-    requirements: /srv/rag/requirements.txt
-    virtualenv: /srv/rag/venv
-    extra_args: --no-cache-dir
+- name: Corpus build and indexation
+  tags:
+    - new_corpus
+    - new_release
+  block:
+    - name: Script to build corpus
+      command: /srv/rag/venv/bin/python3 scripts/build_corpus.py
+      args:
+        chdir: /srv/rag
+      environment:
+        PYTHONPATH: /srv/rag/src
 
-- name: Playwright Chromium
-  command: /srv/rag/venv/bin/python3 -m playwright install --with-deps chromium
-  become: true
-  environment:
-    PLAYWRIGHT_BROWSERS_PATH: /srv/rag/ms-playwright
-  changed_when: false
+    - name: Script to index corpus
+      command: /srv/rag/venv/bin/python3 scripts/index_corpus.py --env-path=".env"
+      args:
+        chdir: /srv/rag
+      environment:
+        PYTHONPATH: /srv/rag/src
+      notify:
+        - Polylex Chatbot restart
 
-- name: Env file
-  template:
-    src: .env
-    dest: /srv/rag/.env
-    owner: root
-    group: root
-    mode: "0644"
+- name: Chatbot setup
+  tags:
+    - new_release
+  block:
+    - name: Chatbot source directory
+      copy:
+        src: ../../app/
+        dest: /srv/rag/chatbot/
+        owner: root
+        group: root
+        mode: "0644"
+      notify:
+        - Polylex Chatbot restart
 
-- name: RAG src directory
-  copy:
-    src: ../../../src/
-    dest: /srv/rag/src/
-    owner: root
-    group: root
-    mode: "0644"
+    - name: /etc/systemd/system/polylex-chatbot.service
+      copy:
+        content: |
+          [Unit]
+          Description=Polylex Chatbot
+          After=multi-user.target
+          
+          [Service]
+          Type=simple
+          Restart=always
+          Environment="PATH=/srv/rag/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          Environment="VIRTUAL_ENV=/srv/rag/venv"
+          Environment="PYTHONPATH=/srv/rag/src"
+          WorkingDirectory=/srv/rag/chatbot
+          EnvironmentFile=/srv/rag/.env
+          ExecStart=/srv/rag/venv/bin/chainlit run app.py --host 0.0.0.0 --port 80
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/polylex-chatbot.service
+      notify:
+        - systemd reload
+        - Polylex Chatbot restart
 
-- name: RAG scripts directory
-  copy:
-    src: ../../../scripts/
-    dest: /srv/rag/scripts/
-    owner: root
-    group: root
-    mode: "0644"
-
-# TODO : executer les scripts uniquement si besoin avec tag a part
-- name: Script to build corpus
-  command: /srv/rag/venv/bin/python3 scripts/build_corpus.py
-  args:
-    chdir: /srv/rag
-  environment:
-    PYTHONPATH: /srv/rag/src
-
-# TODO : executer les scripts uniquement si besoin avec tag a part
-- name: Script to index corpus
-  command: /srv/rag/venv/bin/python3 scripts/index_corpus.py
-  args:
-    chdir: /srv/rag
-  environment:
-    PYTHONPATH: /srv/rag/src
-
-- name: Chatbot source directory
-  copy:
-    src: ../../../app/
-    dest: /srv/rag/chatbot/
-    owner: root
-    group: root
-    mode: "0644"
-
-- name: /etc/systemd/system/polylex-chatbot.service
-  copy:
-    content: |
-      [Unit]
-      Description=Polylex Chatbot
-      After=multi-user.target
-      
-      [Service]
-      Type=simple
-      Restart=always
-      Environment="PATH=/srv/rag/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-      Environment="VIRTUAL_ENV=/srv/rag/venv"
-      Environment="PYTHONPATH=/srv/rag/src"
-      WorkingDirectory=/srv/rag/chatbot
-      EnvironmentFile=/srv/rag/.env
-      ExecStart=/srv/rag/venv/bin/chainlit run app.py --host 0.0.0.0 --port 80
-      [Install]
-      WantedBy=multi-user.target
-    dest: /etc/systemd/system/polylex-chatbot.service
-
-- name: Polylex Chatbot service
-  systemd_service:
-    name: polylex-chatbot.service
-    state: started
-    enabled: true
+    - name: Polylex Chatbot service
+      systemd_service:
+        name: polylex-chatbot.service
+        state: started
+        enabled: true

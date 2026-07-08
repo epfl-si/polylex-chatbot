@@ -5,7 +5,7 @@ from datetime import datetime
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH
+from polylex_chatbot.constants import TEXTUAL_CONTENTS_PATH_RAG
 from polylex_chatbot.metadata import build_metadata, save_textual_content_and_complete_metadata, save_metadata
 from polylex_chatbot.downloads import fetch_polylex_api, download_documents
 from polylex_chatbot.config import DOCUMENTS_PATH, STATS_PATH
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     corpus_name = args.corpus_name
 
     documents_dir = DOCUMENTS_PATH / corpus_name
-    textual_contents_dir = TEXTUAL_CONTENTS_PATH / corpus_name
+    textual_contents_dir = TEXTUAL_CONTENTS_PATH_RAG / corpus_name
     metadata_dir = STATS_PATH / corpus_name
 
     documents_dir.mkdir(parents=True, exist_ok=True)
