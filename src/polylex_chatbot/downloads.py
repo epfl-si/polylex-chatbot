@@ -9,7 +9,6 @@ from .fedlex import get_fedlex_pdf_from_sparql
 def fetch_polylex_api():
     response = requests.get(LEXES_API_URL)
     if response.status_code != 200:
-        # TODO : a gerer dans les logs
         raise Exception(f"Unexpected status code while fetching : {response.status_code}")
     return response
 
@@ -38,10 +37,8 @@ def resolve_document_url(url, lang):
     epfl_websites_pattern = re.compile(r'^https://www\.epfl\.ch/(about|campus|education)/')
     epfl_apps_pattern = re.compile(r'(sac|isa)\.epfl\.ch')
     if url.endswith(".html") or epfl_redirect_urls_pattern.search(url) or epfl_websites_pattern or epfl_apps_pattern.search(url):
-        # TODO : si site alors message d'avertissement et rien ou charger dans une cle fake tous les elements non charges ?
         print(f"{url} not loaded (website)")
         return transformed_url, source, content_format # empty value
-    # TODO : a gerer dans les logs
     print(f"This is an exception and has to be handled: {url}")
     return transformed_url, source, content_format
 
@@ -71,10 +68,6 @@ def save_corpus_name(corpus_name):
     os.environ[var_name] = value
 
 def download_documents(data, path, corpus_name):
-    """
-    Download the documents referenced in data to the specified path
-    """
-
     save_corpus_name(corpus_name)
 
     for doc_id, metadata in data.items():
@@ -85,7 +78,6 @@ def download_documents(data, path, corpus_name):
         if content_format in ["docx", "pdf"]:
             download_file(redirected_url, path, filename)
         else:
-            # TODO : mettre dans les logs
             print(f"File format '{content_format}' not yet supported for doc_id='{doc_id}'")
 
         for lang, summary in metadata.get("summaries").items():

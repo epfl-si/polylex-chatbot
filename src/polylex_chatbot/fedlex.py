@@ -1,25 +1,16 @@
-from playwright.sync_api import sync_playwright
-import asyncio
 import requests
-
-# TODO : gerer le async puisque dans script mtn
-
-def resolve_redirect_sync(url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto(url, wait_until="domcontentloaded")
-        page.wait_for_timeout(1500)
-        redirect = page.url
-        browser.close()
-        return redirect
-
-async def _resolve_redirect_async(url):
-    return await asyncio.to_thread(resolve_redirect_sync, url)
+from playwright.sync_api import sync_playwright
 
 def resolve_redirect(url):
-    loop = asyncio.get_event_loop()
-    return loop.run_until_complete(_resolve_redirect_async(url))
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        try:
+            page = browser.new_page()
+            page.goto(url, wait_until="domcontentloaded")
+            page.wait_for_timeout(1500)
+            return page.url
+        finally:
+            browser.close()
 
 def get_fedlex_api_style_url(url):
     # manual tricks but seems to work...
@@ -37,7 +28,6 @@ def get_fedlex_pdf_url(url, lang):
         lang_uri = "ENG"
     else:
         lang_uri = "FRA"
-    # TODO : comprendre la requete -> base sur https://fedlex.data.admin.ch/fr-CH/sparql?id=101 puis ChatGPT
     sparql_query = f"""
 PREFIX jolux: <http://data.legilux.public.lu/resource/ontology/jolux#>
 SELECT ?publicationDate ?dateApplicability ?fileUrl WHERE {{
@@ -59,7 +49,6 @@ LIMIT 1
     data = r.json()
     bindings = data["results"]["bindings"]
     if not bindings:
-        # TODO : gerer certains cas car URL parfois redirigee incorrectement
         print(f"No SPARQL results for {url}")
         return ""
     return bindings[0]["fileUrl"]["value"]

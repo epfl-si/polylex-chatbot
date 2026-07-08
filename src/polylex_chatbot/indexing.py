@@ -26,7 +26,6 @@ def batched(iterable, batch_size):
 def index_chunks(chunks, collection_name, collection_description, env_file):
     save_collection_name(collection_name, env_file)
 
-    # TODO : securiser avec credentials la connexion vers la db
     client = QdrantClient(
         url=os.getenv("QDRANT_URL")
     )
@@ -45,7 +44,6 @@ def index_chunks(chunks, collection_name, collection_description, env_file):
     texts = [chunk.page_content for chunk in chunks]
     dense_vectors = get_embeddings_model_config().embed_documents(texts)
 
-    # FIXME : ok de gerer les langues comme ca ?
     sparse_fr_vectors = get_sparse_model_config_fr().embed_documents(texts)
     sparse_en_vectors = get_sparse_model_config_en().embed_documents(texts)
 

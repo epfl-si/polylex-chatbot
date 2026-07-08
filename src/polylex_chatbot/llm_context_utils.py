@@ -56,7 +56,6 @@ def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent):
             doc_id = metadata.get("doc_id")
 
             if doc_id in doc_ids_already_in_llm_context:
-                # TODO : mettre dans les logs
                 print(f"Chunk from same document retrieved, nothing added in LLM context")
                 continue
 
@@ -69,14 +68,12 @@ def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent):
         return context_for_llm, docs_in_llm_context, nb_relevant_items, nb_items_really_sent
     else:
         for chunk in chunks_to_use:
-            # TODO : mettre dans les logs
             print(f"Context too long if sending '{chunk.get("metadata").get("filename")}' document to LLM")
 
         context_for_llm = build_context_for_llm(chunks_to_use)
 
         return context_for_llm, chunks_to_use, nb_relevant_items, nb_items_sent
 
-# TODO : mettre dans les logs et pas des prints
 def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
     FULL_DOCUMENT_TOKEN_LIMIT = 50000
     APPROX_TOKENS_PER_CHUNK = 2000

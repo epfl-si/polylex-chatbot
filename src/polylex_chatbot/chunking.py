@@ -5,7 +5,6 @@ from dotenv import find_dotenv, set_key
 from langchain_core.documents import Document
 
 def clean_text(text, source):
-    # TODO : a ameliorer
     cleaner_text = re.sub(r'\s+', ' ', text).strip()
     cleaner_text = re.sub(r"\.{4,}", " ", cleaner_text)
     if source == "fedlex":
@@ -25,10 +24,6 @@ def get_doc_id_from_file(file):
     return None
 
 def create_chunks(path, language_matched_metadata_by_doc_id, split_document_function):
-    """
-    Create text chunks for each textual content in the given path and enrich them with metadata
-    """
-
     chunks = []
 
     for file in path.iterdir():

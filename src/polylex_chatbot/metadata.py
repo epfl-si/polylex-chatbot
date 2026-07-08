@@ -8,7 +8,7 @@ from langdetect import detect
 
 from .stats import count_nb_tokens
 from .chunking import get_doc_id_from_file, clean_text
-from .config import LANGUAGES, HARD_CODED_LANGS
+from .config import LANGUAGES, DICT_MATCH_LANG_FOR_DOC
 from .downloads import resolve_document_url, write_txt
 from .html_utils import transform_html_in_text, get_urls_from_html
 
@@ -43,10 +43,6 @@ def upsert_doc(metadata_dict, redirected_url, src_url, cat, source, content_form
         }
 
 def join_language(metadata_dict):
-    """
-    Add unique language for each entry of data
-    """
-
     for doc_id, metadata in metadata_dict.items():
         refs = metadata.get("refs")
         tmp_metadata = metadata
@@ -54,8 +50,7 @@ def join_language(metadata_dict):
             tmp_metadata["lang"] = refs[0].get("lex_lang")
             metadata_dict[doc_id] = tmp_metadata
         else:
-            content_format = metadata.get("content_format")
-            tmp_metadata["lang"] = detect_language(metadata.get("redirected_url"), content_format)
+            tmp_metadata["lang"] = detect_language(metadata.get("redirected_url"))
             metadata_dict[doc_id] = tmp_metadata
     return metadata_dict
 
@@ -96,12 +91,7 @@ def build_metadata(response, debugging=False):
 
     return join_language(metadata_dict)
 
-def detect_language(content, content_format):
-    # TODO : plus de txt donc dead code + lire premiere page du fichier plutot que seulement detecter selon url ?
-    # use directly lib to find language from a text
-    if content_format == "txt":
-        return detect(content)
-
+def detect_language(content):
     # try to find lang tag in url
     lang_pattern = re.compile(r"[_-](fr|en|an)\.[^/]+$", re.IGNORECASE)
     match = re.search(lang_pattern, content)
@@ -112,11 +102,11 @@ def detect_language(content, content_format):
         return detected_lang
 
     # use hard-coded correct language for exceptions
-    real_lang = HARD_CODED_LANGS.get(content)
+    real_lang = DICT_MATCH_LANG_FOR_DOC.get(content)
     if real_lang:
         return real_lang
 
-    # try to detect language from filename -> FIXME : avertir que pas tres fiable ?
+    # try to detect language from filename
     filename_pattern = re.compile(r"[^/]+\.[^/]+$")
     match = re.search(filename_pattern, content)
     filename = match.group() if match else ""
@@ -145,7 +135,6 @@ def save_textual_content_and_complete_metadata(path_to_read, path_to_save, metad
             parsed = parser.from_file(str(file))
             content = parsed.get("content")
         else:
-            # TODO : gerer dans les logs
             content = ""
             print(f"Error while reading {file}: format '{suffix}' not supported")
 
@@ -164,9 +153,6 @@ def save_textual_content_and_complete_metadata(path_to_read, path_to_save, metad
     return metadata
 
 def save_metadata(metadata, path):
-    """
-    Save metadata to the specified path
-    """
     corpus_metadata_filename = os.path.join(path, "corpus_metadata.json")
 
     with open(corpus_metadata_filename, "w", encoding="utf-8") as f:
