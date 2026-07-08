@@ -2,22 +2,22 @@
     file: vm.yml
     apply:
       tags: vm
-  tags: vm
+  tags: always
 
 - include_tasks:
     file: db.yml
     apply:
       tags: db
-  tags: db
+  tags: always
 
 - include_tasks:
     file: monitoring.yml
     apply:
       tags: monitoring
-  tags: monitoring
+  tags: always
 
 - include_tasks:
     file: rag.yml
     apply:
       tags: rag
-  tags: rag
+  tags: always

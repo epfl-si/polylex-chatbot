@@ -7,7 +7,7 @@ def make_rag_task(db, nb_chunks_retrieved, reranker_model_name, reranker_api_key
         query = item.input.get("query")
         doc_ids, scores, chunks = retrieve_documents(db, query, reranker_model_name, reranker_api_key, base_url, nb_chunks_retrieved, nb_chunks_reranked)
         context_for_llm, items_in_llm_context, nb_relevant_chunks, nb_max_items = prepare_llm_context(chunks, scores)
-        answer = generate_response(llm_model_config, query, prompt, context_for_llm)
+        answer, _, _ = generate_response(llm_model_config, query, prompt, context_for_llm)
         return {
             "retrieved_doc_ids": doc_ids,
             "retrieved_scores": scores,

@@ -8,3 +8,13 @@
   tasks:
     - name: Polylex Chatbot tasks
       import_tasks: tasks/main.yml
+
+  handlers:
+    - name: systemd reload
+      systemd_service:
+        daemon_reload: true
+
+    - name: Polylex Chatbot restart
+      systemd_service:
+        name: polylex-chatbot.service
+        state: restarted
