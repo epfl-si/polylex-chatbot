@@ -1,15 +1,23 @@
-data/*
+# directories where documents from corpus are stored
 documents/*
 textual_contents/*
 
-rag/text_from_scanned_pdfs/*
+# chunks saved in txt files
+stats/*/*/chunks.txt
+
+# Qdrant Docker volume
+database/qdrant_data/*
 rag/qdrant_data/*
-rag/ocr_model/*
 
-app/.files
-
+# env files (to run locally and to compare / evaluate systems)
 .env
-.env.*
 envs/*
+
+# dataset (dev and test) to evaluate RAG
+private_questions_dataset.csv
+
+# analysis results for RAG hyperparameters
+analysis/chunkings_comparison/comparison_results/*
+analysis/loaders_comparison/comparison_results/*
 
 .idea/*

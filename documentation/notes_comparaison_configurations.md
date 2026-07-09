@@ -52,16 +52,13 @@ L'optimisation des différents hyperparamètres s'est faite en se basant sur les
 - *configuration_d* : qwen + small chunks (no overlap) -> 9'098 points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_d" --collection-name="configuration_d" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 700 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Qwen/Qwen3-Embedding-8B")
 - *configuration_e* : qwen + medium chunks (no overlap) -> 3'506 points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_e" --collection-name="configuration_e" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 2000 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Qwen/Qwen3-Embedding-8B")
 - *configuration_f* : qwen + large chunks (no overlap) -> 1'546 points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_f" --collection-name="configuration_f" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 5000 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Qwen/Qwen3-Embedding-8B")
-- *configuration_g* : gte + small chunks (no overlap) -> 9'098 points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_g" --collection-name="configuration_g" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 700 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Alibaba-NLP/gte-multilingual-base")
-- *configuration_h* : gte + medium chunks (no overlap) -> TODO points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_h" --collection-name="configuration_h" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 2000 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Alibaba-NLP/gte-multilingual-base")
-- *configuration_i* : gte + large chunks (no overlap) -> TODO points (PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="./envs/.env.configuration_i" --collection-name="configuration_i" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 5000 caractères, pas d'overlap et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Alibaba-NLP/gte-multilingual-base")
 
 ## Recherche de la meilleure configuration pour la partie récupération
 
 L’ordre et la manière dont les différents hyperparamètres ont été fixés résultent d’une réflexion préalable.
 Cependant, ces choix ne sont pas nécessairement les plus pertinents, en raison d’un manque de recul et de connaissances approfondies sur l’impact réel de chaque hyperparamètre.
 
-TODO : parler des autres hyperparamètres fixés avant
+WIP : parler des autres hyperparamètres fixés avant
 
 Les métriques considérées pour comparer les configurations sont le recall@k et le MRR.
 
@@ -103,9 +100,6 @@ En comparant les résultats obtenus entre les configurations "sparse + reranker"
 - *configuration_d_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:19:32.555443Z* -> hit_1=0.0000, hit_20=0.1538 et mrr=0.0139 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_d" --run-description="CONFIGURATION COMPARISONS - configuration_d (only retrieval compared : dense + no reranker)")
 - *configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:19:38.398217Z* -> hit_1=0.0000, hit_20=0.2308 et mrr=0.0264 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_e" --run-description="CONFIGURATION COMPARISONS - configuration_e (only retrieval compared : dense + no reranker)")
 - *configuration_f_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:19:44.643530Z* -> hit_1=0.0000, hit_20=0.0769 et mrr=0.0154 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_f" --run-description="CONFIGURATION COMPARISONS - configuration_f (only retrieval compared : dense + no reranker)")
-- TODO G -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_g" --run-description="CONFIGURATION COMPARISONS - configuration_g (only retrieval compared : dense + no reranker)")
-- TODO H -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_h" --run-description="CONFIGURATION COMPARISONS - configuration_h (only retrieval compared : dense + no reranker)")
-- TODO I -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_i" --run-description="CONFIGURATION COMPARISONS - configuration_i (only retrieval compared : dense + no reranker)")
 
 #### Analyse
 
@@ -123,9 +117,6 @@ La meilleure configuration est la E (embeddings provenant de qwen avec de grands
 - *configuration_d_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:40:42.129346Z* -> hit_1=0.4615, hit_20=0.6923 et mrr=0.5295 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_d" --run-description="CONFIGURATION COMPARISONS - configuration_d (only retrieval compared : sparse + no reranker)")
 - *configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:40:54.536944Z* -> hit_1=0.4615, hit_20=0.6923 et mrr=0.5462 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_e" --run-description="CONFIGURATION COMPARISONS - configuration_e (only retrieval compared : sparse + no reranker)")
 - *configuration_f_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T11:41:08.368409Z* -> hit_1=0.3846, hit_20=0.6154 et mrr=0.5000 (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_f" --run-description="CONFIGURATION COMPARISONS - configuration_f (only retrieval compared : sparse + no reranker)")
-- TODO G -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_g" --run-description="CONFIGURATION COMPARISONS - configuration_g (only retrieval compared : sparse + no reranker)")
-- TODO H -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_h" --run-description="CONFIGURATION COMPARISONS - configuration_h (only retrieval compared : sparse + no reranker)")
-- TODO I -> (PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_i" --run-description="CONFIGURATION COMPARISONS - configuration_i (only retrieval compared : sparse + no reranker)")
 
 #### Analyse
 
@@ -146,9 +137,6 @@ Les configurations E et B sont les meilleures et seront donc les configurations 
 - D : moyenne sans reranker
 - E : meilleure sans reranker
 - F : moyenne et pire sans reranker
-- G (TODO)
-- H (TODO)
-- I (TODO)
 
 ### Évaluation de l'utilisation d'un reranker et de la recherche hybride
 
@@ -363,7 +351,3 @@ Une dernière modification apportée est de mentionner de quelle LEX / DOC le co
 
 - PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.generation_mistral" --run-description="CONFIGURATION COMPARISONS - (only generation compared : modular context with lex type + lex number as context for each item)"
 - PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.generation_mistral" --run-name="20260706_last_collection_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-06T18:54:57.009253Z" --name-dir="generation_mistral_modular_context_item_referenced_mistral_judge"
-
-# TODO : considérer les ttests
-
-# TODO : run la baseline et ttest pour comparer avec configuration optimale
