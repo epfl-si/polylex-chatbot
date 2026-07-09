@@ -1,0 +1,118 @@
+.
+├── analysis
+│   ├── chunkings_comparison
+│   │   ├── chunking_strategies.ipynb
+│   │   └── comparison_results
+│   │       └── ...
+│   ├── loaders_comparison
+│   │   ├── comparison_results
+│   │   │   ├── DoclingLoader_results
+│   │   │   │   └── ...
+│   │   │   ├── PDFPlumberLoader_results
+│   │   │   │   └── ...
+│   │   │   ├── PyMuPDFLoader_results
+│   │   │   │   └── ...
+│   │   │   ├── Tika_results
+│   │   │   │   └── ...
+│   │   │   └── UnstructuredPDFLoader_results
+│   │   │       └── ...
+│   │   └── loaders_comparison.ipynb
+│   └── ttest.ipynb
+├── app
+│   ├── app.py
+│   ├── chainlit.md
+│   └── public
+│       ├── default_theme.json
+│       ├── elements
+│       │   └── SourceReferences.jsx
+│       ├── favicon.png
+│       └── theme.json
+├── database
+│   ├── docker-compose.yml
+│   └── qdrant_data
+│       └── ...
+├── documentation
+│   └── ...
+├── documents
+│   ├── <corpus_name>
+│   │   └── ...
+│   └── ...
+├── envs
+├── evaluations
+│   ├── <corpus_name>
+│   │   ├── <collection_name>
+│   │   │   ├── <configuration_name>
+│   │   │   │   ├── confidence_intervals.png
+│   │   │   │   ├── df_scores_ordered.csv
+│   │   │   │   ├── df_stats.csv
+│   │   │   │   ├── kendall_matrix_ground_truth_vs_generated.csv
+│   │   │   │   ├── kendall_matrix_retrieval.csv
+│   │   │   │   ├── kendall_matrix_triad.csv
+│   │   │   │   ├── mean_recall_at_k.png
+│   │   │   │   └── metric_boxplots.png
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+├── LICENSE
+├── monitoring
+│   └── langfuse
+│       └── ...
+├── ops
+│   ├── inventory.yml
+│   ├── playbook.yml
+│   ├── tasks
+│   │   ├── db.yml
+│   │   ├── main.yml
+│   │   ├── monitoring.yml
+│   │   ├── rag.yml
+│   │   └── vm.yml
+│   ├── templates
+│   │   └── docker-compose.yml
+│   └── vars
+│       └── main.yml
+├── private_questions_dataset.csv
+├── questions_dataset.csv
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── analyze_run.py
+│   ├── build_corpus.py
+│   ├── compute_stats.py
+│   ├── create_langfuse_datasets.py
+│   ├── index_corpus.py
+│   └── trigger_run.py
+├── src
+│   └── polylex_chatbot
+│       ├── chunking.py
+│       ├── config.py
+│       ├── constants.py
+│       ├── downloads.py
+│       ├── env.py
+│       ├── evaluators.py
+│       ├── fedlex.py
+│       ├── generation.py
+│       ├── html_utils.py
+│       ├── indexing.py
+│       ├── __init__.py
+│       ├── llm_context_utils.py
+│       ├── metadata.py
+│       ├── retrieval.py
+│       ├── stats.py
+│       └── tasks.py
+├── stats
+│   ├── <corpus_name>
+│   │   ├── <collection_name>
+│   │   │   ├── chunks.txt
+│   │   │   └── plot_chunks_distribution.png
+│   │   ├── ...
+│   │   │   └── ...
+│   │   ├── corpus_metadata.json
+│   │   ├── plot_nb_occ_article.png
+│   │   ├── stats_content_lengths.csv
+│   │   ├── stats_corpus_content.csv
+│   │   └── stats_corpus_metadata.json
+│   └── ...
+└── textual_contents
+    ├── <corpus_name>
+    │   └── ...
+    └── ...
