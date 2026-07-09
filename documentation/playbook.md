@@ -1,67 +1,79 @@
-# Exécution du workflow complet (2 juillet 2026)
+# Marche à suivre pour exécuter le pipeline
 
-## Création du corpus (à faire une fois)
+Certaines variables sont écrites dans le fichier d'environnement durant l'exécution des scripts, il est donc important au départ de dupliquer le contenu du *.env* dans un autre fichier d'environnement et référencer ce nouveau fichier lors de l'exécution des différents scripts.
 
-1. création du .env depuis .env.sample et ajout des valeurs pour Langfuse
-2. `PYTHONPATH="$PWD/src" python scripts/build_corpus.py --corpus-name="20260702_configurations_comparison_corpus"`
+## 1. Création du corpus (à faire une fois)
 
--> 322 éléments dans le fichier de métadonnées
-
--> nom du corpus: "20260702_configurations_comparison_corpus"
+Les valeurs des variables pour Langfuse doivent être configurées, puis exécuter :
+```script
+PYTHONPATH="$PWD/src" python scripts/build_corpus.py --corpus-name="<corpus_name"
+```
 
 Le résultat obtenu est le suivant :
-- le dossier *./data/<corpus-name>* est créé et les documents à indexer y sont stockés (docx, txt et pdf)
+- le dossier *./data/<corpus-name>* est créé et les documents à indexer y sont stockés (pdf, docx et txt)
 - le dossier *./stats/<corpus-name>* est créé et le fichier json contenant les métadonnées du corpus y est sauvegardé
 - la variable *CORPUS_NAME* est ajoutée dans le fichier d'environnement.
 
-## Analyse du corpus (à faire une fois)
+## 2. Analyse du corpus (à faire une fois)
 
-3. création du .env.20260702_test_baseline_but_qwen depuis .env
-4. `PYTHONPATH="$PWD/src" python scripts/compute_stats.py --env-path=".env.20260702_test_baseline_but_qwen"`
-
--> résultats sous : ./stats/20260702_configurations_comparison_corpus/...
-
-## Indexation du corpus (à faire n_configurations fois)
-
-Trois hyperparamètres peuvent être ajustés au moment de l'indexation du corpus :
-- la stratégie de chunking (1)
-- la manière de contextualiser les chunks (2)
-- le modèle d'embeddings utilisé (3).
-
-Il est avant tout nécessaire de copier le fichier d'environnement actuel dans un autre fichier (nommé par exemple *.env.<collection-name>*) afin de ne pas écraser la valeur des variables *AVG_LEN_FR*, *AVG_LEN_EN* et *DB_COLLECTION_NAME*.
-Les valeurs des variables pour le modèle d'embeddings doivent être configurées.
-
-Une description de la collection doit également être fournie afin d'être stockée dans les métadonnées de la collection dans la base de données.
-Elle peut par exemple prendre la forme suivante :
-```text
-Corpus: 20260701_configs_comparison_corpus / Chunking: RCTS avec 2'000 caractères, overlap de 200 et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: BAAI/bge-m3
+Exécuter :
+```script
+PYTHONPATH="$PWD/src" python scripts/compute_stats.py --env-path="<env_path>"
 ```
 
-Le script d'indexation peut finalement être exécuté avec la commande `PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="<env-path>" --collection-name="<collection-name>" --collection-description="<collection-description>"` afin d'indexer le corpus en fonction de la configuration choisie.
+Les résultats se trouvent sous *./stats/<corpus_name>/...*.
 
-5. ajout des valeurs pour modèle d'embeddings et chunking dans .env.20260702_test_baseline_but_qwen
-6. `PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path=".env.20260702_test_baseline_but_qwen" --collection-name="20260702_test_baseline_but_qwen" --collection-description="Corpus: 20260702_configurations_comparison_corpus / Chunking: RCTS avec 2'000 caractères, overlap de 200 et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre / Embedding: Qwen/Qwen3-Embedding-8B"`
+## 3. Indexation du corpus (à faire n_configurations fois si on souhaite améliorer le RAG)
 
--> collection "20260702_test_baseline_but_qwen" avec 3'070 points
+Trois hyperparamètres peuvent être ajustés au moment de l'indexation du corpus :
+- la stratégie de chunking
+- la manière de contextualiser les chunks
+- le modèle d'embeddings utilisé.
 
--> chunks sauvegardés dans "./stats/20260702_configurations_comparison_corpus/20260702_test_baseline_but_qwen/chunks.txt"
+Les valeurs des variables pour le modèle d'embeddings ainsi que le chunking doivent être configurées.
 
-## Lancement d’une évaluation (à faire n_configurations fois)
+Une description de la configuration du système doit également être fournie afin d'être stockée dans les métadonnées de la collection qui sera créée dans la base de données vectorielle.
 
-- Ajout des valeurs pour reranker, llm et juges dans le fichier d'environnement actuel
-- Relancer Langfuse et s'assurer qu'il puisse se connecter à RCP (pour résoudre le problème entre le VPN et Docker)
-6. `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path=".env.20260702_test_baseline_but_qwen"`
+Elle peut par exemple prendre la forme suivante :
+```text
+Corpus: 20260512_corpus / Chunking: RCTS avec 1'000 caractères, overlap de 300 et séparation avec le pattern ARTICLE / Contextualisation: ajout du titre et de la catégorie / Embedding: BAAI/bge-m3
+```
 
--> voir dans Langfuse le dataset run créé
+Le script d'indexation peut finalement être exécuté :
+```
+script PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="<env_path>" --collection-name="<collection_name>" --collection-description="<collection_description>"
+```
 
-## Analyse d'une évaluation (à faire une fois)
+Le résultat obtenu est le suivant :
+- une collection est créée dans Qdrant
+- les chunks ainsi que leur distribution sont respectivement sauvegardés dans *./stats/<corpus_name>/<collection_name>/chunks.txt* et *./stats/<corpus_name>/<collection_name>/plot_chunks_distribution.png*
+- les variables *AVG_LEN_FR*, *AVG_LEN_EN* et *DB_COLLECTION_NAME* sont ajoutées dans le fichier d'environnement.
 
-7. `PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path=".env.20260702_test_baseline_but_qwen" --run-name="20260702_test_baseline_but_qwen_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-02T16:09:43.339683Z"`
+## 4. Création de Datasets dans Langfuse (à faire une fois ou lorsque le jeu de données est modifié)
 
--> résultats sous : ./evaluations/20260702_configurations_comparison_corpus/20260702_test_baseline_but_qwen/Mistral-Small-3.2-24B-Instruct-2506/...
+Exécuter :
+```script
+PYTHONPATH="$PWD/src" python scripts/create_langfuse_datasets.py --env-path="<env_path>" --dataset-path="./questions_dataset.csv" --dev-dataset-name="<dev_dataset_name>" --test-dataset-name="<test_dataset_name>"
+```
 
-## Comparaison des configurations (à faire plusieurs fois)
+Aller sur Langfuse (partie Dataset) pour visualiser les datasets créés.
 
-- création de .env.other_llm_20260702_test_baseline_but_qwen depuis .env.20260702_test_baseline_but_qwen et modification du llm
-- `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path=".env.other_llm_20260702_test_baseline_but_qwen"`
-- `PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path=".env.other_llm_20260702_test_baseline_but_qwen" --run-name="20260702_test_baseline_but_qwen_swiss-ai/Apertus-8B-Instruct-2509 - 2026-07-02T16:44:29.391732Z"`
+## 5. Lancement d’une évaluation (à faire n_configurations fois)
+
+Les valeurs des variables pour le modèle de reranking, le LLM et les modèles LLM-as-Judge doivent être configurées.
+
+Exécuter :
+```script
+PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_path>" --run-description=<run_description>
+```
+
+Aller sur Langfuse (partie Experiment) pour visualiser les scores obtenus aux différentes métriques.
+
+## 6. Analyse d'une évaluation (à faire n_configurations fois)
+
+Exécuter :
+```script
+PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="<env_path>" --run-name="<run_name>" --name-dir="<name_output_results_dir"
+```
+
+Les résultats se trouvent sous *./evaluations/<corpus_name>/<collection>/<name_output_results_dir>/...*.

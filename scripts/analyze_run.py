@@ -239,8 +239,8 @@ if __name__ == "__main__":
     parser.add_argument("--env-path", required=True, help="Path to the environment file")
     parser.add_argument("--evaluation-dir", help="Parent directory where results will be stored", default=None)
     parser.add_argument("--dataset-name", help="Dataset on which run has been triggered", default=EVALUATION_DATASET_NAME)
-    parser.add_argument("--run-name", help="Name of the run to analyze")
-    parser.add_argument("--name-dir", help="Name of directory where results will be stored", default=None)
+    parser.add_argument("--run-name", required=True, help="Name of the run to analyze")
+    parser.add_argument("--name-dir", required=True, help="Name of directory where results will be stored")
     args = parser.parse_args()
 
     env_file = load_project_env(args.env_path)
