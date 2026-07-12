@@ -1,0 +1,63 @@
+@startuml
+
+title Système de RAG final
+
+left to right direction
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam defaultTextAlignment center
+
+actor "Utilisateur" as user
+database "Qdrant" as vector_database
+
+package "Indexation" {
+    collections "Documents" as docs
+    collections "Contenus textuel" as texts
+    collections "Chunks" as chunks
+    collections "Vecteurs sparses" as sparse_vectors
+    collections "Vecteurs denses" as dense_vectors
+
+    docs --> texts : Apache Tika
+    texts --> chunks : nettoyage + chunking + contextualisation
+    chunks --> sparse_vectors : Qdrant/bm25
+    chunks --> dense_vectors : Qwen3-Embedding-8B
+    sparse_vectors --> vector_database
+    dense_vectors --> vector_database
+}
+
+user -[hidden]-> docs
+
+package "Récupération - pre" as retrieval_pre {
+    component "Question" as user_query
+    component "Vecteur sparse" as sparse_vector
+    component "Vecteur dense" as dense_vector
+
+    user --> user_query
+    user_query --> sparse_vector : recherche par mots-clés
+    user_query --> dense_vector : recherche sémantique
+    sparse_vector --> vector_database
+    dense_vector --> vector_database
+}
+
+package "Récupération - post" as retrieval_post {
+    collections "Top-100" as retrieval_results
+    collections "Top-20" as reranking_results
+
+    vector_database -down-> retrieval_results : RRF non-pondéré
+    retrieval_results -left-> reranking_results : bge-reranker-v2-m3
+}
+
+package "Génération" {
+    rectangle "Prompt" as prompt
+    component "Réponse générée" as response
+
+    reranking_results --> prompt : construction du contexte
+    user --> prompt : ajout de la question
+    prompt --> response : Mistral-Small-3.2-24B-Instruct-2506
+    response --> user : envoi de la réponse
+}
+
+user -[hidden]-> response
+
+@enduml

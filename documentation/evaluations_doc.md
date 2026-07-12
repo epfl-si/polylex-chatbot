@@ -12,7 +12,7 @@ L'optimisation des différents hyperparamètres s'est faite en se basant sur les
 
 ### Récupération
 
-- corpus + filtres pour explure certains documents
+- corpus + filtres pour exclure certains documents
 - loader (parsing du contenu textuel des documents)
 - méthode pour nettoyer le contenu textuel
 - splitter (pour créer des chunks)
