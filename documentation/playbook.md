@@ -40,8 +40,8 @@ Corpus: 20260512_corpus / Chunking: RCTS avec 1'000 caractères, overlap de 300 
 ```
 
 Le script d'indexation peut finalement être exécuté :
-```
-script PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="<env_path>" --collection-name="<collection_name>" --collection-description="<collection_description>"
+```script
+PYTHONPATH="$PWD/src" python scripts/index_corpus.py --env-path="<env_path>" --collection-name="<collection_name>" --collection-description="<collection_description>"
 ```
 
 Le résultat obtenu est le suivant :

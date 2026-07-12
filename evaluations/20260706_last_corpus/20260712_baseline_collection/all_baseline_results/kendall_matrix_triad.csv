@@ -1,0 +1,4 @@
+Context Relevance (Contextrelevance-Langfuse),Groundedness (Faithfulness-RAGAS),Answer Relevance (Relevance-Langfuse)
+1.0,-0.12303971747925929,0.44102642817049814
+-0.12303971747925929,1.0,0.0828236445561349
+0.44102642817049814,0.0828236445561349,1.0

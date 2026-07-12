@@ -25,7 +25,7 @@ L'optimisation des différents hyperparamètres s'est faite en se basant sur les
 ### Génération
 
 - méthode pour construire le contexte envoyé au LLM
-- strucutre du prompt
+- structure du prompt
 - LLM + température
 - seuil de pertinence pour exclure ou non un chunk / document
 
