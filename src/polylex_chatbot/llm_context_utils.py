@@ -3,15 +3,15 @@ import copy
 from collections import Counter
 
 from .generation import build_context_for_llm
-from .constants import TEXTUAL_CONTENTS_PATH_CHATBOT, RELEVANCE_THRESHOLD
+from .constants import RELEVANCE_THRESHOLD
 
-def prepare_llm_context_n_chunks(chunks, scores, nb_chunks_sent):
+def prepare_llm_context_n_chunks(chunks, scores, nb_chunks_sent, path_textual_contents):
     chunks_in_llm_context = chunks[:nb_chunks_sent]
     nb_relevant_chunks = -1
     context_for_llm = build_context_for_llm(chunks_in_llm_context)
     return context_for_llm, chunks_in_llm_context, nb_relevant_chunks, nb_chunks_sent
 
-def prepare_llm_context_max_n_chunks(chunks, scores, nb_max_chunks_sent):
+def prepare_llm_context_max_n_chunks(chunks, scores, nb_max_chunks_sent, path_textual_contents):
     chunks_in_llm_context = []
 
     for i, score in enumerate(scores):
@@ -29,15 +29,15 @@ def should_send_documents_to_llm(nb_tokens_in_context):
     nb_tokens_available = nb_max_tokens - nb_tokens_already_used
     return nb_tokens_in_context <= nb_tokens_available
 
-def get_doc_content_from_chunk(chunk):
+def get_doc_content_from_chunk(chunk, parent_path):
     filename = f"{chunk.get("metadata").get("filename")}.txt"
     title = chunk.get("content").split("\n\n", 1)[0]
-    filepath = TEXTUAL_CONTENTS_PATH_CHATBOT / os.getenv("CORPUS_NAME") / filename
+    filepath = parent_path / os.getenv("CORPUS_NAME") / filename
     textual_content = filepath.read_text(encoding="utf-8")
     content = f"{title}\n\n{textual_content}" if title else textual_content
     return content
 
-def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent):
+def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent, path_textual_contents):
     chunks_to_use = chunks[:nb_items_sent]
     nb_relevant_items = -1
 
@@ -61,7 +61,7 @@ def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent):
 
             doc_ids_already_in_llm_context.add(doc_id)
             docs_in_llm_context.append(chunk)
-            docs_in_llm_context[-1]["content"] = get_doc_content_from_chunk(chunk)
+            docs_in_llm_context[-1]["content"] = get_doc_content_from_chunk(chunk, path_textual_contents)
 
         context_for_llm = build_context_for_llm(docs_in_llm_context)
         nb_items_really_sent = len(docs_in_llm_context)
@@ -74,7 +74,7 @@ def prepare_llm_context_n_documents_or_chunks(chunks, scores, nb_items_sent):
 
         return context_for_llm, chunks_to_use, nb_relevant_items, nb_items_sent
 
-def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
+def prepare_llm_context_modular_context(chunks, scores, nb_items_sent, path_textual_contents):
     FULL_DOCUMENT_TOKEN_LIMIT = 50000
     APPROX_TOKENS_PER_CHUNK = 2000
 
@@ -110,7 +110,7 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
                 break
             ref_chunk_for_context = copy.deepcopy(ref_chunk)
             items_in_llm_context.append(ref_chunk_for_context)
-            items_in_llm_context[-1]["content"] = get_doc_content_from_chunk(ref_chunk_for_context)
+            items_in_llm_context[-1]["content"] = get_doc_content_from_chunk(ref_chunk_for_context, path_textual_contents)
             approxim_nb_tokens_in_context += nb_tokens
             handled_indices.update(indices_of_chunks_from_current_doc_id)
             print(f"Document with doc id '{doc_id}' added in context (referenced {count} times)")
@@ -155,3 +155,6 @@ def prepare_llm_context_modular_context(chunks, scores, nb_items_sent):
     print(f"Context successfully built ({approxim_nb_tokens_in_context} tokens in context)")
 
     return context_for_llm, items_in_llm_context, nb_relevant_items, nb_items_really_sent
+
+__all__ = ["prepare_llm_context_n_chunks", "prepare_llm_context_max_n_chunks", "prepare_llm_context_n_documents_or_chunks", "prepare_llm_context_modular_context"]
+

@@ -11,7 +11,8 @@ from langfuse.langchain import CallbackHandler
 from polylex_chatbot.env import load_project_env
 env_path = load_project_env()
 
-from polylex_chatbot.constants import LANGUAGES, RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS, NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED, MAX_USER_MESSAGE_LEN
+from polylex_chatbot.constants import LANGUAGES, RCP_MODEL_NOT_LOADED_TIMEOUT_SECONDS, NB_CHUNKS_RETRIEVED, \
+    NB_CHUNKS_RERANKED, MAX_USER_MESSAGE_LEN, TEXTUAL_CONTENTS_PATH_CHATBOT
 from polylex_chatbot.config import init_db_client, prepare_llm_context, get_llm_model_config
 from polylex_chatbot.retrieval import retrieve_documents
 from polylex_chatbot.generation import generate_response
@@ -125,7 +126,7 @@ async def main(message: cl.Message):
 
         logger.info("Retrieve chunks and build context...")
         _, retrieved_scores, retrieved_chunks = retrieve_documents(config_by_lang[lang]["qdrant_config"], query, os.getenv("MODEL_RERANKER_NAME"), os.getenv("MODEL_RERANKER_API_KEY"), os.getenv("MODELS_BASE_URL"), NB_CHUNKS_RETRIEVED, NB_CHUNKS_RERANKED)
-        context_for_llm, items_in_llm_context, nb_relevant_chunks, nb_max_items = prepare_llm_context(retrieved_chunks, retrieved_scores)
+        context_for_llm, items_in_llm_context, nb_relevant_chunks, nb_max_items = prepare_llm_context(retrieved_chunks, retrieved_scores, TEXTUAL_CONTENTS_PATH_CHATBOT)
         # scores are based on semantic similarity from the DB, but results are reranked afterward, so order matters
         logger.info("Ratio relevant chunks: %s / %s (scores: %s)", nb_relevant_chunks, nb_max_items, retrieved_scores)
         try:

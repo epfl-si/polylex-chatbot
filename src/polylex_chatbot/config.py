@@ -1,3 +1,4 @@
+import os
 from qdrant_client import models
 from langchain_qdrant import FastEmbedSparse
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
@@ -108,8 +109,8 @@ def get_llm_model_config():
         temperature=0.0
     )
 
-def prepare_llm_context(chunks, scores):
-    #return prepare_llm_context_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
-    #return prepare_llm_context_max_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
-    #return prepare_llm_context_n_documents_or_chunks(chunks, scores, NB_MAX_ITEMS_SENT)
-    return prepare_llm_context_modular_context(chunks, scores, NB_MAX_ITEMS_SENT)
+def prepare_llm_context(chunks, scores, path_textual_contents):
+    #return prepare_llm_context_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT, path_textual_contents)
+    #return prepare_llm_context_max_n_chunks(chunks, scores, NB_MAX_ITEMS_SENT, path_textual_contents)
+    #return prepare_llm_context_n_documents_or_chunks(chunks, scores, NB_MAX_ITEMS_SENT, path_textual_contents)
+    return prepare_llm_context_modular_context(chunks, scores, NB_MAX_ITEMS_SENT, path_textual_contents)

@@ -1,21 +1,113 @@
 trace_id,question,generated_answer,hit_at_1,hit_at_2,hit_at_3,hit_at_4,hit_at_5,hit_at_10,hit_at_15,hit_at_20,Context Relevance (Contextrelevance-Langfuse),mrr_doc,ratio_correct_docs,semantic_similarity,len_answers_quality,Answer Correctness - RAGAS,chrf_score,Groundedness (Faithfulness-RAGAS),Answer Relevance (Relevance-Langfuse)
-0da3ac87fbdfe6b8,Existe-t-il un code d'honneur pour les étudiants en bachelor et où puis-je le trouver?,"Oui, il existe un code d'honneur pour les étudiants en bachelor. Il est mentionné dans le contexte fourni sous le titre ""Code d'honneur"" et peut être trouvé à l'adresse suivante: https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/Charte-ethique-de-lEFPL.pdf.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.8240905048918191,0.9962825278810409,0.012345678901234568,0.5132145040769726,0.5,1.0
-240b5337f5a060d9,Je viens d'obtenir mon bachelor à l'EPFL. Quel est mon titre officiel ?,"Votre titre officiel est ""Bachelor of Science (BSc)"" selon l'annexe I de l'ordonnance sur la formation à l'EPFL.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.6631911928702875,0.5308056872037915,0.85,0.3076064664519447,1.0,1.0
-3636db86df87e12c,"J'envisage de commencer mes études à l'EPFL. ""Combien d'années faut-il compter pour faire sa formation à l'EPFL ?""","Selon l'ordonnance sur la formation menant au bachelor et au master de l'EPFL, la durée totale de la formation est de 5 ans. Le bachelor dure 3 ans (cycle propédeutique de 2 semestres et cycle bachelor de 2 années) et le master dure 2 ans (cycle master de 1 à 1,5 années et projet de master de 1 semestre).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.8441151589594805,0.5057851239669422,1.0,0.21213502306545137,0.714,1.0
-44ae9c90ad6fd6d0,A combien de semaines de vacances par an ai-je le droit à partir de 60 ans en tant qu'employé à l'EPFL ?,"À partir de 60 ans, vous avez droit à 6 semaines de vacances par an, conformément à l'article 51 de l'Ordonnance du Conseil des EPF sur le personnel du domaine des écoles polytechniques fédérales (LEX 4.1.0.4).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,1.0,0.1,0.4065276932735285,0.047619047619047616,0.95,0.163371614486692,0.0,1.0
-47ebee59fd182d7b,Puis-je être immatriculé dans deux universités en même temps?,,0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.1,0.3424062655252271,0.0,0.0,0.0,0.0,0.0
-4ed6d88148b60ea6,"Je suis en première année de bachelor et j'ai obtenu la moyenne de 3,49 au semestre. Comment m'inscrire en BA2?","Pour vous inscrire en BA2, vous devez avoir réussi le cycle propédeutique, c'est-à-dire avoir acquis 60 crédits ECTS. Selon l'art. 7 de l'ordonnance sur la formation à l'EPFL, la réussite de l'examen propédeutique est la condition pour entrer au cycle bachelor. Si vous avez obtenu une moyenne de 3,49, cela signifie que vous n'avez pas encore atteint les 60 crédits ECTS nécessaires pour passer en BA2. Vous devrez donc répéter les cours non réussis et obtenir les crédits manquants pour pouvoir vous inscrire en BA2.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.7887589597821896,0.6833976833976834,0.0,0.31329326643725625,0.67,1.0
-5eb00989405408c1,Est-ce qu'une décision de la Commission des prix de la recherche ou d’un jury spécifique doit être notifiées formellement au candidat par le biais d'une lettre recommandée ?,"Non, la décision peut être notifiée par le biais d'une lettre ou d’un email de décision.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.3541235233899727,0.2727272727272727,0.0,0.1227845725036014,1.0,1.0
-ca2ea8692f486462,Quelles sont les conditons de réussite pour un bloc au niveau master à l'EPFL ?,"Les conditions de réussite pour un bloc au niveau master à l'EPFL sont déterminées par l'ordonnance sur la formation à l'EPFL (LEX 2.11.0.1 2). Selon l'article 10 de cette ordonnance, le cycle master est réputé réussi par l'acquisition de 60 ou 90 crédits ECTS, selon le domaine d'études. De plus, l'article 11 précise que le projet de master, qui s'étend sur un semestre et permet d'acquérir 30 crédits ECTS, doit être réussi pour obtenir le titre de master. La réussite du cycle master est une condition préalable pour entamer le projet de master.",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.14285714285714285,0.15,0.5092675581807753,0.5063752276867031,0.0,0.24082396580584026,1.0,1.0
-d698a08c18bc8762,"En tant qu’étudiant, puis-je créer un site web pour mon association avec un nom de domaine externe (ex: monlabo.ch) au lieu d’un site epfl.ch ? Est-ce que j'ai des contraintes à respecter concernant le choix du nom de domaine ?","Oui, en tant qu'étudiant, vous pouvez créer un site web pour votre association avec un nom de domaine externe (ex: monlabo.ch) au lieu d'un site epfl.ch. Cependant, vous devez respecter certaines contraintes concernant le choix du nom de domaine. Selon l'article 7 de la directive LEX 6.2.1, le choix du nom de domaine doit être validé par l'unité MEDIACOM si votre projet ou association répond aux critères suivants : a) le projet implique des participants actifs en dehors de l'EPFL, b) la gestion du site Web est sous la responsabilité d’une unité de l’Ecole, et c) l’adresse du site (URL) est largement diffusée en dehors de l'EPFL. De plus, si le nom de domaine contient les lettres ""EPFL"", l'autorisation de l'unité MEDIACOM est requise (article 8). Enfin, le nom de domaine doit être enregistré auprès de l'autorité compétente au nom de l’association, et une adresse e-mail de groupe doit être utilisée (article 9).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3,0.6844163247030821,0.18872017353579176,0.95,0.40757580670860677,1.0,1.0
-dc89ddd6332452b8,Quels sont les membres qui composent la Direction de l'EPFL ?,"La Direction de l'EPFL se compose des membres suivants :
-a. la Présidente ou le Président ;
-b. la Vice-présidente ou le Vice-président académique (VPA / Provost) ;
-c. la Vice-présidente ou le Vice-président pour le soutien aux initiatives stratégiques (VPS) ;
-d. la Vice-présidente ou le Vice-président pour l’innovation et l’impact (VPI) ;
-e. la Vice-présidente ou le Vice-président pour le développement humain (VPH) ;
-f. la Vice-présidente ou le Vice-président pour les finances (VPF) ;
-g. la Vice-présidente ou le Vice-président pour les opérations (VPO).",0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.2,0.1,0.8698354722136397,0.16279069767441862,1.0,0.30547011822928677,1.0,1.0
-e873535f94dde06f,Les emprunts dans un travail écrit doivent-ils être reconnaissable via une note en bas de page ?,"Oui, les emprunts dans un travail écrit doivent être reconnaissables comme tels, par une référence à la source (LEX 1.3.3, art. 4 al. 2 et LEX 3.3.2, art. 14 al. 2). Cela peut inclure une note en bas de page, mais la méthode exacte n'est pas spécifiée dans le contexte fourni.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.05,0.2570423995328791,0.11231884057971014,0.06499999999999999,0.245856622396339,0.8,1.0
-fe15db2e4d340661,Est-ce qu'un doctorant peut racheter son ordinateur ?,"Non, le contexte fourni ne mentionne pas de disposition permettant à un doctorant de racheter son ordinateur. Les directives concernent principalement la sécurité, la santé au travail, les mesures disciplinaires et la formation doctorale, mais aucune ne traite de la propriété ou du rachat d'équipements informatiques.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5797694853389836,0.9968553459119497,1.0,0.3407365890991183,0.0,1.0
-fe5985f76a9fc72e,Est-ce que le COSEC est rattaché à la VPF à l'EPFL ?,"Non, le contexte fourni ne mentionne pas que le COSEC (Correspondant de Sécurité) est rattaché à la VPF (Vice-Présidence Formation) à l'EPFL. Selon le contexte, le COSEC est rattaché aux unités de recherche ou aux services concernés, sous la supervision du DSE (Domaine Sécurité et Exploitation) de la VPO (Vice-Présidence pour les Opérations). Les responsabilités du COSEC sont définies dans les articles 13 et 14 de la directive, et il est sous la responsabilité des professeurs ou chefs d'unité. La VPF (Vice-Présidence Formation) est mentionnée dans l'article 10 pour la promotion de la sécurité et de la santé dans le cadre de la formation et de la recherche, mais il n'est pas indiqué que le COSEC lui est rattaché.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.2,0.38038181101907076,0.04299583911234397,0.95,0.13251160114935956,0.0,1.0
+005df7750095de18,Je viens d'obtenir mon bachelor à l'EPFL. Quel est mon titre officiel ?,"D'après le contexte fourni, le titre officiel décerné par l'EPFL après l'obtention du bachelor est **Bachelor of Science (BSc)**. Ce titre est mentionné dans l'annexe I de l'ordonnance sur la formation à l'EPFL, où il est précisé que le bachelor est accompagné de la désignation ""Bachelor of Science"" (BSc) dans le domaine d'études concerné. Par exemple, pour un bachelor en architecture, le titre complet serait ""Bachelor of Science BSc Architecture"".",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.6596114919032494,0.4668141592920354,0.0,0.3934244542136673,1.0,1.0
+2261fc6156e02665,Puis-je être immatriculé dans deux universités en même temps?,"Non, selon l'article 4, alinéa 3, let. a, de l'ordonnance de la Direction de l'EPFL sur l'admission à l’École polytechnique fédérale de Lausanne (Ordonnance sur l’admission à l’EPFL), une personne qui est déjà immatriculée dans une autre haute école n'est pas admissible à l'EPFL, sauf circonstances particulières dictées par la formation suivie. Cela signifie qu'il n'est généralement pas possible d'être immatriculé simultanément dans deux universités.",0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.1,0.853475212217129,0.44713656387665196,0.95,0.38810213387984843,1.0,1.0
+253ee61e201e71be,Existe-t-il un code d'honneur pour les étudiants en bachelor et où puis-je le trouver?,"Oui, il existe un **Code d'honneur** pour les étudiants en bachelor à l'EPFL. Il est mentionné dans le contexte fourni sous la référence **[LEX 2.3.1 1]**.
+
+**Où le trouver ?**
+Le Code d'honneur est disponible sur le site de l'EPFL, en référence à la **Charte éthique de l'EPFL** :
+🔗 [https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/Charte-ethique-de-lEFPL.pdf](https://www.epfl.ch/about/overview/wp-content/uploads/2019/09/Charte-ethique-de-lEFPL.pdf)
+
+**Résumé du Code d'honneur** :
+Il souligne les **responsabilités éthiques** des futurs ingénieurs, scientifiques et architectes de l'EPFL. En l'adoptant, chaque étudiant s'engage à :
+- Contribuer au **rayonnement de l'École**,
+- Renforcer la **confiance mutuelle** sur le campus,
+- Valoriser les **titres EPFL**.
+
+Pour plus de détails, consultez la **Charte éthique** ou la rubrique **déontologie et éthique** de l'EPFL.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.8014506863692639,0.30180180180180183,0.95,0.3826420625144399,1.0,1.0
+35898f95e0a78f11,Est-ce qu'une décision de la Commission des prix de la recherche ou d’un jury spécifique doit être notifiées formellement au candidat par le biais d'une lettre recommandée ?,"Non, la décision de la Commission des prix de la recherche ou d’un jury spécifique doit être notifiée formellement au candidat par le biais d'une **lettre ou d’un email de décision**, comme le stipule l'article 5, alinéa 8 du règlement. Il n'est pas mentionné que cette notification doit obligatoirement être envoyée par lettre recommandée.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.37273834651780224,0.07058823529411765,0.95,0.15441293411816015,1.0,1.0
+40203110a9865a8d,"J'envisage de commencer mes études à l'EPFL. ""Combien d'années faut-il compter pour faire sa formation à l'EPFL ?""","D'après le contexte fourni, la durée de la formation à l'EPFL dépend du niveau d'études visé :
+
+1. **Bachelor** :
+   - Cycle propédeutique : 2 semestres (1 an maximum).
+   - Cycle bachelor : 2 années d'études (soit 4 semestres).
+   - **Total** : **3 ans** (minimum) à **4 ans** (si prolongation nécessaire).
+
+2. **Master** :
+   - Cycle master : 1 an (60 crédits ECTS) ou 1,5 an (90 crédits ECTS).
+   - Projet de master : 1 semestre (30 crédits ECTS).
+   - **Total** : **2 ans** (pour un master à 60 crédits) ou **2,5 ans** (pour un master à 90 crédits).
+
+**Durée totale estimée** (bachelor + master) :
+- **5 à 6 ans** selon le parcours choisi.
+
+*Remarque* : Des prolongations peuvent être accordées pour des motifs valables (maladie, maternité, etc.), comme le prévoit l'article 12 de l'ordonnance.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.8275085885860137,0.7581453634085213,0.0,0.3127025631317823,1.0,1.0
+51144bbb291ca5d9,Quelles sont les conditons de réussite pour un bloc au niveau master à l'EPFL ?,"D'après le contexte fourni, les conditions de réussite pour un bloc au niveau master à l'EPFL sont les suivantes :
+
+1. **Cycle master** :
+   - Le cycle master est considéré comme réussi lorsque l'étudiant a acquis **60 ou 90 crédits ECTS** (selon la filière), conformément à l'ordonnance sur la formation à l'EPFL (Art. 10, al. 3).
+   - La durée maximale pour réussir le cycle master de 60 crédits ECTS est d'**une année**, mais elle ne peut excéder **deux ans**. Pour un cycle de 90 crédits ECTS, la durée est d'**une année et demie**, mais ne peut excéder **trois ans** (Art. 10, al. 2).
+
+2. **Projet de master** :
+   - Le projet de master, qui représente **30 crédits ECTS**, doit être entamé **au plus tard un an après la réussite du cycle master** (Art. 11, al. 1bis).
+   - Il doit être réussi **au plus tard trois ans après l’entrée au cycle master de 60 crédits ECTS** et **quatre ans après l’entrée au cycle master de 90 crédits ECTS** (Art. 11, al. 2).
+   - La réussite du cycle master est une condition préalable pour entamer le projet de master (Art. 11, al. 3).
+
+Ces conditions sont définies dans l'**Ordonnance sur la formation menant au bachelor et au master de l'EPFL** (LEX 2.11.0.1 2), en particulier aux articles 10 et 11.",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.14285714285714285,0.15,0.5416235917497898,0.22419354838709676,0.0,0.2016546226460848,1.0,1.0
+6f9e153021006874,Quels sont les membres qui composent la Direction de l'EPFL ?,"La Direction de l'EPFL se compose des membres suivants (selon l'article 3 de l'ordonnance) :
+
+1. La Présidente ou le Président ;
+2. La Vice-présidente ou le Vice-président académique (VPA / Provost) ;
+3. La Vice-présidente ou le Vice-président pour le soutien aux initiatives stratégiques (VPS) ;
+4. La Vice-présidente ou le Vice-président pour l’innovation et l’impact (VPI) ;
+5. La Vice-présidente ou le Vice-président pour le développement humain (VPH) ;
+6. La Vice-présidente ou le Vice-président pour les finances (VPF) ;
+7. La Vice-présidente ou le Vice-président pour les opérations (VPO).
+
+La Direction est majoritairement composée de professeures et professeurs de l'EPFL (article 3, alinéa 3).",0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.2,0.1,0.8782452458964569,0.12944523470839261,1.0,0.2725502339950604,1.0,1.0
+7f9dbece56332599,Les emprunts dans un travail écrit doivent-ils être reconnaissable via une note en bas de page ?,"Oui, les emprunts dans un travail écrit doivent être reconnaissables comme tels, notamment par une **référence à la source** (LEX 1.3.3, art. 4 al. 2 et LEX 3.3.2, art. 14 al. 2). Bien que le contexte ne mentionne pas explicitement les notes en bas de page, les références peuvent prendre cette forme (par exemple, via des citations ou des renvois bibliographiques). L'important est que l'emprunt soit clairement identifié pour éviter le plagiat (LEX 1.3.3, art. 8 et LEX 3.3.2, art. 18).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.05,0.33137016892051485,0.06352459016393443,1.0,0.176685670037441,1.0,1.0
+8627ad81fcbbe937,"En tant qu’étudiant, puis-je créer un site web pour mon association avec un nom de domaine externe (ex: monlabo.ch) au lieu d’un site epfl.ch ? Est-ce que j'ai des contraintes à respecter concernant le choix du nom de domaine ?","Oui, en tant qu'étudiant, vous pouvez créer un site web pour votre association avec un nom de domaine externe (ex: monlabo.ch) au lieu d'un sous-domaine epfl.ch, sous certaines conditions.
+
+**Contraintes à respecter :**
+1. **Validation par MEDIACOM** : Le choix du nom de domaine doit être validé par l’unité MEDIACOM si votre association répond aux critères suivants (Article 7) :
+   - Le projet implique des participants actifs en dehors de l'EPFL.
+   - La gestion du site web est sous la responsabilité d’une unité de l’Ecole.
+   - L’adresse du site (URL) est largement diffusée en dehors de l'EPFL.
+
+2. **Responsabilité de l'enregistrement** : Vous êtes responsable de l'enregistrement du nom de domaine auprès de l'autorité compétente et du paiement des frais afférents (Article 9).
+
+3. **Interdiction des serveurs DNS internes** : Il n'est pas permis d'installer un serveur DNS accessible de l’extérieur sur une machine raccordée au réseau de l'EPFL (Article 9).
+
+4. **Utilisation du logo EPFL** : Si votre association est reconnue par l'EPFL, vous pouvez utiliser le logo ""Association reconnue par l'EPFL"" sur votre site, mais cela ne dispense pas des règles ci-dessus.
+
+**Cas particulier des associations étudiantes reconnues** :
+Si votre association est reconnue par l'EPFL et figure dans l’annuaire des unités de l’EPFL, vous pouvez demander un nom de sous-domaine correspondant à votre acronyme (ex: monlabo.epfl.ch) (Article 6 al. 5). Cependant, vous avez aussi la possibilité d'utiliser un nom de domaine externe, sous réserve des conditions mentionnées ci-dessus.
+
+En résumé, un nom de domaine externe est possible, mais il doit être validé par MEDIACOM si les critères sont remplis, et vous devez respecter les règles d'enregistrement et d'infrastructure.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3,0.6227016573454056,0.09830508474576272,0.95,0.25423368143490943,1.0,1.0
+9ed0c279b175becb,A combien de semaines de vacances par an ai-je le droit à partir de 60 ans en tant qu'employé à l'EPFL ?,"D'après le contexte fourni, le droit aux vacances à l'EPFL est régi par l'**Ordonnance du Conseil des EPF sur le personnel du domaine des écoles polytechniques fédérales (LEX 4.1.0.4)** et le **Règlement concernant la gestion du temps de travail (LEX 4.1.4)**.
+
+### **Droit aux vacances à partir de 60 ans :**
+1. **5 semaines de vacances** par année civile pour les collaborateurs de moins de 50 ans.
+2. **6 semaines de vacances** à partir de l'année où le collaborateur atteint **50 ans** (art. 51 al. 2 de l'OPers-EPF).
+3. **6 semaines de vacances** pour les jeunes jusqu'à l'année où ils atteignent **20 ans** (art. 51 al. 3 de l'OPers-EPF).
+
+**Conclusion :**
+À partir de **50 ans**, vous avez droit à **6 semaines de vacances par an** (soit **30 jours ouvrés**). Ce droit reste valable au-delà de 60 ans, sauf disposition contraire non mentionnée dans le contexte fourni.
+
+*(Source : Art. 51 OPers-EPF et Art. 17 LPers, cités dans le contexte.)*",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.368475559959752,0.01053740779768177,0.95,0.040076687972969344,1.0,0.95
+c667e4a2d43c4114,Est-ce qu'un doctorant peut racheter son ordinateur ?,"Le contexte fourni ne mentionne pas explicitement la possibilité pour un doctorant de racheter son ordinateur. Aucune disposition dans les documents fournis (Directive en matière de santé et sécurité du travail, Ordonnance sur les mesures disciplinaires, ou Directive concernant la formation doctorale) ne traite de cette question.
+
+Par conséquent, sur la base du contexte donné, il n'est pas possible de répondre à cette question. Il faudrait consulter d'autres sources ou directives spécifiques à l'EPFL concernant la gestion du matériel informatique pour les doctorants.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.5989392725838786,0.5532286212914486,0.95,0.3429061333663952,0.0,1.0
+e41dc9a163f331b7,Est-ce que le COSEC est rattaché à la VPF à l'EPFL ?,"Non, le COSEC (Correspondant de Sécurité) n'est pas rattaché à la Vice-Présidence Formation (VPF) à l'EPFL. Selon le contexte fourni, le COSEC est rattaché au **Département de Sécurité, Sûreté et Exploitation (DSE)** de la **Vice-Présidence pour les Opérations (VPO)**.
+
+Le DSE, sous la responsabilité de la VPO, supervise l'organisation de la sécurité et de la santé au travail (SSST) à l'EPFL, et le COSEC agit comme son contact au sein des unités (Article 13 et 14 de la directive). La VPF (Vice-Présidence Formation) n'est pas mentionnée dans les responsabilités liées au COSEC.
+
+La VPO est responsable de la **conduite opérationnelle de la sécurité** (Article 3 et 4), tandis que la **Vice-Présidence Académique (VPA)** se concentre sur la promotion de la sécurité dans la formation et la recherche (Article 10). La VPF n'apparaît pas dans le contexte fourni.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.2,0.42030238149868604,0.03587962962962963,1.0,0.11768646868018973,0.0,1.0
+ecdb17789545c809,"Je suis en première année de bachelor et j'ai obtenu la moyenne de 3,49 au semestre. Comment m'inscrire en BA2?","Pour vous inscrire en deuxième année de bachelor (BA2) à l'EPFL, vous devez avoir réussi le cycle propédeutique (BA1), qui s'étend sur deux semestres et permet d'acquérir 60 crédits ECTS (art. 7 de l'ordonnance sur la formation à l'EPFL).
+
+Votre moyenne de 3,49 au premier semestre ne suffit pas à garantir automatiquement votre passage en BA2. Voici les étapes à suivre :
+
+1. **Vérifiez les conditions de réussite** :
+   - Le cycle propédeutique est considéré comme réussi si vous avez acquis les 60 crédits ECTS requis (art. 7, al. 4 de l'ordonnance sur la formation à l'EPFL).
+   - Si vous n'avez pas encore validé tous les crédits nécessaires, vous devrez les compléter avant de passer en BA2.
+
+2. **Consultez votre relevé de notes** :
+   - Vérifiez si vous avez obtenu les crédits ECTS nécessaires pour valider le cycle propédeutique. Si des matières sont en échec, vous devrez les repasser.
+
+3. **Procédure d'inscription** :
+   - Une fois les 60 crédits ECTS acquis, vous serez automatiquement inscrit en BA2 pour le semestre suivant, sous réserve de respecter les délais administratifs (art. 8 de l'ordonnance sur la formation à l'EPFL).
+   - Si vous avez des doutes, contactez le service des admissions ou votre secrétariat étudiant pour confirmer votre éligibilité.
+
+4. **Délais** :
+   - Assurez-vous de respecter les délais d'inscription pour le semestre suivant, publiés sur le site de l'EPFL.
+
+Si vous n'avez pas encore validé tous les crédits, vous devrez les obtenir avant de pouvoir passer en BA2.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.7675500595472816,0.23412698412698413,0.98,0.28849963844124615,1.0,1.0
