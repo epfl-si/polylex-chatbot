@@ -1,0 +1,93 @@
+trace_id,question,generated_answer,hit_at_1,hit_at_2,hit_at_3,hit_at_4,hit_at_5,hit_at_10,hit_at_15,hit_at_20,Context Relevance (Contextrelevance-Langfuse),mrr_doc,ratio_correct_docs,semantic_similarity,len_answers_quality,Answer Correctness - RAGAS,chrf_score,Groundedness (Faithfulness-RAGAS),Answer Relevance (Relevance-Langfuse)
+1043a13f85409ac5,Je suis employé à l'EPFL dans le service informatique. Mon ordinateur a été acheté 3000CHF le 1er janvier 2020. Puis-je le racheter à l'EPFL et à quel montant ?,"Le contexte fourni ne contient aucune information spécifique concernant le rachat d'un ordinateur professionnel par un employé de l'EPFL. Aucune mention n'est faite des conditions ou du montant applicable pour le rachat d'un matériel informatique.
+
+Pour obtenir une réponse précise, il serait nécessaire de consulter les directives internes de l'EPFL relatives à la gestion du matériel informatique ou de contacter le service des ressources humaines ou informatiques de l'EPFL.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.43604195711644556,0.3836477987421384,0.0,0.23842084705614122,1.0,1.0
+15cb148b267b6bf1,De combien de membres la commission des prix de la recherche de l'EPFL est-elle composée ?,"La Commission des prix de la recherche de l'EPFL est composée de **dix (10) à quinze (15) membres** (selon le contexte fourni dans [Chunk 2], Article 2. Membres).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.45,0.5473348992450835,0.17901234567901234,0.9,0.19265155285697994,1.0,1.0
+1788bdf179d6c08f,Est-ce que je peux utiliser mon ordinateur du travail pour des tâches privées en tant qu'employée à l'EPFL ?,"D'après le contexte fourni, l'employeur (l'EPFL) permet généralement aux employés d'utiliser Internet et le courrier électronique à titre privé, **dans certaines limites** (Chunk 2). Cependant, cela dépend du champ d'activité et des obligations contractuelles. Si l'utilisation privée n'entrave pas l'accomplissement des tâches professionnelles, elle est autorisée.
+
+En revanche, le contexte ne mentionne pas explicitement l'utilisation de l'ordinateur professionnel pour des tâches privées autres que la navigation Internet et les e-mails. Il est donc préférable de se référer aux règles internes de l'EPFL ou de consulter les ressources humaines pour une réponse précise.
+
+*(Réponse basée uniquement sur les informations fournies dans le contexte.)*",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.7604990572067434,0.2809587217043941,0.85,0.33530894201195494,1.0,1.0
+2b655aa00625303d,"Je suis une étudiante en bachelor à l'EPFL. J'écris mieux en anglais qu'en français, est-ce que je peux rédiger mon examen en anglais à la place du français ?","D'après le contexte fourni, la langue principale des examens en bachelor à l'EPFL est le français. Cependant, la directive précise que les enseignements en sciences humaines et sociales peuvent être donnés en français et/ou en anglais, et que les limitations linguistiques ne concernent pas les ouvrages de référence (Chunk 3).
+
+Pour les examens, la langue est réglée par l'art. 11 de l'Ordonnance sur le contrôle des études (Chunk 3). Bien que le contexte ne mentionne pas explicitement la possibilité de passer un examen en anglais à la place du français, il indique que l'anglais est encouragé pour la transition vers le Master (Chunk 2).
+
+Il serait donc nécessaire de vérifier auprès de votre section ou de l'administration de l'EPFL si une dérogation est possible pour passer un examen en anglais, en particulier si votre domaine d'études relève des sciences humaines et sociales.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.8,0.0,0.0,0.5791604107063135,0.1864406779661017,0.0625,0.27569876607883864,0.75,0.9
+35abc7fca788a459,L'AE est l'organe faîtier de participation au sens de quelle ordonnance et quel article ?,"L'AE (Assemblée d'école) est l'organe faîtier de participation au sens de l'**ordonnance de l'EPFZ et de l'EPFL** et de l'**article 18** de cette ordonnance.
+
+*(Source : Chunk 2, Article 23, paragraphe 1)*",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.8,0.5,0.1,0.520730524721484,0.13658536585365855,0.5500000000000002,0.2203508173428691,1.0,0.95
+558d7e5aa719311a,"Est-ce que je peux installer un logiciel sous licence EPFL sur un ordinateur personnel utilisé par un collaborateur en télétravail, ou hors du campus ?","Oui, un collaborateur de l'EPFL peut installer un logiciel sous licence EPFL sur un ordinateur personnel utilisé en télétravail ou hors du campus, **à condition** que :
+1. Le contrat de licence autorise explicitement cette installation (LEX 6.1.5, Chunk 2).
+2. Le collaborateur respecte les mesures de sécurité requises (chiffrement, protection des données, etc., comme mentionné dans Chunk 5).
+
+La directive (Chunk 5) précise que l'EPFL peut exiger l'installation d'un agent de gestion pour le matériel privé, mais ne l'interdit pas.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.4578240220903848,0.15543071161048688,0.95,0.2654136376028755,1.0,1.0
+683a163b4d6b66cd,Quelles sont les conditions de réussite pour un groupe dans le cadre d’un master à l’EPFL ?,"D'après le contexte fourni, les conditions de réussite pour un groupe dans le cadre d'un master à l'EPFL sont les suivantes (extrait du **Chunk 2**, Ordonnance sur la formation menant au bachelor et au master) :
+
+1. **Projet de master** :
+   - Le projet de master s'étend sur un semestre et vaut 30 crédits ECTS.
+   - Il doit être entamé **au plus tard un an après la réussite du cycle master**.
+   - Il doit être réussi **au plus tard trois ans après l’entrée au cycle master de 60 crédits ECTS** (ou **quatre ans pour un master de 90 crédits ECTS**).
+   - La réussite du cycle master est une **condition préalable** pour entamer le projet de master.
+
+2. **Règle supplémentaire** :
+   - Si l'art. 29, al. 3, de l’ordonnance du 30 juin 2015 sur le contrôle des études s'applique, la réussite du projet de master implique la réussite **préalable** du cycle master.
+
+Aucune information spécifique sur les conditions de réussite pour un ""groupe"" n'est mentionnée dans le contexte fourni. Les règles s'appliquent individuellement aux étudiants.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.6,0.0,0.0,0.4930697018156812,0.2,0.0,0.23525887573884838,1.0,0.2
+727c6b5b84f7583d,A quelle caisse de pension suis-je affilié en travaillant à l'EPFL en tant que stagiaire ? Est-ce que je suis de toute manière assuré ?,"D'après le contexte fourni, les informations spécifiques sur l'affiliation à une caisse de pension pour les stagiaires à l'EPFL ne sont pas explicitement mentionnées. Cependant, le **Chunk 4** et le **Chunk 5** évoquent la **Loi sur le personnel de la Confédération** et la **prévoyance professionnelle**, notamment via **Publica** (la caisse de prévoyance de la Confédération) ou d'autres caisses de prévoyance.
+
+Pour les **stagiaires sans contrat de travail** (mentionnés dans le **Chunk 2**, Article 33.2), leur statut dépend des règles internes de l'EPFL. Si vous recevez une bourse mensuelle, il est possible que vous ne soyez pas automatiquement affilié à une caisse de pension, sauf disposition contraire.
+
+**Réponse concise :**
+En tant que stagiaire à l'EPFL, votre affiliation à une caisse de pension (comme Publica) n'est pas garantie automatiquement. Il faut vérifier les règles spécifiques applicables aux boursiers/stagiaires (via le service RH ou le laboratoire d'accueil). Le contexte ne précise pas si vous êtes de toute manière assuré.
+
+*Pour une réponse précise, consultez le service des ressources humaines de l'EPFL ou le laboratoire qui vous accueille.*",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.8,0.14285714285714285,0.05,0.8235528107321304,0.1643952299829642,0.98,0.2270369464652293,0.75,1.0
+7b74c5fa80d8fe25,Je travaille en tant qu'RH à l'EPFL. Je fais chaque semaine 50% de télétravail et 50% de présentiel. Je dois parfois imprimer beaucoup de feuilles lorsque je suis à la maison. Quelle est la procédure à suivre pour me faire rembourser les frais liés aux impressions ?,"D'après le contexte fourni, les frais d'impression sur des imprimantes privées sont à la charge de l'employée ou de l'employé (Article 10.3 du règlement applicable au télétravail). Il n'est pas mentionné de procédure de remboursement pour ces frais. Vous devrez donc les assumer vous-même.
+
+Si vous souhaitez explorer d'autres options, vous pourriez :
+1. Utiliser les imprimantes de l'EPFL lors de vos jours de présentiel.
+2. Vérifier si votre unité administrative a des imprimantes partagées ou des solutions alternatives.
+3. Consulter votre responsable hiérarchique pour voir si des arrangements spécifiques sont possibles.
+
+Le règlement ne prévoit pas de remboursement pour ces frais.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.7672981309649717,0.11790393013100436,0.05555555555555555,0.38342364290978653,0.5714285714285714,1.0
+9ab9ef140bacc3f6,Je n'ai pas pu assister à certains de mes cours en bachelor pour cause de maladie. Quels critères un certificat médical doit-il remplir pour être valide ?,"D'après le contexte fourni, notamment le **Chunk 4** (Directive concernant les certificats médicaux présentés à l'EPFL), un certificat médical doit remplir les critères suivants pour être valide :
+
+1. **Pour les examens** :
+   - Si présenté en cours de session d’examen après plusieurs notes insuffisantes, la session peut être considérée comme échouée.
+   - Un certificat médical présenté **à l’issue d’un examen** n’est acceptable que s’il atteste d’une **maladie soudaine** survenue **pendant l’examen**, sans signes précurseurs, et entraînant une incapacité à poursuivre.
+
+2. **Pour les absences** (mentionné dans le **Chunk 1**) :
+   - Un certificat médical doit être enregistré dans le système de gestion des absences **dès le 4ème jour d’absence** si celle-ci dépasse 3 jours ouvrés consécutifs.
+   - Pour les professeurs, toute absence de plus d’une semaine en cours de semestre doit être déclarée à la responsable/unité concernée.
+
+**Note** : Le contexte ne précise pas explicitement les critères de validité d’un certificat médical pour les absences en cours de bachelor (hors examens), mais il mentionne l’obligation de le fournir et de le mettre à jour régulièrement. Pour des détails supplémentaires, il faudrait consulter les directives internes de l’EPFL sur les absences pour maladie.",0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.8,0.25,0.05,0.6525366024793211,0.19384615384615383,0.0,0.30847795539773626,0.8571428571428571,1.0
+d1e96dffc55a350a,C'est quoi OHS ?,"D'après le contexte fourni, **OHS** signifie **Occupational Health and Safety** (Santé et Sécurité au Travail). Il s'agit d'un service de l'EPFL chargé de superviser les questions de santé et de sécurité au travail, en collaboration avec les Ressources Humaines (RH) et d'autres entités. Ses missions incluent notamment :
+- La gestion du cabinet de médecine du travail.
+- La coordination avec les correspondants de sécurité (COSECs).
+- La formation obligatoire en sécurité pour les nouveaux employés.
+- Le rôle de point de contact avec les autorités officielles en matière de sécurité et santé au travail.
+
+(Source : Chunks 2, 3 et 5 du contexte.)",0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.2,0.2,0.5310656795967066,0.06027820710973725,1.0,0.19581309300126526,1.0,1.0
+d99805d5bbe1850f,"Je suis de nationalité française et j'ai obtenu un baccalauréat français avec une moyenne inférieur à 16,00. Puis-je m'inscrire à l'examen d'admission?","D'après le contexte fourni (Chunk 5), pour être admis à l'EPFL avec un baccalauréat français, il faut notamment :
+- Avoir un certificat de fin d'études délivré selon la réglementation d'un pays ayant ratifié la Convention du 11 avril 1997 (la France l'a ratifiée).
+- Avoir obtenu une moyenne finale globale **supérieure ou égale à 80 % de la note maximale** aux examens du certificat.
+
+Or, une moyenne inférieure à 16,00/20 (soit moins de 80 %) ne remplit pas cette condition. **Vous ne pouvez donc pas vous inscrire à l'examen d'admission dans ces conditions.**
+
+*(Note : Le contexte ne mentionne pas d'exception pour les candidats français, donc cette règle s'applique.)*",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.8,0.0,0.0,0.6625972522571228,0.21693907875185736,0.0,0.33977966932418674,1.0,1.0
+e42db75826cb1a6e,Quelles sont les conditions pour entrer à l'EPFL si je viens du Sénégal ?,"D'après le contexte fourni, les conditions pour entrer à l'EPFL si vous venez du Sénégal sont régies par l'**Ordonnance de la Direction de l’EPFL sur l’admission à l’École polytechnique fédérale de Lausanne** (Chunk 2). Cette ordonnance énonce les conditions à remplir pour être admis, que ce soit en **1ère année** ou en **master**, et elle règle également les modalités de l'examen d'admission pour les candidats qui y sont soumis avant d'entrer en 1ère année.
+
+Cependant, le contexte ne précise pas les critères spécifiques pour les candidats venant du Sénégal (comme les équivalences de diplômes, les exigences linguistiques, etc.). Pour des détails précis, il faudrait consulter directement l'ordonnance ou le site officiel de l'EPFL.
+
+*(Note : Le contexte ne contient pas d'informations spécifiques sur les conditions d'admission pour les étudiants sénégalais, mais il indique que l'ordonnance générale s'applique à tous les candidats.)*",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.4,0.5,0.05,0.34535721967871014,0.10922587486744433,0.85,0.19279449254613998,0.78,0.6
+f1fee6c050c28cd9,Je veux faire recours pour la note que j'ai reçu à mon examen dans mon cursus de bachelor. Qu'est-ce que je dois faire ?,"Pour faire recours contre une note reçue à un examen dans votre cursus de bachelor à l'EPFL, voici les étapes à suivre selon le contexte fourni :
+
+1. **Vérifiez les motifs de contestation** : Assurez-vous que votre recours repose sur au moins un motif valable (ex. : légalité, égalité de traitement, interdiction de l’arbitraire). Les enseignants vérifient déjà les notes proches du seuil de réussite pour la conférence d’examen, mais un recours externe peut être nécessaire si vous estimez que la décision est injuste.
+
+2. **Envoyez votre recours à la Commission de recours interne des EPF (CRIEPF)** :
+   - **Délai** : Vous avez 30 jours à partir de la réception de la décision contestée (votre bulletin de notes).
+   - **Adresse** : Commission de recours interne des EPF, Case postale 3001, Berne.
+   - **Contenu** : Exposez clairement le(s) motif(s) de votre contestation (ex. : erreur dans l’évaluation, traitement inégal).
+
+3. **Conservation des preuves** : Les notes et documents relatifs à l’examen sont conservés pendant **4 ans + 6 mois** après la fin du cycle bachelor. En cas de recours, ce délai est prolongé jusqu’à la fin de la procédure.
+
+Pour plus de détails, consultez les procédures officielles de l’EPFL ou contactez le service académique de votre section.",0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,0.8,0.3333333333333333,0.05,0.6966045871069597,0.8923076923076924,0.95,0.35406411501918017,1.0,1.0
