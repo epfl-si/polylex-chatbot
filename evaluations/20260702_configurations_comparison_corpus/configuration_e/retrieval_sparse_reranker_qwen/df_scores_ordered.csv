@@ -1,0 +1,92 @@
+trace_id,question,generated_answer,hit_at_1,hit_at_2,hit_at_3,hit_at_4,hit_at_5,hit_at_10,hit_at_15,hit_at_20,Context Relevance (Contextrelevance-Langfuse),mrr_doc,ratio_correct_docs,semantic_similarity,len_answers_quality,Answer Correctness - RAGAS,chrf_score,Groundedness (Faithfulness-RAGAS),Answer Relevance (Relevance-Langfuse)
+0c7f91965fbb4f85,Est-ce qu'un doctorant peut racheter son ordinateur ?,"Le contexte fourni ne mentionne pas explicitement la possibilité pour un doctorant de racheter son ordinateur. Cependant, l'**Article 25** de la *Directive pour l'utilisation de l'infrastructure électronique de l'EPFL* (LEX 6.1.4) stipule que les utilisateurs doivent transmettre le matériel informatique mis à leur disposition par l'EPFL avant la fin de leurs rapports avec l'institution. Il n'y a aucune indication dans le texte que l'EPFL autorise ou encadre le rachat de cet équipement.
+
+**Réponse :** Le contexte ne précise pas si un doctorant peut racheter son ordinateur fourni par l'EPFL. Il est recommandé de consulter directement l'administration de l'EPFL pour obtenir une réponse définitive.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.0,0.0,0.6620305253315237,0.45092460881934565,0.85,0.3626535303256632,1.0,1.0
+2fad234db4185e21,Est-ce que le COSEC est rattaché à la VPF à l'EPFL ?,"Le contexte fourni ne mentionne pas explicitement le COSEC (Comité de sécurité) ni son rattachement à la VPF (Vice-Présidence Finances) à l'EPFL. Par conséquent, il n'est pas possible de répondre à cette question en se basant uniquement sur les documents fournis.
+
+Pour obtenir une réponse précise, il faudrait consulter d'autres sources ou documents spécifiques à l'organisation du COSEC au sein de l'EPFL.",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.16666666666666666,0.15,0.4827881246072385,0.07616707616707617,0.00015432478234523456,0.17039581585373623,1.0,1.0
+3296a4ac35a12f1a,Je viens d'obtenir mon bachelor à l'EPFL. Quel est mon titre officiel ?,"D'après le contexte fourni, le titre officiel que vous obtenez après avoir complété votre bachelor à l'EPFL est :
+
+**""Bachelor [branche] de l’EPF de Lausanne""**
+
+(Art. 24 de l'Ordonnance du Conseil des EPF sur les écoles polytechniques fédérales de Zurich et de Lausanne, LEX 1.0.3 2).",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.14285714285714285,0.2,0.6087902514625412,0.7403508771929824,0.0,0.2614192089378159,1.0,1.0
+3a65465ab459c434,A combien de semaines de vacances par an ai-je le droit à partir de 60 ans en tant qu'employé à l'EPFL ?,"D'après le contexte fourni, les employés de l'EPFL ont droit à **5 semaines de vacances par an** (soit 25 jours). Cependant, **à partir de 50 ans**, ce droit passe à **6 semaines** (soit 30 jours). Le contexte ne mentionne pas de modification spécifique pour les employés de 60 ans ou plus, donc le droit reste de **6 semaines** (30 jours) à partir de 50 ans.
+
+**Réponse finale :**
+À partir de 60 ans, vous avez droit à **6 semaines de vacances par an** (30 jours).",0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.05,0.3993738208819271,0.021505376344086023,0.85,0.08045719031282589,1.0,1.0
+6260fb27e489d899,Quels sont les membres qui composent la Direction de l'EPFL ?,"Selon l'article 3 de l'Ordonnance sur l'organisation de l'EPFL (LEX 1.1.1 1), la Direction de l'EPFL se compose des membres suivants :
+
+a. la Présidente ou le Président ;
+b. la Vice-présidente ou le Vice-président académique (VPA / Provost) ;
+c. la Vice-présidente ou le Vice-président pour le soutien aux initiatives stratégiques (VPS) ;
+d. la Vice-présidente ou le Vice-président pour l’innovation et l’impact (VPI) ;
+e. la Vice-présidente ou le Vice-président pour le développement humain (VPH) ;
+f. la Vice-présidente ou le Vice-président pour les finances (VPF) ;
+g. la Vice-présidente ou le Vice-président pour les opérations (VPO).
+
+La Direction est majoritairement composée de professeures et professeurs de l'EPFL (article 3 alinéa 3).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.8704917832234939,0.12231182795698925,0.85,0.2617990042386321,1.0,1.0
+6ed81a9cd1f6d68c,Puis-je être immatriculé dans deux universités en même temps?,"D'après le contexte fourni, une personne ne peut pas être immatriculée simultanément dans deux universités si elle souhaite être admise dans une autre filière de l'EPFL en parallèle. L'article 4 alinéa 3b de l'ordonnance de la Direction de l'EPFL stipule explicitement que :
+
+*""N’est pas admissible, sauf circonstances particulières dictées par la formation suivie, la personne qui: [...] b. demeure inscrite dans une filière d’études à l’EPFL et souhaite être admise dans une autre filière de l’EPFL en parallèle.""*
+
+Ainsi, l'immatriculation simultanée dans deux filières de l'EPFL n'est pas autorisée, sauf exceptions justifiées par des circonstances particulières liées à la formation.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.8357810450744352,0.29505813953488375,0.95,0.37763239383024094,0.0,0.5
+8bfaebe61701769e,Les emprunts dans un travail écrit doivent-ils être reconnaissable via une note en bas de page ?,"Non, selon le contexte fourni, les emprunts dans un travail écrit doivent être reconnaissables **par une référence à la source** (art. 14 al. 2 de la directive LEX 3.3.2 et art. 4 al. 2 de la directive LEX 1.3.3), mais cela ne spécifie pas que cette référence doit obligatoirement prendre la forme d'une note en bas de page. La méthode de référence (note de bas de page, citation dans le texte, etc.) n'est pas explicitement détaillée dans les documents fournis.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.05,0.27255075687140917,0.0670995670995671,1.0,0.19246695543110384,0.0,1.0
+a5ee38aee0acbd3f,"Je suis en première année de bachelor et j'ai obtenu la moyenne de 3,49 au semestre. Comment m'inscrire en BA2?","D'après le contexte fourni, l'admission à un semestre supérieur (comme le passage en BA2) est régie par l'**Art. 8** de l'ordonnance de la Direction de l'EPFL sur l'admission. Voici les conditions à remplir :
+
+1. **Avoir effectué plusieurs semestres** dans une filière de bachelor correspondante dans une autre haute école universitaire suisse (vous êtes en première année, donc cela ne s'applique pas encore).
+2. **Remplir les conditions d'admissibilité au premier semestre de l'EPFL** (vous devez donc avoir validé votre première année avec les crédits requis).
+3. **Disposer des acquis exigés** dans les semestres inférieurs de la formation correspondante à l'EPFL.
+4. **Remplir les conditions pour passer au semestre supérieur** dans la haute école universitaire dont vous provenez (votre moyenne de 3,49 doit être conforme aux exigences de votre institution actuelle).
+
+Si vous êtes dans une haute école suisse, votre moyenne de 3,49 doit être validée par votre établissement pour passer en BA2. Si vous êtes à l'EPFL, votre admission dépendra de la décision du vice-président académique (Art. 3), qui peut exiger des crédits supplémentaires ou un stage (Art. 3, al. 3).
+
+**Conclusion** : Contactez votre service des admissions ou votre secrétariat académique pour confirmer les critères spécifiques à votre cas.",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.0,0.0,0.7408007598982733,0.26879271070615035,0.0,0.3022582138954092,0.9167,0.4
+b9958de5807f69a7,Quelles sont les conditons de réussite pour un bloc au niveau master à l'EPFL ?,"D'après le contexte fourni, les conditions de réussite pour un bloc (Minor ou spécialisation) au niveau Master à l'EPFL sont les suivantes :
+
+1. **Acquisition des crédits** : Les étudiants doivent obtenir **30 ECTS crédits** du programme de Minor avant de commencer le projet de Master (Art. 7, §3 de [LEX 2.11.2 4]).
+2. **Respect du plan d'études** : Chaque section publie un plan d'études pour ses Minors et spécialisations, que les étudiants doivent suivre (Art. 7, §2 de [LEX 2.11.2 4]).
+3. **Compatibilité avec le programme de Master** : Les 30 crédits du Minor ou de la spécialisation s'ajoutent aux 90 crédits du programme de Master, formant ainsi un programme de 120 crédits (Art. 6, §4 de [LEX 2.11.2 4]).
+
+Ces conditions sont définies dans la **Directive sur les programmes de Master, Minors et spécialisations à l'EPFL** ([LEX 2.11.2 4]).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.15,0.49762845485341434,0.32744405182567726,0.0,0.20786936993840904,1.0,1.0
+c29148bfcc79c6d7,"J'envisage de commencer mes études à l'EPFL. ""Combien d'années faut-il compter pour faire sa formation à l'EPFL ?""","D'après le contexte fourni, la durée normale des études à l'EPFL dépend des cycles :
+
+1. **Cycle bachelor** :
+   - Durée normale : 2 ans (120 crédits ECTS).
+   - Durée maximale : 4 ans après la réussite du cycle propédeutique (ou le double du nombre de semestres restants en cas d'admission à un semestre supérieur).
+
+2. **Cycle master** :
+   - Pour 60 crédits ECTS : 1 an (durée maximale de 2 ans).
+   - Pour 90 crédits ECTS : 1,5 an (durée maximale de 3 ans).
+
+**Total minimum** : 3,5 ans (bachelor + master de 60 crédits).
+**Total maximum** : 7 ans (bachelor + master de 90 crédits).
+
+*Note* : Ces durées incluent uniquement les cycles bachelor et master. Les études doctorales (non mentionnées dans votre question) s'ajoutent ensuite.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.15,0.8013634612109395,0.8197831978319783,0.0,0.31250215250653257,1.0,1.0
+c37ff5915a00c867,Est-ce qu'une décision de la Commission des prix de la recherche ou d’un jury spécifique doit être notifiées formellement au candidat par le biais d'une lettre recommandée ?,"Non, selon le contexte fourni, les décisions de la Commission des prix de la recherche ou d’un jury spécifique doivent être notifiées formellement au candidat par le biais d'une **lettre ou d’un email de décision** (Article 2, paragraphe 8 et Article 5, paragraphe 8). Il n'est pas mentionné que la notification doit se faire par lettre recommandée.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.8,0.5,0.3,0.370602772072962,0.06876790830945559,1.0,0.14965153767162045,1.0,1.0
+ceabd51fb3c22916,"En tant qu’étudiant, puis-je créer un site web pour mon association avec un nom de domaine externe (ex: monlabo.ch) au lieu d’un site epfl.ch ? Est-ce que j'ai des contraintes à respecter concernant le choix du nom de domaine ?","D'après le contexte fourni, voici les éléments pertinents pour votre question :
+
+1. **Associations d'étudiants reconnues** :
+   - Les associations d'étudiants reconnues par l'EPFL (selon [LEX 8.2.1 2]) ne sont pas soumises aux règles strictes de validation des noms de domaine pour les projets ou associations liées à l'EPFL (Article 7 de [LEX 6.2.1 1]).
+   - Elles peuvent donc utiliser un nom de domaine externe (ex: monlabo.ch) sans validation préalable par MEDIACOM, à condition de respecter les autres obligations liées à leur reconnaissance (transparence, respect des règles de l'EPFL, etc.).
+
+2. **Contraintes pour les noms de domaine externes** :
+   - Si votre association n'est **pas reconnue** par l'EPFL, elle est considérée comme une ""association liée à l'EPFL"" (Article 7 de [LEX 6.2.1 1]). Dans ce cas, le choix du nom de domaine doit être validé par MEDIACOM si :
+     - Le projet implique des participants externes à l'EPFL,
+     - La gestion du site est sous la responsabilité d'une unité de l'EPFL,
+     - L'URL est largement diffusée en dehors de l'EPFL.
+   - Si le nom de domaine contient ""EPFL"", l'autorisation de MEDIACOM est obligatoire (Article 8 de [LEX 6.2.1 1]).
+
+3. **Autres obligations** :
+   - Même avec un nom de domaine externe, votre association doit éviter toute confusion avec l'EPFL (ex: ne pas utiliser le logo ou les lettres à en-tête de l'EPFL, sauf accord spécifique) ([LEX 4.1.1 5]).
+
+**Réponse finale** :
+- **Si votre association est reconnue par l'EPFL** : Vous pouvez utiliser un nom de domaine externe (ex: monlabo.ch) sans validation préalable, mais vous devez respecter les règles de transparence et d'image de l'EPFL.
+- **Si votre association n'est pas reconnue** : Le choix du nom de domaine doit être validé par MEDIACOM si les critères de l'Article 7 sont remplis. Si le nom contient ""EPFL"", l'autorisation est obligatoire.
+
+Dans tous les cas, évitez toute confusion avec l'EPFL (logo, lettres à en-tête, etc.).",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.35,0.7214744320205355,0.08868501529051988,0.95,0.23348750143514604,1.0,1.0
+da6effecfdfe26d6,Existe-t-il un code d'honneur pour les étudiants en bachelor et où puis-je le trouver?,"Oui, il existe un **code d'honneur** pour les étudiants en bachelor à l'EPFL. Il est mentionné dans le contexte fourni sous la référence **[LEX 2.3.1 5]**.
+
+Vous pouvez le trouver sur le site de l'EPFL, notamment via le lien suivant (indiqué dans le contexte) :
+[Code d'honneur de l'EPFL](https://formation.epfl.ch/).
+
+Le code d'honneur engage les étudiants à respecter les principes éthiques de l'école, à éviter la tricherie et le plagiat, et à contribuer positivement à la communauté académique.",0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,1.0,0.2,0.1,0.8122630144687549,0.5381526104417671,1.0,0.36202390124305095,1.0,1.0

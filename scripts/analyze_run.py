@@ -77,6 +77,10 @@ def validate_scores(df_results):
             df_results.loc[df_results["trace_id"] == "e181c5c7c0876fc3", "Answer Correctness - RAGAS"] = 0.9
         elif ((df_results["trace_id"] == "3636db86df87e12c") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
             df_results.loc[df_results["trace_id"] == "3636db86df87e12c", "Answer Correctness - RAGAS"] = 1.0
+        elif ((df_results["trace_id"] == "00c586f5c3791d51") & (df_results["Groundedness (Faithfulness-RAGAS)"] == 11.0)).any():
+            df_results.loc[df_results["trace_id"] == "00c586f5c3791d51", "Groundedness (Faithfulness-RAGAS)"] = 0.9
+        elif ((df_results["trace_id"] == "da6effecfdfe26d6") & (df_results["Answer Correctness - RAGAS"] == 100.0)).any():
+            df_results.loc[df_results["trace_id"] == "da6effecfdfe26d6", "Answer Correctness - RAGAS"] = 1.0
         else:
             raise ValueError("Scores need to be manually checked (out of range)!")
     return df_results

@@ -64,7 +64,7 @@ Tester les hyperparamètres dans un autre ordre ou explorer d’autres valeurs p
 
 Les métriques considérées pour comparer les configurations sur la partie récupération du RAG sont le *recall@k* et le *MRR*.
 
-Les deux premiers hyperparamètres qui ont été optimimisé sont la taille des chunks et le modèle dense.
+Les deux premiers hyperparamètres qui ont été optimisé sont la taille des chunks et le modèle dense.
 
 Pour ce faire, sept collections ont été créées et les résultats sur une recherche sparse ainsi que dense ont été comparés.
 
@@ -118,7 +118,7 @@ Il a tout de même été décidé de considérer la recherche hybride comme hype
 
 ### Analyse intermédiaire
 
-Le classement des configurations sans le reranker est le suivant : E > B > D > A > C.
+Le classement des configurations sans le reranker est le suivant : E > B > D > A > F > C.
 Les configurations E et B sont les meilleures et seront donc les configurations candidates pour la suite de la recherche du meilleur système de RAG.
 
 ## Évaluation de l'utilisation d'un reranker et de la recherche hybride sur les collections *configuration_b* et *configuration_e*
@@ -147,8 +147,8 @@ Pour la recherche hybride, le reranker *bge* classe néanmoins les chunks pertin
 | collection_e / sparse / no reranker                                 | 0.46     | 0.69      | 0.55     | (voir ci-dessus)                                                                            | (voir ci-dessus)                                                                                                                                                                                                    |
 | **collection_b / sparse / bge**                                     | **0.62** | 0.84      | **0.70** | configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T08:17:24.483281Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_b" --run-description="CONFIGURATION COMPARISONS - configuration_b (only retrieval compared : sparse + reranker (bge))"`  |
 | **collection_e / sparse / bge**                                     | **0.62** | 0.84      | **0.70** | configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T08:17:34.690492Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_e" --run-description="CONFIGURATION COMPARISONS - configuration_e (only retrieval compared : sparse + reranker (bge))"`  |
-| collection_b / sparse / qwen                                        | -        | -         | -        | -                                                                                           | -                                                                                                                                                                                                                   |
-| collection_e / sparse / qwen                                        | -        | -         | -        | -                                                                                           | -                                                                                                                                                                                                                   |
+| collection_b / sparse / qwen                                        | 0.38     | **0.85**  | 0.54     | configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-13T06:09:32.500974Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_b" --run-description="retrieval - collection B + sparse + qwen reranker"`                                                |
+| collection_e / sparse / qwen                                        | 0.38     | **0.85**  | 0.54     | configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-13T06:09:40.281539Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_e" --run-description="retrieval - collection E + sparse + qwen reranker"`                                                |
 | collection_b / hybrid / no reranker                                 | 0.23     | 0.62      | 0.38     | configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T12:51:09.372656Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_b" --run-description="CONFIGURATION COMPARISONS - configuration_b (only retrieval compared : hybrid + no reranker)"`     |
 | collection_e / hybrid / no reranker                                 | 0.15     | 0.69      | 0.36     | configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T12:49:47.823429Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_e" --run-description="CONFIGURATION COMPARISONS - configuration_e (only retrieval compared : hybrid + no reranker)"`     |
 | **collection_b / hybrid / bge**                                     | 0.54     | **0.85**  | 0.64     | configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T07:36:38.116337Z | `PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="./envs/.env.configuration_b" --run-description="CONFIGURATION COMPARISONS - configuration_b (only retrieval compared : hybrid + reranker (bge))"`  |
@@ -175,6 +175,8 @@ Sparse + no reranker:
 Sparse + reranker:
 - PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.configuration_b" --run-name="configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T08:17:24.483281Z" --name-dir="retrieval_sparse_reranker_bge"
 - PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.configuration_e" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-05T08:17:34.690492Z" --name-dir="retrieval_sparse_reranker_bge"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.configuration_b" --run-name="configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-13T06:09:32.500974Z" --name-dir="retrieval_sparse_reranker_qwen"
+- PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.configuration_e" --run-name="configuration_e_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-13T06:09:40.281539Z" --name-dir="retrieval_sparse_reranker_qwen"
 
 Hybrid + no reranker:
 - PYTHONPATH="$PWD/src" python scripts/analyze_run.py --env-path="./envs/.env.configuration_b" --run-name="configuration_b_mistralai/Mistral-Small-3.2-24B-Instruct-2506 - 2026-07-04T12:51:09.372656Z" --name-dir="retrieval_hybrid_no_reranker"
@@ -226,7 +228,7 @@ En effet, une comparaison impliquant plusieurs LLMs évalués par un de ces LLms
 
 Le dernier hyperparamètre à fixer est la construction du contexte à fournir au LLM. Plusieurs configurations ont été comparées :
 - fournir un nombre fixe de chunks (2, 5 et 20 chunks)
-- fournir au maximum 10 chunks selon un seuil de pertinance fixé à 0.2 pour chaque chunk
+- fournir au maximum 10 chunks selon un seuil de pertinence fixé à 0.2 pour chaque chunk
 - fournir les deux documents complets correspondant aux deux chunks les plus pertinents
 - fournir, sur la base de 10 chunks récupérés au départ, les documents correspondant aux chunks d'un même document et les chunks uniques si leur score est plus élevé que la limite de 0.2.
 
