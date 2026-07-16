@@ -19,7 +19,7 @@ package "Indexation" {
     collections "Vecteurs denses" as dense_vectors
 
     docs --> texts : Apache Tika
-    texts --> chunks : nettoyage + chunking + contextualisation
+    texts --> chunks : nettoyage, chunking \n et contextualisation
     chunks --> sparse_vectors : Qdrant/bm25
     chunks --> dense_vectors : Qwen3-Embedding-8B
     sparse_vectors --> vector_database
