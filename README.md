@@ -26,7 +26,10 @@ Le projet utilise principalement les technologies suivantes :
 
 ### 1. Configuration de l’environnement
 
-Créer un fichier `.env` à partir du fichier d’exemple fourni et compléter ensuite les variables d’environnement nécessaires.
+1. Créer un environnement virtuel avec **Python 3.12**, puis y installer les dépendances définies dans le fichier [`requirements.txt`](requirements.txt).
+2. Exécuter `playwright install` pour finaliser l'installation de [Playwright](https://playwright.dev/) (nécessaire pour construire le corpus). 
+3. Créer un fichier `.env` à partir du fichier d’exemple fourni et compléter ensuite les variables d’environnement nécessaires.
+Il est également possible de copier le fichier `.env.dev` disponible sur Keybase contenant la configuration du système de RAG final.
 
 ### 2. Démarrer la base de données vectorielle
 
@@ -39,14 +42,16 @@ docker compose up -d
 
 Une documentation contenant quelques exemples de requête est disponible dans [qdrant_doc.md](documentation/qdrant_doc.md).
 
-### 3. Démarrer la plateforme de tracing
+### 3. Mettre en place la plateforme de tracing
 
-Se placer dans le dossier [langfuse](monitoring/langfuse) puis démarrer Langfuse avec Docker Compose ([documentation officielle](https://langfuse.com/self-hosting/deployment/docker-compose)) :
+Les explications ci-dessous se basent sur la [documentation officielle](https://langfuse.com/self-hosting/deployment/docker-compose).
 
-```shell
-cd monitoring/langfuse
-docker compose up -d
-```
+1. Cloner le [repository Langfuse](https://github.com/langfuse/langfuse) dans le dossier [monitoring](monitoring).
+2. Se déplacer dans le dossier [`langfuse`](monitoring/langfuse) venant d'être créé.
+3. Démarrer le service avec `docker compose up -d`.
+
+Aller sur l'interface web, configurer un projet puis créer une nouvelle API key.
+Les valeurs générées doivent être copiées dans le fichier d'environnement (variables *LANGFUSE_SECRET_KEY* et *LANGFUSE_PUBLIC_KEY*).
 
 ### 4. Exécuter le pipeline de construction, d’indexation et d’évaluation
 

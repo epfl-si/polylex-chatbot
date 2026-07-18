@@ -6,7 +6,7 @@ Certaines variables sont écrites dans le fichier d'environnement durant l'exéc
 
 Les valeurs des variables pour Langfuse doivent être configurées, puis exécuter :
 ```script
-PYTHONPATH="$PWD/src" python scripts/build_corpus.py --corpus-name="<corpus_name"
+PYTHONPATH="$PWD/src" python scripts/build_corpus.py --corpus-name="<corpus_name>"
 ```
 
 Le résultat obtenu est le suivant :
@@ -70,6 +70,8 @@ PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_path>" --ru
 Aller sur Langfuse (partie Experiment) pour visualiser les scores obtenus aux différentes métriques.
 
 ## 6. Analyse d'une évaluation (à faire n_configurations fois)
+
+La valeur du paramètre *run-name* correspond à la première colonne (*Name*) dans l'onglet *Experiments* sur la plateforme Langfuse.
 
 Exécuter :
 ```script
