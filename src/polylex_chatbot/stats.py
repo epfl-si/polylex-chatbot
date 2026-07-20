@@ -159,7 +159,7 @@ def compute_content_lengths(stats):
     return content_lengths
 
 def compute_and_save_nb_occ_article_plot(path, stats):
-    stats_without_summaries = stats[stats["suffix"] != ".txt"].copy()
+    stats_without_summaries = stats[stats["suffix"] != "txt"].copy()
     plt.hist(stats_without_summaries["nb_occ_article"], bins=60)
     plt.xlabel("Nombre d'occurences")
     plt.ylabel("Nombre de documents")
