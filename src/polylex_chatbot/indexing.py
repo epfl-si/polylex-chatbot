@@ -46,34 +46,52 @@ def index_chunks(chunks, collection_name, collection_description, env_file):
     sparse_fr_vectors = get_sparse_model_config_fr().embed_documents(texts)
     sparse_en_vectors = get_sparse_model_config_en().embed_documents(texts)
 
+    dense_vector_name = list(get_db_dense_index_config().keys())[0]
+    sparse_vector_name_fr = list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
+    sparse_vector_name_en = list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
+
     points = []
 
     for i, chunk in enumerate(chunks):
-        fr_vec = sparse_fr_vectors[i]
-        en_vec = sparse_en_vectors[i]
+        lang = chunk.metadata["language"]
 
-        dense_vector_name = list(get_db_dense_index_config().keys())[0]
-        sparse_vector_name_fr = list(DB_SPARSE_INDEX_CONFIG_FR.keys())[0]
-        sparse_vector_name_en = list(DB_SPARSE_INDEX_CONFIG_EN.keys())[0]
+        vectors = {
+            dense_vector_name: dense_vectors[i]
+        }
+
+        if lang == "fr":
+            fr_vec = sparse_fr_vectors[i]
+            vectors[sparse_vector_name_fr] = models.SparseVector(
+                indices=fr_vec.indices,
+                values=fr_vec.values
+            )
+        elif lang == "en":
+            en_vec = sparse_en_vectors[i]
+            vectors[sparse_vector_name_en] = models.SparseVector(
+                indices=en_vec.indices,
+                values=en_vec.values
+            )
+        else:
+            print(f"Unknown language for a chunk during indexing: '{lang}' (indexing it in all sparse indexes)")
+            fr_vec = sparse_fr_vectors[i]
+            en_vec = sparse_en_vectors[i]
+            vectors[sparse_vector_name_fr] = models.SparseVector(
+                indices=fr_vec.indices,
+                values=fr_vec.values
+            )
+            vectors[sparse_vector_name_en] = models.SparseVector(
+                indices=en_vec.indices,
+                values=en_vec.values
+            )
 
         points.append(
             models.PointStruct(
                 id=str(uuid4()),
-                vector={
-                    dense_vector_name: dense_vectors[i],
-                    sparse_vector_name_fr: models.SparseVector(
-                        indices=fr_vec.indices,
-                        values=fr_vec.values,
-                    ),
-                    sparse_vector_name_en: models.SparseVector(
-                        indices=en_vec.indices,
-                        values=en_vec.values,
-                    ),
-                },
+                vector=vectors,
                 payload={
                     "page_content": chunk.page_content,
-                    "metadata": chunk.metadata,
-                },
+                    "metadata": chunk.metadata
+                }
             )
         )
 

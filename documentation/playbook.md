@@ -64,7 +64,7 @@ Les valeurs des variables pour le modèle de reranking, le LLM et les modèles L
 
 Exécuter :
 ```script
-PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_path>" --run-description=<run_description>
+PYTHONPATH="$PWD/src" python scripts/trigger_run.py --env-path="<env_path>" --run-description="<run_description>"
 ```
 
 Aller sur Langfuse (partie Experiment) pour visualiser les scores obtenus aux différentes métriques.

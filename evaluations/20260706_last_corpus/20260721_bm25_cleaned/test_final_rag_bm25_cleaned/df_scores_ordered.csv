@@ -1,0 +1,187 @@
+trace_id,question,generated_answer,hit_at_1,hit_at_2,hit_at_3,hit_at_4,hit_at_5,hit_at_10,hit_at_15,hit_at_20,Context Relevance (Contextrelevance-Langfuse),mrr_doc,ratio_correct_docs,semantic_similarity,len_answers_quality,Answer Correctness - RAGAS,chrf_score,Groundedness (Faithfulness-RAGAS),Answer Relevance (Relevance-Langfuse)
+0d54ff76eecbef5e,Est-ce que je peux utiliser mon ordinateur du travail pour des tâches privées en tant qu'employée à l'EPFL ?,"Non, selon le contexte fourni, l'utilisation de l'ordinateur professionnel de l'EPFL pour des tâches privées n'est pas autorisée. Le règlement applicable au télétravail (LEX 4.1.8) et la directive sur l'utilisation du matériel informatique privé à des fins professionnelles (LEX 6.1.3) précisent que l'EPFL fournit tout le matériel nécessaire au travail de ses collaborateurs et que l'utilisation de matériel informatique privé à des fins professionnelles est tolérée sous certaines conditions strictes, mais l'inverse (utilisation du matériel professionnel à des fins privées) n'est pas mentionné comme autorisé.
+
+De plus, la directive LEX 6.1.3 stipule que les collaborateurs doivent respecter le secret de fonction, la protection des données et les conditions d'utilisation des logiciels, ce qui implique une utilisation exclusive à des fins professionnelles. Toute utilisation privée pourrait engager la responsabilité de l'employée et violer les règles de sécurité et de confidentialité de l'EPFL.",0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.07692307692307693,0.05,0.7090281041238331,0.21057884231536927,0.85,0.3393908840268098,0.2857,1.0
+165c1dfa149faa26,Quelles sont les conditions de réussite pour un groupe dans le cadre d’un master à l’EPFL ?,"D'après le contexte fourni, les conditions de réussite pour un groupe dans le cadre d'un master à l'EPFL sont les suivantes (Art. 11 de l'ordonnance sur la formation à l'EPFL) :
+
+1. **Projet de master** :
+   - Le projet de master s'étend sur un semestre et sa réussite permet d'acquérir 30 crédits ECTS.
+   - Il doit être entamé au plus tard un an après la réussite du cycle master.
+   - Il doit être réussi au plus tard :
+     - Trois ans après l’entrée au cycle master de 60 crédits ECTS,
+     - Quatre ans après l’entrée au cycle master de 90 crédits ECTS.
+   - La réussite du cycle master est une condition préalable pour entamer le projet de master.
+
+2. **Cycle master** :
+   - Le cycle master est réputé réussi par l’acquisition de 60 ou 90 crédits ECTS (Art. 10).
+   - Sa durée dépend du nombre de crédits :
+     - 60 crédits : 1 an (max. 2 ans),
+     - 90 crédits : 1 an et demi (max. 3 ans).
+
+3. **Conditions générales** :
+   - Les crédits requis doivent être acquis dans les durées fixées (Art. 12).
+   - Des dérogations sont possibles pour des motifs valables (maladie, maternité, service militaire, etc.).
+
+Ces conditions s'appliquent aux étudiants en groupe, sous réserve des règles spécifiques éventuelles pour les projets collectifs (non mentionnées dans le contexte fourni).",0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.05,0.05,0.5617087598920573,0.16124031007751938,0.0,0.2094228116012588,1.0,0.6
+312c8448f9693586,Je veux faire recours pour la note que j'ai reçu à mon examen dans mon cursus de bachelor. Qu'est-ce que je dois faire ?,"Pour faire recours contre une note reçue à un examen dans votre cursus de bachelor à l'EPFL, vous devez suivre la procédure de **recours** décrite dans le contexte fourni. Voici les étapes à suivre :
+
+1. **Délai** :
+   - Le recours doit être déposé dans un délai de **30 jours** dès la réception de la décision contestée (bulletin de notes).
+   - Le dépôt d'une **demande de nouvelle appréciation (DNA)** interne à l'EPFL (voir [LEX 2.6.6 2]) n'interrompt pas ce délai.
+
+2. **Forme du recours** :
+   - Le recours prend la forme d'une **lettre explicative** contenant :
+     - Un exposé des faits.
+     - Le(s) motif(s) de contestation (ex. : violation d'une règle de droit, erreur dans la notation, etc.).
+     - Une conclusion (ce à quoi vous estimez pouvoir prétendre).
+     - Une copie de la décision contestée (bulletin de notes).
+     - Les moyens de preuve éventuels (emails, copies d'écran, attestations, etc.).
+   - La lettre doit être signée par vous ou votre mandataire.
+
+3. **Langue** :
+   - Le recours doit être rédigé dans une des **langues officielles suisses** (français, allemand ou italien). L'anglais n'est pas admis.
+
+4. **Envoi du recours** :
+   - Le recours doit être envoyé à :
+     **Commission de recours interne des EPF (CRIEPF)**
+     Case postale 3001
+     Berne
+   - Si vous êtes à l'étranger, le recours doit parvenir à la poste suisse ou à une représentation diplomatique suisse **le dernier jour du délai** au plus tard.
+
+5. **Frais** :
+   - Une participation aux frais de **500 CHF** est demandée (à verser par avance selon les instructions de la CRIEPF).
+   - Les frais sont remboursés si le recours est admis.
+   - Une demande de dispense peut être faite en cas de situation financière difficile.
+
+6. **Durée de la procédure** :
+   - La procédure peut durer **plusieurs mois** (au moins six mois en général).
+
+7. **Mesures provisionnelles** :
+   - Vous pouvez demander des mesures provisionnelles auprès de la CRIEPF si nécessaire.
+
+8. **Renseignements complémentaires** :
+   - Contactez les **affaires juridiques de l'EPFL** (legal.education@epfl.ch) pour toute question.
+
+**Important** :
+- Le recours doit être motivé par un motif valable (ex. : erreur de notation, violation des règles d'examen). Les motifs comme la sévérité de la correction ou la situation personnelle ne sont pas recevables.
+- Consultez également les règles sur les **demandes de nouvelle appréciation (DNA)** internes à l'EPFL ([LEX 2.6.6 2]) si vous souhaitez d'abord tenter une solution interne.
+
+Pour plus de détails, référez-vous aux documents [LEX 2.6.6 2] et [LEX 2.6.3 3] du contexte fourni.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.1,0.8082035463331527,0.5487336914811972,1.0,0.4640081872065235,1.0,1.0
+3a8b370ff8d12cb7,"Je suis de nationalité française et j'ai obtenu un baccalauréat français avec une moyenne inférieur à 16,00. Puis-je m'inscrire à l'examen d'admission?","Oui, vous pouvez vous inscrire à l'examen d'admission à l'EPFL.
+
+Selon l'**Ordonnance sur la limitation de l’admission à l’EPFL** (Art. 5), les examens d’admission sont ouverts aux titulaires d’un certificat de fin d’études secondaires supérieures d’un pays autre que ceux visés à l’Art. 6, al. 1, let. a, ch. 1 de l’ordonnance sur l’admission à l’EPFL.
+
+Le **baccalauréat français** n’est pas explicitement mentionné comme un diplôme donnant droit à une admission sans examen (Art. 6 de l’ordonnance sur l’admission). Par conséquent, vous êtes éligible pour passer l’examen d’admission réduit ou complet, sous réserve de remplir les autres conditions (comme la maîtrise du français et de l’anglais si nécessaire).
+
+Pour confirmer votre éligibilité, consultez les **critères détaillés d’équivalence** publiés sur [swissuniversities.ch](https://www.swissuniversities.ch) (mentionnés à l’Art. 6, al. 3 de l’ordonnance sur l’admission).",0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.14285714285714285,0.2,0.7146148119729165,0.1564844587352626,0.85,0.2555306851966925,1.0,1.0
+5acebc15ea9f9d1d,Je n'ai pas pu assister à certains de mes cours en bachelor pour cause de maladie. Quels critères un certificat médical doit-il remplir pour être valide ?,"D'après le contexte fourni, un certificat médical présenté à l'EPFL pour justifier une absence aux cours ou aux examens doit respecter les critères suivants :
+
+1. **Délai de présentation** :
+   - L'étudiant doit aviser immédiatement le service académique et présenter le certificat médical **dans les trois jours** suivant la survenance du motif d'interruption (Article 2, al. 4).
+
+2. **Contenu du certificat** :
+   - Le certificat doit attester d'une **incapacité médicale** empêchant l'étudiant de suivre les cours ou de passer les examens.
+   - Si le certificat est présenté **en cours de session d'examen** alors que l'étudiant a déjà obtenu plusieurs notes insuffisantes, la session peut être considérée comme échouée (Article 2, al. 1).
+   - Un certificat présenté **après l'examen** n'est acceptable que s'il atteste d'une **maladie soudaine** survenue **pendant l'examen**, sans signes précurseurs, et entraînant une incapacité à le subir (Article 2, al. 2).
+
+3. **Respect des procédures** :
+   - L'étudiant doit signer une autorisation pour que son médecin-traitant puisse communiquer avec le médecin-conseil de l'EPFL (Article 2, al. 4).
+   - Le médecin-conseil peut vérifier le certificat et, si nécessaire, soumettre l'étudiant à un examen médical (Article 3, al. 7).
+
+4. **Cas non valides** :
+   - Si l'étudiant se présente à un examen **malgré un état de santé déficient**, le certificat ne sera pas pris en compte, sauf en cas d'incapacité de discernement (Article 2, al. 3).
+
+En résumé, le certificat doit être **rapide, précis, justifié médicalement** et conforme aux procédures de l'EPFL.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.6348537108606728,0.1569115815691158,0.0,0.2531520233620306,1.0,1.0
+5f6f528a7e2fd661,De combien de membres la commission des prix de la recherche de l'EPFL est-elle composée ?,"La Commission des prix de la recherche de l'EPFL est composée de **dix (10) à quinze (15) membres**, selon l'article 2.1 du règlement.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.517128637820846,0.21641791044776118,1.0,0.2188074847704773,1.0,1.0
+7b557998bee25af1,A quelle caisse de pension suis-je affilié en travaillant à l'EPFL en tant que stagiaire ? Est-ce que je suis de toute manière assuré ?,"Le contexte fourni ne mentionne pas explicitement l'affiliation des stagiaires à une caisse de pension. La directive concerne uniquement la participation au rachat de la caisse de pension pour les professeurs (ordinaires, associés, assistants) nouvellement nommés à l'EPFL.
+
+Par conséquent, il n'est pas possible de répondre à votre question sur la base du texte fourni. Pour obtenir une réponse précise, il serait nécessaire de consulter les règles spécifiques applicables aux stagiaires à l'EPFL, qui ne sont pas abordées dans ce document.",0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.5,0.35,0.6226813646549433,0.3567467652495379,0.65,0.2688593419754153,1.0,0.3
+8fc4fdcc01156c83,L'AE est l'organe faîtier de participation au sens de quelle ordonnance et quel article ?,"L'AE (Assemblée d'École) est l'organe faîtier de participation au sens de l'**article 18 de l'ordonnance sur l'EPFZ et l'EPFL** (RS 414.110.37).
+
+*(Source : Article 23, alinéa 1 de l'ordonnance sur l'organisation de l'EPFL [LEX 1.1.1 1], contexte fourni.)*",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.1,0.5462012585178279,0.109375,0.95,0.19063623233090965,1.0,1.0
+a75bf78f28d75822,"Je suis une étudiante en bachelor à l'EPFL. J'écris mieux en anglais qu'en français, est-ce que je peux rédiger mon examen en anglais à la place du français ?","Oui, selon la directive **LEX 2.11.4** (Article 4, alinéa 2), vous avez le droit de répondre en anglais à une épreuve en français, **sur demande écrite** à l'enseignant. Cette disposition s'applique aux épreuves d'examen à l'EPFL, conformément à l'article 11 de l'Ordonnance sur le contrôle des études.
+
+**Conditions :**
+- L'épreuve doit être en français (langue d'enseignement de la branche).
+- Vous devez faire une **demande écrite** à l'enseignant avant l'examen.
+
+Cette règle vise à faciliter la communication scientifique en anglais, tout en respectant la langue principale du Bachelor (français).",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.8618121068993825,0.27408637873754155,100.0,0.3527136439072364,1.0,1.0
+b8fe811b295c3260,"Est-ce que je peux installer un logiciel sous licence EPFL sur un ordinateur personnel utilisé par un collaborateur en télétravail, ou hors du campus ?","Oui, vous pouvez installer un logiciel sous licence EPFL sur un ordinateur personnel utilisé par un collaborateur en télétravail ou hors du campus, **à condition de respecter les règles suivantes** (conformément à la **LEX 6.1.5** et **LEX 6.1.3**) :
+
+1. **Vérification des droits de licence** :
+   - Le collaborateur doit s'assurer que la licence EPFL autorise l'installation du logiciel sur un matériel privé (Article 4, al. 3 de la LEX 6.1.5).
+   - Certaines licences peuvent restreindre l'utilisation à des machines appartenant à l'EPFL ou à des lieux spécifiques.
+
+2. **Conditions d'utilisation** :
+   - L'utilisation doit être conforme à la finalité autorisée (enseignement, recherche non lucrative, etc.) et ne pas dépasser le cadre de la licence (Article 4, al. 1 de la LEX 6.1.5).
+   - Le collaborateur doit respecter les règles de sécurité (chiffrement des données, protection des accès, etc.) définies dans la **LEX 6.1.3** (Article 5).
+
+3. **Responsabilité** :
+   - Le collaborateur est responsable de toute utilisation non conforme, y compris les risques juridiques (pénaux, civils) et les conséquences pour l'EPFL (Article 6 de la LEX 6.1.5).
+   - En cas de doute, il doit consulter le **gestionnaire des actifs logiciels** du Domaine des systèmes d'information (Article 4, al. 3 de la LEX 6.1.5).
+
+4. **Télétravail** :
+   - La **LEX 4.1.8** (Règlement sur le télétravail) confirme que les directives **LEX 6.1.3** et **LEX 6.1.5** s'appliquent au télétravail (Article 11).
+
+**Conclusion** :
+L'installation est possible si la licence le permet et si les conditions légales et contractuelles sont respectées. Le collaborateur doit vérifier les droits d'utilisation et appliquer les mesures de sécurité requises.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.4817402591709011,0.04814385150812065,1.0,0.14750497510708885,0.9473684210526315,1.0
+d414691a6f8e8fe2,Quelles sont les conditions pour entrer à l'EPFL si je viens du Sénégal ?,"D'après le contexte fourni, les conditions pour entrer à l'EPFL sont régies par l'**Ordonnance de la Direction de l’EPFL sur l’admission à l’École polytechnique fédérale de Lausanne** (LEX 2.1.0.1 1). Cependant, le texte ne mentionne pas spécifiquement les conditions pour les candidats venant du Sénégal.
+
+En général, l'admission à l'EPFL dépend des critères suivants (extrait de l'ordonnance) :
+1. **Pour la 1ère année (bachelor)** :
+   - Réussite de l'examen d'admission (si soumis).
+   - Conditions académiques (diplôme équivalent au baccalauréat suisse, par exemple).
+
+2. **Pour le master** :
+   - Avoir obtenu un bachelor (ou équivalent) dans un domaine compatible.
+   - Réussite des crédits ECTS requis (60 ou 90 crédits selon le domaine).
+
+Pour des précisions sur les équivalences de diplômes ou les procédures spécifiques aux candidats internationaux (comme ceux du Sénégal), il faudrait consulter les **règlements d'application** ou le site officiel de l'EPFL, car le contexte fourni ne détaille pas ces aspects.
+
+*Source : Ordonnance sur l'admission à l'EPFL (LEX 2.1.0.1 1) et Ordonnance sur la formation à l'EPFL (LEX 2.11.0.1 2).*",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,1.0,0.15,0.38661785810112614,0.09003496503496504,0.98,0.16836295797291315,0.67,0.9
+dda6c3340430028c,Je travaille en tant qu'RH à l'EPFL. Je fais chaque semaine 50% de télétravail et 50% de présentiel. Je dois parfois imprimer beaucoup de feuilles lorsque je suis à la maison. Quelle est la procédure à suivre pour me faire rembourser les frais liés aux impressions ?,"D'après le contexte fourni, les frais d'impression sur des imprimantes privées sont à la charge de l'employée ou de l'employé (Article 10, alinéa 3 du règlement LEX 4.1.8 sur le télétravail). Par conséquent, **les frais d'impression à domicile ne sont pas remboursés** par l'EPFL.
+
+Si vous avez besoin d'imprimer des documents professionnels, il est recommandé d'utiliser les imprimantes disponibles sur le site de l'EPFL lors de vos jours de présentiel.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.7823319067103256,0.17841409691629956,1.0,0.5005622205704258,1.0,1.0
+ed6da840753c9ad7,C'est quoi OHS ?,"Selon le contexte fourni, **OHS** est l'abréviation du **service Sécurité et Santé au travail** (en anglais : *Occupational Health and Safety*). Il s'agit du centre de compétence pour la mise en œuvre des mesures de sécurité et santé au travail propres à l’EPFL. Ses missions incluent notamment :
+
+- La mise en place de concepts de sécurité et de santé au travail.
+- L'évaluation des dangers et l'analyse des risques.
+- La gestion du cabinet de médecine du travail.
+- La formation des collaborateurs (ex. : formations obligatoires de base en sécurité, FOBS).
+- Le soutien aux unités dans l'application des directives SSST.
+
+(Source : Article 7 de la Directive en matière de sécurité et de santé du travail à l’EPFL, LEX 1.5.1)",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.4,0.5693090912116123,0.05371900826446281,0.95,0.19381353946511268,1.0,1.0
+fc49ca57943fe0c7,Je suis employé à l'EPFL dans le service informatique. Mon ordinateur a été acheté 3000CHF le 1er janvier 2020. Puis-je le racheter à l'EPFL et à quel montant ?,"D'après la directive concernant le recyclage et la revente d'équipements IT à l'EPFL (LEX 6.4.1), voici les conditions et le calcul pour racheter votre ordinateur :
+
+### Conditions à remplir :
+1. **Âge de l'équipement** : L'ordinateur doit avoir **4 ans ou plus** (il a été acheté le 1er janvier 2020, donc il sera éligible à partir du 1er janvier 2024).
+2. **Pas de réparation récente** : Il n'a pas été réparé par le CRI (Centre de réparation informatique) au cours des **6 derniers mois**.
+3. **Accord du responsable d'unité** : Le responsable de votre unité doit accepter de céder l'équipement et disposer des crédits nécessaires à son remplacement.
+
+### Calcul du prix de revente :
+Le prix est basé sur un **taux d'amortissement linéaire de 15% par année**, avec un montant minimum de **CHF 50**.
+
+- **Valeur d'achat (V)** : 3000 CHF
+- **Date de mise en service (DMS)** : 1er janvier 2020
+- **Date de revente** : Supposons aujourd'hui (par exemple, le 1er janvier 2024, soit 4 ans après l'achat).
+
+**Formule** :
+\[
+\text{Prix de revente} = V \times (1 - 0,15 \times \text{Année}) \quad \text{avec un minimum de 50 CHF}
+\]
+
+**Calcul** :
+\[
+3000 \times (1 - 0,15 \times 4) = 3000 \times (1 - 0,6) = 3000 \times 0,4 = 1200 \text{ CHF}
+\]
+
+### Conclusion :
+- **Si la revente a lieu en 2024** (4 ans après l'achat), le prix sera de **1200 CHF** (car 1200 CHF > 50 CHF).
+- **Si la revente a lieu avant 2024**, l'équipement ne remplit pas encore la condition d'âge (4 ans).
+
+### Procédure :
+1. **Demande** : Utiliser la demande standard **ServiceNow « Revente d’équipements IT »** via le portail du Service Desk du Domaine des systèmes d'information ([https://support.epfl.ch](https://support.epfl.ch)).
+2. **Validation** : Le responsable de votre unité doit valider la demande.
+3. **Paiement** : Le montant sera versé à un fonds central du Domaine des systèmes d'information (non à votre unité).
+
+Si vous remplissez toutes les conditions, vous pourrez donc racheter votre ordinateur à **1200 CHF** à partir de 2024.",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.15,0.7630747547728602,0.09086395233366434,0.0,0.17246816167762374,1.0,1.0
